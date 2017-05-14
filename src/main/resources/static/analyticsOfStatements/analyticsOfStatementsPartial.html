@@ -1,0 +1,73 @@
+ <div id = "options">
+	
+	
+	 <div class="toolbar">
+	<button class = "search"></button>
+	<button class = "refresh"></button>
+	<button class = "back"></button>
+	<button class = "help"></button>
+	&nbsp&nbsp
+	<button class = "first"></button>
+	<button class = "previous"></button>
+	<button class = "next"></button>
+	<button class = "last"></button>
+	&nbsp&nbsp
+	<button class = "add"></button>
+	<button class = "delete"></button>
+	&nbsp&nbsp
+	<button class = "nextForm"></button>
+</div>	
+
+
+	<table>
+		<table class="table table-bordered">
+		<tr>
+			<th>Item number</th>
+			<th>debtor_originator</th>
+			<th>purposeOfPayment</th>
+			<th>creditor_recipient</th>
+			<th>dateOfReceipt</th>
+			<th>currencyDate</th>
+			<th>debtorAccount</th>
+			<th>modelAssigments</th>
+			<th>referenceNumberAssigments</th>
+			<th>accountCreditor</th>
+			
+			<th>modelApproval</th>
+			<th>referenceNumberCreditor</th>
+			<th>emergency</th>
+			<th>sum</th>
+			
+			<th>typeOfMistake</th>
+			<th>status</th>
+			
+		</tr>
+		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+			<td>{{entity.itemNumber}}</td>
+			<td>{{entity.debtor_originator}}</td>
+			<td>{{entity.purposeOfPayment}}</td>
+			<td>{{entity.creditor_recipient}}</td>
+			<td>{{entity.dateOfReceipt}}</td>
+			<td>{{entity.currencyDate}}</td>
+			<td>{{entity.debtorAccount}}</td>
+			<td>{{entity.modelAssigments}}</td>
+			<td>{{entity.referenceNumberAssigments}}</td>
+			<td>{{entity.accountCreditor}}</td>
+			
+			<td>{{entity.modelApproval}}</td>
+			<td>{{entity.referenceNumberCreditor}}</td>
+			<td>{{entity.emergency}}</td>
+			<td>{{entity.sum}}</td>
+			<td>{{entity.typeOfMistake}}</td>
+			<td>{{entity.status}}</td>
+			
+		</tr>
+	</table>
+
+
+
+
+
+<div>
+    <div ui-view></div>
+    </div>

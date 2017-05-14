@@ -1,0 +1,61 @@
+ <div id = "options">
+ 
+ <div class="toolbar">
+	<button class = "search"></button>
+	<button class = "refresh"></button>
+	<button class = "back"></button>
+	<button class = "help"></button>
+	&nbsp&nbsp
+	<button class = "first"></button>
+	<button class = "previous"></button>
+	<button class = "next"></button>
+	<button class = "last"></button>
+	&nbsp&nbsp
+	<button class = "add"></button>
+	<button class = "delete"></button>
+	&nbsp&nbsp
+	<button class = "nextForm"></button>
+</div>	
+	
+	
+	<table>
+		<table class="table table-bordered">
+		<tr>
+			<th>Id</th>
+			<th>Bank Code</th>
+			<th>PIB</th>
+			<th>Name</th>
+			<th>Address</th>
+			<th>Email</th>
+			<th>Web</th>
+			<th>Phone</th>
+			<th>Fax</th>
+			<th>Bank</th>
+		</tr>
+		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+			<td>{{entity.id}}</td>
+			<td>{{entity.bankCode}}</td>
+			<td>{{entity.pib}}</td>
+			<td>{{entity.name}}</td>
+			<td>{{entity.address}}</td>
+			<td>{{entity.email}}</td>
+			<td>{{entity.web}}</td>
+			<td>{{entity.phone}}</td>
+			<td>{{entity.fax}}</td>
+			<td>{{entity.bank}}</td>
+			
+		</tr>
+	</table>
+	
+	
+	
+	</table>
+	
+	
+	
+	
+	
+
+<div>
+    <div ui-view></div>
+    </div>

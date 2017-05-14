@@ -1,0 +1,53 @@
+.selected {
+    background-color:blue;
+    color:white;
+    font-weight:bold;
+}
+
+
+.search, .refresh, .back, .help, .first, .previous, .next, .last, .add, .delete, .nextForm {
+	cursor:pointer;
+    border:none;
+    width:34px;
+    height:34px;
+    padding-bottom: 40px;
+    padding-left: 10px;
+}
+
+.search {
+	background: url(./icons_34x34/search.jpg) no-repeat;
+}
+.refresh {
+	background: url(./icons_34x34/refresh.jpg) no-repeat;
+}
+.back {
+	background: url(./icons_34x34/back.jpg) no-repeat;
+}
+.help {
+	background: url(./icons_34x34/help.jpg) no-repeat;
+}
+.first {
+	background: url(./icons_34x34/first.jpg) no-repeat;
+}
+.previous {
+	background: url(./icons_34x34/previous.jpg) no-repeat;
+}
+.next {
+	background: url(./icons_34x34/next.jpg) no-repeat;
+}
+.last {
+	background: url(./icons_34x34/last.jpg) no-repeat;
+}
+.add {
+	background: url(./icons_34x34/add.jpg) no-repeat;
+}
+.delete {
+	background: url(./icons_34x34/delete.jpg) no-repeat;
+}
+.nextForm {
+	background: url(./icons_34x34/nextForm.jpg) no-repeat;
+}
+
+.toolbar{
+	padding-left: 20px;
+}
