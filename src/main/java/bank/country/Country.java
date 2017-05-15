@@ -31,9 +31,9 @@ public class Country {
 	@NotBlank(message = "Name is mandatory")
 	private String name;
 	
-	@OneToMany
+	/*@OneToMany
 	@JoinTable(name = "national_currency", joinColumns = @JoinColumn(name = "country_id"), inverseJoinColumns = @JoinColumn(name = "currency_id"))
-	private List<Currency> currencies;
+	private List<Currency> currencies;*/
 
 	public Long getId() {
 		return id;
@@ -59,13 +59,13 @@ public class Country {
 		this.name = name;
 	}
 
-	public List<Currency> getCurrencies() {
+/*	public List<Currency> getCurrencies() {
 		return currencies;
 	}
 
 	public void setCurrencies(List<Currency> currencies) {
 		this.currencies = currencies;
-	}
+	}*/
 	
 	
 

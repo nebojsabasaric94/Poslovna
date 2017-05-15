@@ -2,11 +2,18 @@ package bank.analyticsOfStatements;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+
+import bank.currency.Currency;
+import bank.dailyAccountBalance.DailyAccountBalance;
+import bank.itemTransfer.ItemTransfer;
+import bank.paymentType.PaymentType;
 
 /**
  * analitika izvoda
@@ -70,6 +77,19 @@ public class AnalyticsOfStatements {
 	
 	@Column(length = 1)
 	private String status;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private DailyAccountBalance dailyAccountBalance;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private DailyAccountBalance BankExcerptAnalitics;	// Analitika izvoda banke
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private PaymentType paymentType;	// tip placanja
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Currency paymentCurrency;	// valuta placanja
+	
 
 	public Long getItemNumber() {
 		return itemNumber;
@@ -198,6 +218,46 @@ public class AnalyticsOfStatements {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public DailyAccountBalance getDailyAccountBalance() {
+		return dailyAccountBalance;
+	}
+
+	public void setDailyAccountBalance(DailyAccountBalance dailyAccountBalance) {
+		this.dailyAccountBalance = dailyAccountBalance;
+	}
+
+	public DailyAccountBalance getBankExcerptAnalitics() {
+		return BankExcerptAnalitics;
+	}
+
+	public void setBankExcerptAnalitics(DailyAccountBalance bankExcerptAnalitics) {
+		BankExcerptAnalitics = bankExcerptAnalitics;
+	}
+
+	public PaymentType getPaymentType() {
+		return paymentType;
+	}
+
+	public void setPaymentType(PaymentType paymentType) {
+		this.paymentType = paymentType;
+	}
+
+	public Currency getPaymentCurrency() {
+		return paymentCurrency;
+	}
+
+	public void setPaymentCurrency(Currency paymentCurrency) {
+		this.paymentCurrency = paymentCurrency;
+	}
+
+	
+	
+	
+
+	
+	
+	
 	
 	
 	

@@ -42,6 +42,11 @@ public class NationalBank {
 	@Column
 	private BigInteger publicKey;
 */
+	
+	
+	
+	
+	
 	public Long getId() {
 		return id;
 	}

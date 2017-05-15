@@ -39,6 +39,9 @@ public class DailyAccountBalance {
 	@Column(length = 15, precision = 2)
 	@NotBlank
 	private float newState;
+	
+	
+	
 
 	public Long getNumberOfStatements() {
 		return numberOfStatements;
@@ -87,6 +90,8 @@ public class DailyAccountBalance {
 	public void setNewState(float newState) {
 		this.newState = newState;
 	}
+	
+	
 	
 	
 	

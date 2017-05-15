@@ -50,6 +50,9 @@ public class Bank {
 	@Column
 	@NotNull
 	private boolean bank;
+	
+	
+	
 
 	public Long getId() {
 		return id;
