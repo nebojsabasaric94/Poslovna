@@ -2,12 +2,12 @@ var services = angular.module('interbankTransfer.services', [ 'ngResource' ]);
 
 services.service('interbankTransferService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/interbankTransfer");
 	}
 	
-	this.addinterbankTransfer = function(interbankTransfer) {
-		return $http.post("/addinterbankTransfer",interbankTransfer);
+	this.save = function(interbankTransfer) {
+		return $http.post("/interbankTransfer",interbankTransfer);
 	}
 	
 	this.next = function(id) {

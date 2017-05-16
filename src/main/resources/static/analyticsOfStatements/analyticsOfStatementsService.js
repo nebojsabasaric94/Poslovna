@@ -2,12 +2,12 @@ var services = angular.module('analyticsOfStatements.services', [ 'ngResource' ]
 
 services.service('analyticsOfStatementsService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/analyticsOfStatements");
 	}
 	
-	this.addanalyticsOfStatements = function(analyticsOfStatements) {
-		return $http.post("/addanalyticsOfStatements",analyticsOfStatements);
+	this.save = function(analyticsOfStatements) {
+		return $http.post("/analyticsOfStatements",analyticsOfStatements);
 	}
 	
 	this.next = function(id) {

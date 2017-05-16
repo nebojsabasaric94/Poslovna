@@ -102,4 +102,73 @@ angular.module('routerApp', ['ui.router',
 		controller : 'suspensionController'
 	})
 	
+	.state('bank.add', {
+		url : '/addBank',
+		templateUrl : 'bank/addBank.html'
+	})
+	
+	.state('analyticsOfStatements.add', {
+		url : '/addAnalyticsOfStatements',
+		templateUrl : 'analyticsOfStatements/addAnalyticsOfStatements.html'
+	})
+	
+	.state('country.add', {
+		url : '/addCountry',
+		templateUrl : 'country/addCountry.html'
+	})
+	
+	.state('currency.add', {
+		url : '/addCurrency',
+		templateUrl : 'currency/addCurrency.html'
+	})
+	
+	.state('currencyRate.add', {
+		url : '/addCurrencyRate',
+		templateUrl : 'currencyRate/addCurrencyRate.html'
+	})
+	
+	.state('dailyAccountBalance.add', {
+		url : '/addDailyAccountBalance',
+		templateUrl : 'dailyAccountBalance/addDailyAccountBalance.html'
+	})
+	
+	.state('exchageRateList.add', {
+		url : '/addExchageRateList',
+		templateUrl : 'exchageRateList/addExchageRateList.html'
+	})
+	
+	
+	
+	.state('interbankTransfer.add', {
+		url : '/addInterbankTransfer',
+		templateUrl : 'interbankTransfer/addInterbankTransfer.html'
+	})
+	
+	.state('itemTransfer.add', {
+		url : '/addItemTransfer',
+		templateUrl : 'itemTransfer/addItemTransfer.html'
+	})
+	
+	.state('nationalBank.add', {
+		url : '/addNationalBank',
+		templateUrl : 'nationalBank/addNationalBank.html'
+	})
+	
+	.state('paymentType.add', {
+		url : '/addPaymentType',
+		templateUrl : 'paymentType/addPaymentType.html'
+	})
+	
+	.state('place.add', {
+		url : '/addPlace',
+		templateUrl : 'place/addPlace.html'
+	})
+	
+	.state('suspension.add', {
+		url : '/addSuspension',
+		templateUrl : 'suspension/addSuspension.html'
+	})
+	
+	
+	
 });

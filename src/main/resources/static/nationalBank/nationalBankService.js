@@ -6,8 +6,8 @@ services.service('nationalBankService', [ '$http', function($http) {
 		return $http.get("/nationalBank");
 	}
 	
-	this.addnationalBank = function(nationalBank) {
-		return $http.post("/addnationalBank",nationalBank);
+	this.save = function(nationalBank) {
+		return $http.post("/nationalBank",nationalBank);
 	}
 	
 	this.next = function(id) {

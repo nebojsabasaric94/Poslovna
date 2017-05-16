@@ -20,6 +20,7 @@ public class Country {
 	@NotBlank(message = "Country code is mandatory")
 	private String country_code;
 
+
 	@Column(length = 40, unique = true)
 	@NotBlank(message = "Name is mandatory")
 	private String name;
@@ -52,7 +53,11 @@ public class Country {
 		this.name = name;
 	}
 
+
 	/*public List<Currency> getCurrencies() {
+=======
+/*	public List<Currency> getCurrencies() {
+>>>>>>> ea5b7d46d8e980e667c5a9dab7c06df9f7177dea
 		return currencies;
 	}
 

@@ -33,7 +33,6 @@ public class PaymentTypeController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void save(@RequestBody PaymentType paymentType) {
-		paymentType.setCode(null);
 		paymentTypeService.save(paymentType);
 	}
 	

@@ -1,7 +1,9 @@
 package bank.currency;
 
+import java.lang.Thread.State;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import bank.country.Country;
 import bank.currencyRate.CurrencyRate;
 
 /**
@@ -38,16 +42,20 @@ public class Currency {
 	@Column
 	@NotNull
 	private boolean dom; // sta ovde treba da pise?
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	Country countryCurrency;	//drzavna valuta
+	
 
 	/*@OneToMany
 	@JoinTable(name = "base_currency", joinColumns = @JoinColumn(name = "currency_id"), inverseJoinColumns = @JoinColumn(name = "serial_number"))
-	private List<CurrencyRate> baseCurrencyRates; // osnovna valuta*/
+	private List<CurrencyRate> baseCurrencyRates; // osnovna valuta
 	@OneToMany(mappedBy = "baseCurrencyRates")
 	private List<CurrencyRate> baseCurrencyRates;
 
 	@OneToMany
 	@JoinTable(name = "by_currency", joinColumns = @JoinColumn(name = "currency_id"), inverseJoinColumns = @JoinColumn(name = "serial_number"))
-	private List<CurrencyRate> byCurrencyRates;
+	private List<CurrencyRate> byCurrencyRates;*/
 
 	public Long getId() {
 		return id;
@@ -81,20 +89,15 @@ public class Currency {
 		this.dom = dom;
 	}
 
-	public List<CurrencyRate> getBaseCurrencyRates() {
-		return baseCurrencyRates;
+	public Country getCountryCurrency() {
+		return countryCurrency;
 	}
 
-	public void setBaseCurrencyRates(List<CurrencyRate> baseCurrencyRates) {
-		this.baseCurrencyRates = baseCurrencyRates;
+	public void setCountryCurrency(Country countryCurrency) {
+		this.countryCurrency = countryCurrency;
 	}
+	
+	
 
-	public List<CurrencyRate> getByCurrencyRates() {
-		return byCurrencyRates;
-	}
-
-	public void setByCurrencyRates(List<CurrencyRate> byCurrencyRates) {
-		this.byCurrencyRates = byCurrencyRates;
-	}
 
 }

@@ -1,12 +1,12 @@
 var app = angular.module('currency.controllers', []);
 
 app.controller('currencyController', ['$scope','currencyService','$location',
-		function($scope, currencyService, $location) {
+		function($scope, service, $location) {
 
 			findAll();
 		
 			function findAll() {
-				bankService.findAll().then(function(response) {
+				service.findAll().then(function(response) {
 					$scope.entities = response.data;
 				});
 			}
@@ -14,6 +14,17 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
+			}
+			
+			$scope.add = function(){
+				service.save($scope.entity).then(function(response) {
+					findAll();
+					$location.path('currency');
+				},
+				function(response){
+					alert("Dodavanje neuspesno");
+				}
+				);
 			}
 }]);
 

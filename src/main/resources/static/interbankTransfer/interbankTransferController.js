@@ -1,11 +1,11 @@
 var app = angular.module('interbankTransfer.controllers', []);
 
 app.controller('interbankTransferController', ['$scope','interbankTransferService','$location',
-		function($scope, interbankTransferService, $location) {
+		function($scope, service, $location) {
 			findAll();
 		
 			function findAll() {
-				bankService.findAll().then(function(response) {
+				service.findAll().then(function(response) {
 					$scope.entities = response.data;
 				});
 			}
@@ -13,6 +13,17 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
+			}
+			
+			$scope.add = function(){
+				service.save($scope.entity).then(function(response) {
+					findAll();
+					$location.path('interbankTransfer');
+				},
+				function(response){
+					alert("Dodavanje neuspesno");
+				}
+				);
 			}
 }]);
 

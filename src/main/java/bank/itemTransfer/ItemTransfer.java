@@ -1,10 +1,15 @@
 package bank.itemTransfer;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import bank.analyticsOfStatements.AnalyticsOfStatements;
+import bank.interbankTransfer.InterbankTransfer;
 
 /**
  * stavke prenosa
@@ -17,6 +22,12 @@ public class ItemTransfer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private Long id;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private AnalyticsOfStatements analyticsOfStatements;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private InterbankTransfer interbankTransfer;
 
 	public Long getId() {
 		return id;
@@ -25,6 +36,24 @@ public class ItemTransfer {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public AnalyticsOfStatements getAnalyticsOfStatements() {
+		return analyticsOfStatements;
+	}
+
+	public void setAnalyticsOfStatements(AnalyticsOfStatements analyticsOfStatements) {
+		this.analyticsOfStatements = analyticsOfStatements;
+	}
+
+	public InterbankTransfer getInterbankTransfer() {
+		return interbankTransfer;
+	}
+
+	public void setInterbankTransfer(InterbankTransfer interbankTransfer) {
+		this.interbankTransfer = interbankTransfer;
+	}
+	
+	
 	
 	
 	

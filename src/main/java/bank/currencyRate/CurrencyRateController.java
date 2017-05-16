@@ -33,7 +33,6 @@ public class CurrencyRateController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void save(@RequestBody CurrencyRate currencyRate) {
-		currencyRate.setSerialNumber((Float) null);
 		currencyRateService.save(currencyRate);
 	}
 	

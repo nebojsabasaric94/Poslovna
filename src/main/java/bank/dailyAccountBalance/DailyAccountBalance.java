@@ -25,20 +25,23 @@ public class DailyAccountBalance {
 	private Date trafficDate; //datum prometa
 	
 	@Column(length = 15, precision = 2)
-	@NotBlank
+	//@NotBlank
 	private float previousState;  // prethodno stanje
 	
 	@Column(length = 15, precision = 2)
-	@NotBlank
+	//@NotBlank
 	private float trafficToBenefit; //promet u korist
 	
 	@Column(length = 15, precision = 2)
-	@NotBlank
+	//@NotBlank
 	private float trafficToTheBurden; //promet na teret
 	
 	@Column(length = 15, precision = 2)
-	@NotBlank
+	//@NotBlank
 	private float newState;
+	
+	
+	
 
 	public Long getNumberOfStatements() {
 		return numberOfStatements;
@@ -87,6 +90,8 @@ public class DailyAccountBalance {
 	public void setNewState(float newState) {
 		this.newState = newState;
 	}
+	
+	
 	
 	
 	

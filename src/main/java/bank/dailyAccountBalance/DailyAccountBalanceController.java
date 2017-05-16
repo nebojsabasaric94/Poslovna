@@ -33,7 +33,6 @@ public class DailyAccountBalanceController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void save(@RequestBody DailyAccountBalance dailyAccountBalance) {
-		dailyAccountBalance.setNumberOfStatements(null);
 		dailyAccountBalanceService.save(dailyAccountBalance);
 	}
 	

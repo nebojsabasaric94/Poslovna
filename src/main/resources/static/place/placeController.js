@@ -1,21 +1,22 @@
 var app = angular.module('place.controllers', []);
 
 app.controller('placeController', ['$scope','placeService','$location',
-		function($scope, placeService, $location) {
+		function($scope, service, $location) {
 
 			findAll();
 		
 			function findAll() {
+
 				var nextFilter = sessionStorage.getItem("nextFilter");
 				sessionStorage.removeItem("nextFilter");
 				
 				if(nextFilter == null){
-					placeService.findAll().then(
+					service.findAll().then(
 						function(response) {
 							$scope.entities = response.data;
 						});
 				} else {
-					placeService.next(nextFilter).then(
+					service.next(nextFilter).then(
 						function(response){
 							
 							$scope.entities = response.data;
@@ -30,6 +31,7 @@ app.controller('placeController', ['$scope','placeService','$location',
 				$scope.selectedEntity = selectedEntity;
 			}
 			
+
 			$scope.delete = function(){
 				if(!($scope.selectedEntity))
 					return;
@@ -40,6 +42,18 @@ app.controller('placeController', ['$scope','placeService','$location',
 						alert("brisanje nije moguce");
 					}
 				)
+			}
+
+			$scope.add = function(){
+				service.save($scope.entity).then(function(response) {
+					findAll();
+					$location.path('place');
+				},
+				function(response){
+					alert("Dodavanje neuspesno");
+				}
+				);
+
 			}
 }]);
 
