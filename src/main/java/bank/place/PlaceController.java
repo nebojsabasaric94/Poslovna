@@ -60,4 +60,9 @@ public class PlaceController {
 		placeService.delete(placeId);
 	}
 	
+	@PostMapping("/search")
+	public List<Place> search(@RequestBody Place place){
+		return placeService.search(place);
+	}
+	
 }

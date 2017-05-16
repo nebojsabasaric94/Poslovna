@@ -51,8 +51,13 @@ app.controller('countryController', ['$scope','countryService','$location',
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,name : "",country_code : ""};
 			}
-
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,name : "",country_code : ""};
+				findAll();
+			}
 }]);
 
 

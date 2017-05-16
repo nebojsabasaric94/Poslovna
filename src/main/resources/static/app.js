@@ -98,7 +98,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'place/placePartial.html',
 		controller : 'placeController'
 	})
-	
+	.state('place.search',{
+		url : '/search',
+		templateUrl : 'place/searchPlace.html'
+	})	
 	.state('suspension',{
 		url : '/suspension',
 		templateUrl : 'suspension/suspensionPartial.html',

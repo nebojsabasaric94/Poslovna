@@ -3,7 +3,7 @@
 	
 <div class="toolbar">
 	<button ui-sref = ".search" ng-click = "deselect()" class = "search"></button>
-	<button class = "refresh"></button>
+	<button class = "refresh" ui-sref = "country" ng-click = "refresh()" ></button>
 	<button class = "back"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
@@ -30,7 +30,6 @@
 			<td>{{entity.id}}</td>
 			<td>{{entity.country_code}}</td>
 			<td>{{entity.name}}</td>
-			
 		</tr>
 	</table>
 

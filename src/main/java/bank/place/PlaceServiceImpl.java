@@ -38,4 +38,16 @@ public class PlaceServiceImpl implements PlaceService {
 		repository.delete(id);
 		
 	}
+
+	@Override
+	public List<Place> search(Place place) {
+		String id = "%";
+		if(place.getId() != null)
+			id = "%" + place.getId() + "%";
+		
+		String country_name = "";
+		if(place.getCountry() != null)
+			country_name = place.getCountry().getName();
+		return repository.search(id, place.getName(), place.getPttNumber(), country_name);
+	}
 }
