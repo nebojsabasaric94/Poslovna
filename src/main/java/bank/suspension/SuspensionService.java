@@ -8,4 +8,6 @@ public interface SuspensionService {
 	Suspension save(Suspension suspension);
 
 	Suspension findOne(Long id);
+	
+	public void delete(Long id);
 }

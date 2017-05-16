@@ -8,4 +8,6 @@ public interface BankService {
 	Bank save(Bank bank);
 
 	Bank findOne(Long id);
+	
+	public void delete(Long id);
 }

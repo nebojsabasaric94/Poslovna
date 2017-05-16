@@ -15,7 +15,7 @@ services.service('currencyRateService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(currencyRate){
-		return $http.delete('/deletecurrencyRate/' + currencyRate)
+		return $http.get('/currencyRate/deleteCurrencyRate/' + currencyRate)
 	}
 
 }]);

@@ -15,7 +15,7 @@ services.service('paymentTypeService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(paymentType){
-		return $http.delete('/deletepaymentType/' + paymentType)
+		return $http.get('/paymentType/deletePaymentType/' + paymentType)
 	}
 
 }]);

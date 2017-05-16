@@ -15,7 +15,7 @@ services.service('itemTransferService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(itemTransfer){
-		return $http.delete('/deleteitemTransfer/' + itemTransfer)
+		return $http.get('/itemTransfer/deleteItemTransfer/' + itemTransfer)
 	}
 
 }]);

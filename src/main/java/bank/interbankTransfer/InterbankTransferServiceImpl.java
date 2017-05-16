@@ -32,4 +32,9 @@ public class InterbankTransferServiceImpl implements InterbankTransferService {
 	public InterbankTransfer findOne(Long id) {
 		return repository.findOne(id);
 	}
+	
+	@Override
+	public void delete(Long id) {
+		repository.delete(id);
+	}
 }

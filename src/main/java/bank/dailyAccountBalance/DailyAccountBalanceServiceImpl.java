@@ -32,4 +32,9 @@ public class DailyAccountBalanceServiceImpl implements DailyAccountBalanceServic
 	public DailyAccountBalance findOne(Long id) {
 		return repository.findOne(id);
 	}
+	
+	@Override
+	public void delete(Long id) {
+		repository.delete(id);
+	}
 }

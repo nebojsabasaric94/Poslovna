@@ -1,24 +1,13 @@
 package bank.currency;
 
-import java.lang.Thread.State;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-
-import bank.country.Country;
-import bank.currencyRate.CurrencyRate;
 
 /**
  * valuta
@@ -43,8 +32,8 @@ public class Currency {
 	@NotNull
 	private boolean dom; // sta ovde treba da pise?
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	Country countryCurrency;	//drzavna valuta
+	/*@ManyToOne(cascade = CascadeType.ALL)
+	Country countryCurrency;*/	//drzavna valuta
 	
 
 	/*@OneToMany
@@ -89,13 +78,13 @@ public class Currency {
 		this.dom = dom;
 	}
 
-	public Country getCountryCurrency() {
+	/*public Country getCountryCurrency() {
 		return countryCurrency;
 	}
 
 	public void setCountryCurrency(Country countryCurrency) {
 		this.countryCurrency = countryCurrency;
-	}
+	}*/
 	
 	
 

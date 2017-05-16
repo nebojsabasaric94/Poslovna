@@ -8,4 +8,6 @@ public interface ItemTransferService {
 	ItemTransfer save(ItemTransfer ItemTransfer);
 
 	ItemTransfer findOne(Long id);
+	
+	public void delete(Long id);
 }

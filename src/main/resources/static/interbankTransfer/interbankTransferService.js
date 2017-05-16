@@ -15,7 +15,7 @@ services.service('interbankTransferService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(interbankTransfer){
-		return $http.delete('/deleteinterbankTransfer/' + interbankTransfer)
+		return $http.get('/interbankTransfer/deleteInterbankTransfer/' + interbankTransfer)
 	}
 
 }]);

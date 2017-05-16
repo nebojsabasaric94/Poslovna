@@ -8,4 +8,7 @@ public interface ExchangeRateListService {
 	ExchangeRateList save(ExchangeRateList exchangeRateList);
 
 	ExchangeRateList findOne(Long id);
+
+	public void delete(Long id);
+	
 }

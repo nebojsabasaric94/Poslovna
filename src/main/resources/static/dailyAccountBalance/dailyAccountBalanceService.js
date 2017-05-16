@@ -15,7 +15,7 @@ services.service('dailyAccountBalanceService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(dailyAccountBalance){
-		return $http.delete('/deletedailyAccountBalance/' + dailyAccountBalance)
+		return $http.get('/dailyAccountBalance/deleteDailyAccountBalance/' + dailyAccountBalance)
 	}
 
 }]);

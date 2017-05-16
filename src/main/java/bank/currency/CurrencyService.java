@@ -8,4 +8,6 @@ public interface CurrencyService {
 	Currency save(Currency currency);
 
 	Currency findOne(Long id);
+	
+	public void delete(Long id);
 }

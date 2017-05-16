@@ -8,4 +8,6 @@ public interface DailyAccountBalanceService {
 	DailyAccountBalance save(DailyAccountBalance dailyAccountBalance);
 
 	DailyAccountBalance findOne(Long id);
+	
+	public void delete(Long id);
 }

@@ -26,6 +26,18 @@ app.controller('itemTransferController', ['$scope','itemTransferService','$locat
 				}
 				);
 			}
+			
+			$scope.delete = function(){
+				if(!($scope.selectedEntity))
+					return;
+				service.delete($scope.selectedEntity.id).then(
+					function(response){
+						$scope.entities.splice($scope.entities.indexOf($scope.selectedEntity),1);
+					}, function(response){
+						alert("brisanje nije moguce");
+					}
+				)
+			}
 
 }]);
 

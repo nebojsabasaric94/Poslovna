@@ -8,4 +8,6 @@ public interface InterbankTransferService {
 	InterbankTransfer save(InterbankTransfer interbankTransfer);
 
 	InterbankTransfer findOne(Long id);
+	
+	public void delete(Long id);
 }

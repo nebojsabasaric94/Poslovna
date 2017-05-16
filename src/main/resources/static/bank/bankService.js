@@ -15,7 +15,9 @@ services.service('bankService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(bank){
-		return $http.delete('/deletebank/' + bank)
+		return $http.get('/bank/deleteBank/' + bank)
 	}
+	
+	
 
 }]);

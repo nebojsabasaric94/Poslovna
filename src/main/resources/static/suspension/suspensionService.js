@@ -15,7 +15,7 @@ services.service('suspensionService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(suspension){
-		return $http.delete('/deletesuspension/' + suspension)
+		return $http.get('/suspension/deleteSuspension/' + suspension)
 	}
 
 }]);

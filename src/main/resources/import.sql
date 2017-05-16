@@ -12,3 +12,7 @@ insert into place(name,ptt_number,country_country_id) values ('Novi Sad','21000'
 insert into place(name,ptt_number,country_country_id) values ('Zagreb','11010','3');
 insert into place(name,ptt_number,country_country_id) values ('Sarajevo','12121','2');
 
+insert into currency(official_code,name,dom) values ('din','dinar',1);
+insert into currency(official_code,name,dom) values ('eur','euro',0);
+
+

@@ -8,4 +8,6 @@ public interface PaymentTypeService {
 	PaymentType save(PaymentType paymentType);
 
 	PaymentType findOne(Long id);
+	
+	public void delete(Long id);
 }

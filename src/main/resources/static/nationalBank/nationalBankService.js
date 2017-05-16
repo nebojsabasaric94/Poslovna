@@ -15,7 +15,7 @@ services.service('nationalBankService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(nationalBank){
-		return $http.delete('/deletenationalBank/' + nationalBank)
+		return $http.get('/nationalBank/deleteNationalBank/' + nationalBank)
 	}
 
 }]);
