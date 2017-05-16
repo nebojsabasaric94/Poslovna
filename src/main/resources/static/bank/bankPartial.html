@@ -1,8 +1,8 @@
  <div id = "options">
  
  <div class="toolbar">
-	<button class = "search"></button>
-	<button class = "refresh"></button>
+	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+	<button class = "refresh" ui-sref = "bank" ng-click = "refresh()"></button>
 	<button class = "back"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
@@ -11,7 +11,7 @@
 	<button class = "next"></button>
 	<button class = "last"></button>
 	&nbsp&nbsp
-	<button ui-sref="bank.add" class = "add"></button>
+	<button ui-sref="bank.add" class = "add" ng-click = "deselect()"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
 	<button class = "nextForm"></button>

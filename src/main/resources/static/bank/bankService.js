@@ -18,6 +18,8 @@ services.service('bankService', [ '$http', function($http) {
 		return $http.get('/bank/deleteBank/' + bank)
 	}
 	
-	
+	this.search = function(entity){
+		return $http.post('/bank/search',entity);
+	}	
 
 }]);

@@ -21,9 +21,9 @@
 <div class = "container">
 	<table class="table table-bordered">
 		<tr>
-			<th>id</th>
-			<th>country_code</th>
-			<th>name</th>
+			<th>Id</th>
+			<th>Country code</th>
+			<th>Name</th>
 			
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">

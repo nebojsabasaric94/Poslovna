@@ -1,0 +1,78 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityName">Bank name:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityName" id = "searchEntityName" ng-model = "searchEntity.name" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityCode">Bank code:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityCode" id = "searchEntityCode" ng-model = "searchEntity.bankCode" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPib">Bank PIB:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPib" id = "searchEntityPib" ng-model = "searchEntity.pib" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPib">Bank address:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityAddress" id = "searchEntityAddress" ng-model = "searchEntity.address" class="form-control " />
+		</div>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityEmail">Bank email:</label>
+		<div class = "col-md-2">
+			<input type = "email" name = "searchEntityEmail" id = "searchEntityEmail" ng-model = "searchEntity.email" class="form-control " />
+		</div>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityWeb">Bank web:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityWeb" id = "searchEntityWeb" ng-model = "searchEntity.web" class="form-control " />
+		</div>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPhone">Bank phone:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPhone" id = "searchEntityPhone" ng-model = "searchEntity.phone" class="form-control " />
+		</div>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityFax">Bank fax:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityFax" id = "searchEntityFax" ng-model = "searchEntity.fax" class="form-control " />
+		</div>
+	</div>
+	
+					
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityId">Bank?:</label>
+		<div class = "col-md-2">
+			<select type = "text" name = "searchEntityBank" id = "searchEntityBank" ng-model = "searchEntity.bank" class="form-control " >
+				<option value = "true">YES</option>
+				<option value = "false">NO</option>
+			</select>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityId">Bank id:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityId" id = "searchEntityId" ng-model = "searchEntity.id" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

@@ -3,11 +3,13 @@ package bank.bank;
 import java.util.List;
 
 public interface BankService {
-	List<Bank> findAll();
+	public List<Bank> findAll();
 
-	Bank save(Bank bank);
+	public Bank save(Bank bank);
 
-	Bank findOne(Long id);
+	public Bank findOne(Long id);
 	
 	public void delete(Long id);
+	
+	public List<Bank> search(Bank bank);
 }

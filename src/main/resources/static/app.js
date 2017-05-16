@@ -34,7 +34,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'bank/bankPartial.html',
 		controller : 'bankController'
 	})
-	
+	.state('bank.search',{
+		url : '/search',
+		templateUrl : 'bank/searchBank.html'
+	})	
 	.state('country',{
 		url : '/country',
 		templateUrl : 'country/countryPartial.html',
