@@ -2,12 +2,12 @@ var services = angular.module('itemTransfer.services', [ 'ngResource' ]);
 
 services.service('itemTransferService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/itemTransfer");
 	}
 	
-	this.additemTransfer = function(itemTransfer) {
-		return $http.post("/additemTransfer",itemTransfer);
+	this.save = function(itemTransfer) {
+		return $http.post("/itemTransfer",itemTransfer);
 	}
 	
 	this.next = function(id) {

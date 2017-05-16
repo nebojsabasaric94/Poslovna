@@ -25,15 +25,15 @@ public class CurrencyRate {
 	private float serialNumber;
 	
 	@Column(length = 9, precision = 4)
-	@NotBlank
+	//@NotBlank
 	private float buyingExchangeRate;
 	
 	@Column(length = 9, precision = 4)
-	@NotBlank
+	//@NotBlank
 	private float middleExchangeRate;
 	
 	@Column(length = 9, precision = 4)
-	@NotBlank
+	//@NotBlank
 	private float sellingExchangeRate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

@@ -2,12 +2,12 @@ var services = angular.module('suspension.services', [ 'ngResource' ]);
 
 services.service('suspensionService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/suspension");
 	}
 	
-	this.addsuspension = function(suspension) {
-		return $http.post("/addsuspension",suspension);
+	this.save = function(suspension) {
+		return $http.post("/suspension",suspension);
 	}
 	
 	this.next = function(id) {

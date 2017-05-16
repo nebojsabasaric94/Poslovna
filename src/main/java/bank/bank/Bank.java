@@ -24,7 +24,7 @@ public class Bank {
 
 	@Column(unique = true, columnDefinition = "CHAR(10)")
 	@NotBlank
-	private String PIB;
+	private String pib;
 
 	@Column(length = 120)
 	@NotBlank
@@ -70,12 +70,12 @@ public class Bank {
 		this.bankCode = bankCode;
 	}
 
-	public String getPIB() {
-		return PIB;
+	public String getPib() {
+		return pib;
 	}
 
-	public void setPIB(String pIB) {
-		PIB = pIB;
+	public void setPib(String pib) {
+		this.pib = pib;
 	}
 
 	public String getName() {

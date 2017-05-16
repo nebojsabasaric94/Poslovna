@@ -35,7 +35,7 @@ public class InterbankTransfer {
 	private Date date;
 
 	@Column
-	@NotBlank
+	//@NotBlank
 	private float sum;
 	
 	@ManyToOne

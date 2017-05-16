@@ -2,12 +2,12 @@ var services = angular.module('place.services', [ 'ngResource' ]);
 
 services.service('placeService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/place");
 	}
 	
-	this.addplace = function(place) {
-		return $http.post("/addplace",place);
+	this.save = function(place) {
+		return $http.post("/place",place);
 	}
 	
 	this.next = function(id) {

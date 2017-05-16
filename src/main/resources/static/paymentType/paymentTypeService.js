@@ -2,12 +2,12 @@ var services = angular.module('paymentType.services', [ 'ngResource' ]);
 
 services.service('paymentTypeService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/paymentType");
 	}
 	
-	this.addpaymentType = function(paymentType) {
-		return $http.post("/addpaymentType",paymentType);
+	this.save = function(paymentType) {
+		return $http.post("/paymentType",paymentType);
 	}
 	
 	this.next = function(id) {

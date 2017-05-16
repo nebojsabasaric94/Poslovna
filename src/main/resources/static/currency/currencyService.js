@@ -2,12 +2,12 @@ var services = angular.module('currency.services', [ 'ngResource' ]);
 
 services.service('currencyService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/currency");
 	}
 	
-	this.addcurrency = function(currency) {
-		return $http.post("/addcurrency",currency);
+	this.save = function(currency) {
+		return $http.post("/currency",currency);
 	}
 	
 	this.next = function(id) {

@@ -2,12 +2,12 @@ var services = angular.module('country.services', [ 'ngResource' ]);
 
 services.service('countryService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/country");
 	}
 	
-	this.addcountry = function(country) {
-		return $http.post("/addcountry",country);
+	this.save = function(country) {
+		return $http.post("/country",country);
 	}
 	
 	this.next = function(id) {

@@ -2,12 +2,12 @@ var services = angular.module('exchageRateList.services', [ 'ngResource' ]);
 
 services.service('exchageRateListService', [ '$http', function($http) {
 
-	this.findCountries = function() {
-		return $http.get("/exchageRateList");
+	this.findAll = function() {
+		return $http.get("/exchangeRateList");
 	}
 	
-	this.addexchageRateList = function(exchageRateList) {
-		return $http.post("/addexchageRateList",exchageRateList);
+	this.save = function(exchageRateList) {
+		return $http.post("/exchangeRateList",exchageRateList);
 	}
 	
 	this.next = function(id) {

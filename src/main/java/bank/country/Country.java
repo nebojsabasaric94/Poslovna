@@ -1,19 +1,11 @@
 package bank.country;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-
 import org.hibernate.validator.constraints.NotBlank;
-
-import bank.currency.Currency;
 
 @Entity
 public class Country {
@@ -24,7 +16,7 @@ public class Country {
 	private Long id;
 
 	@Column(unique = true, columnDefinition = "CHAR(3)")
-	@NotBlank(message = "Country code is mandatory")
+	//@NotBlank(message = "Country code is mandatory")
 	private int country_code;
 
 	@Column(length = 40, unique = true)
