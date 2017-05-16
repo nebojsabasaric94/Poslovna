@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import bank.country.Country;
 
 @Entity
@@ -20,11 +18,9 @@ public class Place {
 	Long id;
 	
 	@Column(columnDefinition = "CHAR(5)")
-	@NotBlank(message = "PTT number is mandatory")
 	String pttNumber;
 	
 	@Column(length = 50)
-	@NotBlank(message = "Name is mandatory")
 	String name;
 	
 	@ManyToOne

@@ -6,7 +6,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 			findAll();
 		
 			function findAll() {
-				bankService.findAll().then(function(response) {
+				countryService.findAll().then(function(response) {
 					$scope.entities = response.data;
 				});
 			}
@@ -14,6 +14,13 @@ app.controller('countryController', ['$scope','countryService','$location',
 			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
+			}
+			
+			$scope.next = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				$location.path('/place');
 			}
 
 }]);

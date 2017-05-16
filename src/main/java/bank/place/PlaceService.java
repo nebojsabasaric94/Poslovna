@@ -8,4 +8,6 @@ public interface PlaceService {
 	Place save(Place place);
 
 	Place findOne(Long id);
+	
+	public void delete(Long id);
 }

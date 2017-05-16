@@ -6,7 +6,7 @@ app.controller('nationalBankController', ['$scope','nationalBankService','$locat
 			findAll();
 		
 			function findAll() {
-				bankService.findAll().then(function(response) {
+				nationalBankService.findAll().then(function(response) {
 					$scope.entities = response.data;
 				});
 			}

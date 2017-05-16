@@ -2,7 +2,7 @@ var services = angular.module('country.services', [ 'ngResource' ]);
 
 services.service('countryService', [ '$http', function($http) {
 
-	this.findCountries = function() {
+	this.findAll = function() {
 		return $http.get("/country");
 	}
 	
