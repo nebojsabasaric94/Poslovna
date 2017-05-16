@@ -18,8 +18,6 @@ public class CountryController {
 
 	private final CountryService countryService;
 	
-	
-
 	@Autowired
 	public CountryController(final CountryService service) {
 		this.countryService = service;
@@ -37,5 +35,8 @@ public class CountryController {
 		countryService.save(country);
 	}
 	
-	
+	@PostMapping("/search")
+	public List<Country> search(@RequestBody Country country){
+		return countryService.search(country);
+	}
 }

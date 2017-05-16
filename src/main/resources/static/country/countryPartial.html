@@ -2,7 +2,7 @@
 	
 	
 <div class="toolbar">
-	<button class = "search"></button>
+	<button ui-sref = ".search" ng-click = "deselect()" class = "search"></button>
 	<button class = "refresh"></button>
 	<button class = "back"></button>
 	<button class = "help"></button>
@@ -13,7 +13,7 @@
 	<button class = "last"></button>
 	&nbsp&nbsp
 
-	<button ui-sref="country.add" class = "add"></button>
+	<button ui-sref="country.add" ng-click = "deselect()" class = "add"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
 	<button class = "nextForm" ng-click = "next()"></button>

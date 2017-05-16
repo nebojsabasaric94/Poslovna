@@ -32,4 +32,14 @@ public class CountryServiceImpl implements CountryService {
 	public Country findOne(Long id) {
 		return repository.findOne(id);
 	}
+
+	@Override
+	public List<Country> search(Country country) {
+		String id = "";
+		if(country.getId() == null)
+			id = "%";
+		else
+			id = "%" + country.getId() + "%";
+		return repository.search(id, country.getName(), country.getCountry_code());
+	}
 }

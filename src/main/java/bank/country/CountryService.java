@@ -3,9 +3,10 @@ package bank.country;
 import java.util.List;
 
 public interface CountryService {
-	List<Country> findAll();
+	public List<Country> findAll();
 
-	Country save(Country country);
+	public Country save(Country country);
 
-	Country findOne(Long id);
+	public Country findOne(Long id);
+	public List<Country> search(Country country);
 }

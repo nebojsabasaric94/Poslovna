@@ -40,7 +40,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'country/countryPartial.html',
 		controller : 'countryController'
 	})
-	
+	.state('country.search',{
+		url : '/search',
+		templateUrl : 'country/searchCountry.html',
+	})	
 	.state('currency',{
 		url : '/currency',
 		templateUrl : 'currency/currencyPartial.html',
