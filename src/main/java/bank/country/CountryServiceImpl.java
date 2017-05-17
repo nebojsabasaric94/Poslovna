@@ -34,6 +34,11 @@ public class CountryServiceImpl implements CountryService {
 	}
 
 	@Override
+	public void delete(Long id) {
+		repository.delete(id);
+	}
+	
+	@Override
 	public List<Country> search(Country country) {
 		String id = "";
 		if(country.getId() == null)
@@ -42,4 +47,5 @@ public class CountryServiceImpl implements CountryService {
 			id = "%" + country.getId() + "%";
 		return repository.search(id, country.getName(), country.getCountry_code());
 	}
+
 }

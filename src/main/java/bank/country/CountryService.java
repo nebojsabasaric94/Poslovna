@@ -7,6 +7,10 @@ public interface CountryService {
 
 	public Country save(Country country);
 
+	public void delete(Long id);
+
 	public Country findOne(Long id);
+
 	public List<Country> search(Country country);
+
 }

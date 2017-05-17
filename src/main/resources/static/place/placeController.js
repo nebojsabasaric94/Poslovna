@@ -21,7 +21,6 @@ app.controller('placeController', ['$scope','placeService','$location',
 				} else {
 					service.next(nextFilter).then(
 						function(response){
-							
 							$scope.entities = response.data;
 						}
 					)

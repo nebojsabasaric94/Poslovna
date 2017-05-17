@@ -18,6 +18,10 @@ insert into currency(official_code,name,domicilna) values ('jua','juan',1);
 insert into currency(official_code,name,domicilna) values ('usd','dollar',0);
 insert into currency(official_code,name,domicilna) values ('kkk','marka',1);
 
+insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',1);
+insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',2);
+
+
 
 insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-17','1','2017-05-17','1');
 insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-18','2','2017-05-18','1');

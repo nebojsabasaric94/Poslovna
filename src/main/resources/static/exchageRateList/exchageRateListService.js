@@ -11,7 +11,7 @@ services.service('exchageRateListService', [ '$http', function($http) {
 	}
 	
 	this.next = function(id) {
-		return $http.get("/nextPlaces/" + id);
+		return $http.get("/exchangeRateList/nextExchangeRateList/" + id);
 	}
 	
 	this.delete = function(exchageRateList){

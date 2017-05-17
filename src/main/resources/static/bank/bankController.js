@@ -52,6 +52,20 @@ app.controller('bankController', ['$scope','bankService','$location',
 				})
 			}
 			
+
+			$scope.nextExchangeRateList = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
+				$location.path('/exchageRateList');
+			}
+			
+			$scope.openModalNext = function(){
+				var modal = document.getElementById('myModalNext');
+				modal.style.display = "block";
+			}
+			
+
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:"false"}
@@ -63,6 +77,7 @@ app.controller('bankController', ['$scope','bankService','$location',
 
 				findAll();
 			}			
+
 
 }]);
 

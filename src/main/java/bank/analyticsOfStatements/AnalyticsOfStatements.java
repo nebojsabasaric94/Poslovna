@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 
 import bank.currency.Currency;
 import bank.dailyAccountBalance.DailyAccountBalance;
-import bank.itemTransfer.ItemTransfer;
 import bank.paymentType.PaymentType;
 
 /**

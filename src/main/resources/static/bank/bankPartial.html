@@ -14,7 +14,7 @@
 	<button ui-sref="bank.add" class = "add" ng-click = "deselect()"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
-	<button class = "nextForm"></button>
+	<button class = "nextForm" ng-click = "openModalNext()"></button>
 </div>	
 	
 	
@@ -47,7 +47,15 @@
 	</table>
 	
 	
+<div id="myModalNext" class="modal">
+  <div class="modal-content">
+  
+	<button class = "btn" ng-click = "nextExchangeRateList()">Exchange rate list</button>
 	
+	<button class = "btn" ng-click = "nextAccount()">Account</button>
+    
+  </div>
+</div>
 	
 	
 	
