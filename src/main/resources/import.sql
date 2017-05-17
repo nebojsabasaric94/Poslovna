@@ -15,4 +15,8 @@ insert into place(name,ptt_number,country_country_id) values ('Sarajevo','12121'
 insert into currency(official_code,name,dom) values ('din','dinar',1);
 insert into currency(official_code,name,dom) values ('eur','euro',0);
 
+insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',1);
+insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',2);
+
+
 

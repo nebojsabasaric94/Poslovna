@@ -6,9 +6,23 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			findAll();
 		
 			function findAll() {
-				service.findAll().then(function(response) {
-					$scope.entities = response.data;
-				});
+
+				var nextFilter = sessionStorage.getItem("nextFilter");
+				sessionStorage.removeItem("nextFilter");
+				
+				if(nextFilter == null){
+					service.findAll().then(
+						function(response) {
+							$scope.entities = response.data;
+						});
+				} else {
+					service.next(nextFilter).then(
+						function(response){
+							$scope.entities = response.data;
+						}
+					)
+				}
+				
 			}
 			
 			$scope.idSelectedEntity = null;

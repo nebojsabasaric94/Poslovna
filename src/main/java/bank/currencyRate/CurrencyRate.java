@@ -4,11 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.constraints.NotBlank;
 
 import bank.currency.Currency;
 import bank.exchageRateList.ExchangeRateList;

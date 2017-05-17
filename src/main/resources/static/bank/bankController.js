@@ -39,6 +39,18 @@ app.controller('bankController', ['$scope','bankService','$location',
 				)
 			}
 			
+			$scope.nextExchangeRateList = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
+				$location.path('/exchageRateList');
+			}
+			
+			$scope.openModalNext = function(){
+				var modal = document.getElementById('myModalNext');
+				modal.style.display = "block";
+			}
+			
 
 }]);
 
