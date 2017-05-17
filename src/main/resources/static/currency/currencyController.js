@@ -3,6 +3,10 @@ var app = angular.module('currency.controllers', []);
 app.controller('currencyController', ['$scope','currencyService','$location',
 		function($scope, service, $location) {
 
+			$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+			$scope.idSelectedEntity = null;
+	
+	
 			findAll();
 		
 			function findAll() {
@@ -11,7 +15,6 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 				});
 			}
 			
-			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
@@ -37,6 +40,29 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 						alert("brisanje nije moguce");
 					}
 				)
+			}
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+
+				findAll();
 			}
 }]);
 

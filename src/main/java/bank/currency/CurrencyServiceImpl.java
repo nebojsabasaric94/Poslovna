@@ -37,4 +37,12 @@ public class CurrencyServiceImpl implements CurrencyService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
+
+	@Override
+	public List<Currency> search(Currency currency) {
+		String id = "%";
+		if(currency.getId() != null)
+			id = "%" + currency.getId() + "%";
+		return repository.search(currency.getName(), id, currency.getOfficial_code(), currency.isDomicilna());
+	}
 }

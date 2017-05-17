@@ -30,7 +30,7 @@ public class Currency {
 
 	@Column
 	@NotNull
-	private boolean dom; // sta ovde treba da pise?
+	private boolean domicilna; // sta ovde treba da pise?
 	
 	/*@ManyToOne(cascade = CascadeType.ALL)
 	Country countryCurrency;*/	//drzavna valuta
@@ -70,13 +70,15 @@ public class Currency {
 		this.name = name;
 	}
 
-	public boolean isDom() {
-		return dom;
+	public boolean isDomicilna() {
+		return domicilna;
 	}
 
-	public void setDom(boolean dom) {
-		this.dom = dom;
+	public void setDomicilna(boolean domicilna) {
+		this.domicilna = domicilna;
 	}
+
+	
 
 	/*public Country getCountryCurrency() {
 		return countryCurrency;

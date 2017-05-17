@@ -52,7 +52,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'currency/currencyPartial.html',
 		controller : 'currencyController'
 	})
-	
+	.state('currency.search',{
+		url : '/search',
+		templateUrl : 'currency/searchCurrency.html'
+	})	
 	.state('currencyRate',{
 		url : '/currencyRate',
 		templateUrl : 'currencyRate/currencyRatePartial.html',

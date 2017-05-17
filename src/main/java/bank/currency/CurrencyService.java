@@ -3,11 +3,13 @@ package bank.currency;
 import java.util.List;
 
 public interface CurrencyService {
-	List<Currency> findAll();
+	public List<Currency> findAll();
 
-	Currency save(Currency currency);
+	public Currency save(Currency currency);
 
-	Currency findOne(Long id);
+	public Currency findOne(Long id);
 	
 	public void delete(Long id);
+	
+	public List<Currency> search(Currency currency);
 }

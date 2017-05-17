@@ -17,5 +17,7 @@ services.service('currencyService', [ '$http', function($http) {
 	this.delete = function(currency){
 		return $http.get('/currency/deleteCurrency/' + currency)
 	}
-
+	this.search = function(entity){
+		return $http.post('/currency/search',entity);
+	}
 }]);
