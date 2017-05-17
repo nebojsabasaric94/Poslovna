@@ -8,6 +8,10 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+/**
+ * sifrarnik delatnosti
+ */
+
 @Entity
 public class BusinessActivityCode {
 

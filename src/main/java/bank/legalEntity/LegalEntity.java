@@ -7,6 +7,9 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import bank.bussinessActivityCode.BusinessActivityCode;
 import bank.client.Client;
+/**
+ * Pravno lice
+ */
 
 @Entity
 public class LegalEntity extends Client{
