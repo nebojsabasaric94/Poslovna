@@ -3,6 +3,9 @@ var app = angular.module('currencyRate.controllers', []);
 app.controller('currencyRateController', ['$scope','currencyRateService','$location',
 		function($scope, service, $location) {
 
+			$scope.idSelectedEntity = null;
+
+	
 			findAll();
 		
 			function findAll() {
@@ -11,7 +14,6 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 				});
 			}
 			
-			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
@@ -38,7 +40,29 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 					}
 				)
 			}
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+
+				findAll();
+			}
 }]);
 
 
