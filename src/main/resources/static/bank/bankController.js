@@ -3,6 +3,9 @@ var app = angular.module('bank.controllers', []);
 app.controller('bankController', ['$scope','bankService','$location',
 		function($scope, service, $location) {
 
+			$scope.idSelectedEntity = null;
+			$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:"false"}
+	
 			findAll();
 
 			function findAll() {
@@ -11,7 +14,6 @@ app.controller('bankController', ['$scope','bankService','$location',
 				});
 			}
 			
-			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
@@ -38,7 +40,19 @@ app.controller('bankController', ['$scope','bankService','$location',
 					}
 				)
 			}
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+				},
+				function(response){
+					
+				})
+			}
 			
+
 			$scope.nextExchangeRateList = function(){
 				if(!($scope.selectedEntity))
 					return;
@@ -51,6 +65,19 @@ app.controller('bankController', ['$scope','bankService','$location',
 				modal.style.display = "block";
 			}
 			
+
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:"false"}
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:"false"}
+
+				findAll();
+			}			
+
 
 }]);
 

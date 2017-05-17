@@ -34,25 +34,37 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'bank/bankPartial.html',
 		controller : 'bankController'
 	})
-	
+	.state('bank.search',{
+		url : '/search',
+		templateUrl : 'bank/searchBank.html'
+	})	
 	.state('country',{
 		url : '/country',
 		templateUrl : 'country/countryPartial.html',
 		controller : 'countryController'
 	})
-	
+	.state('country.search',{
+		url : '/search',
+		templateUrl : 'country/searchCountry.html',
+	})	
 	.state('currency',{
 		url : '/currency',
 		templateUrl : 'currency/currencyPartial.html',
 		controller : 'currencyController'
 	})
-	
+	.state('currency.search',{
+		url : '/search',
+		templateUrl : 'currency/searchCurrency.html'
+	})	
 	.state('currencyRate',{
 		url : '/currencyRate',
 		templateUrl : 'currencyRate/currencyRatePartial.html',
 		controller : 'currencyRateController'
 	})
-	
+	.state('currencyRate.search',{
+		url : '/search',
+		templateUrl : 'currencyRate/searchCurrencyRate.html'
+	})	
 	.state('dailyAccountBalance',{
 		url : '/dailyAccountBalance',
 		templateUrl : 'dailyAccountBalance/dailyAccountBalancePartial.html',
@@ -95,7 +107,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'place/placePartial.html',
 		controller : 'placeController'
 	})
-	
+	.state('place.search',{
+		url : '/search',
+		templateUrl : 'place/searchPlace.html'
+	})	
 	.state('suspension',{
 		url : '/suspension',
 		templateUrl : 'suspension/suspensionPartial.html',

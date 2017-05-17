@@ -3,11 +3,13 @@ package bank.place;
 import java.util.List;
 
 public interface PlaceService {
-	List<Place> findAll();
+	public List<Place> findAll();
 
-	Place save(Place place);
+	public Place save(Place place);
 
-	Place findOne(Long id);
+	public Place findOne(Long id);
 	
 	public void delete(Long id);
+	
+	public List<Place> search(Place place);
 }

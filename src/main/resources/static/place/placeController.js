@@ -3,8 +3,11 @@ var app = angular.module('place.controllers', []);
 app.controller('placeController', ['$scope','placeService','$location',
 		function($scope, service, $location) {
 
+			$scope.idSelectedEntity = null;
+			$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+	
 			findAll();
-		
+			
 			function findAll() {
 
 				var nextFilter = sessionStorage.getItem("nextFilter");
@@ -25,7 +28,6 @@ app.controller('placeController', ['$scope','placeService','$location',
 				
 			}
 			
-			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
@@ -50,9 +52,30 @@ app.controller('placeController', ['$scope','placeService','$location',
 				},
 				function(response){
 					alert("Dodavanje neuspesno");
-				}
-				);
+				});
+			}
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+				findAll();
 			}
 }]);
 

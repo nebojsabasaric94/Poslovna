@@ -45,6 +45,9 @@ public class BankController {
 		return bankService.findAll();
 	}
 	
-	
+	@PostMapping("/search")
+	public List<Bank> search(@RequestBody Bank bank){
+		return bankService.search(bank);
+	}
 	
 }

@@ -4,7 +4,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 		function($scope, service, $location) {
 
 			findAll();
-		
+			$scope.searchEntity = {id : null,name : "",country_code : ""};
 			function findAll() {
 
 			//	countryService.findAll().then(function(response) {
@@ -15,6 +15,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 			}
 			
 			$scope.idSelectedEntity = null;
+			
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
@@ -38,6 +39,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 				);
 
 			}
+
 			
 			$scope.delete = function(){
 				if(!($scope.selectedEntity))
@@ -49,6 +51,27 @@ app.controller('countryController', ['$scope','countryService','$location',
 						alert("brisanje nije moguce");
 					}
 				)
+			}
+
+
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					$scope.entities = response.data; 
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,name : "",country_code : ""};
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,name : "",country_code : ""};
+				findAll();
 			}
 
 }]);

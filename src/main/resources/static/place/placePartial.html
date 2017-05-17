@@ -1,8 +1,8 @@
  <div id = "options">
 	
 	 <div class="toolbar">
-	<button class = "search"></button>
-	<button class = "refresh"></button>
+	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+	<button class = "refresh" ui-sref = "place" ng-click = "refresh()"></button>
 	<button class = "back" ui-sref = "country"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
@@ -15,7 +15,7 @@
 	<button class = "add"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 ======= -->
-	<button ui-sref="place.add" class = "add"></button>
+	<button ui-sref="place.add" ng-click = "deselect()" class = "add"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
 	<button class = "nextForm"></button>
@@ -24,15 +24,16 @@
 	<table>
 		<table class="table table-bordered">
 		<tr>
-			<th>id</th>
-			<th>pttNumber</th>
-			<th>name</th>
+			<th>Id</th>
+			<th>Ptt number</th>
+			<th>Name</th>
+			<th>Country</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.id}}</td>
 			<td>{{entity.pttNumber}}</td>
 			<td>{{entity.name}}</td>
-			
+			<td>{{entity.country.name}}</td>
 		</tr>
 	</table>
 

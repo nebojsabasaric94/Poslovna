@@ -2,8 +2,8 @@
 	
 	
 	 <div class="toolbar">
-	<button class = "search"></button>
-	<button class = "refresh"></button>
+	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+	<button class = "refresh" ui-sref = "currencyRate" ng-click = "refresh()"></button>
 	<button class = "back"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
@@ -12,7 +12,7 @@
 	<button class = "next"></button>
 	<button class = "last"></button>
 	&nbsp&nbsp
-	<button ui-sref="currencyRate.add" class = "add"></button>
+	<button ui-sref="currencyRate.add" class = "add" ng-click = "deselect()"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
 	<button class = "nextForm"></button>
@@ -22,13 +22,13 @@
 	<table>
 		<table class="table table-bordered">
 		<tr>
-			<th>serialNumber</th>
+			<th>Serial number</th>
 			<th>buyingExchangeRate</th>
 			<th>middleExchangeRate</th>
 			<th>sellingExchangeRate</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
-			<td>{{entity.serialNumber}}</td>
+			<td>{{entity.id}}</td>
 			<td>{{entity.buyingExchangeRate}}</td>
 			<td>{{entity.middleExchangeRate}}</td>
 			<td>{{entity.sellingExchangeRate}}</td>

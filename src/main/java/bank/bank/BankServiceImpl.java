@@ -38,4 +38,12 @@ public class BankServiceImpl implements BankService {
 		repository.delete(id);
 		
 	}
+
+	@Override
+	public List<Bank> search(Bank bank) {
+		String id = "%";
+		if(bank.getId() != null)
+			id = "%" + bank.getId() + "%";
+		return repository.search(id, bank.getBankCode(), bank.getPib(), bank.getName(), bank.getAddress(), bank.getEmail(), bank.getWeb(), bank.getPhone(), bank.getFax(), bank.isBank());
+	}
 }

@@ -3,6 +3,8 @@ package bank.currencyRate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -17,8 +19,9 @@ import bank.exchageRateList.ExchangeRateList;
 public class CurrencyRate {
 
 	@Id
-	@Column(length = 9)
-	private float serialNumber;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "currency_rate_id")
+	private Long id;
 	
 	@Column(length = 9, precision = 4)
 	//@NotBlank
@@ -36,19 +39,21 @@ public class CurrencyRate {
 	private Currency baseCurrency; //osnovna valuta
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private ExchangeRateList currencyInList; //valuta u listi
+	private ExchangeRateList currencyInList; //valute u listi
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Currency accordingToCurrency; // prema valuti
 	
 	
 
-	public float getSerialNumber() {
-		return serialNumber;
+
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setSerialNumber(float serialNumber) {
-		this.serialNumber = serialNumber;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public float getBuyingExchangeRate() {

@@ -1,0 +1,36 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityName">Currency name:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityName" id = "searchEntityName" ng-model = "searchEntity.name" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityOfficialCode">Official code:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityOfficialCode" id = "searchEntityOfficialCode" ng-model = "searchEntity.official_code" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityDomicilna">Domicilna?:</label>
+		<div class = "col-md-2">
+			<select type = "text" name = "searchEntityDomicilna" id = "searchEntityDomicilna" ng-model = "searchEntity.domicilna" class="form-control " >
+				<option value = "true">YES</option>
+				<option value = "false">NO</option>
+			</select>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityId">Currency id:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityId" id = "searchEntityId" ng-model = "searchEntity.id" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

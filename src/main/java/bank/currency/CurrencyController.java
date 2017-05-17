@@ -45,5 +45,8 @@ public class CurrencyController {
 		return currencyService.findAll();
 	}
 	
-	
+	@PostMapping("/search")
+	public List<Currency> search(@RequestBody Currency currency){
+		return currencyService.search(currency);
+	}
 }

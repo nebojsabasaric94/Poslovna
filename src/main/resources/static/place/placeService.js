@@ -17,5 +17,7 @@ services.service('placeService', [ '$http', function($http) {
 	this.delete = function(place){
 		return $http.get("/place/deletePlace/" + place);
 	}
-
+	this.search = function(entity){
+		return $http.post('/place/search',entity);
+	}
 }]);
