@@ -1,14 +1,22 @@
 package bank.bank;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import bank.exchageRateList.ExchangeRateList;
 
 @Entity
 public class Bank {
@@ -51,7 +59,10 @@ public class Bank {
 	@NotNull
 	private boolean bank;
 	
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "commercialBankRate", cascade = CascadeType.ALL)
+	//@JoinTable(name = "rate_commercial_bank", inverseJoinColumns = @JoinColumn(name = "exchange_rate_list_id"))
+	private List<ExchangeRateList> exchangeRateLists;
 	
 
 	public Long getId() {
@@ -132,6 +143,14 @@ public class Bank {
 
 	public void setBank(boolean bank) {
 		this.bank = bank;
+	}
+
+	public List<ExchangeRateList> getExchangeRateLists() {
+		return exchangeRateLists;
+	}
+
+	public void setExchangeRateLists(List<ExchangeRateList> exchangeRateLists) {
+		this.exchangeRateLists = exchangeRateLists;
 	}
 	
 	

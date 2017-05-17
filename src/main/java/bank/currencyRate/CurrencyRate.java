@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import bank.currency.Currency;
@@ -39,6 +40,7 @@ public class CurrencyRate {
 	private Currency baseCurrency; //osnovna valuta
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "currency_in_list_id")
 	private ExchangeRateList currencyInList; //valute u listi
 	
 	@ManyToOne(cascade = CascadeType.ALL)
