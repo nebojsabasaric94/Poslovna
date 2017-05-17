@@ -23,7 +23,7 @@ insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,com
 
 
 
-insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-17','1','2017-05-17','1');
+insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-01','1','2017-05-01','1');
 insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-18','2','2017-05-18','1');
 insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-19','3','2017-05-19','1');
 insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-20','4','2017-05-20','1');

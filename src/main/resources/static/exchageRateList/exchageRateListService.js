@@ -17,5 +17,8 @@ services.service('exchageRateListService', [ '$http', function($http) {
 	this.delete = function(exchageRateList){
 		return $http.get('/exchangeRateList/deleteExchageRateList/' + exchageRateList)
 	}
+	this.search = function(entity){
+		return $http.post('/exchangeRateList/search',entity);
+	}
 
 }]);

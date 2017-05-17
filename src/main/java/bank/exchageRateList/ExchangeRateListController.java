@@ -65,6 +65,9 @@ public class ExchangeRateListController {
 		return exchangeRateLists;
 		
 	}
-	
+	@PostMapping("/search")
+	public List<ExchangeRateList> search(@RequestBody ExchangeRateList exchangeRateList){
+		return exchangeRateListService.search(exchangeRateList);
+	}
 	
 }

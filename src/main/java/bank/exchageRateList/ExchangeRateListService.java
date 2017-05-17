@@ -11,4 +11,5 @@ public interface ExchangeRateListService {
 
 	public void delete(Long id);
 	
+	public List<ExchangeRateList> search(ExchangeRateList exchangeRateList);
 }

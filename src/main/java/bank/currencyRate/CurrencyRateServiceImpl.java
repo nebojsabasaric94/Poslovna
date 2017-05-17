@@ -42,10 +42,10 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
 	public List<CurrencyRate> search(CurrencyRate currencyRate) {
 		String id = "%";
 		if(currencyRate.getId() != null)
-			id  = "%" + currencyRate.getId() +"%";
+			id  = "" + currencyRate.getId() ;
 		String currencyInListId = "%";
-		if(currencyRate.getCurrencyInList() != null)
-			currencyInListId = "%" + currencyRate.getCurrencyInList().getId()+"%";
+		if(currencyRate.getCurrencyInList() != null && currencyRate.getCurrencyInList().getId() != null)
+			currencyInListId = "" + currencyRate.getCurrencyInList().getId();
 		
 		String buyingExchangeRate =  "";
 		if(currencyRate.getBuyingExchangeRate() > 0){

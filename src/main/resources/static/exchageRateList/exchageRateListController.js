@@ -3,6 +3,10 @@ var app = angular.module('exchageRateList.controllers', []);
 app.controller('exchageRateListController', ['$scope','exchageRateListService','$location',
 		function($scope, service, $location) {
 
+			$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
+			$scope.idSelectedEntity = null;
+
+	
 			findAll();
 		
 			function findAll() {
@@ -13,19 +17,33 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 				if(nextFilter == null){
 					service.findAll().then(
 						function(response) {
+							for(i = 0; i < response.data.length;i++){
+								response.data[i].date = transformDate(new Date(response.data[i].date));
+								response.data[i].appliedBy = transformDate(new Date(response.data[i].appliedBy));
+							}
 							$scope.entities = response.data;
 						});
 				} else {
 					service.next(nextFilter).then(
 						function(response){
+							for(i = 0; i < response.data.length;i++){
+								response.data[i].date = transformDate(new Date(response.data[i].date));
+								response.data[i].appliedBy = transformDate(new Date(response.data[i].appliedBy));
+							}
 							$scope.entities = response.data;
 						}
 					)
 				}
 				
 			}
-			
-			$scope.idSelectedEntity = null;
+			function transformDate(dateObj){
+				var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
+				var day = ("0" + dateObj.getDate()).slice(-2);
+				var year = dateObj.getFullYear();
+
+				var newdate = year + "/" + month + "/" + day;
+				return newdate;
+			}
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
@@ -52,7 +70,33 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 					}
 				)
 			}
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					for(i = 0; i < response.data.length;i++){
+						response.data[i].date = transformDate(new Date(response.data[i].date));
+						response.data[i].appliedBy = transformDate(new Date(response.data[i].appliedBy));
+					}
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
+
+				findAll();
+			}
 }]);
 
 

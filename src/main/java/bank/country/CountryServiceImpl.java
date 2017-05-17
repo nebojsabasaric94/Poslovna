@@ -40,11 +40,9 @@ public class CountryServiceImpl implements CountryService {
 	
 	@Override
 	public List<Country> search(Country country) {
-		String id = "";
-		if(country.getId() == null)
-			id = "%";
-		else
-			id = "%" + country.getId() + "%";
+		String id = "%";
+		if(country.getId() != null)
+			id = "" + country.getId();
 		return repository.search(id, country.getName(), country.getCountry_code());
 	}
 

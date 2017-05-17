@@ -43,7 +43,7 @@ public class PlaceServiceImpl implements PlaceService {
 	public List<Place> search(Place place) {
 		String id = "%";
 		if(place.getId() != null)
-			id = "%" + place.getId() + "%";
+			id = "" + place.getId();
 		
 		String country_name = "";
 		if(place.getCountry() != null)

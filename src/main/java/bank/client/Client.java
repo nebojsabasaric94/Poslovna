@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import bank.place.Place;
 
 @Entity
 @Inheritance(strategy  = InheritanceType.JOINED)
@@ -43,6 +46,9 @@ public class Client {
 	@NotBlank
 	private String typeOfClient;
 
+	@NotBlank
+	@ManyToOne
+	private Place prebivaliste;
 	public Client() {
 		super();
 	}
@@ -125,6 +131,14 @@ public class Client {
 
 	public void setTypeOfClient(String typeOfClient) {
 		this.typeOfClient = typeOfClient;
+	}
+
+	public Place getPrebivaliste() {
+		return prebivaliste;
+	}
+
+	public void setPrebivaliste(Place prebivaliste) {
+		this.prebivaliste = prebivaliste;
 	}
 	
 	

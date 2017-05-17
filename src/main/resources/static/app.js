@@ -76,7 +76,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'exchageRateList/exchageRateListPartial.html',
 		controller : 'exchageRateListController'
 	})
-	
+	.state('exchageRateList.search',{
+		url : '/search',
+		templateUrl : 'exchageRateList/searchExchangeRateList.html'
+	})	
 	.state('interbankTransfer',{
 		url : '/interbankTransfer',
 		templateUrl : 'interbankTransfer/interbankTransferPartial.html',

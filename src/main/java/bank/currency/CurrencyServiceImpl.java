@@ -42,7 +42,7 @@ public class CurrencyServiceImpl implements CurrencyService {
 	public List<Currency> search(Currency currency) {
 		String id = "%";
 		if(currency.getId() != null)
-			id = "%" + currency.getId() + "%";
+			id = "" + currency.getId() ;
 		return repository.search(currency.getName(), id, currency.getOfficial_code(), currency.isDomicilna());
 	}
 }

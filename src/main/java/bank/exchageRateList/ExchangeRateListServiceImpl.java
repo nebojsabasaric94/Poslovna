@@ -1,5 +1,6 @@
 package bank.exchageRateList;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -36,5 +37,28 @@ public class ExchangeRateListServiceImpl implements ExchangeRateListService {
 	@Override
 	public void delete(Long id) {
 		repository.delete(id);
+	}
+
+	@Override
+	public List<ExchangeRateList> search(ExchangeRateList exchangeRateList) {
+		String id = "%";
+		if(exchangeRateList.getId() != null)
+			id = "" + exchangeRateList.getId();
+		
+		String date ="" ;
+		if(exchangeRateList.getDate() != null){
+			date =new Date(exchangeRateList.getDate().getTime()).toString();
+		}
+		
+		String appliedBy = "";
+		if(exchangeRateList.getAppliedBy() != null){
+			appliedBy = new Date(exchangeRateList.getAppliedBy().getTime()).toString();
+		}		
+		
+		String number = "%";
+		if(exchangeRateList.getNumberOfExchangeRateList() > 0)
+			number = ""+exchangeRateList.getNumberOfExchangeRateList();
+		
+		return repository.search(id, date, number, appliedBy);
 	}
 }
