@@ -37,4 +37,47 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
+
+	@Override
+	public List<CurrencyRate> search(CurrencyRate currencyRate) {
+		String id = "%";
+		if(currencyRate.getId() != null)
+			id  = "%" + currencyRate.getId() +"%";
+		String currencyInListId = "%";
+		if(currencyRate.getCurrencyInList() != null)
+			currencyInListId = "%" + currencyRate.getCurrencyInList().getId()+"%";
+		
+		String buyingExchangeRate =  "";
+		if(currencyRate.getBuyingExchangeRate() > 0){
+			buyingExchangeRate = ""+currencyRate.getBuyingExchangeRate();
+			String []splitted = buyingExchangeRate.split("\\.");
+			if(splitted[1].equals("0"))
+				buyingExchangeRate = splitted[0];
+		}
+		String sellingExchangeRate =  "";
+		if(currencyRate.getSellingExchangeRate() > 0){
+			sellingExchangeRate = ""+currencyRate.getSellingExchangeRate();
+			String[] splitted = sellingExchangeRate.split("\\.");
+			if(splitted[1].equals("0"))
+				sellingExchangeRate = splitted[0];
+		}
+		String middleExchangeRate =  "";
+		if(currencyRate.getMiddleExchangeRate() > 0){
+			middleExchangeRate = ""+currencyRate.getMiddleExchangeRate();
+			String []splitted = middleExchangeRate.split("\\.");
+			if(splitted[1].equals("0"))
+				middleExchangeRate = splitted[0];
+		}
+		
+		String baseCurrency = "";
+		if(currencyRate.getBaseCurrency() != null)
+			baseCurrency = "" + currencyRate.getBaseCurrency().getName();
+		
+		String accordingToCurrency = "";
+		if(currencyRate.getAccordingToCurrency() != null)
+			accordingToCurrency = ""+currencyRate.getAccordingToCurrency().getName();
+
+		
+		return repository.search(id, baseCurrency, accordingToCurrency, currencyInListId, buyingExchangeRate, sellingExchangeRate, middleExchangeRate);
+	}
 }

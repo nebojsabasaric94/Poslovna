@@ -23,12 +23,18 @@
 		<table class="table table-bordered">
 		<tr>
 			<th>Serial number</th>
-			<th>buyingExchangeRate</th>
-			<th>middleExchangeRate</th>
-			<th>sellingExchangeRate</th>
+			<th>Currency in list:</th>
+			<th>Base currency</th>
+			<th>According to currency</th>
+			<th>Buying exchange rate</th>
+			<th>Middle exchange rate</th>
+			<th>Selling exchange rate</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.id}}</td>
+			<td>{{entity.currencyInList.id}}</td>
+			<td>{{entity.baseCurrency.official_code}}</td>
+			<td>{{entity.accordingToCurrency.official_code}}</td>
 			<td>{{entity.buyingExchangeRate}}</td>
 			<td>{{entity.middleExchangeRate}}</td>
 			<td>{{entity.sellingExchangeRate}}</td>

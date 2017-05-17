@@ -25,15 +25,15 @@ public class CurrencyRate {
 	
 	@Column(length = 9, precision = 4)
 	//@NotBlank
-	private float buyingExchangeRate;
+	private Float buyingExchangeRate;
 	
 	@Column(length = 9, precision = 4)
 	//@NotBlank
-	private float middleExchangeRate;
+	private Float middleExchangeRate;
 	
 	@Column(length = 9, precision = 4)
 	//@NotBlank
-	private float sellingExchangeRate;
+	private Float sellingExchangeRate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Currency baseCurrency; //osnovna valuta
@@ -48,6 +48,21 @@ public class CurrencyRate {
 
 
 
+	public CurrencyRate() {
+		super();
+	}
+
+	public CurrencyRate(Float buyingExchangeRate, Float middleExchangeRate, Float sellingExchangeRate,
+			Currency baseCurrency, ExchangeRateList currencyInList, Currency accordingToCurrency) {
+		super();
+		this.buyingExchangeRate = buyingExchangeRate;
+		this.middleExchangeRate = middleExchangeRate;
+		this.sellingExchangeRate = sellingExchangeRate;
+		this.baseCurrency = baseCurrency;
+		this.currencyInList = currencyInList;
+		this.accordingToCurrency = accordingToCurrency;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -56,7 +71,7 @@ public class CurrencyRate {
 		this.id = id;
 	}
 
-	public float getBuyingExchangeRate() {
+	public Float getBuyingExchangeRate() {
 		return buyingExchangeRate;
 	}
 
@@ -64,7 +79,7 @@ public class CurrencyRate {
 		this.buyingExchangeRate = buyingExchangeRate;
 	}
 
-	public float getMiddleExchangeRate() {
+	public Float getMiddleExchangeRate() {
 		return middleExchangeRate;
 	}
 
@@ -72,7 +87,7 @@ public class CurrencyRate {
 		this.middleExchangeRate = middleExchangeRate;
 	}
 
-	public float getSellingExchangeRate() {
+	public Float getSellingExchangeRate() {
 		return sellingExchangeRate;
 	}
 
