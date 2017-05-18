@@ -17,6 +17,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import bank.exchageRateList.ExchangeRateList;
+import bank.interbankTransfer.InterbankTransfer;
+import bank.legalEntityAccount.LegalEntityAccount;
 
 @Entity
 public class Bank {
@@ -63,8 +65,16 @@ public class Bank {
 	@OneToMany(mappedBy = "commercialBankRate", cascade = CascadeType.ALL)
 	//@JoinTable(name = "rate_commercial_bank", inverseJoinColumns = @JoinColumn(name = "exchange_rate_list_id"))
 	private List<ExchangeRateList> exchangeRateLists;
-	
 
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
+	private List<LegalEntityAccount> legalEntityAccount;	
+
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "bank",cascade = CascadeType.ALL)
+	private List<InterbankTransfer> interbankTransfers;
 	public Long getId() {
 		return id;
 	}
@@ -151,6 +161,22 @@ public class Bank {
 
 	public void setExchangeRateLists(List<ExchangeRateList> exchangeRateLists) {
 		this.exchangeRateLists = exchangeRateLists;
+	}
+
+	public List<LegalEntityAccount> getLegalEntityAccount() {
+		return legalEntityAccount;
+	}
+
+	public void setLegalEntityAccount(List<LegalEntityAccount> legalEntityAccount) {
+		this.legalEntityAccount = legalEntityAccount;
+	}
+
+	public List<InterbankTransfer> getInterbankTransfers() {
+		return interbankTransfers;
+	}
+
+	public void setInterbankTransfers(List<InterbankTransfer> interbankTransfers) {
+		this.interbankTransfers = interbankTransfers;
 	}
 	
 	

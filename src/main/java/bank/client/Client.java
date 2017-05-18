@@ -1,5 +1,8 @@
 package bank.client;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import bank.legalEntityAccount.LegalEntityAccount;
 import bank.place.Place;
 
 @Entity
@@ -49,9 +56,16 @@ public class Client {
 	@NotBlank
 	@ManyToOne
 	private Place prebivaliste;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	private List<LegalEntityAccount> legalEntityAccount;
+	
 	public Client() {
 		super();
 	}
+	
+	
 
 	public Long getId() {
 		return id;
@@ -139,6 +153,18 @@ public class Client {
 
 	public void setPrebivaliste(Place prebivaliste) {
 		this.prebivaliste = prebivaliste;
+	}
+
+
+
+	public List<LegalEntityAccount> getLegalEntityAccount() {
+		return legalEntityAccount;
+	}
+
+
+
+	public void setLegalEntityAccount(List<LegalEntityAccount> legalEntityAccount) {
+		this.legalEntityAccount = legalEntityAccount;
 	}
 	
 	

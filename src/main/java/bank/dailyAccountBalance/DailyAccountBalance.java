@@ -1,11 +1,22 @@
 package bank.dailyAccountBalance;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import bank.analyticsOfStatements.AnalyticsOfStatements;
+import bank.legalEntityAccount.LegalEntityAccount;
 
 /**
  * dnevno stanje racuna
@@ -15,6 +26,7 @@ import javax.validation.constraints.NotNull;
 public class DailyAccountBalance {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
 	private Long numberOfStatements; //broj izvoda
 	
@@ -38,8 +50,17 @@ public class DailyAccountBalance {
 	//@NotBlank
 	private float newState;
 	
+	@ManyToOne
+	private LegalEntityAccount legalEntityAccount;
 	
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "dailyAccountBalance", cascade =CascadeType.ALL)
+	private List<AnalyticsOfStatements>analyticsOfStatements;
+
+	public DailyAccountBalance() {
+		super();
+	}
 
 	public Long getNumberOfStatements() {
 		return numberOfStatements;
@@ -88,6 +109,24 @@ public class DailyAccountBalance {
 	public void setNewState(float newState) {
 		this.newState = newState;
 	}
+
+	public LegalEntityAccount getLegalEntityAccount() {
+		return legalEntityAccount;
+	}
+
+	public void setLegalEntityAccount(LegalEntityAccount legalEntityAccount) {
+		this.legalEntityAccount = legalEntityAccount;
+	}
+
+	public List<AnalyticsOfStatements> getAnalyticsOfStatements() {
+		return analyticsOfStatements;
+	}
+
+	public void setAnalyticsOfStatements(List<AnalyticsOfStatements> analyticsOfStatements) {
+		this.analyticsOfStatements = analyticsOfStatements;
+	}
+
+
 	
 	
 	

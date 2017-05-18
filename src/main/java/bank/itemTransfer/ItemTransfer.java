@@ -1,6 +1,5 @@
 package bank.itemTransfer;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,11 +22,18 @@ public class ItemTransfer {
 	@Column
 	private Long id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private AnalyticsOfStatements analyticsOfStatements;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private InterbankTransfer interbankTransfer;
+
+	
+	
+	
+	public ItemTransfer() {
+		super();
+	}
 
 	public Long getId() {
 		return id;

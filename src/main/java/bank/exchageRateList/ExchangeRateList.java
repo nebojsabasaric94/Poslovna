@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import bank.bank.Bank;
 import bank.currencyRate.CurrencyRate;
 
@@ -39,6 +41,7 @@ public class ExchangeRateList {
 	@Column
 	private Date appliedBy; //primenjuje se od
 	
+	@JsonIgnore
 	@OneToMany
 	@JoinTable(name = "currency_in_list", joinColumns = @JoinColumn(name="exchange_rate_list_id"), inverseJoinColumns = @JoinColumn(name="currency_rate_id"))
 	private List<CurrencyRate> currencyRates;

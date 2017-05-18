@@ -47,9 +47,6 @@ public class CurrencyRate {
 	private Currency accordingToCurrency; // prema valuti
 	
 	
-
-
-
 	public CurrencyRate() {
 		super();
 	}

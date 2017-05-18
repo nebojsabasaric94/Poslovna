@@ -2,7 +2,6 @@ package bank.analyticsOfStatements;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import bank.currency.Currency;
 import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.paymentType.PaymentType;
+import bank.place.Place;
 
 /**
  * analitika izvoda
@@ -80,18 +80,24 @@ public class AnalyticsOfStatements {
 	@Column(length = 1)
 	private String status;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private DailyAccountBalance dailyAccountBalance;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private DailyAccountBalance BankExcerptAnalitics;	// Analitika izvoda banke
+	// Analitika izvoda banke
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private PaymentType paymentType;	// tip placanja
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Currency paymentCurrency;	// valuta placanja
 	
+
+	@ManyToOne
+	private Place place;
+	
+	public AnalyticsOfStatements() {
+		super();
+	}
 
 	public Long getItemNumber() {
 		return itemNumber;
@@ -229,13 +235,7 @@ public class AnalyticsOfStatements {
 		this.dailyAccountBalance = dailyAccountBalance;
 	}
 
-	public DailyAccountBalance getBankExcerptAnalitics() {
-		return BankExcerptAnalitics;
-	}
 
-	public void setBankExcerptAnalitics(DailyAccountBalance bankExcerptAnalitics) {
-		BankExcerptAnalitics = bankExcerptAnalitics;
-	}
 
 	public PaymentType getPaymentType() {
 		return paymentType;
@@ -251,6 +251,14 @@ public class AnalyticsOfStatements {
 
 	public void setPaymentCurrency(Currency paymentCurrency) {
 		this.paymentCurrency = paymentCurrency;
+	}
+
+	public Place getPlace() {
+		return place;
+	}
+
+	public void setPlace(Place place) {
+		this.place = place;
 	}
 
 	

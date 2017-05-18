@@ -1,18 +1,24 @@
 package bank.interbankTransfer;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import bank.bank.Bank;
+import bank.itemTransfer.ItemTransfer;
 
 /**
  * medjubankarski prenos
@@ -40,6 +46,19 @@ public class InterbankTransfer {
 	
 	@ManyToOne
 	private Bank senderBank;
+
+	@ManyToOne
+	private Bank bank;
+	
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "interbankTransfer",cascade = CascadeType.ALL)
+	private List<ItemTransfer> itemTransfers; 
+	
+	
+	public InterbankTransfer() {
+		super();
+	}
 
 	public Long getIdMessage() {
 		return idMessage;
@@ -79,6 +98,14 @@ public class InterbankTransfer {
 
 	public void setSenderBank(Bank senderBank) {
 		this.senderBank = senderBank;
+	}
+
+	public Bank getBank() {
+		return bank;
+	}
+
+	public void setBank(Bank bank) {
+		this.bank = bank;
 	}
 	
 	
