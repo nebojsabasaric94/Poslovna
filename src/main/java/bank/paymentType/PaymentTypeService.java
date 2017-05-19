@@ -10,4 +10,6 @@ public interface PaymentTypeService {
 	PaymentType findOne(Long id);
 	
 	public void delete(Long id);
+	
+	public List<PaymentType> search(PaymentType paymentType);
 }

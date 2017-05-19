@@ -1,0 +1,22 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityNameOfPaymentType">Name of payment type</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityNameOfPaymentType" id = "searchEntityNameOfPaymentType" ng-model = "searchEntity.nameOfPaymentType" class="form-control " />
+		</div>
+	</div>
+
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityId">Payment type id:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityId" id = "searchEntityId" ng-model = "searchEntity.code" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

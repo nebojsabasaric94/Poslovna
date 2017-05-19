@@ -57,12 +57,12 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
+				$scope.searchEntity = {id:null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
 					baseCurrency:null,currencyInList:null,accordingToCurrency:null};
 			}
 			$scope.refresh = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
+				$scope.searchEntity = {id:null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
 					baseCurrency:null,currencyInList:null,accordingToCurrency:null};
 				findAll();
 			}

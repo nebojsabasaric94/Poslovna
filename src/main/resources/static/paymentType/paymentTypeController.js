@@ -2,7 +2,11 @@ var app = angular.module('paymentType.controllers', []);
 
 app.controller('paymentTypeController', ['$scope','paymentTypeService','$location',
 		function($scope, service, $location) {
+			
+			$scope.searchEntity = {code : null,nameOfPaymentType :""};
+
 			findAll();
+			$scope.idSelectedEntity = null;
 		
 			function findAll() {
 				service.findAll().then(function(response) {
@@ -10,7 +14,6 @@ app.controller('paymentTypeController', ['$scope','paymentTypeService','$locatio
 				});
 			}
 			
-			$scope.idSelectedEntity = null;
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
@@ -38,6 +41,30 @@ app.controller('paymentTypeController', ['$scope','paymentTypeService','$locatio
 				)
 			}
 
+			
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {code : null,nameOfPaymentType :""};
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {code : null,nameOfPaymentType :""};
+
+				findAll();
+			}			
 }]);
 
 

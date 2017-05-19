@@ -37,4 +37,10 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
+
+	@Override
+	public List<PaymentType> search(PaymentType paymentType) {
+
+		return repository.search(paymentType.getCode(), paymentType.getNameOfPaymentType());
+	}
 }

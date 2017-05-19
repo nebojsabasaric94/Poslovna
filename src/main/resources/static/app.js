@@ -103,7 +103,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'paymentType/paymentTypePartial.html',
 		controller : 'paymentTypeController'
 	})
-	
+	.state('paymentType.search',{
+		url : '/search',
+		templateUrl : 'paymentType/searchPaymentType.html'
+	})	
 	
 	.state('place',{
 		url : '/place',

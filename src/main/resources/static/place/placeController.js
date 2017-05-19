@@ -66,6 +66,28 @@ app.controller('placeController', ['$scope','placeService','$location',
 				})
 			}
 			
+			$scope.showModalSearch = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display = "block";		
+			}
+			$scope.closeModal = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display  = "none";
+
+			}
+			$scope.findAllCountries = function(){
+				service.findAllCountries()
+				.then(function(response){
+					$scope.countries = response.data;
+				},
+				function(response){
+					
+				})
+			}
+			$scope.setSelectedCountrySearch = function(country){
+				$scope.searchEntity.country = country;
+			}
+			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
@@ -76,7 +98,7 @@ app.controller('placeController', ['$scope','placeService','$location',
 				$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
 				findAll();
-			}
+			}			
 }]);
 
 

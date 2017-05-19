@@ -39,3 +39,11 @@ insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exch
 insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('61','62','63','1','1','5');
 insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('10','11','12','2','1','3');
 
+
+insert into payment_type(code,name_of_payment_type) values ('001','Nalog za prenos');
+insert into payment_type(code,name_of_payment_type) values ('002','Nalog za uplatu');
+insert into payment_type(code,name_of_payment_type) values ('003','Nalog za isplatu');
+insert into payment_type(code,name_of_payment_type) values ('004','Nalog za naplatu');
+
+
+

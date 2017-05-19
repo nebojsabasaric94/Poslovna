@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface PlaceRepository extends PagingAndSortingRepository<Place, Long> {
 
-	@Query("select p from Place p where CAST(p.id AS string) like :id and p.name like CONCAT(:name,'%') and p.pttNumber like CONCAT(:pttNumber,'%') and p.country.name like CONCAT(:country_name,'%')")
-	public List<Place> search(@Param("id")String id,@Param("name")String name,@Param("pttNumber")String ptt,@Param("country_name")String country_name);
+	@Query("select p from Place p where  p.name like CONCAT(:name,'%') and p.pttNumber like CONCAT(:pttNumber,'%') and CAST(p.country.id AS string) like :country_id")
+	public List<Place> search(@Param("name")String name,@Param("pttNumber")String ptt,@Param("country_id")String country_id);
 }

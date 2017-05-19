@@ -44,5 +44,9 @@ public class PaymentTypeController {
 		return paymentTypeService.findAll();
 	}
 	
+	@PostMapping("/search")
+	public List<PaymentType> search(@RequestBody PaymentType paymentType){
+		return paymentTypeService.search(paymentType);
+	}
 	
 }

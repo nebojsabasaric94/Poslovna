@@ -41,13 +41,10 @@ public class PlaceServiceImpl implements PlaceService {
 
 	@Override
 	public List<Place> search(Place place) {
-		String id = "%";
-		if(place.getId() != null)
-			id = "" + place.getId();
 		
-		String country_name = "";
+		String country_id = "%";
 		if(place.getCountry() != null)
-			country_name = place.getCountry().getName();
-		return repository.search(id, place.getName(), place.getPttNumber(), country_name);
+			country_id = ""+place.getCountry().getId();
+		return repository.search(place.getName(), place.getPttNumber(), country_id);
 	}
 }

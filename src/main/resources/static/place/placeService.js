@@ -1,7 +1,9 @@
 var services = angular.module('place.services', [ 'ngResource' ]);
 
 services.service('placeService', [ '$http', function($http) {
-
+	this.findAllCountries = function(){
+		return $http.get("/country");
+	}
 	this.findAll = function() {
 		return $http.get("/place");
 	}
