@@ -20,7 +20,6 @@
 	
 		<table class="table table-bordered">
 		<tr>
-			<th>Id</th>
 			<th>Bank Code</th>
 			<th>PIB</th>
 			<th>Name</th>
@@ -32,7 +31,6 @@
 			<th>Bank</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
-			<td>{{entity.id}}</td>
 			<td>{{entity.bankCode}}</td>
 			<td>{{entity.pib}}</td>
 			<td>{{entity.name}}</td>
@@ -62,4 +60,4 @@
 
 <div>
     <div ui-view></div>
- </div>
+</div>

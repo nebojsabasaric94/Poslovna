@@ -2,6 +2,13 @@ var services = angular.module('currencyRate.services', [ 'ngResource' ]);
 
 services.service('currencyRateService', [ '$http', function($http) {
 
+	this.findAllCurrencies = function(){
+		return $http.get('currency');
+	}
+	
+	this.findAllExchangeRateLists = function(){
+		return $http.get('exchangeRateList');
+	}	
 	this.findAll = function() {
 		return $http.get("/currencyRate");
 	}

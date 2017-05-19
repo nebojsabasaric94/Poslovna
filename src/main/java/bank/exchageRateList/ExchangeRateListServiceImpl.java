@@ -41,9 +41,9 @@ public class ExchangeRateListServiceImpl implements ExchangeRateListService {
 
 	@Override
 	public List<ExchangeRateList> search(ExchangeRateList exchangeRateList) {
-		String id = "%";
-		if(exchangeRateList.getId() != null)
-			id = "" + exchangeRateList.getId();
+		String bankId = "%";
+		if(exchangeRateList.getCommercialBankRate() != null)
+			bankId = "" + exchangeRateList.getCommercialBankRate().getId();
 		
 		String date ="" ;
 		if(exchangeRateList.getDate() != null){
@@ -59,6 +59,6 @@ public class ExchangeRateListServiceImpl implements ExchangeRateListService {
 		if(exchangeRateList.getNumberOfExchangeRateList() > 0)
 			number = ""+exchangeRateList.getNumberOfExchangeRateList();
 		
-		return repository.search(id, date, number, appliedBy);
+		return repository.search(bankId, date, number, appliedBy);
 	}
 }

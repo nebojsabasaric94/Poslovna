@@ -6,17 +6,20 @@ insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) v
 insert into country(country_code,name) values ('srb','Srbija');
 insert into country(country_code,name) values ('bih','Bosna');
 insert into country(country_code,name) values ('cro','Hrvatska');
+insert into country(country_code,name) values ('USA','Sjedinjene americke drzave');
+insert into country(country_code,name) values ('chn','Kina');
+insert into country(country_code,name) values ('ITA','Italija');
 
 insert into place(name,ptt_number,country_country_id) values ('Kragujevac','34000','1');
 insert into place(name,ptt_number,country_country_id) values ('Novi Sad','21000','1');
 insert into place(name,ptt_number,country_country_id) values ('Zagreb','11010','3');
 insert into place(name,ptt_number,country_country_id) values ('Sarajevo','12121','2');
 
-insert into currency(official_code,name,domicilna) values ('din','dinar',1);
-insert into currency(official_code,name,domicilna) values ('eur','euro',0);
-insert into currency(official_code,name,domicilna) values ('jua','juan',1);
-insert into currency(official_code,name,domicilna) values ('usd','dollar',0);
-insert into currency(official_code,name,domicilna) values ('kkk','marka',1);
+insert into currency(country_country_id,official_code,name,domicilna) values ('1','din','dinar',1);
+insert into currency(country_country_id,official_code,name,domicilna) values ('4','eur','euro',0);
+insert into currency(country_country_id,official_code,name,domicilna) values ('5','jua','juan',1);
+insert into currency(country_country_id,official_code,name,domicilna) values ('6','usd','dollar',0);
+insert into currency(country_country_id,official_code,name,domicilna) values ('2','kkk','marka',1);
 
 insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',1);
 insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',2);

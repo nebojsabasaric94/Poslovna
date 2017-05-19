@@ -40,9 +40,9 @@ public class CurrencyServiceImpl implements CurrencyService {
 
 	@Override
 	public List<Currency> search(Currency currency) {
-		String id = "%";
-		if(currency.getId() != null)
-			id = "" + currency.getId() ;
-		return repository.search(currency.getName(), id, currency.getOfficial_code(), currency.isDomicilna());
+		String country_id = "%";
+		if(currency.getCountry() != null)
+			country_id = "" + currency.getCountry().getId() ;
+		return repository.search(currency.getName(), country_id, currency.getOfficial_code(), currency.isDomicilna());
 	}
 }

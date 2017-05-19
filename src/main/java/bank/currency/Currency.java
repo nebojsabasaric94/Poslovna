@@ -5,9 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import bank.country.Country;
 
 /**
  * valuta
@@ -32,6 +35,8 @@ public class Currency {
 	@NotNull
 	private boolean domicilna; // sta ovde treba da pise?
 	
+	@ManyToOne
+	private Country country;
 	/*@ManyToOne(cascade = CascadeType.ALL)
 	Country countryCurrency;*/	//drzavna valuta
 	
@@ -76,6 +81,14 @@ public class Currency {
 
 	public void setDomicilna(boolean domicilna) {
 		this.domicilna = domicilna;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	

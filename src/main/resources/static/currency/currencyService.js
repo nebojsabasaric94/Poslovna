@@ -2,6 +2,10 @@ var services = angular.module('currency.services', [ 'ngResource' ]);
 
 services.service('currencyService', [ '$http', function($http) {
 
+	this.findAllCountries = function(){
+		return $http.get("/country");
+	}	
+	
 	this.findAll = function() {
 		return $http.get("/currency");
 	}

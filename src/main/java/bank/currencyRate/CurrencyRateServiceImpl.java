@@ -42,8 +42,18 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
 	public List<CurrencyRate> search(CurrencyRate currencyRate) {
 
 		String currencyInListId = "%";
-		if(currencyRate.getCurrencyInList() != null && currencyRate.getCurrencyInList().getId() != null)
+		if(currencyRate.getCurrencyInList() != null )
 			currencyInListId = "" + currencyRate.getCurrencyInList().getId();
+
+		String baseCurrency = "%";
+		if(currencyRate.getBaseCurrency() != null)
+			baseCurrency = "" + currencyRate.getBaseCurrency().getId();
+		
+		String accordingToCurrency = "%";
+		if(currencyRate.getAccordingToCurrency() != null)
+			accordingToCurrency = ""+currencyRate.getAccordingToCurrency().getId();
+		
+		
 		
 		String buyingExchangeRate =  "";
 		if(currencyRate.getBuyingExchangeRate() > 0){
@@ -66,15 +76,7 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
 			if(splitted[1].equals("0"))
 				middleExchangeRate = splitted[0];
 		}
-		
-		String baseCurrency = "";
-		if(currencyRate.getBaseCurrency() != null)
-			baseCurrency = "" + currencyRate.getBaseCurrency().getName();
-		
-		String accordingToCurrency = "";
-		if(currencyRate.getAccordingToCurrency() != null)
-			accordingToCurrency = ""+currencyRate.getAccordingToCurrency().getName();
-
+	
 		
 		return repository.search(baseCurrency, accordingToCurrency, currencyInListId, buyingExchangeRate, sellingExchangeRate, middleExchangeRate);
 	}

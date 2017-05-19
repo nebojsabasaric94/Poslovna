@@ -2,6 +2,9 @@ var services = angular.module('exchageRateList.services', [ 'ngResource' ]);
 
 services.service('exchageRateListService', [ '$http', function($http) {
 
+	this.findAllBanks = function(){
+		return $http.get("/bank");
+	}	
 	this.findAll = function() {
 		return $http.get("/exchangeRateList");
 	}

@@ -55,8 +55,7 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 				},
 				function(response){
 					alert("Dodavanje neuspesno");
-				}
-				);
+				});
 			}
 			
 			$scope.delete = function(){
@@ -85,7 +84,27 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 					
 				})
 			}
-			
+
+			$scope.showModalSearch = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display = "block";		
+			}
+			$scope.closeModal = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display  = "none";
+			}
+				
+			$scope.findAllBanks = function(){
+				service.findAllBanks()
+				.then(function(response){
+					$scope.banks = response.data;
+				},
+				function(response){			
+				})
+			}				
+			$scope.setSelectedBank = function(bank){
+					$scope.searchEntity.commercialBankRate = bank;
+			}			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};

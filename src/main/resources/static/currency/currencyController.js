@@ -3,7 +3,7 @@ var app = angular.module('currency.controllers', []);
 app.controller('currencyController', ['$scope','currencyService','$location',
 		function($scope, service, $location) {
 
-			$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+			$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 			$scope.idSelectedEntity = null;
 	
 	
@@ -52,15 +52,38 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 					
 				})
 			}
+
+			
+			$scope.showModalSearch = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display = "block";		
+			}
+			$scope.closeModal = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display  = "none";
+
+			}
+			$scope.findAllCountries = function(){
+				service.findAllCountries()
+				.then(function(response){
+					$scope.countries = response.data;
+				},
+				function(response){
+					
+				})
+			}
+			$scope.setSelectedCountrySearch = function(country){
+				$scope.searchEntity.country = country;
+			}			
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 
 			}
 			$scope.refresh = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false"};
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 
 				findAll();
 			}
