@@ -4,6 +4,8 @@
 angular.module('routerApp', ['ui.router',
 	'analyticsOfStatements.services', 'analyticsOfStatements.controllers',
 	'bank.services', 'bank.controllers',
+	'businessActivityCode.services','businessActivityCode.controllers',
+	'client.services','client.controllers',
 	'country.services', 'country.controllers',
 	'currency.services', 'currency.controllers',
 	'currencyRate.services', 'currencyRate.controllers',
@@ -11,6 +13,7 @@ angular.module('routerApp', ['ui.router',
 	'exchageRateList.services', 'exchageRateList.controllers',
 	'interbankTransfer.services', 'interbankTransfer.controllers',
 	'itemTransfer.services', 'itemTransfer.controllers',
+	'legalEntity.services','legalEntity.controllers',
 	'nationalBank.services', 'nationalBank.controllers',
 	'paymentType.services', 'paymentType.controllers',
 	'place.services', 'place.controllers',
@@ -37,7 +40,17 @@ angular.module('routerApp', ['ui.router',
 	.state('bank.search',{
 		url : '/search',
 		templateUrl : 'bank/searchBank.html'
-	})	
+	})
+	.state('businessActivityCode',{
+		url : '/businessActivityCode',
+		templateUrl : 'businessActivityCode/businessActivityCodePartial.html',
+		controller : 'businessActivityCodeController'
+	})
+	.state('client',{
+		url : '/client',
+		templateUrl : 'client/clientPartial.html',
+		controller : 'clientController'
+	})
 	.state('country',{
 		url : '/country',
 		templateUrl : 'country/countryPartial.html',
@@ -91,7 +104,11 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'itemTransfer/itemTransferPartial.html',
 		controller : 'itemTransferController'
 	})
-	
+	.state('legalEntity',{
+		url : '/legalEntity',
+		templateUrl : 'legalEntity/legalEntityPartial.html',
+		controller : 'legalEntityController'
+	})	
 	.state('nationalBank',{
 		url : '/nationalBank',
 		templateUrl : 'nationalBank/nationalBankPartial.html',

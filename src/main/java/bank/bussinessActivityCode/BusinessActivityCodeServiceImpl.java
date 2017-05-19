@@ -1,5 +1,7 @@
 package bank.bussinessActivityCode;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,4 +13,10 @@ public class BusinessActivityCodeServiceImpl implements BusinessActivityCodeServ
 
 	@Autowired
 	private BusinessActivityCodeRepository repository;
+
+	@Override
+	public List<BusinessActivityCode> findAll() {
+		// TODO Auto-generated method stub
+		return (List<BusinessActivityCode>) repository.findAll();
+	}
 }

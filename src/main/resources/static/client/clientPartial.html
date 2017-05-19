@@ -1,0 +1,56 @@
+ <div id = "options" >
+	
+	
+	<div class="toolbar">
+		<button ui-sref = ".search" ng-click = "deselect()" class = "search"></button>
+		<button class = "refresh" ui-sref = "client" ng-click = "refresh()" ></button>
+		<button class = "back"></button>
+		<button class = "help"></button>
+		&nbsp&nbsp
+		<button class = "first"></button>
+		<button class = "previous"></button>
+		<button class = "next"></button>
+		<button class = "last"></button>
+		&nbsp&nbsp
+	
+		<button ui-sref="client.add" ng-click = "deselect()" class = "add"></button>
+		<button class = "delete" ng-click = "delete()"></button>
+		&nbsp&nbsp
+		<button class = "nextForm" ng-click = "next()"></button>
+	</div>	
+	<div >
+		<table class="table table-bordered">
+			<tr>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Jmbg</th>
+				<th>Residence</th>
+				<th>Address</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Address for statements</th>
+				<th>Email statements?</th>				
+			</tr>
+			<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+				<td>{{entity.firstName}}</td>
+				<td>{{entity.lastName}}</td>
+				<td>{{entity.jmbg}}</td>
+				<td>{{entity.residence.name}}</td>
+				<td>{{entity.address}}</td>
+				<td>{{entity.phone}}</td>
+				<td>{{entity.email}}</td>
+				<td>{{entity.addressForStatements}}</td>
+				<td>{{entity.emailStatements}}</td>
+
+			</tr>
+		</table>
+	
+	</div>
+</div>
+
+
+
+
+<div>
+    <div ui-view></div>
+</div>

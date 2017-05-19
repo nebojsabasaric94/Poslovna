@@ -39,7 +39,7 @@ public class Client {
 	
 	private String addressForStatements;
 	
-	private boolean izvodNaMejl;
+	private boolean emailStatements;
 	
 	@NotBlank
 	private String firstName;
@@ -47,6 +47,7 @@ public class Client {
 	@NotBlank
 	private String lastName;
 	
+	@Column(unique = true)
 	@NotBlank
 	private String jmbg;
 	
@@ -55,7 +56,7 @@ public class Client {
 
 	@NotBlank
 	@ManyToOne
-	private Place prebivaliste;
+	private Place residence;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
@@ -64,8 +65,6 @@ public class Client {
 	public Client() {
 		super();
 	}
-	
-	
 
 	public Long getId() {
 		return id;
@@ -107,13 +106,15 @@ public class Client {
 		this.addressForStatements = addressForStatements;
 	}
 
-	public boolean isIzvodNaMejl() {
-		return izvodNaMejl;
+	public boolean isEmailStatements() {
+		return emailStatements;
 	}
 
-	public void setIzvodNaMejl(boolean izvodNaMejl) {
-		this.izvodNaMejl = izvodNaMejl;
+	public void setEmailStatements(boolean emailStatements) {
+		this.emailStatements = emailStatements;
 	}
+
+
 
 	public String getFirstName() {
 		return firstName;
@@ -147,12 +148,15 @@ public class Client {
 		this.typeOfClient = typeOfClient;
 	}
 
-	public Place getPrebivaliste() {
-		return prebivaliste;
+
+	public Place getResidence() {
+		return residence;
 	}
 
-	public void setPrebivaliste(Place prebivaliste) {
-		this.prebivaliste = prebivaliste;
+
+
+	public void setResidence(Place residence) {
+		this.residence = residence;
 	}
 
 

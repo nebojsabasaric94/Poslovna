@@ -1,3 +1,4 @@
+
 insert into national_bank (common_name, country, email, organization, organization_unit) values ('NBS','Srbija','nbs@nbs','org','orgU');
 
 insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('123', '0123456789', 'Erste', 'blababa', 'fafa@fa.com', 'afafa', '+415151567', '+415627', true);
@@ -42,11 +43,20 @@ insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exch
 insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('61','62','63','1','1','5');
 insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('10','11','12','2','1','3');
 
+insert into business_activity_code(name,code) values('Delatnosti restorana i pokretnih ugostiteljskih objekta','561');
+insert into business_activity_code(name,code) values('Ketering i ostale usluge pripremanja i posluživanja hrane','562');
+insert into business_activity_code(name,code) values('Trgovina neka','475');
+
 
 insert into payment_type(code,name_of_payment_type) values ('001','Nalog za prenos');
 insert into payment_type(code,name_of_payment_type) values ('002','Nalog za uplatu');
 insert into payment_type(code,name_of_payment_type) values ('003','Nalog za isplatu');
 insert into payment_type(code,name_of_payment_type) values ('004','Nalog za naplatu');
 
+
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Vuka karadzica 5','Vuka karadzica 5','aa@a.com',1,'Janko','Jankovic','1234567891234','000000000','Fizicko lice','1')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Bulevar oslobodjenja 10','Bulevar Oslobodjenja 10 ','cc@c.com',1,'Scepan','Scekic','9876543219876','063555555','Fizicko lice','2')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Brace ribnikar 1','Vuka karadzica 10 ','bb@b.com',0,'Marko','Markovic','0000000000000','063333333','Fizicko lice','1')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Strazilovksa','Vuka karadzica 10 ','dd@d.com',0,'Bogoljub','Gagic','1122334455667','064444444','Fizicko lice','1')
 
 
