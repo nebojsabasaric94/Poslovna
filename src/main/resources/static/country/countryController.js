@@ -16,9 +16,26 @@ app.controller('countryController', ['$scope','countryService','$location',
 			
 			$scope.idSelectedEntity = null;
 			
+			
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
 			}
+			
+			
+			$scope.previous = function(selectedEntity){
+				$scope.setSelected($scope.selectedEntity-1);
+			}
+			
+			
+			$scope.nextNavigation = function(selectedEntity){
+				$scope.setSelected($scope.selectedEntity+1);
+			}
+			
+			$scope.lastone = function(){
+				$scope.setSelected($scope.entities.length);
+			}
+			
+			
 			
 
 			$scope.next = function(){
