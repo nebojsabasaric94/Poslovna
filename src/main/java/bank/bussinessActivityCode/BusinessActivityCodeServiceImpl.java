@@ -19,4 +19,10 @@ public class BusinessActivityCodeServiceImpl implements BusinessActivityCodeServ
 		// TODO Auto-generated method stub
 		return (List<BusinessActivityCode>) repository.findAll();
 	}
+
+	@Override
+	public List<BusinessActivityCode> search(BusinessActivityCode businessActivityCode) {
+		// TODO Auto-generated method stub
+		return repository.search(businessActivityCode.getCode(), businessActivityCode.getName());
+	}
 }
