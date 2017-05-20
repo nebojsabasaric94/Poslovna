@@ -4,13 +4,14 @@
 <div class="toolbar">
 	<button ui-sref = ".search" ng-click = "deselect()" class = "search"></button>
 	<button class = "refresh" ui-sref = "country" ng-click = "refresh()" ></button>
-	<button class = "back"></button>
+	<button class = "back" ></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
-	<button class = "first"></button>
-	<button class = "previous"></button>
-	<button class = "next"></button>
-	<button class = "last"></button>
+	<button class = "first" ng-click = "firstone()">
+	</button>
+	<button class = "previous" ng-click = "previous(entity.id)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
+	<button class = "last"  ng-click = "lastone()"></button>
 	&nbsp&nbsp
 
 	<button ui-sref="country.add" ng-click = "deselect()" class = "add"></button>
@@ -26,7 +27,7 @@
 			<th>Name</th>
 			
 		</tr>
-		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
 			<td>{{entity.id}}</td>
 			<td>{{entity.country_code}}</td>
 			<td>{{entity.name}}</td>
