@@ -14,6 +14,7 @@ angular.module('routerApp', ['ui.router',
 	'interbankTransfer.services', 'interbankTransfer.controllers',
 	'itemTransfer.services', 'itemTransfer.controllers',
 	'legalEntity.services','legalEntity.controllers',
+	'legalEntityAccount.services','legalEntityAccount.controllers',
 	'nationalBank.services', 'nationalBank.controllers',
 	'paymentType.services', 'paymentType.controllers',
 	'place.services', 'place.controllers',
@@ -108,6 +109,11 @@ angular.module('routerApp', ['ui.router',
 		url : '/legalEntity',
 		templateUrl : 'legalEntity/legalEntityPartial.html',
 		controller : 'legalEntityController'
+	})
+	.state('legalEntityAccount',{
+		url : '/legalEntityAccount',
+		templateUrl : 'legalEntityAccount/legalEntityAccountPartial.html',
+		controller : 'legalEntityAccountController'
 	})	
 	.state('nationalBank',{
 		url : '/nationalBank',

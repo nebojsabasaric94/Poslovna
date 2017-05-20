@@ -59,4 +59,10 @@ insert into client(address,address_for_statements,email,email_statements,first_n
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Brace ribnikar 1','Vuka karadzica 10 ','bb@b.com',0,'Marko','Markovic','0000000000000','063333333','Fizicko lice','1')
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Strazilovksa','Vuka karadzica 10 ','dd@d.com',0,'Bogoljub','Gagic','1122334455667','064444444','Fizicko lice','1')
 
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Vuka Karadzica 53','Vuka karadzica 53 ','novi@most.com',0,'Danilo','Acimovic','0101119145452','062922222','Pravno lice','1')
+insert into legal_entity(naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('Novi Most DA','N.M.D.A','021456123','123456','Poreski organ','Naziv organa','192145321','5')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Drinska 10','Drinska 10 ','lasta@prevoz.com',0,'Milos','Milosevic','1144778899445','062933333','Pravno lice','1')
+insert into legal_entity(naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('Lasta','Lasta','0123456','654321','Poreski organ','Naziv organa','221456123','6')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Pozeska 2','Pozeska 2 ','sintelon@s.com',0,'Sima','Simic','0903996773631','064787898','Pravno lice','1')
+insert into legal_entity(naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('Sintelon','Sintelon','777888','655445','Poreski organ','Naziv organa','787844777','7')
 
