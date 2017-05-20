@@ -19,4 +19,13 @@ public class ClientServiceImpl implements ClientService{
 		// TODO Auto-generated method stub
 		return (List<Client>) repository.findAll();
 	}
+
+	@Override
+	public List<Client> search(Client client) {
+		String place_id = "%";
+		if(client.getResidence() != null)
+			place_id = ""+client.getResidence().getId();
+		// TODO Auto-generated method stub
+		return repository.search(client.getFirstName(), client.getLastName(), client.getAddress(),client.getEmail(), client.getPhone(), client.getAddressForStatements(), client.getJmbg(), place_id, client.getTypeOfClient(), client.isEmailStatements());
+	}
 }

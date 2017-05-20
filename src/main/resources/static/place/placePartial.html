@@ -24,13 +24,11 @@
 	<table>
 		<table class="table table-bordered">
 		<tr>
-			<th>Id</th>
 			<th>Ptt number</th>
 			<th>Name</th>
 			<th>Country</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
-			<td>{{entity.id}}</td>
 			<td>{{entity.pttNumber}}</td>
 			<td>{{entity.name}}</td>
 			<td>{{entity.country.name}}</td>

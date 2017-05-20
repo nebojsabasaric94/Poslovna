@@ -1,0 +1,88 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityName">First name:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityName" id = "searchEntityName" ng-model = "searchEntity.firstName" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityLastName">Last name:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityLastName" id = "searchEntityLastName" ng-model = "searchEntity.lastName" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityJmbg">Jmbg:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityJmbg" id = "searchEntityJmbg" ng-model = "searchEntity.jmbg" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityAddress">Address:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityAddress" id = "searchEntityAddress" ng-model = "searchEntity.address" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPhone">Phone:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPhone" id = "searchEntityPhone" ng-model = "searchEntity.phone" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityEmail">Email:</label>
+		<div class = "col-md-2">
+			<input type = "email" name = "searchEntityEmail" id = "searchEntityEmail" ng-model = "searchEntity.email" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityAddressForStatements">Address for statements:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityAddressForStatements" id = "searchEntityAddressForStatements" ng-model = "searchEntity.addressForStatements" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPlace">Place:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPlace" id = "searchEntityPlace" ng-model = "searchEntity.residence.name" class="form-control " readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Select place</button></span>
+	</div>	
+	<div id="myModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPlaces() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Ptt number</th>
+					<th>Name</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="place in places" ng-click = "setSelectedPlaceSearch(place)" ng-class = "{selected:place === searchEntity.residence}">
+					<td>{{place.pttNumber}}</td>
+					<td>{{place.name}}</td>
+					<td>{{place.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityEmailStatements">Send statements to email?:</label>
+		<div class = "col-md-2">
+			<select type = "text" name = "searchEntityEmailStatements" id = "searchEntityEmailStatements" ng-model = "searchEntity.emailStatements" class="form-control " >
+				<option value = "true">YES</option>
+				<option value = "false">NO</option>
+			</select>
+		</div>
+	</div>	
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

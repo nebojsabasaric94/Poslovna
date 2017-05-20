@@ -56,6 +56,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'client/clientPartial.html',
 		controller : 'clientController'
 	})
+	.state('client.search',{
+		url : '/search',
+		templateUrl : 'client/searchClient.html'
+	})
 	.state('country',{
 		url : '/country',
 		templateUrl : 'country/countryPartial.html',
