@@ -1,0 +1,165 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityNaziv_klijenta">Client name:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityNaziv_klijenta" id = "searchEntityNaziv_klijenta" ng-model = "searchEntity.naziv_klijenta" class="form-control " />
+		</div>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityAbbreviation">Abbreviation:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityAbbreviation" id = "searchEntityAbbreviation" ng-model = "searchEntity.skraceni_naziv_klijenta" class="form-control " />
+		</div>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityIdentificationNumber">Identification number:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityIdentificationNumber" id = "searchEntityIdentificationNumber" ng-model = "searchEntity.maticni_broj" class="form-control " />
+		</div>
+	</div>		
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPib">Tax identification number:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPib" id = "searchEntityPib" ng-model = "searchEntity.pib" class="form-control " />
+		</div>
+	</div>	
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityNaziv_organa">Dodati NAZIV ORGANA:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityNaziv_organa" id = "searchEntityNaziv_organa" ng-model = "searchEntity.naziv_organa" class="form-control " />
+		</div>
+	</div>
+
+
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPoreskiOrgan">Dodati prevod poreski organ:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPoreskiOrgan" id = "searchEntityPoreskiOrgan" ng-model = "searchEntity.nadlezni_poreski_organ_za_klijenta" class="form-control " />
+		</div>
+	</div>	
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityFax">Fax:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityFax" id = "searchEntityFax" ng-model = "searchEntity.fax" class="form-control " />
+		</div>
+	</div>
+
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityBusinessActivityCode">Business activity code:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityBusinessActivityCode" id = "searchEntityBusinessActivityCode" ng-model = "searchEntity.businessActivityCode.code" class="form-control " readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showMoodalBusinessActivitySearch()" class = "btn btn-primary" >Select business activity</button></span>
+	</div>
+
+	
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityName">First name:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityName" id = "searchEntityName" ng-model = "searchEntity.firstName" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityLastName">Last name:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityLastName" id = "searchEntityLastName" ng-model = "searchEntity.lastName" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityJmbg">Jmbg:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityJmbg" id = "searchEntityJmbg" ng-model = "searchEntity.jmbg" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityAddress">Address:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityAddress" id = "searchEntityAddress" ng-model = "searchEntity.address" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPhone">Phone:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPhone" id = "searchEntityPhone" ng-model = "searchEntity.phone" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityEmail">Email:</label>
+		<div class = "col-md-2">
+			<input type = "email" name = "searchEntityEmail" id = "searchEntityEmail" ng-model = "searchEntity.email" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityAddressForStatements">Address for statements:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityAddressForStatements" id = "searchEntityAddressForStatements" ng-model = "searchEntity.addressForStatements" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPlace">Place:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPlace" id = "searchEntityPlace" ng-model = "searchEntity.residence.name" class="form-control " readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showModalPlaceSearch()" class = "btn btn-primary" >Select place</button></span>
+	</div>	
+	<div id="modalPlaceSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPlaces() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Ptt number</th>
+					<th>Name</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="place in places" ng-click = "setSelectedPlaceSearch(place)" ng-class = "{selected:place === searchEntity.residence}">
+					<td>{{place.pttNumber}}</td>
+					<td>{{place.name}}</td>
+					<td>{{place.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalPlaceSearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="modalBusinessActivitySearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllBusinessActivites() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Business activity code</th>
+					<th>Activity name</th>
+				</tr>
+				<tr class="state" ng-repeat="ba in businessActivities" ng-click = "setSelectedBusinessActivitySearch(ba)" ng-class = "{selected:ba === searchEntity.businessActivityCode}">
+					<td>{{ba.code}}</td>
+					<td>{{ba.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalBusinessActivitySearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityEmailStatements">Send statements to email?:</label>
+		<div class = "col-md-2">
+			<select type = "text" name = "searchEntityEmailStatements" id = "searchEntityEmailStatements" ng-model = "searchEntity.emailStatements" class="form-control " >
+				<option value = "true">YES</option>
+				<option value = "false">NO</option>
+			</select>
+		</div>
+	</div>	
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

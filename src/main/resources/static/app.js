@@ -118,6 +118,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'legalEntity/legalEntityPartial.html',
 		controller : 'legalEntityController'
 	})
+	.state('legalEntity.search',{
+		url : '/search',
+		templateUrl : 'legalEntity/searchLegalEntity.html'
+	})
 	.state('legalEntityAccount',{
 		url : '/legalEntityAccount',
 		templateUrl : 'legalEntityAccount/legalEntityAccountPartial.html',
