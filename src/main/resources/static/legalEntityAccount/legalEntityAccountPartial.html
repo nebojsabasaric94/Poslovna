@@ -37,11 +37,6 @@
 				<td>{{entity.datumOtvaranja}}</td>
 				<td>{{entity.currency.name}}</td>
 				<td>{{entity.vazeci}}</td>
-			<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
-				<td></td>
-				<td>{{entity.name}}</td>
-				<td>{{entity.domicilna}}</td>
-				<td>{{entity.country.name}}</td>
 			</tr>
 		</table>
 	

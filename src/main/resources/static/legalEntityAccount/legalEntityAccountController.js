@@ -3,6 +3,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 	function($scope,service,$location){
 	
 	$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
+	$scope.idSelectedEntity = null;
 	
 	findAll();
 	function findAll() {
@@ -16,57 +17,20 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		function(response){
 			
 		});
-	
-		$scope.idSelectedEntity = null;
-		
-		
-		$scope.setSelected = function(selectedEntity){
-			$scope.selectedEntity = selectedEntity;
-		}
-		
-		
-		$scope.firstone = function(){
-			$scope.setSelected(1);
-		}
-		
-		$scope.previous = function(selectedEntity){
-			if($scope.selectedEntity != 1)
-				$scope.setSelected($scope.selectedEntity-1);
-			else
-				$scope.setSelected($scope.entities.length);
-				
-		}
-		
-		
-		$scope.nextNavigation = function(selectedEntity){
-			if($scope.selectedEntity != $scope.entities.length )
-				$scope.setSelected($scope.selectedEntity+1);
-			else
-				$scope.setSelected(1);
-		}
-		
-		$scope.lastone = function(){
-			$scope.setSelected($scope.entities.length);
-		}
-		
-		
-		
 	}
 	
 	function checkIfLegalEntity(){
 		for(i=0;i<$scope.entities.length;i++){
-			if($scope.entities[i].typeOfClient == "Pravno lice"){
-				service.checkIfLegalEntity($scope.entities[i].id)
-				.then(function(response){
-					if(i < $scope.entities.length){
-						response.data.datumOtvaranja =transformDate(new Date(response.data.datumOtvaranja));
-						$scope.entities[i] = response.data;
-					}
-				},
-				function(response){
+			service.checkIfLegalEntity($scope.entities[i].id)
+			.then(function(response){
+				if(i < $scope.entities.length){
+					response.data.datumOtvaranja =transformDate(new Date(response.data.datumOtvaranja));
+					$scope.entities[i] = response.data;
+				}
+			},
+			function(response){
 					
-				})
-			}
+			})
 		}
 	}
 	function transformDate(dateObj){
@@ -118,6 +82,32 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 	$scope.setSelected = function(selectedEntity){
 		$scope.selectedEntity = selectedEntity;
 	}
+	
+	
+	$scope.firstone = function(){
+		$scope.setSelected(1);
+	}
+	
+	$scope.previous = function(selectedEntity){
+		if($scope.selectedEntity != 1)
+			$scope.setSelected($scope.selectedEntity-1);
+		else
+			$scope.setSelected($scope.entities.length);
+			
+	}
+	
+	
+	$scope.nextNavigation = function(selectedEntity){
+		if($scope.selectedEntity != $scope.entities.length )
+			$scope.setSelected($scope.selectedEntity+1);
+		else
+			$scope.setSelected(1);
+	}
+	
+	$scope.lastone = function(){
+		$scope.setSelected($scope.entities.length);
+	}	
+	
 	$scope.search = function(){
 		service.search($scope.searchEntity)
 		.then(function(response){
