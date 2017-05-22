@@ -6,19 +6,20 @@
 	<button class = "back"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
-	<button class = "first"></button>
-	<button class = "previous"></button>
-	<button class = "next"></button>
-	<button class = "last"></button>
+	<button class = "first" ng-click = "firstone()">
+	</button>
+	<button class = "previous" ng-click = "previous(entity.id)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
+	<button class = "last"  ng-click = "lastone()"></button>
 	&nbsp&nbsp
 	<button ui-sref="nationalBank.add" class = "add"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
 	<button class = "nextForm"></button>
 </div>	
+	<div>
 	
-	<table>
-		<table class="table table-bordered">
+	<table class="table table-bordered">
 		<tr>
 			<th>id</th>
 			<th>commonName</th>
@@ -27,7 +28,7 @@
 			<th>organizationUnit</th>
 			<th>email</th>
 		</tr>
-		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
 			<td>{{entity.id}}</td>
 			<td>{{entity.commonName}}</td>
 			<td>{{entity.country}}</td>
@@ -37,7 +38,8 @@
 			
 		</tr>
 	</table>
-
+</div> 
+</div>
 <div>
     <div ui-view></div>
-    </div>
+</div>

@@ -1,15 +1,16 @@
  <div id = "options">
 	
-	 <div class="toolbar">
+<div class="toolbar">
 	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
 	<button class = "refresh" ui-sref = "exchangeRateList" ng-click = "refresh()"></button>
 	<button class = "back"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
-	<button class = "first"></button>
-	<button class = "previous"></button>
-	<button class = "next"></button>
-	<button class = "last"></button>
+	<button class = "first" ng-click = "firstone()">
+	</button>
+	<button class = "previous" ng-click = "previous(entity.id)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
+	<button class = "last"  ng-click = "lastone()"></button>
 	&nbsp&nbsp
 	<button ui-sref="exchageRateList.add" class = "add" ng-click = "deselect()"></button>
 	<button class = "delete" ng-click = "delete()"></button>
@@ -17,8 +18,7 @@
 	<button class = "nextForm"></button>
 </div>	
 	
-	
-	<table>
+<div>
 		<table class="table table-bordered">
 		<tr>
 			<th>Date</th>
@@ -26,15 +26,15 @@
 			<th>Applied by</th>
 			<th>Bank</th>
 		</tr>
-		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
 			<td>{{entity.date}}</td>
 			<td>{{entity.numberOfExchangeRateList}}</td>
 			<td>{{entity.appliedBy}}</td>
 			<td>{{entity.commercialBankRate.name}}</td>
 		</tr>
 	</table>
-
-
+</div>
+</div>
 <div>
     <div ui-view></div>
-    </div>
+</div>
