@@ -14,4 +14,8 @@ public interface ClientRepository extends CrudRepository<Client, Long>{
 	public List<Client> search(@Param("firstName")String firstName,@Param("lastName")String lastName,@Param("address")String address,@Param("email")String email,
 			@Param("phone")String phone,@Param("addressForStatements")String addressForStatements,@Param("jmbg")String jmbg,@Param("place_id")String place_id,
 			@Param("typeOfClient")String typeOfClient,@Param("emailStatements")boolean emailStatements);
+	
+	@Override
+	@Query("select c from Client c where c.typeOfClient like 'Fizicko lice'")
+	public List<Client> findAll();
 }

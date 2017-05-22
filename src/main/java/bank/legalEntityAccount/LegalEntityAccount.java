@@ -32,7 +32,7 @@ public class LegalEntityAccount {
 	@NotBlank
 	private String brojRacuna;
 	
-	private Date datumOtvraranja;
+	private Date datumOtvaranja;
 	
 	private boolean vazeci;
 	
@@ -53,12 +53,12 @@ public class LegalEntityAccount {
 		super();
 	}
 	
-	public LegalEntityAccount(Long id, String brojRacuna, Date datumOtvraranja, boolean vazeci, Client client,
+	public LegalEntityAccount(Long id, String brojRacuna, Date datumOtvaranja, boolean vazeci, Client client,
 			Bank bank, Currency currency, List<Suspension> suspensions) {
 		super();
 		this.id = id;
 		this.brojRacuna = brojRacuna;
-		this.datumOtvraranja = datumOtvraranja;
+		this.datumOtvaranja = datumOtvaranja;
 		this.vazeci = vazeci;
 		this.client = client;
 		this.bank = bank;
@@ -83,12 +83,12 @@ public class LegalEntityAccount {
 		this.brojRacuna = brojRacuna;
 	}
 
-	public Date getDatumOtvraranja() {
-		return datumOtvraranja;
+	public Date getDatumOtvaranja() {
+		return datumOtvaranja;
 	}
 
-	public void setDatumOtvraranja(Date datumOtvraranja) {
-		this.datumOtvraranja = datumOtvraranja;
+	public void setDatumOtvraranja(Date datumOtvaranja) {
+		this.datumOtvaranja = datumOtvaranja;
 	}
 
 	public boolean isVazeci() {

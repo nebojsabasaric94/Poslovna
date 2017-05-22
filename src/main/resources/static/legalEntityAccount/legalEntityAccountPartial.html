@@ -12,7 +12,7 @@
 	<button class = "next"></button>
 	<button class = "last"></button>
 	&nbsp&nbsp
-	<button ui-sref="currency.add"  class = "add" ng-click = "deselect()"></button>
+	<button ui-sref=".add"  class = "add" ng-click = "deselect()"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
 	<button class = "nextForm"></button>
@@ -21,16 +21,21 @@
 	<table>
 		<table class="table table-bordered">
 		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th>Client</th>
+			<th>Bank</th>
+			<th>Broj racuna</th>
+			<th>Datum otvaranja</th>
+			<th>Currency</th>
+			<th>Vazeci?</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
-			<td></td>
-			<td>{{entity.name}}</td>
-			<td>{{entity.domicilna}}</td>
-			<td>{{entity.country.name}}</td>
+			<td ng-show = "entity.client.typeOfClient=='Fizicko lice'">{{entity.client.firstName}} {{entity.client.lastName}}</td>
+			<td ng-hide = "entity.client.typeOfClient=='Fizicko lice'">{{entity.client.naziv_klijenta}}</td>
+			<td>{{entity.bank.name}}</td>
+			<td>{{entity.brojRacuna}}</td>
+			<td>{{entity.datumOtvaranja}}</td>
+			<td>{{entity.currency.name}}</td>
+			<td>{{entity.vazeci}}</td>
 		</tr>
 	</table>
 

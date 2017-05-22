@@ -15,7 +15,7 @@ services.service('countryService', [ '$http', function($http) {
 	}
 	
 	this.delete = function(country){
-		return $http.delete('/country/deleteCountry/' + country)
+		return $http.delete('/country/' + country+"/");
 	}
 	
 	this.search = function(entity){

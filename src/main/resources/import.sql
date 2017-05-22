@@ -66,3 +66,10 @@ insert into legal_entity(business_activity_code_business_activity_code_id,naziv_
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Pozeska 2','Pozeska 2 ','sintelon@s.com',0,'Sima','Simic','0903996773631','064787898','Pravno lice','1')
 insert into legal_entity(business_activity_code_business_activity_code_id,naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('3','Sintelon','Sintelon','777888','655445','Poreski organ','Naziv organa','787844777','7')
 
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103121231231231111','2017-01-21',1,'1','1','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103187878745784542','2017-02-28',1,'1','2','2');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103454698745632122','2017-03-30',1,'1','3','3');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202454654789541254','2017-04-29',1,'2','4','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202745485455555555','2017-01-18',1,'2','5','2');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202145487447474747','2017-02-27',1,'2','6','3');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202145745874545555','2017-03-01',1,'2','7','4');

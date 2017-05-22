@@ -126,7 +126,11 @@ angular.module('routerApp', ['ui.router',
 		url : '/legalEntityAccount',
 		templateUrl : 'legalEntityAccount/legalEntityAccountPartial.html',
 		controller : 'legalEntityAccountController'
-	})	
+	})
+	.state('legalEntityAccount.search',{
+		url : '/search',
+		templateUrl : 'legalEntityAccount/searchLegalEntityAccount.html'
+	})
 	.state('nationalBank',{
 		url : '/nationalBank',
 		templateUrl : 'nationalBank/nationalBankPartial.html',
