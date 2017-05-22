@@ -14,7 +14,7 @@ app.controller('bankController', ['$scope','bankService','$location',
 				});
 			}
 			
-$scope.idSelectedEntity = null;
+//$scope.idSelectedEntity = null;
 			
 			
 			$scope.setSelected = function(selectedEntity){
@@ -30,7 +30,7 @@ $scope.idSelectedEntity = null;
 				if($scope.selectedEntity != 1)
 					$scope.setSelected($scope.selectedEntity-1);
 				else
-					$scope.setSelected(1);
+					$scope.setSelected($scope.entities.length);
 					
 			}
 			
@@ -39,7 +39,7 @@ $scope.idSelectedEntity = null;
 				if($scope.selectedEntity != $scope.entities.length )
 					$scope.setSelected($scope.selectedEntity+1);
 				else
-					$scope.setSelected($scope.entities.length);
+					$scope.setSelected(1);
 			}
 			
 			$scope.lastone = function(){

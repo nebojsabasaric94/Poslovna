@@ -28,7 +28,7 @@ app.controller('clientController',['$scope','clientService','$location',
 		if($scope.selectedEntity != 1)
 			$scope.setSelected($scope.selectedEntity-1);
 		else
-			$scope.setSelected(1);
+			$scope.setSelected($scope.entities.length);
 			
 	}
 	
@@ -37,7 +37,7 @@ app.controller('clientController',['$scope','clientService','$location',
 		if($scope.selectedEntity != $scope.entities.length )
 			$scope.setSelected($scope.selectedEntity+1);
 		else
-			$scope.setSelected($scope.entities.length);
+			$scope.setSelected(1);
 	}
 	
 	$scope.lastone = function(){
