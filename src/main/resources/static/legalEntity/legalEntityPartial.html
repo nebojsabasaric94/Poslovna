@@ -7,10 +7,11 @@
 		<button class = "back"></button>
 		<button class = "help"></button>
 		&nbsp&nbsp
-		<button class = "first"></button>
-		<button class = "previous"></button>
-		<button class = "next"></button>
-		<button class = "last"></button>
+		<button class = "first" ng-click = "firstone()">
+		</button>
+		<button class = "previous" ng-click = "previous(entity.id)"></button>
+		<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
+		<button class = "last"  ng-click = "lastone()"></button>
 		&nbsp&nbsp
 	
 		<button ui-sref="client.add" ng-click = "deselect()" class = "add"></button>
@@ -38,7 +39,7 @@
 				<th>Address for statements</th>
 				<th>Email statements?</th>				
 			</tr>
-			<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+			<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
 				<td>{{entity.naziv_klijenta}}</td>	
 				<td>{{entity.skraceni_naziv_klijenta}}</td>	
 				<td>{{entity.maticni_broj}}</td>	
