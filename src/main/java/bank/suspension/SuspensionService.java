@@ -5,9 +5,11 @@ import java.util.List;
 public interface SuspensionService {
 	List<Suspension> findAll();
 
-	Suspension save(Suspension suspension);
+	public Suspension save(Suspension suspension);
 
-	Suspension findOne(Long id);
+	public Suspension findOne(Long id);
 	
 	public void delete(Long id);
+	
+	public List<Suspension> search(Suspension suspension);
 }

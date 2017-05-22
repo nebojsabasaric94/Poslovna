@@ -21,16 +21,16 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 	
 	function checkIfLegalEntity(){
 		for(i=0;i<$scope.entities.length;i++){
-			service.checkIfLegalEntity($scope.entities[i].id)
-			.then(function(response){
-				if(i < $scope.entities.length){
-					response.data.datumOtvaranja =transformDate(new Date(response.data.datumOtvaranja));
-					$scope.entities[i] = response.data;
-				}
-			},
-			function(response){
-					
-			})
+			if($scope.account[i].client.typeOfClient == "Pravno lice")
+				service.checkIfLegalEntity($scope.entities[i].client.id)
+				.then(function(response){
+					if(i < $scope.entities.length){
+						$scope.entities[i].client = response.data;
+					}
+				},
+				function(response){
+						
+				})
 		}
 	}
 	function transformDate(dateObj){

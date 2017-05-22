@@ -3,10 +3,16 @@ var app = angular.module('suspension.controllers', []);
 app.controller('suspensionController', ['$scope','suspensionService','$location',
 		function($scope, service, $location) {
 
+			$scope.searchEntity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
+	
+	
 			findAll();
 		
 			function findAll() {
 				service.findAll().then(function(response) {
+					for(i = 0; i < response.data.length;i++){
+						response.data[i].date = transformDate(new Date(response.data[i].date));
+					}
 					$scope.entities = response.data;
 				});
 			}
@@ -66,6 +72,81 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 					}
 				)
 			}
+			$scope.findAllAccounts = function() {
+				service.findAllAccounts()
+				.then(function(response) {
+					for(i = 0; i < response.data.length;i++){
+						response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
+					}
+					$scope.accounts = response.data;
+					checkIfLegalEntity();
+				},
+				function(response){
+					
+				});
+			}
+			
+			function checkIfLegalEntity(){
+				for(i=0;i<$scope.accounts.length;i++){
+					if($scope.account[i].client.typeOfClient == "Pravno lice")
+					service.checkIfLegalEntity($scope.accounts[i].client.id)
+					.then(function(response){
+						if(i < $scope.accounts.length){
+							$scope.accounts[i].client = response.data;
+						}
+					},
+					function(response){
+							
+					})
+				}
+			}
+			function transformDate(dateObj){
+				var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
+				var day = ("0" + dateObj.getDate()).slice(-2);
+				var year = dateObj.getFullYear();
+
+				var newdate = year + "/" + month + "/" + day;
+				return newdate;
+			}			
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					for(i = 0; i < response.data.length;i++){
+						response.data[i].date = transformDate(new Date(response.data[i].date));
+					}
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.showModalSearch = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display = "block";		
+			}
+			$scope.closeModal = function(){
+				var modal = document.getElementById('myModalSearch');
+				modal.style.display  = "none";
+
+			}
+			$scope.setSelectedAccountSearch = function(account){
+				$scope.searchEntity.legalEntityAccount.id = account.id;
+				$scope.searchEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
+			}
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
+
+				findAll();
+			}			
 
 }]);
 

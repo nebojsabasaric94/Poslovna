@@ -161,7 +161,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'suspension/suspensionPartial.html',
 		controller : 'suspensionController'
 	})
-	
+	.state('suspension.search',{
+		url : '/search',
+		templateUrl : 'suspension/searchSuspension.html'
+	})
 	.state('bank.add', {
 		url : '/addBank',
 		templateUrl : 'bank/addBank.html'

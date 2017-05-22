@@ -42,7 +42,7 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
 	public List<CurrencyRate> search(CurrencyRate currencyRate) {
 
 		String currencyInListId = "%";
-		if(currencyRate.getCurrencyInList() != null )
+		if(currencyRate.getCurrencyInList().getId() != null )
 			currencyInListId = "" + currencyRate.getCurrencyInList().getId();
 
 		String baseCurrency = "%";
