@@ -36,7 +36,8 @@
 				<td>{{entity.brojRacuna}}</td>
 				<td>{{entity.datumOtvaranja}}</td>
 				<td>{{entity.currency.name}}</td>
-				<td>{{entity.vazeci}}</td>
+				<td ng-if = "entity.vazeci == true">YES</td>
+				<td ng-if = "entity.vazeci == false">NO</td>
 			</tr>
 		</table>
 	

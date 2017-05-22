@@ -1,8 +1,8 @@
  <div id = "options">
 	
 	 <div class="toolbar">
-	<button class = "search"></button>
-	<button class = "refresh"></button>
+	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+	<button class = "refresh" ui-sref = "dailyAccountBalance" ng-click = "refresh()"></button>
 	<button class = "back"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
@@ -21,15 +21,15 @@
 <table>
 		<table class="table table-bordered">
 		<tr>
-			<th>numberOfStatements</th>
-			<th>trafficDate</th>
-			<th>previousState</th>
-			<th>trafficToBenefit</th>
-			<th>trafficToTheBurden</th>
-			<th>newState</th>
+			<td>Account number</td>
+			<th>Traffic date</th>
+			<th>Previous state</th>
+			<th>Traffic to benefit</th>
+			<th>Traffic to the burden</th>
+			<th>New state</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
-			<td>{{entity.numberOfStatements}}</td>
+			<td>{{entity.legalEntityAccount.brojRacuna}}</td>
 			<td>{{entity.trafficDate}}</td>
 			<td>{{entity.previousState}}</td>
 			<td>{{entity.trafficToBenefit}}</td>

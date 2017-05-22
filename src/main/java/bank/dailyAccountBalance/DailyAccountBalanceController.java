@@ -44,5 +44,8 @@ public class DailyAccountBalanceController {
 		return dailyAccountBalanceService.findAll();
 	}
 	
-	
+	@PostMapping("/search")
+	public List<DailyAccountBalance> search(@RequestBody DailyAccountBalance dailyAccountBalance){
+		return dailyAccountBalanceService.search(dailyAccountBalance);
+	}
 }

@@ -92,7 +92,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'dailyAccountBalance/dailyAccountBalancePartial.html',
 		controller : 'dailyAccountBalanceController'
 	})
-	
+	.state('dailyAccountBalance.search',{
+		url : '/search',
+		templateUrl : 'dailyAccountBalance/searchDailyAccountBalance.html'
+	})	
 	.state('exchageRateList',{
 		url : '/exchageRateList',
 		templateUrl : 'exchageRateList/exchageRateListPartial.html',

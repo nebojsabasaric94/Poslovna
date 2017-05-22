@@ -88,7 +88,7 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 			
 			function checkIfLegalEntity(){
 				for(i=0;i<$scope.accounts.length;i++){
-					if($scope.account[i].client.typeOfClient == "Pravno lice")
+					if($scope.accounts[i].client.typeOfClient == "Pravno lice")
 					service.checkIfLegalEntity($scope.accounts[i].client.id)
 					.then(function(response){
 						if(i < $scope.accounts.length){
