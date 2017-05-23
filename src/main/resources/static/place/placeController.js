@@ -28,8 +28,6 @@ app.controller('placeController', ['$scope','placeService','$location',
 				
 			}
 			
-			//$scope.idSelectedEntity = null;
-			
 			
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
@@ -127,7 +125,33 @@ app.controller('placeController', ['$scope','placeService','$location',
 				$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
 				findAll();
-			}			
+			}	
+			
+			$scope.back = function(){
+				var backFilter = sessionStorage.getItem("backFilter");
+				sessionStorage.removeItem("backFilter");
+				if(backFilter == null)
+					return;
+				
+				$location.path("/country");
+			
+			}
+			
+			$scope.nextClient = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("backFilterPlace", $scope.entities);
+				$location.path('/client');
+			}
+			
+			$scope.nextAnalyticsOfStatements = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterPlace", $scope.selectedEntity);
+				sessionStorage.setItem("backFilterPlace", $scope.entities);
+				$location.path('/analyticsOfStatements');
+			}
 }]);
 
 

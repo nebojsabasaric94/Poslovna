@@ -1,4 +1,4 @@
-var app = angular.module('exchageRateList.controllers', []);
+var app = angular.module('exchageRateList.controllers', ['angular-popover']);
 
 app.controller('exchageRateListController', ['$scope','exchageRateListService','$location',
 		function($scope, service, $location) {
@@ -6,7 +6,7 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
 			$scope.idSelectedEntity = null;
 
-	
+		    	
 			findAll();
 			
 			$scope.setSelected = function(selectedEntity){
@@ -59,6 +59,7 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 								response.data[i].appliedBy = transformDate(new Date(response.data[i].appliedBy));
 							}
 							$scope.entities = response.data;
+							
 						}
 					)
 				}
@@ -146,6 +147,25 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 
 				findAll();
 			}
+			
+			$scope.back = function(){
+				var backFilter = sessionStorage.getItem("backFilter");
+				sessionStorage.removeItem("backFilter");
+				if(backFilter == null)
+					return;
+				
+				$location.path("/bank");
+			}
+			
+			$scope.next = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("backFilter", $scope.entities);
+				$location.path('/currencyRate');
+			}
+			
+			
 }]);
 
 

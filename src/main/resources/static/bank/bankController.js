@@ -9,13 +9,24 @@ app.controller('bankController', ['$scope','bankService','$location',
 			findAll();
 
 			function findAll() {
-				service.findAll().then(function(response) {
-					$scope.entities = response.data;
-				});
+
+				var nextFilter = sessionStorage.getItem("nextFilter");
+				sessionStorage.removeItem("nextFilter");
+				
+				if(nextFilter == null){
+					service.findAll().then(
+						function(response) {
+							$scope.entities = response.data;
+						});
+				} else {
+					service.nextBank(nextFilter).then(
+						function(response){
+							$scope.entities = response.data;
+						}
+					)
+				}
+				
 			}
-			
-//$scope.idSelectedEntity = null;
-			
 			
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
@@ -88,8 +99,25 @@ app.controller('bankController', ['$scope','bankService','$location',
 			$scope.nextExchangeRateList = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("backFilter", $scope.entities);
 				$location.path('/exchageRateList');
+			}
+			
+			$scope.nextLegalEntityAccount = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterBank", $scope.selectedEntity);
+				sessionStorage.setItem("backFilterBank", $scope.entities);
+				$location.path("/legalEntityAccount");
+			}
+			
+			$scope.nextInterbankTransfers = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("backFilter", $scope.entities);
+				$location.path("/interbankTransfer");
 			}
 			
 			$scope.openModalNext = function(){

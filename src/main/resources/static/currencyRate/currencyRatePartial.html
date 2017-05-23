@@ -30,7 +30,7 @@
 			<th>Selling exchange rate</th>
 		</tr>
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
-			<td>{{entity.currencyInList.id}}</td>
+			<td>{{entity.currencyInList.numberOfExchangeRateList}}</td>
 			<td>{{entity.baseCurrency.official_code}}</td>
 			<td>{{entity.accordingToCurrency.official_code}}</td>
 			<td>{{entity.buyingExchangeRate}}</td>

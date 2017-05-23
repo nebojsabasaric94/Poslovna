@@ -89,3 +89,25 @@
 .toolbar{
 	padding-left: 20px;
 }
+
+#container > div
+{
+    display: inline-block;
+    border: solid 1px #000;
+}
+
+
+.dropbtn {
+	float: left;
+    overflow: hidden;
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

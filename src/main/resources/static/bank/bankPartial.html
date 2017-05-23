@@ -1,25 +1,34 @@
- <div id = "options">
- 
- <div class="toolbar">
-	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
-	<button class = "refresh" ui-sref = "bank" ng-click = "refresh()"></button>
-	<button class = "back"></button>
-	<button class = "help"></button>
-	&nbsp&nbsp
-	<button class = "first" ng-click = "firstone()">
-	</button>
-	<button class = "previous" ng-click = "previous(entity.id)"></button>
-	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
-	<button class = "last"  ng-click = "lastone()"></button>
-	&nbsp&nbsp
-	<button ui-sref="bank.add" class = "add" ng-click = "deselect()"></button>
-	<button class = "delete" ng-click = "delete()"></button>
-	&nbsp&nbsp
-	<button class = "nextForm" ng-click = "openModalNext()"></button>
-</div>	
-	
-	
-		<table class="table table-bordered">
+
+<div id="options">
+
+	<div class="toolbar btn-group" id="container">
+		<button class="search" ui-sref=".search" ng-click="deselect()"></button>
+		<button class="refresh" ui-sref="bank" ng-click="refresh()"></button>
+		<button class="back"></button>
+		<button class="help"></button>
+		&nbsp&nbsp
+		<button class="first" ng-click="firstone()"></button>
+		<button class="previous" ng-click="previous(entity.id)"></button>
+		<button class="next" ng-click="nextNavigation(entity.id)"></button>
+		<button class="last" ng-click="lastone()"></button>
+		&nbsp&nbsp
+		<button ui-sref="bank.add" class="add" ng-click="deselect()"></button>
+		<button class="delete" ng-click="delete()"></button>
+		&nbsp&nbsp
+			<button class="nextForm" data-toggle="dropdown"></button>
+			<ul class="dropdown-menu">
+				<li><button class="btn btn-primary" ng-click="nextExchangeRateList()">Exchange rate list</button></li>
+				<li><button class="btn btn-primary" ng-click="nextLegalEntityAccount()">Legal entity account</button></li>
+				<li><button class="btn btn-primary" ng-click="nextInterbankTransfers()">Interbank transfers</button></li>
+				
+			</ul>
+
+		
+		
+	</div>
+
+
+	<table class="table table-bordered">
 		<tr>
 			<th>Bank Code</th>
 			<th>PIB</th>
@@ -31,7 +40,9 @@
 			<th>Fax</th>
 			<th>Bank</th>
 		</tr>
-		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+		<tr ng-repeat="entity in entities| orderBy:'id'"
+			ng-click="setSelected(entity.id)"
+			ng-class="{selected: entity.id === selectedEntity}">
 			<td>{{entity.bankCode}}</td>
 			<td>{{entity.pib}}</td>
 			<td>{{entity.name}}</td>
@@ -41,24 +52,24 @@
 			<td>{{entity.phone}}</td>
 			<td>{{entity.fax}}</td>
 			<td>{{entity.bank}}</td>
-			
+
 		</tr>
 	</table>
-	
-	
-<div id="myModalNext" class="modal">
-  <div class="modal-content">
-  
-	<button class = "btn" ng-click = "nextExchangeRateList()">Exchange rate list</button>
-	
-	<button class = "btn" ng-click = "nextAccount()">Account</button>
-    
-  </div>
-</div>
-	
-	
-	
 
-<div>
-    <div ui-view></div>
-</div>
+
+	<div id="myModalNext" class="modal">
+		<div class="modal-content">
+
+			<button class="btn" ng-click="nextExchangeRateList()">Exchange rate list</button>
+
+			<button class="btn" ng-click="nextAccount()">Account</button>
+
+		</div>
+	</div>
+
+
+
+
+	<div>
+		<div ui-view></div>
+	</div>

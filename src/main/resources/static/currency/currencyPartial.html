@@ -1,10 +1,10 @@
  <div id = "options">
 	
 	
-	 <div class="toolbar">
+	 <div class="toolbar btn-group">
 	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
 	<button class = "refresh" ui-sref = "currency" ng-click = "refresh()"></button>
-	<button class = "back"></button>
+	<button class = "back" ng-click = "back()"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
 	<button class = "first" ng-click = "firstone()">
@@ -16,7 +16,12 @@
 	<button ui-sref="currency.add"  class = "add" ng-click = "deselect()"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
-	<button class = "nextForm"></button>
+	<button class="nextForm" data-toggle="dropdown"></button>
+			<ul class="dropdown-menu">
+				<li><button class="btn btn-primary" ng-click="nextLegalEntityAccount()">Legal entity account</button></li>
+				<li><button class="btn btn-primary" ng-click="nextAnalyticsOfStatements()">Analytics of statements</button></li>
+				
+			</ul>
 </div>	
 
 	<table>

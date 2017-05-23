@@ -10,18 +10,36 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class LegalEntityAccountServiceImpl implements LegalEntityAccountService{
+public class LegalEntityAccountServiceImpl implements LegalEntityAccountService {
+
+	private final LegalEntityAccountRepository repository;
 
 	@Autowired
-	private LegalEntityAccountRepository repository;
+	public LegalEntityAccountServiceImpl(final LegalEntityAccountRepository repository) {
+		this.repository = repository;
+	}
+
 	
 	@Override
 	public List<LegalEntityAccount> findAll() {
-		// TODO Auto-generated method stub
 		return (List<LegalEntityAccount>) repository.findAll();
 	}
 
 	@Override
+	public LegalEntityAccount findOne(Long id) {
+		return repository.findOne(id);
+	}
+
+	@Override
+	public LegalEntityAccount save(LegalEntityAccount legalEntityAccount) {
+		return repository.save(legalEntityAccount);
+	}
+
+	@Override
+	public void delete(Long id) {
+		repository.delete(id);
+	}
+
 	public List<LegalEntityAccount> search(LegalEntityAccount legalEntityAccount) {
 		String client_id = "%";
 		if(legalEntityAccount.getClient() != null)
@@ -40,6 +58,7 @@ public class LegalEntityAccountServiceImpl implements LegalEntityAccountService{
 			datum_otvaranja =new Date(legalEntityAccount.getDatumOtvaranja().getTime()).toString();
 		}
 		return repository.search(legalEntityAccount.getBrojRacuna(), datum_otvaranja, legalEntityAccount.isVazeci(), client_id, bank_id, currency_id);
+
 	}
 
 }

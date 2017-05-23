@@ -13,9 +13,23 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			findAll();
 		
 			function findAll() {
-				service.findAll().then(function(response) {
-					$scope.entities = response.data;
-				});
+
+				var nextFilter = sessionStorage.getItem("nextFilter");
+				sessionStorage.removeItem("nextFilter");
+				
+				if(nextFilter == null){
+					service.findAll().then(
+						function(response) {
+							$scope.entities = response.data;
+						});
+				} else {
+					service.next(nextFilter).then(
+						function(response){
+							$scope.entities = response.data;
+						}
+					)
+				}
+				
 			}
 			
 			function transformDate(dateObj){
