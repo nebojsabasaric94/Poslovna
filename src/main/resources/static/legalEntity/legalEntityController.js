@@ -24,6 +24,13 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 		});
 	}	
 
+	$scope.delete = function(){
+		service.delete($scope.selectedEntity)
+
+		.then(function(response){
+			
+		})
+	}
 	$scope.idSelectedEntity = null;
 	
 	

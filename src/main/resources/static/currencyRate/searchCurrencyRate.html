@@ -64,7 +64,7 @@
 					<th>Code of exchange rate list</th>
 					<th>Applied by</th>
 				</tr>
-				<tr class="state" ng-repeat="exchangeRateList in exchangeRateLists" ng-click = "setSelectedExchangeRateList(exchangeRateList)" ng-class = "{selected:exchangeRateList === searchEntity.currencyInList}">
+				<tr class="state" ng-repeat="exchangeRateList in exchangeRateLists" ng-click = "setSelectedExchangeRateList(exchangeRateList)" ng-class = "{selected:exchangeRateList.id === searchEntity.currencyInList.id}">
 					<td>{{exchangeRateList.date}}</td>
 					<td>{{exchangeRateList.numberOfExchangeRateList}}</td>
 					<td>{{exchangeRateList.appliedBy}}</td>

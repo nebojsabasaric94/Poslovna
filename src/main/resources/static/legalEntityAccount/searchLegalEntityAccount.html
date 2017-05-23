@@ -1,0 +1,143 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityBrojRacuna">Account number:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityBrojRacuna" id = "searchEntityBrojRacuna" ng-model = "searchEntity.brojRacuna" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityDatumOtvaranja">Datum otvaranja:</label>
+		<div class = "col-md-2">
+			<input type = "date" name = "searchEntityDatumOtvaranja" id = "searchEntityDatumOtvaranja" ng-model = "searchEntity.datumOtvaranja" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityClient">Client:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityClient" id = "searchEntityClient" ng-model = "searchEntity.client.firstName" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showClientModalSearch()" class = "btn btn-primary" >Select client</button></span>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityBank">Bank:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityBank" id = "searchEntityBank" ng-model = "searchEntity.bank.name" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showBankModalSearch()" class = "btn btn-primary" >Select bank</button></span>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityCurrency">Currency:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityCurrency" id = "searchEntityCurrency" ng-model = "searchEntity.currency.name" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showCurrencyModalSearch()" class = "btn btn-primary" >Select currency</button></span>
+	</div>	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityVazeci">Vazeci?:</label>
+		<div class = "col-md-2">
+			<select type = "text" name = "searchEntityVazeci" id = "searchEntityVazeci" ng-model = "searchEntity.vazeci" class="form-control " >
+				<option value = "true">YES</option>
+				<option value = "false">NO</option>
+			</select>
+		</div>
+	</div>	
+	
+	<div id="clientModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Clients</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllClients() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Client name</th>
+					<th>Identification number</th>
+					<th>Tax identification number</th>
+					<th>Business activity code</th>
+					<th>Dodati </th>
+					<th>Dodati</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Jmbg</th>
+					<th>Residence</th>
+					<th>Address</th>
+					<th>Phone</th>
+					<th>Email</th>
+				</tr>
+				<tr class="state" ng-repeat="client in clients" ng-click = "setSelectedClientSearch(client)" ng-class = "{selected:client === searchEntity.client}">
+					<td>{{client.naziv_klijenta}}</td>	
+					<td>{{client.maticni_broj}}</td>	
+					<td>{{client.pib}}</td>	
+					<td>{{client.businessActivityCode.code}}</td>
+					<td>{{client.naziv_organa}}</td>
+					<td>{{client.nadlezni_poreski_organ_za_klijenta}}</td>													
+					<td>{{client.firstName}}</td>
+					<td>{{client.lastName}}</td>
+					<td>{{client.jmbg}}</td>
+					<td>{{client.residence.name}}</td>
+					<td>{{client.address}}</td>
+					<td>{{client.phone}}</td>
+					<td>{{client.email}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeClientModalSearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="bankModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Banks</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllBanks() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Bank Code</th>
+					<th>PIB</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Email</th>
+					<th>Web</th>
+					<th>Phone</th>
+					<th>Fax</th>
+					<th>Bank?</th>
+				</tr>
+				<tr class="state" ng-repeat="bank in banks" ng-click = "setSelectedBankSearch(bank)" ng-class = "{selected:bank === searchEntity.bank}">
+					<td>{{bank.bankCode}}</td>
+					<td>{{bank.pib}}</td>
+					<td>{{bank.name}}</td>
+					<td>{{bank.address}}</td>
+					<td>{{bank.email}}</td>
+					<td>{{bank.web}}</td>
+					<td>{{bank.phone}}</td>
+					<td>{{bank.fax}}</td>
+					<td>{{bank.bank}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeBankModalSearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="currencyModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Currencies</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllCurrencies() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Official code</th>
+					<th>Name</th>
+					<th>Domicilna?</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="currency in currencies" ng-click = "setSelectedCurrencySearch(currency)" ng-class = "{selected:currency === searchEntity.currency}">
+					<td>{{currency.official_code}}</td>
+					<td>{{currency.name}}</td>
+					<td>{{currency.domicilna}}</td>
+					<td>{{currency.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeCurrencyModalSearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

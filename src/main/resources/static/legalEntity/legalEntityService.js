@@ -7,13 +7,17 @@ services.service('legalEntityService',['$http',function($http){
 	}
 	
 	this.findAllPlaces = function(){
-		return $http.get('/place');
+		return $http.get("/place");
 	}
 	
 	this.findAll = function(){
-		return $http.get('/legalEntity');
+		return $http.get("/legalEntity");
 	}
+
 	this.search = function(legalEntity){
-		return $http.post('/legalEntity/search',legalEntity);
+		return $http.post("/legalEntity/search",legalEntity);
+	}
+	this.delete = function(id){
+		return $http.delete("/legalEntity/"+id+"/")
 	}
 }])

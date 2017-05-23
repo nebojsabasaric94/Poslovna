@@ -92,7 +92,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'dailyAccountBalance/dailyAccountBalancePartial.html',
 		controller : 'dailyAccountBalanceController'
 	})
-	
+	.state('dailyAccountBalance.search',{
+		url : '/search',
+		templateUrl : 'dailyAccountBalance/searchDailyAccountBalance.html'
+	})	
 	.state('exchageRateList',{
 		url : '/exchageRateList',
 		templateUrl : 'exchageRateList/exchageRateListPartial.html',
@@ -126,7 +129,11 @@ angular.module('routerApp', ['ui.router',
 		url : '/legalEntityAccount',
 		templateUrl : 'legalEntityAccount/legalEntityAccountPartial.html',
 		controller : 'legalEntityAccountController'
-	})	
+	})
+	.state('legalEntityAccount.search',{
+		url : '/search',
+		templateUrl : 'legalEntityAccount/searchLegalEntityAccount.html'
+	})
 	.state('nationalBank',{
 		url : '/nationalBank',
 		templateUrl : 'nationalBank/nationalBankPartial.html',
@@ -157,7 +164,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'suspension/suspensionPartial.html',
 		controller : 'suspensionController'
 	})
-	
+	.state('suspension.search',{
+		url : '/search',
+		templateUrl : 'suspension/searchSuspension.html'
+	})
 	.state('bank.add', {
 		url : '/addBank',
 		templateUrl : 'bank/addBank.html'

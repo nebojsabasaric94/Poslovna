@@ -32,7 +32,7 @@
 			<th>Name</th>
 			
 		</tr>
-		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.id}}</td>
 			<td>{{entity.country_code}}</td>
 			<td>{{entity.name}}</td>

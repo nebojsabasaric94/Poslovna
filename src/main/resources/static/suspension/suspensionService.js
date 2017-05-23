@@ -17,5 +17,16 @@ services.service('suspensionService', [ '$http', function($http) {
 	this.delete = function(suspension){
 		return $http.get('/suspension/deleteSuspension/' + suspension)
 	}
+	
+	this.findAllAccounts = function(){
+		return $http.get('/legalEntityAccount');
+	}
+	this.checkIfLegalEntity = function(id){
+		return $http.get('/legalEntity/'+id+"/");
+	}
+	
+	this.search = function(suspension){
+		return $http.post('/suspension/search',suspension);
+	}
 
 }]);

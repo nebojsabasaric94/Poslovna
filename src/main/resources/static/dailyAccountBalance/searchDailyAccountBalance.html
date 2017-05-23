@@ -1,0 +1,76 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityLegalEntityAccount">Account:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityLegalEntityAccount" id = "searchEntityLegalEntityAccount" ng-model = "searchEntity.legalEntityAccount.brojRacuna" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Select account</button></span>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityTrafficDate">Traffic date:</label>
+		<div class = "col-md-2">
+			<input type = "date" name = "searchEntityTrafficDate" id = "searchEntityTrafficDate" ng-model = "searchEntity.trafficDate" class="form-control " />
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPreviousState">Previous state:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPreviousState" id = "searchEntityPreviousState" ng-model = "searchEntity.previousState" class="form-control"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityBenefitedTraffic">Benefited traffic:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityBenefitedTraffic" id = "searchEntityBenefitedTraffic" ng-model = "searchEntity.trafficToBenefit" class="form-control"/>
+		</div>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityTrafficToTheBurden">Traffic to the burden:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityTrafficToTheBurden" id = "searchEntityTrafficToTheBurden" ng-model = "searchEntity.trafficToTheBurden" class="form-control"/>
+		</div>
+	</div>	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityNewState">New state:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityNewState" id = "searchEntityNewState" ng-model = "searchEntity.newState" class="form-control"/>
+		</div>
+	</div>
+	<div id="myModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Accounts</h3><hr/><br/>
+	    
+	    	<table ng-init = "findAllAccounts()" ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Client</th>
+					<th>Bank</th>
+					<th>Broj racuna</th>
+					<th>Datum otvaranja</th>
+					<th>Currency</th>
+					<th>Vazeci?</th>
+				</tr>
+				<tr class="state" ng-repeat="account in accounts"   ng-click = "setSelectedAccountSearch(account)" ng-class = "{selected:account.id === searchEntity.legalEntityAccount.id}">
+					<td ng-show = "account.client.typeOfClient=='Fizicko lice'">{{account.client.firstName}} {{account.client.lastName}}</td>
+					<td ng-hide = "account.client.typeOfClient=='Fizicko lice'">{{account.client.naziv_klijenta}}</td>
+					<td>{{account.bank.name}}</td>
+					<td>{{account.brojRacuna}}</td>
+					<td>{{account.datumOtvaranja}}</td>
+					<td>{{account.currency.name}}</td>
+					<td ng-if = "account.vazeci==true">Yes</td>
+					<td ng-if = "account.vazeci==false">No</td>
+
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

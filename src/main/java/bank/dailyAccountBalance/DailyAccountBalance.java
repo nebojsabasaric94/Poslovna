@@ -28,7 +28,7 @@ public class DailyAccountBalance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
-	private Long numberOfStatements; //broj izvoda
+	private Long id; //broj izvoda
 	
 	@Column
 	@NotNull
@@ -36,19 +36,19 @@ public class DailyAccountBalance {
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
-	private float previousState;  // prethodno stanje
+	private Float previousState;  // prethodno stanje
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
-	private float trafficToBenefit; //promet u korist
+	private Float trafficToBenefit; //promet u korist
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
-	private float trafficToTheBurden; //promet na teret
+	private Float trafficToTheBurden; //promet na teret
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
-	private float newState;
+	private Float newState;
 	
 	@ManyToOne
 	private LegalEntityAccount legalEntityAccount;
@@ -62,12 +62,12 @@ public class DailyAccountBalance {
 		super();
 	}
 
-	public Long getNumberOfStatements() {
-		return numberOfStatements;
+	public Long getId() {
+		return id;
 	}
 
-	public void setNumberOfStatements(Long numberOfStatements) {
-		this.numberOfStatements = numberOfStatements;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Date getTrafficDate() {
@@ -78,35 +78,35 @@ public class DailyAccountBalance {
 		this.trafficDate = trafficDate;
 	}
 
-	public float getPreviousState() {
+	public Float getPreviousState() {
 		return previousState;
 	}
 
-	public void setPreviousState(float previousState) {
+	public void setPreviousState(Float previousState) {
 		this.previousState = previousState;
 	}
 
-	public float getTrafficToBenefit() {
+	public Float getTrafficToBenefit() {
 		return trafficToBenefit;
 	}
 
-	public void setTrafficToBenefit(float trafficToBenefit) {
+	public void setTrafficToBenefit(Float trafficToBenefit) {
 		this.trafficToBenefit = trafficToBenefit;
 	}
 
-	public float getTrafficToTheBurden() {
+	public Float getTrafficToTheBurden() {
 		return trafficToTheBurden;
 	}
 
-	public void setTrafficToTheBurden(float trafficToTheBurden) {
+	public void setTrafficToTheBurden(Float trafficToTheBurden) {
 		this.trafficToTheBurden = trafficToTheBurden;
 	}
 
-	public float getNewState() {
+	public Float getNewState() {
 		return newState;
 	}
 
-	public void setNewState(float newState) {
+	public void setNewState(Float newState) {
 		this.newState = newState;
 	}
 

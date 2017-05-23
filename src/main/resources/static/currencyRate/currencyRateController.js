@@ -6,7 +6,7 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			$scope.idSelectedEntity = null;
 			
 			$scope.searchEntity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
-					baseCurrency:null,currencyInList:null,accordingToCurrency:null};
+					baseCurrency:null,currencyInList:{},accordingToCurrency:null};
 			
 
 	
@@ -162,18 +162,18 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			}			
 			
 			$scope.setSelectedExchangeRateList = function(exchangeRateList){
-				$scope.searchEntity.currencyInList = exchangeRateList;
+				$scope.searchEntity.currencyInList.id = exchangeRateList.id;
 			}			
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id:null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
-					baseCurrency:null,currencyInList:null,accordingToCurrency:null};
+				$scope.searchEntity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
+						baseCurrency:null,currencyInList:{},accordingToCurrency:null};
 			}
 			$scope.refresh = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id:null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
-					baseCurrency:null,currencyInList:null,accordingToCurrency:null};
+				$scope.searchEntity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
+						baseCurrency:null,currencyInList:{},accordingToCurrency:null};
 				findAll();
 			}
 }]);

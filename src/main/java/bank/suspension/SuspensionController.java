@@ -45,5 +45,10 @@ public class SuspensionController {
 		return suspensionService.findAll();
 	}
 	
+	@PostMapping("/search")
+	public List<Suspension> search(@RequestBody Suspension suspension){
+		return suspensionService.search(suspension);
+	}
+	
 	
 }

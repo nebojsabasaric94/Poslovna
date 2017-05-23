@@ -12,5 +12,6 @@ public interface LegalEntityAccountService {
 	
 	public void delete(Long id);
 	
+	public List<LegalEntityAccount> search(LegalEntityAccount legalEntityAccount);
 
 }

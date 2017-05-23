@@ -10,4 +10,6 @@ public interface DailyAccountBalanceService {
 	DailyAccountBalance findOne(Long id);
 	
 	public void delete(Long id);
+	
+	public List<DailyAccountBalance> search(DailyAccountBalance accountBalance);
 }

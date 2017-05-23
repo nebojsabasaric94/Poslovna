@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,7 +47,13 @@ public class LegalEntityAccountController {
 		Currency currency = currencyService.findOne(currencyId);
 		
 		return currency.getLegalEntityAccount();
+		
 	}
 	
-
+	@PostMapping("/search")
+	public List<LegalEntityAccount> search(@RequestBody LegalEntityAccount legalEntityAccount){
+		return legalEntityAccountService.search(legalEntityAccount);
+	}
+	
 }
+

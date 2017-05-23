@@ -1,5 +1,6 @@
 package bank.suspension;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -36,5 +37,18 @@ public class SuspensionServiceImpl implements SuspensionService {
 	@Override
 	public void delete(Long id) {
 		repository.delete(id);
+	}
+
+	@Override
+	public List<Suspension> search(Suspension suspension) {
+		String account_id = "%";
+		if(suspension.getLegalEntityAccount().getId() != null)
+			account_id = "" + suspension.getLegalEntityAccount().getId();
+		
+		String date ="" ;
+		if(suspension.getDate() != null){
+			date =new Date(suspension.getDate().getTime()).toString();
+		}
+		return repository.search(account_id, suspension.getTransferToAccount(), date);
 	}
 }

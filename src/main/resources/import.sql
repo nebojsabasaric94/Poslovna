@@ -66,3 +66,23 @@ insert into legal_entity(business_activity_code_business_activity_code_id,naziv_
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Pozeska 2','Pozeska 2 ','sintelon@s.com',0,'Sima','Simic','0903996773631','064787898','Pravno lice','1')
 insert into legal_entity(business_activity_code_business_activity_code_id,naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('3','Sintelon','Sintelon','777888','655445','Poreski organ','Naziv organa','787844777','7')
 
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103121231231231111','2016-01-21',0,'1','1','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103187878745784542','2016-02-28',0,'1','2','2');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103454698745632122','2016-03-30',1,'1','3','3');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202454654789541254','2016-04-29',0,'2','4','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202745485455555555','2016-01-18',1,'2','5','2');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202145487447474747','2016-02-27',1,'2','6','3');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202145745874545555','2016-03-01',1,'2','7','4');
+
+
+insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-05-21','202145745874545555','1');
+insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-04-30','103454698745632122','2');
+insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-03-10','202745485455555555','4');
+
+
+insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('0','1200','2017-02-27','0','1200','1')
+insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('1500','0','2017-02-28','1500','0','1')
+insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('3500','1500','2017-03-01','3000','1000','1')
+insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('0','3685.25','2017-02-27','0','3685.25','2')
+insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('4125.23','0','2017-02-28','4125.23','0','3')
+insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('7800','1850','2017-03-01','8950','4000','4')

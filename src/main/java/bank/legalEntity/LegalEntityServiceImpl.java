@@ -33,4 +33,17 @@ public class LegalEntityServiceImpl implements LegalEntityService{
 				legalEntity.getFirstName(), legalEntity.getLastName(), legalEntity.getAddress(), legalEntity.getEmail(), legalEntity.getPhone(), legalEntity.getAddressForStatements(),
 				legalEntity.getJmbg(), place_id, legalEntity.getTypeOfClient(),legalEntity.isEmailStatements());
 	}
+
+	@Override
+	public LegalEntity findOne(Long id) {
+		LegalEntity e = repository.findOne(id);
+		System.out.println(e.toString());
+		return repository.findOne(id);
+	}
+
+	@Override
+	public void delete(Long id) {
+		repository.delete(id);
+		
+	}
 }
