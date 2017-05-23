@@ -5,7 +5,9 @@ import java.util.List;
 public interface AnalyticsOfStatementsService {
 	List<AnalyticsOfStatements> findAll();
 
-	AnalyticsOfStatements save(AnalyticsOfStatements analyticsOfStatements);
+	public AnalyticsOfStatements save(AnalyticsOfStatements analyticsOfStatements);
 
-	AnalyticsOfStatements findOne(Long id);
+ 	public AnalyticsOfStatements findOne(Long id);
+ 	
+ 	public List<AnalyticsOfStatements> search(AnalyticsOfStatements analyticsOfStatements);
 }

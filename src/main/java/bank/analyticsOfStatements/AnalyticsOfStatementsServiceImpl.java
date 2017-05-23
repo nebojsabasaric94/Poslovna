@@ -1,5 +1,6 @@
 package bank.analyticsOfStatements;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -31,5 +32,58 @@ public class AnalyticsOfStatementsServiceImpl implements AnalyticsOfStatementsSe
 	@Override
 	public AnalyticsOfStatements findOne(Long id) {
 		return repository.findOne(id);
+	}
+
+	@Override
+	public List<AnalyticsOfStatements> search(AnalyticsOfStatements analyticsOfStatements) {
+		String dateOfReceipt = "";
+		if(analyticsOfStatements.getDateOfReceipt() != null)
+			dateOfReceipt = new Date(analyticsOfStatements.getDateOfReceipt().getTime()).toString();
+		
+		String currencyDate = "";
+		if(analyticsOfStatements.getCurrencyDate() != null)
+			currencyDate = new Date(analyticsOfStatements.getCurrencyDate().getTime()).toString();
+		
+		String modelAssigments = "%";
+		if(analyticsOfStatements.getModelAssigments() != null)
+			modelAssigments = "" + analyticsOfStatements.getModelAssigments();
+		
+		String modelApproval = "%";
+		if(analyticsOfStatements.getModelApproval() != null)
+			modelApproval = ""+ analyticsOfStatements.getModelApproval();
+		
+		String sum = "";
+		if(analyticsOfStatements.getSum() != null){
+			sum = ""+analyticsOfStatements.getSum();
+			String []splitted = sum.split("\\.");
+			if(splitted[1].equals("0"))
+				sum = splitted[0];
+		}			
+		
+		String typeOfMistake = "%";
+		if(analyticsOfStatements.getTypeOfMistake() != null)
+			typeOfMistake = "" + analyticsOfStatements.getTypeOfMistake();
+		
+		String dailyAccountBalance = "%";
+		if(analyticsOfStatements.getDailyAccountBalance().getId() != null)
+			dailyAccountBalance = "" + analyticsOfStatements.getDailyAccountBalance().getId();
+		
+		String paymentType = "%";
+		if(analyticsOfStatements.getPaymentType().getId() != null)
+			paymentType = ""+ analyticsOfStatements.getPaymentType().getId();
+		
+		String place = "%";
+		if(analyticsOfStatements.getPlace().getId() != null)
+			place = ""+ analyticsOfStatements.getPlace().getId();
+		
+		String paymentCurrency = "%";
+		if(analyticsOfStatements.getPaymentCurrency().getId() != null)
+			paymentCurrency =""+ analyticsOfStatements.getPaymentCurrency().getId();
+		
+		return repository.search(analyticsOfStatements.getDebtor_originator(), analyticsOfStatements.getPurposeOfPayment(), analyticsOfStatements.getCreditor_recipient(),
+				dateOfReceipt, currencyDate, analyticsOfStatements.getDebtorAccount(),
+				modelAssigments, analyticsOfStatements.getReferenceNumberAssigments(), analyticsOfStatements.getAccountCreditor(),
+				modelApproval, analyticsOfStatements.getReferenceNumberCreditor(), analyticsOfStatements.isEmergency(),
+				sum, typeOfMistake, analyticsOfStatements.getStatus(), dailyAccountBalance, paymentType, place, paymentCurrency);
 	}
 }

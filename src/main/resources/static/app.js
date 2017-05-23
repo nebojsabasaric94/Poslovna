@@ -32,7 +32,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'analyticsOfStatements/analyticsOfStatementsPartial.html',
 		controller : 'analyticsOfStatementsController'
 	})
-	
+	.state('analyticsOfStatements.search',{
+		url : '/search',
+		templateUrl : 'analyticsOfStatements/searchAnalyticsOfStatements.html'
+	})	
 	.state('bank',{
 		url : '/bank',
 		templateUrl : 'bank/bankPartial.html',

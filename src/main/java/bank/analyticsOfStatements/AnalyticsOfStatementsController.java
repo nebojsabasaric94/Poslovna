@@ -37,5 +37,11 @@ public class AnalyticsOfStatementsController {
 		analyticsOfStatementsService.save(analyticsOfStatements);
 	}
 	
+	@PostMapping("/search")
+	public List<AnalyticsOfStatements> search(@RequestBody AnalyticsOfStatements analyticsOfStatements){
+		
+		return analyticsOfStatementsService.search(analyticsOfStatements);
+	}
+	
 	
 }

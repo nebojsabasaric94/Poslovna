@@ -23,4 +23,6 @@ services.service('placeService', [ '$http', function($http) {
 	this.search = function(entity){
 		return $http.post('/place/search',entity);
 	}
+	
+
 }]);

@@ -12,16 +12,16 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 				response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
 			}
 			$scope.entities = response.data;
-			checkIfLegalEntity();
+			//checkIfLegalEntity();
 		},
 		function(response){
 			
 		});
 	}
 	
-	function checkIfLegalEntity(){
+	/*function checkIfLegalEntity(){
 		for(i=0;i<$scope.entities.length;i++){
-			if($scope.account[i].client.typeOfClient == "Pravno lice")
+			if($scope.accounts[i].client.typeOfClient == "Pravno lice")
 				service.checkIfLegalEntity($scope.entities[i].client.id)
 				.then(function(response){
 					if(i < $scope.entities.length){
@@ -32,7 +32,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 						
 				})
 		}
-	}
+	}*/
 	function transformDate(dateObj){
 		var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
 		var day = ("0" + dateObj.getDate()).slice(-2);

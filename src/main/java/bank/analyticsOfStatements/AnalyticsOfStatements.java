@@ -51,7 +51,7 @@ public class AnalyticsOfStatements {
 	
 	@Column
 	@Max(value = 2)
-	private int modelAssigments; //model zaduzenja
+	private Integer modelAssigments; //model zaduzenja
 	
 	@Column(length = 20)
 	private String referenceNumberAssigments; //poziv na broj zaduzenja
@@ -61,21 +61,21 @@ public class AnalyticsOfStatements {
 	
 	@Column
 	@Max(value = 2)
-	private int modelApproval; //model odobrenja
+	private Integer modelApproval; //model odobrenja
 	
 	@Column(length = 20)
 	private String referenceNumberCreditor; //poziv na broj odobrenja
 	
 	@Column
 	@NotNull
-	private boolean emergency;
+	private Boolean emergency;
 	
 	@Column(length = 15, precision = 2)
-	private float sum;
+	private Float sum;
 	
 	@Column
 	@Max(value = 1)
-	private int typeOfMistake; 
+	private Integer typeOfMistake; 
 	
 	@Column(length = 1)
 	private String status;
@@ -155,11 +155,11 @@ public class AnalyticsOfStatements {
 		this.debtorAccount = debtorAccount;
 	}
 
-	public int getModelAssigments() {
+	public Integer getModelAssigments() {
 		return modelAssigments;
 	}
 
-	public void setModelAssigments(int modelAssigments) {
+	public void setModelAssigments(Integer modelAssigments) {
 		this.modelAssigments = modelAssigments;
 	}
 
@@ -179,11 +179,11 @@ public class AnalyticsOfStatements {
 		this.accountCreditor = accountCreditor;
 	}
 
-	public int getModelApproval() {
+	public Integer getModelApproval() {
 		return modelApproval;
 	}
 
-	public void setModelApproval(int modelApproval) {
+	public void setModelApproval(Integer modelApproval) {
 		this.modelApproval = modelApproval;
 	}
 
@@ -195,27 +195,27 @@ public class AnalyticsOfStatements {
 		this.referenceNumberCreditor = referenceNumberCreditor;
 	}
 
-	public boolean isEmergency() {
+	public Boolean isEmergency() {
 		return emergency;
 	}
 
-	public void setEmergency(boolean emergency) {
+	public void setEmergency(Boolean emergency) {
 		this.emergency = emergency;
 	}
 
-	public float getSum() {
+	public Float getSum() {
 		return sum;
 	}
 
-	public void setSum(float sum) {
+	public void setSum(Float sum) {
 		this.sum = sum;
 	}
 
-	public int getTypeOfMistake() {
+	public Integer getTypeOfMistake() {
 		return typeOfMistake;
 	}
 
-	public void setTypeOfMistake(int typeOfMistake) {
+	public void setTypeOfMistake(Integer typeOfMistake) {
 		this.typeOfMistake = typeOfMistake;
 	}
 

@@ -79,14 +79,14 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 						response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
 					}
 					$scope.accounts = response.data;
-					checkIfLegalEntity();
+					//checkIfLegalEntity();//nema potrebe za ovim
 				},
 				function(response){
 					
 				});
 			}
 			
-			function checkIfLegalEntity(){
+			/*function checkIfLegalEntity(){
 				for(i=0;i<$scope.accounts.length;i++){
 					if($scope.accounts[i].client.typeOfClient == "Pravno lice")
 					service.checkIfLegalEntity($scope.accounts[i].client.id)
@@ -99,7 +99,7 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 							
 					})
 				}
-			}
+			}*/
 			function transformDate(dateObj){
 				var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
 				var day = ("0" + dateObj.getDate()).slice(-2);
@@ -115,7 +115,6 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 						response.data[i].date = transformDate(new Date(response.data[i].date));
 					}
 					$scope.entities = response.data; 
-					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
 				},
 				function(response){
