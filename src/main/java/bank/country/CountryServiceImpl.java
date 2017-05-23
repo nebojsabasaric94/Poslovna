@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 @Transactional
 public class CountryServiceImpl implements CountryService {
@@ -37,11 +36,11 @@ public class CountryServiceImpl implements CountryService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
-	
+
 	@Override
 	public List<Country> search(Country country) {
 		String id = "%";
-		if(country.getId() != null)
+		if (country.getId() != null)
 			id = "" + country.getId();
 		return repository.search(id, country.getName(), country.getCountry_code());
 	}

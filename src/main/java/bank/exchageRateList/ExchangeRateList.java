@@ -1,16 +1,14 @@
 package bank.exchageRateList;
 
-
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -30,22 +28,20 @@ public class ExchangeRateList {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "exchange_rate_list_id")
 	private Long id;
-	
+
 	@Column
 	@NotNull
 	private Date date;
-	
-	@Column
+
+	@Column(unique = true)
 	private int numberOfExchangeRateList; // broj kursne liste
-	
+
 	@Column
-	private Date appliedBy; //primenjuje se od
-	
+	private Date appliedBy; // primenjuje se od
+
 	@JsonIgnore
-	@OneToMany
-	@JoinTable(name = "currency_in_list", joinColumns = @JoinColumn(name="exchange_rate_list_id"), inverseJoinColumns = @JoinColumn(name="currency_rate_id"))
+	@OneToMany(mappedBy = "currencyInList", cascade = CascadeType.ALL)
 	private List<CurrencyRate> currencyRates;
-	
 
 	@ManyToOne
 	private Bank commercialBankRate; // kurs poslovne banke
@@ -97,10 +93,5 @@ public class ExchangeRateList {
 	public void setCurrencyRates(List<CurrencyRate> currencyRates) {
 		this.currencyRates = currencyRates;
 	}
-	
-	
-	
-	
-	
-	
+
 }

@@ -46,12 +46,12 @@ public class PlaceController {
 	@GetMapping("/nextPlaces/{countryId}")
 	public List<Place> next(@PathVariable Long countryId){
 		Country country = countryService.findOne(countryId);
-		List<Place> places = new ArrayList<Place>();
-		for(int i = 0; i < placeService.findAll().size(); i++){
+		List<Place> places = country.getPlaces();
+		/*for(int i = 0; i < placeService.findAll().size(); i++){
 			if(placeService.findAll().get(i).getCountry().getId() == country.getId()){
 				places.add(placeService.findAll().get(i));
 			}
-		}
+		}*/
 		return places;
 	}
 	

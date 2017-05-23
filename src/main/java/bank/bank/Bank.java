@@ -63,7 +63,6 @@ public class Bank {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "commercialBankRate", cascade = CascadeType.ALL)
-	//@JoinTable(name = "rate_commercial_bank", inverseJoinColumns = @JoinColumn(name = "exchange_rate_list_id"))
 	private List<ExchangeRateList> exchangeRateLists;
 
 	

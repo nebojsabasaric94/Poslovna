@@ -13,17 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bank.country.Country;
+import bank.country.CountryService;
+import bank.exchageRateList.ExchangeRateList;
+
 @RestController
 @RequestMapping("/currency")
 public class CurrencyController {
 
 	private final CurrencyService currencyService;
-	
+	private final CountryService countryService;
 	
 
 	@Autowired
-	public CurrencyController(final CurrencyService service) {
+	public CurrencyController(final CurrencyService service, final CountryService countryService) {
 		this.currencyService = service;
+		this.countryService = countryService;
 	}
 
 	@GetMapping
@@ -48,5 +53,15 @@ public class CurrencyController {
 	@PostMapping("/search")
 	public List<Currency> search(@RequestBody Currency currency){
 		return currencyService.search(currency);
+	}
+	
+	@GetMapping("/nextCurrencies/{countryId}")
+	public List<Currency> getNextExhangeRateList(@PathVariable Long countryId){
+		
+		Country country = countryService.findOne(countryId);
+		List<Currency> currencyList = country.getCurrencies();
+		
+		return currencyList;
+		
 	}
 }

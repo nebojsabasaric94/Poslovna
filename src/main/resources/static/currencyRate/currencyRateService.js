@@ -18,7 +18,7 @@ services.service('currencyRateService', [ '$http', function($http) {
 	}
 	
 	this.next = function(id) {
-		return $http.get("/nextPlaces/" + id);
+		return $http.get("/currencyRate/nextCurrencyRate/" + id);
 	}
 	
 	this.delete = function(currencyRate){

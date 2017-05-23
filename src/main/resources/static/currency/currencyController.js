@@ -10,9 +10,23 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			findAll();
 		
 			function findAll() {
-				service.findAll().then(function(response) {
-					$scope.entities = response.data;
-				});
+
+				var nextFilter = sessionStorage.getItem("nextFilter");
+				sessionStorage.removeItem("nextFilter");
+				
+				if(nextFilter == null){
+					service.findAll().then(
+						function(response) {
+							$scope.entities = response.data;
+						});
+				} else {
+					service.next(nextFilter).then(
+						function(response){
+							$scope.entities = response.data;
+						}
+					)
+				}
+				
 			}
 			
 			$scope.idSelectedEntity = null;
@@ -114,6 +128,33 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 
 				findAll();
+			}
+			
+			$scope.back = function(){
+				var backFilter = sessionStorage.getItem("backFilter");
+				sessionStorage.removeItem("backFilter");
+				if(backFilter == null)
+					return;
+				
+				$location.path("/country");
+			
+			}
+			
+			$scope.nextLegalEntityAccount = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterCurrency", $scope.selectedEntity);
+				sessionStorage.setItem("backFilterCurrency", $scope.entities);
+				$location.path("/legalEntityAccount");
+			
+			}
+			
+			$scope.nextAnalyticsOfStatements = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterCurrency", $scope.selectedEntity);
+				sessionStorage.setItem("backFilterCurrency", $scope.entities);
+				$location.path('/analyticsOfStatements');
 			}
 }]);
 

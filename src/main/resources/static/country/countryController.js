@@ -49,11 +49,20 @@ app.controller('countryController', ['$scope','countryService','$location',
 			
 			
 
-			$scope.next = function(){
+			$scope.nextPlace = function(){
 				if(!($scope.selectedEntity))
 					return;
 				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("backFilter", $scope.entities);
 				$location.path('/place');
+			}
+			
+			$scope.nextCurrency = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("backFilter", $scope.entities);
+				$location.path('/currency');
 			}
 			
 			$scope.add = function(){

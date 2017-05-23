@@ -31,20 +31,20 @@ public class LegalEntityAccount {
 	@Column(unique = true, columnDefinition = "CHAR(18)")
 	@NotBlank
 	private String brojRacuna;
-	
+
 	private Date datumOtvraranja;
-	
+
 	private boolean vazeci;
-	
+
 	@ManyToOne
 	private Client client;
-	
+
 	@ManyToOne
 	private Bank bank;
-	
+
 	@ManyToOne
 	private Currency currency;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "legalEntityAccount", cascade = CascadeType.ALL)
 	private List<Suspension> suspensions;
@@ -52,7 +52,7 @@ public class LegalEntityAccount {
 	public LegalEntityAccount() {
 		super();
 	}
-	
+
 	public LegalEntityAccount(Long id, String brojRacuna, Date datumOtvraranja, boolean vazeci, Client client,
 			Bank bank, Currency currency, List<Suspension> suspensions) {
 		super();
@@ -65,7 +65,6 @@ public class LegalEntityAccount {
 		this.currency = currency;
 		this.suspensions = suspensions;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -130,6 +129,5 @@ public class LegalEntityAccount {
 	public void setSuspensions(List<Suspension> suspensions) {
 		this.suspensions = suspensions;
 	}
-	
-	
+
 }

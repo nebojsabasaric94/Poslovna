@@ -1,9 +1,9 @@
  <div id = "options">
 	
-	 <div class="toolbar">
+	 <div class="toolbar btn-group" id = "container">
 	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
 	<button class = "refresh" ui-sref = "place" ng-click = "refresh()"></button>
-	<button class = "back" ui-sref = "country"></button>
+	<button class = "back" ng-click = "back()"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
 	<button class = "first" ng-click = "firstone()">
@@ -12,14 +12,16 @@
 	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
 	<button class = "last"  ng-click = "lastone()"></button>
 	&nbsp&nbsp
-<!-- <<<<<<< HEAD
-	<button class = "add"></button>
-	<button class = "delete" ng-click = "delete()"></button>
-======= -->
 	<button ui-sref="place.add" ng-click = "deselect()" class = "add"></button>
 	<button class = "delete" ng-click = "delete()"></button>
 	&nbsp&nbsp
-	<button class = "nextForm"></button>
+	<button class="nextForm" data-toggle="dropdown"></button>
+			<ul class="dropdown-menu">
+				<li><button class="btn btn-primary" ng-click="nextClient()">Client</button></li>
+				<li><button class="btn btn-primary" ng-click="nextAnalyticsOfStatements()">Analytics of statements</button></li>
+				
+			</ul>
+
 </div>	
 	
 <div>

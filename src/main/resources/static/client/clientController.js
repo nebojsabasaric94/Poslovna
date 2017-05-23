@@ -9,13 +9,23 @@ app.controller('clientController',['$scope','clientService','$location',
 	
 	findAll();
 	function findAll() {
-		service.findAll()
-		.then(function(response) {
-			$scope.entities = response.data;
-		},
-		function(response){
-			
-		});
+
+		var nextFilter = sessionStorage.getItem("nextFilter");
+		sessionStorage.removeItem("nextFilter");
+		
+		if(nextFilter == null){
+			service.findAll().then(
+				function(response) {
+					$scope.entities = response.data;
+				});
+		} else {
+			service.next(nextFilter).then(
+				function(response){
+					$scope.entities = response.data;
+				}
+			)
+		}
+		
 	}	
 	$scope.setSelected = function(selectedEntity){
 		$scope.selectedEntity = selectedEntity;
@@ -85,5 +95,17 @@ app.controller('clientController',['$scope','clientService','$location',
 		$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
 				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 		findAll();
-	}	
+	}
+	
+	$scope.back = function(){
+		var backFilter = sessionStorage.getItem("backFilterPlace");
+		//sessionStorage.removeItem("backFilter");
+		if(backFilter == null)
+			return;
+		
+		$location.path("/place");
+	
+	
+	}
+	
 }])

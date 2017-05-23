@@ -1,16 +1,24 @@
 package bank.currency;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import bank.analyticsOfStatements.AnalyticsOfStatements;
 import bank.country.Country;
+import bank.legalEntityAccount.LegalEntityAccount;
 
 /**
  * valuta
@@ -34,22 +42,17 @@ public class Currency {
 	@Column
 	@NotNull
 	private boolean domicilna; // sta ovde treba da pise?
-	
+
 	@ManyToOne
 	private Country country;
-	/*@ManyToOne(cascade = CascadeType.ALL)
-	Country countryCurrency;*/	//drzavna valuta
-	
 
-	/*@OneToMany
-	@JoinTable(name = "base_currency", joinColumns = @JoinColumn(name = "currency_id"), inverseJoinColumns = @JoinColumn(name = "serial_number"))
-	private List<CurrencyRate> baseCurrencyRates; // osnovna valuta
-	@OneToMany(mappedBy = "baseCurrencyRates")
-	private List<CurrencyRate> baseCurrencyRates;
+	@JsonIgnore
+	@OneToMany(mappedBy = "currency", cascade = CascadeType.ALL)
+	private List<LegalEntityAccount> legalEntityAccount;
 
-	@OneToMany
-	@JoinTable(name = "by_currency", joinColumns = @JoinColumn(name = "currency_id"), inverseJoinColumns = @JoinColumn(name = "serial_number"))
-	private List<CurrencyRate> byCurrencyRates;*/
+	@JsonIgnore
+	@OneToMany(mappedBy = "paymentCurrency", cascade = CascadeType.ALL)
+	private List<AnalyticsOfStatements> analyticsOfStatements;
 
 	public Long getId() {
 		return id;
@@ -91,17 +94,20 @@ public class Currency {
 		this.country = country;
 	}
 
-	
-
-	/*public Country getCountryCurrency() {
-		return countryCurrency;
+	public List<LegalEntityAccount> getLegalEntityAccount() {
+		return legalEntityAccount;
 	}
 
-	public void setCountryCurrency(Country countryCurrency) {
-		this.countryCurrency = countryCurrency;
-	}*/
-	
-	
+	public void setLegalEntityAccount(List<LegalEntityAccount> legalEntityAccount) {
+		this.legalEntityAccount = legalEntityAccount;
+	}
 
+	public List<AnalyticsOfStatements> getAnalyticsOfStatements() {
+		return analyticsOfStatements;
+	}
+
+	public void setAnalyticsOfStatements(List<AnalyticsOfStatements> analyticsOfStatements) {
+		this.analyticsOfStatements = analyticsOfStatements;
+	}
 
 }

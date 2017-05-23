@@ -10,8 +10,12 @@ services.service('analyticsOfStatementsService', [ '$http', function($http) {
 		return $http.post("/analyticsOfStatements",analyticsOfStatements);
 	}
 	
-	this.next = function(id) {
-		return $http.get("/nextPlaces/" + id);
+	this.nextPlace = function(id) {
+		return $http.get("/analyticsOfStatements/nextPlace/" + id);
+	}
+	
+	this.nextCurrency = function(id){
+		return $http.get("/analyticsOfStatements/nextCurrency/" + id);
 	}
 	
 	this.delete = function(analyticsOfStatements){

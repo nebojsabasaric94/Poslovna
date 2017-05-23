@@ -3,15 +3,38 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 	function($scope,service,$location){
 	
 	
-	findAll();
-	function findAll() {
-		service.findAll().then(function(response) {
-			$scope.entities = response.data;
-		},
-		function(response){
+		findAll();
+		function findAll() {
+
+			var nextFilterBank = sessionStorage.getItem("nextFilterBank");
+			sessionStorage.removeItem("nextFilterBank");
+			var nextFilterCurrency = sessionStorage.getItem("nextFilterCurrency");
+			sessionStorage.removeItem("nextFilterCurrency");
 			
-		});
-	
+			if(nextFilterBank != null){
+				service.nextBank(nextFilterBank).then(
+					function(response){
+						$scope.entities = response.data;
+					}
+				)
+			
+			} else if(nextFilterCurrency != null){
+				service.nextCurrency(nextFilterCurrency).then(
+						function(response){
+							$scope.entities = response.data;
+						}
+					)
+			} else {
+				service.findAll().then(
+					function(response) {
+						$scope.entities = response.data;
+				});
+			}
+			
+		}
+		
+		
+		
 		$scope.idSelectedEntity = null;
 		
 		
@@ -46,5 +69,6 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		
 		
 		
-	}
+		
+	
 }])

@@ -10,8 +10,8 @@ services.service('bankService', [ '$http', function($http) {
 		return $http.post("/bank",bank);
 	}
 	
-	this.next = function(id) {
-		return $http.get("/nextPlaces/" + id);
+	this.nextBank = function(id) {
+		return $http.get("/nextBank/" + id);
 	}
 	
 	this.delete = function(bank){

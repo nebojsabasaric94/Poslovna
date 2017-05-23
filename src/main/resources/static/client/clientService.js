@@ -11,4 +11,9 @@ services.service('clientService',['$http',function($http){
 	this.search =  function(client){
 		return $http.post('/client/search',client);
 	}
+	
+	this.next = function(id){
+		return $http.get('/client/nextPlace/'+id);
+	}
+	
 }])

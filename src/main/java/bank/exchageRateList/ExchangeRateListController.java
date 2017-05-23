@@ -55,12 +55,14 @@ public class ExchangeRateListController {
 	public List<ExchangeRateList> getNextExhangeRateList(@PathVariable Long bankId){
 		
 		Bank bank = bankService.findOne(bankId);
-		List<ExchangeRateList> exchangeRateLists = new ArrayList<ExchangeRateList>();
+		/*List<ExchangeRateList> exchangeRateLists = new ArrayList<ExchangeRateList>();
 		for(int i = 0 ; i < exchangeRateListService.findAll().size(); i++){
 			if(exchangeRateListService.findAll().get(i).getCommercialBankRate().getId() == bank.getId()){
 				exchangeRateLists.add(exchangeRateListService.findAll().get(i));
 			}
-		}
+		}*/
+		List<ExchangeRateList> exchangeRateLists = bank.getExchangeRateLists();
+		
 		
 		return exchangeRateLists;
 		

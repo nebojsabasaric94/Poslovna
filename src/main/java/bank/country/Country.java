@@ -1,12 +1,21 @@
 package bank.country;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import bank.currency.Currency;
+import bank.place.Place;
 
 @Entity
 public class Country {
@@ -20,14 +29,17 @@ public class Country {
 	@NotBlank(message = "Country code is mandatory")
 	private String country_code;
 
-
 	@Column(length = 40, unique = true)
 	@NotBlank(message = "Name is mandatory")
 	private String name;
-	
-	/*@OneToMany
-	@JoinTable(name = "national_currency", joinColumns = @JoinColumn(name = "country_id"), inverseJoinColumns = @JoinColumn(name = "currency_id"))
-	private List<Currency> currencies;*/
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+	private List<Place> places;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+	private List<Currency> currencies;
 
 	public Long getId() {
 		return id;
@@ -53,18 +65,20 @@ public class Country {
 		this.name = name;
 	}
 
+	public List<Place> getPlaces() {
+		return places;
+	}
 
-	/*public List<Currency> getCurrencies() {
-=======
-/*	public List<Currency> getCurrencies() {
->>>>>>> ea5b7d46d8e980e667c5a9dab7c06df9f7177dea
+	public void setPlaces(List<Place> places) {
+		this.places = places;
+	}
+
+	public List<Currency> getCurrencies() {
 		return currencies;
 	}
 
 	public void setCurrencies(List<Currency> currencies) {
 		this.currencies = currencies;
-	}*/
-	
-	
+	}
 
 }

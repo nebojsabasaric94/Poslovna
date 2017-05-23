@@ -13,17 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bank.exchageRateList.ExchangeRateList;
+import bank.exchageRateList.ExchangeRateListService;
+
 @RestController
 @RequestMapping("/currencyRate")
 public class CurrencyRateController {
 
 	private final CurrencyRateService currencyRateService;
+	private final ExchangeRateListService exchangeRateListService;
 	
-	
-
 	@Autowired
-	public CurrencyRateController(final CurrencyRateService service) {
+	public CurrencyRateController(final CurrencyRateService service, final ExchangeRateListService exchangeRateListService) {
 		this.currencyRateService = service;
+		this.exchangeRateListService = exchangeRateListService;
 	}
 
 	@GetMapping
@@ -47,5 +50,15 @@ public class CurrencyRateController {
 	@PostMapping("/search")
 	public List<CurrencyRate> search(@RequestBody CurrencyRate currencyRate){
 		return currencyRateService.search(currencyRate);
+	}
+	
+	@GetMapping("/nextCurrencyRate/{exchangeRateListId}")
+	public List<CurrencyRate> getNextExhangeRateList(@PathVariable Long exchangeRateListId){
+		
+		ExchangeRateList exchangeRateList = exchangeRateListService.findOne(exchangeRateListId);
+		List<CurrencyRate> currencyList = exchangeRateList.getCurrencyRates();
+		
+		return currencyList;
+		
 	}
 }
