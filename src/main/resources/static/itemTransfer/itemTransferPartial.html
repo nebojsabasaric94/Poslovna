@@ -8,8 +8,8 @@
 	&nbsp&nbsp
 	<button class = "first" ng-click = "firstone()">
 	</button>
-	<button class = "previous" ng-click = "previous(entity.id)"></button>
-	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
+	<button class = "previous" ng-click = "previous(entity)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity)"></button>
 	<button class = "last"  ng-click = "lastone()"></button>
 	&nbsp&nbsp
 	<button ui-sref="itemTransfer.add" class = "add"></button>
@@ -22,7 +22,7 @@
 		<tr>
 			<th>id</th>
 		</tr>
-		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.id}}</td>
 			
 		</tr>

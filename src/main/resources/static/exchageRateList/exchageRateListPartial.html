@@ -10,8 +10,8 @@
 		<button class="help"></button>
 		&nbsp&nbsp
 		<button class="first" ng-click="firstone()"></button>
-		<button class="previous" ng-click="previous(entity.id)"></button>
-		<button class="next" ng-click="nextNavigation(entity.id)"></button>
+		<button class="previous" ng-click="previous(entity)"></button>
+		<button class="next" ng-click="nextNavigation(entity)"></button>
 		<button class="last" ng-click="lastone()"></button>
 		&nbsp&nbsp
 		<button ui-sref="exchageRateList.add" class="add" ng-click="deselect()"></button>
@@ -33,8 +33,8 @@
 				<th>Bank</th>
 			</tr>
 			<tr ng-repeat="entity in entities| orderBy:'id'"
-				ng-click="setSelected(entity.id)"
-				ng-class="{selected: entity.id === selectedEntity}">
+				ng-click="setSelected(entity)"
+				ng-class="{selected: entity === selectedEntity}">
 				<td>{{entity.date}}</td>
 				<td>{{entity.numberOfExchangeRateList}}</td>
 				<td>{{entity.appliedBy}}</td>
