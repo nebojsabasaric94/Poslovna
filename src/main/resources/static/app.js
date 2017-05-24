@@ -113,7 +113,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'interbankTransfer/interbankTransferPartial.html',
 		controller : 'interbankTransferController'
 	})
-	
+	.state('interbankTransfer.search',{
+		url : '/search',
+		templateUrl : 'interbankTransfer/searchInterbankTransfer.html'
+	})	
 	.state('itemTransfer',{
 		url : '/itemTransfer',
 		templateUrl : 'itemTransfer/itemTransferPartial.html',

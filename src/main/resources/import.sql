@@ -88,3 +88,9 @@ insert into daily_account_balance (new_state, previous_state, traffic_date, traf
 insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('7800','1850','2017-03-01','8950','4000','4');
 
 insert into analytics_of_statements (account_creditor, creditor_recipient, currency_date, date_of_receipt, debtor_account, debtor_originator, emergency, model_approval, model_assigments, purpose_of_payment, reference_number_assigments, reference_number_creditor, status, sum, daily_account_balance_id, payment_currency_currency_id, payment_type_id, place_id) values ('103121231231231111','JANKO JANKOVIC','2017-02-27','2017-02-27','103187878745784542','SCEPAN SCEKIC',0,'97','85','Racun za isporucenu robu','45123547','15478412','1','16250.32','1','1','2','1');
+
+
+
+insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-03-10','1225.8','MT105','1','2');
+insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-04-30','14514.2','MT105','2','1');
+insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-05-21','8874.1','MT102','1','2');

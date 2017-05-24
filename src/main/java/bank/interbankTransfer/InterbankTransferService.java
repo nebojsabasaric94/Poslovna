@@ -3,11 +3,12 @@ package bank.interbankTransfer;
 import java.util.List;
 
 public interface InterbankTransferService {
-	List<InterbankTransfer> findAll();
+	public List<InterbankTransfer> findAll();
 
-	InterbankTransfer save(InterbankTransfer interbankTransfer);
+	public InterbankTransfer save(InterbankTransfer interbankTransfer);
 
-	InterbankTransfer findOne(Long id);
+	public InterbankTransfer findOne(Long id);
 	
 	public void delete(Long id);
+	public List<InterbankTransfer> search(InterbankTransfer interbankTransfer);
 }
