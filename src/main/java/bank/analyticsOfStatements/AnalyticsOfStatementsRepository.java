@@ -13,7 +13,7 @@ public interface AnalyticsOfStatementsRepository extends PagingAndSortingReposit
 			+ " and a.dateOfReceipt like CONCAT(:dateOfReceipt,'%') and a.currencyDate like CONCAT(:currencyDate,'%') and a.debtorAccount like CONCAT(:debtorAccount,'%') "
 			+ " and CAST(a.modelAssigments AS string) like :modelAssigments and a.referenceNumberAssigments like CONCAT(:referenceNumberAssigments,'%') and a.accountCreditor like CONCAT(:accountCreditor,'%')"
 			+ " and CAST(a.modelApproval AS string) like :modelApproval and a.referenceNumberCreditor like CONCAT(:referenceNumberCreditor,'%') and a.emergency = :emergency "
-			+ " and CAST(a.sum AS string) like CONCAT(:sum,'%') and (CAST(a.typeOfMistake AS string) like :typeOfMistake or(a.typeOfMistake is null and :typeOfMistake = '%'))  and a.status like CONCAT(:status,'%') "
+			+ " and CAST(a.sum AS string) like :sum and (CAST(a.typeOfMistake AS string) like :typeOfMistake or(a.typeOfMistake is null and :typeOfMistake = '%'))  and a.status like CONCAT(:status,'%') "
 			+ " and CAST(a.dailyAccountBalance.id AS string) like :dailyAccountBalance and CAST(a.paymentType.id AS string) like :paymentType and CAST(a.place.id AS string) like :place"
 			+ " and CAST(a.paymentCurrency.id AS string) like :paymentCurrency")
 	public List<AnalyticsOfStatements> search(@Param("debtor_originator")String debtor_originator,@Param("purposeOfPayment")String purposeOfPayment,@Param("creditor_recipient")String creditor_recipient,

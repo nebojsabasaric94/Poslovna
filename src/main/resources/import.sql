@@ -22,7 +22,7 @@ insert into currency(country_country_id,official_code,name,domicilna) values ('5
 insert into currency(country_country_id,official_code,name,domicilna) values ('6','usd','dollar',0);
 insert into currency(country_country_id,official_code,name,domicilna) values ('2','kkk','marka',1);
 
-insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',1);
+insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',111,'2017-04-04',1);
 insert into exchange_rate_list(date, number_of_exchange_rate_list,applied_by,commercial_bank_rate_id) values ('2017-05-03',123,'2017-04-04',2);
 
 
@@ -39,9 +39,9 @@ insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,comm
 insert into exchange_rate_list(date,number_of_exchange_rate_list,applied_by,commercial_bank_rate_id)values('2017-05-21','10','2017-05-21','2');
 
 
-insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('123','124','125','1','1','2');
-insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('61','62','63','1','1','5');
-insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('10','11','12','2','1','3');
+insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('123.0','124.0','125.0','1','1','2');
+insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('61.1','62.12','63.55','1','1','5');
+insert into currency_rate(buying_exchange_rate,middle_exchange_rate,selling_exchange_rate,base_currency_currency_id,currency_in_list_id,according_to_currency_currency_id) values('10.05','11.50','12.90','2','1','3');
 
 insert into business_activity_code(name,code) values('Delatnosti restorana i pokretnih ugostiteljskih objekta','561');
 insert into business_activity_code(name,code) values('Ketering i ostale usluge pripremanja i posluživanja hrane','562');

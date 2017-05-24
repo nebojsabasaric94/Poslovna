@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bank.country.Country;
 import bank.country.CountryService;
-import bank.exchageRateList.ExchangeRateList;
 
 @RestController
 @RequestMapping("/currency")

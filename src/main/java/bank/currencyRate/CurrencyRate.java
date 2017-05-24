@@ -74,7 +74,7 @@ public class CurrencyRate {
 		return buyingExchangeRate;
 	}
 
-	public void setBuyingExchangeRate(float buyingExchangeRate) {
+	public void setBuyingExchangeRate(Float buyingExchangeRate) {
 		this.buyingExchangeRate = buyingExchangeRate;
 	}
 
@@ -82,7 +82,7 @@ public class CurrencyRate {
 		return middleExchangeRate;
 	}
 
-	public void setMiddleExchangeRate(float middleExchangeRate) {
+	public void setMiddleExchangeRate(Float middleExchangeRate) {
 		this.middleExchangeRate = middleExchangeRate;
 	}
 
@@ -90,7 +90,7 @@ public class CurrencyRate {
 		return sellingExchangeRate;
 	}
 
-	public void setSellingExchangeRate(float sellingExchangeRate) {
+	public void setSellingExchangeRate(Float sellingExchangeRate) {
 		this.sellingExchangeRate = sellingExchangeRate;
 	}
 
@@ -117,9 +117,4 @@ public class CurrencyRate {
 	public void setAccordingToCurrency(Currency accordingToCurrency) {
 		this.accordingToCurrency = accordingToCurrency;
 	}
-	
-	
-	
-	
-	
 }
