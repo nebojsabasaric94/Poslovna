@@ -52,7 +52,7 @@ public class AnalyticsOfStatementsServiceImpl implements AnalyticsOfStatementsSe
 		if(analyticsOfStatements.getModelApproval() != null)
 			modelApproval = ""+ analyticsOfStatements.getModelApproval();
 		
-		String sum = "";
+		String sum = "%";
 		if(analyticsOfStatements.getSum() != null){
 			sum = ""+analyticsOfStatements.getSum();
 			String []splitted = sum.split("\\.");

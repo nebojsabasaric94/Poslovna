@@ -55,22 +55,22 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
 		
 		
 		
-		String buyingExchangeRate =  "";
-		if(currencyRate.getBuyingExchangeRate() > 0){
+		String buyingExchangeRate =  "%";
+		if(currencyRate.getBuyingExchangeRate() != null ){
 			buyingExchangeRate = ""+currencyRate.getBuyingExchangeRate();
 			String []splitted = buyingExchangeRate.split("\\.");
 			if(splitted[1].equals("0"))
 				buyingExchangeRate = splitted[0];
 		}
-		String sellingExchangeRate =  "";
-		if(currencyRate.getSellingExchangeRate() > 0){
+		String sellingExchangeRate =  "%";
+		if(currencyRate.getSellingExchangeRate() != null ){
 			sellingExchangeRate = ""+currencyRate.getSellingExchangeRate();
-			String[] splitted = sellingExchangeRate.split("\\.");
+			String []splitted = sellingExchangeRate.split("\\.");
 			if(splitted[1].equals("0"))
 				sellingExchangeRate = splitted[0];
 		}
-		String middleExchangeRate =  "";
-		if(currencyRate.getMiddleExchangeRate() > 0){
+		String middleExchangeRate =  "%";
+		if(currencyRate.getMiddleExchangeRate() != null){
 			middleExchangeRate = ""+currencyRate.getMiddleExchangeRate();
 			String []splitted = middleExchangeRate.split("\\.");
 			if(splitted[1].equals("0"))
