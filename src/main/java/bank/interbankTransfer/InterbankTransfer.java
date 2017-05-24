@@ -42,7 +42,7 @@ public class InterbankTransfer {
 
 	@Column
 	//@NotBlank
-	private float sum;
+	private Float sum;
 	
 	@ManyToOne
 	private Bank senderBank;
@@ -84,11 +84,11 @@ public class InterbankTransfer {
 		this.date = date;
 	}
 
-	public float getSum() {
+	public Float getSum() {
 		return sum;
 	}
 
-	public void setSum(float sum) {
+	public void setSum(Float sum) {
 		this.sum = sum;
 	}
 
