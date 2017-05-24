@@ -107,6 +107,15 @@ app.controller('paymentTypeController', ['$scope','paymentTypeService','$locatio
 
 				findAll();
 			}			
+			
+			$scope.next = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterPaymentType", $scope.selectedEntity.id);
+				sessionStorage.setItem("backFilterPaymentType", $scope.entities);
+				$location.path('/analyticsOfStatements');
+			
+			}
 }]);
 
 

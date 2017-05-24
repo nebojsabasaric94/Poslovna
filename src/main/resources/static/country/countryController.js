@@ -66,7 +66,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 			$scope.nextPlace = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilter", $scope.entities);
 				$location.path('/place');
 			}
@@ -74,7 +74,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 			$scope.nextCurrency = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilter", $scope.entities);
 				$location.path('/currency');
 			}

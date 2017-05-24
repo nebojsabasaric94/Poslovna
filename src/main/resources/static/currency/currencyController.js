@@ -172,6 +172,24 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 				sessionStorage.setItem("backFilterCurrency", $scope.entities);
 				$location.path('/analyticsOfStatements');
 			}
+			
+			$scope.nextAccordingToCurrency = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextAccordingToCurrency", $scope.selectedEntity.id);
+				sessionStorage.setItem("backAccordingToCurrency", $scope.entities);
+				$location.path('/currencyRate');
+				
+			}
+			
+			$scope.nextBaseCurrency = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterBaseCurrency", $scope.selectedEntity.id);
+				sessionStorage.setItem("backFilterBaseCurrency", $scope.entities);
+				$location.path('/currencyRate');
+				
+			}
 }]);
 
 

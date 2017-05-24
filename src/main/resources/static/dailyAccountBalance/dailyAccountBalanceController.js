@@ -7,15 +7,38 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 	
 	
 			findAll();
-		
+			
 			function findAll() {
+
+				var nextFilter = sessionStorage.getItem("nextFilterLegalEntityAccount");
+				sessionStorage.removeItem("nextFilterLegalEntityAccount");
+				
+				if(nextFilter == null){
+					service.findAll().then(
+						function(response) {
+							for(i = 0; i < response.data.length;i++){
+								response.data[i].trafficDate = transformDate(new Date(response.data[i].trafficDate));
+							}
+							$scope.entities = response.data;
+						});
+				} else {
+					service.next(nextFilter).then(
+						function(response){
+							$scope.entities = response.data;
+						}
+					)
+				}
+				
+			}
+		
+			/*function findAll() {
 				service.findAll().then(function(response) {
 					for(i = 0; i < response.data.length;i++){
 						response.data[i].trafficDate = transformDate(new Date(response.data[i].trafficDate));
 					}
 					$scope.entities = response.data;
 				});
-			}
+			}*/
 			
 
 			$scope.idSelectedEntity = null;
@@ -168,6 +191,24 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 
 				findAll();
 			}			
+			
+			$scope.next = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterDaily", $scope.selectedEntity.id);
+				sessionStorage.setItem("backFilterDaily", $scope.entities);
+				$location.path('/analyticsOfStatements');
+			
+			}
+			
+			$scope.back = function(){
+				if(sessionStorage.getItem("backFilterLegalEntityAccount") != null){
+					sessionStorage.removeItem("backFilterLegalEntityAccount");
+					$location.path("/legalEntityAccount");
+				} else {
+					return;
+				}
+			}
 }]);
 
 

@@ -18,6 +18,12 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 				var nextFilterCurrency = sessionStorage.getItem("nextFilterCurrency");
 				sessionStorage.removeItem("nextFilterCurrency");
 				
+				var nextFilterDaily = sessionStorage.getItem("nextFilterDaily");
+				sessionStorage.removeItem("nextFilterDaily");
+				
+				var nextFilterPaymentType = sessionStorage.getItem("nextFilterPaymentType");
+				sessionStorage.removeItem("nextFilterPaymentType");
+				
 				if(nextFilterPlace != null){
 					service.nextPlace(nextFilterPlace).then(
 						function(response){
@@ -30,7 +36,22 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 								$scope.entities = response.data;
 							}
 						)
-				} else {
+				} else if(nextFilterDaily != null){
+					service.nextDaily(nextFilterDaily).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)
+				} else if(nextFilterPaymentType != null){
+					service.nextPaymentType(nextFilterPaymentType).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)
+				}
+				
+				else {
+				
 					service.findAll().then(
 						function(response) {
 							$scope.entities = response.data;
@@ -228,6 +249,12 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 				} else if(sessionStorage.getItem("backFilterCurrency") != null){
 					sessionStorage.removeItem("backFilterCurrency");
 					$location.path("/currency");
+				} else if(sessionStorage.getItem("backFilterDaily") != null){
+					sessionStorage.removeItem("backFilterDaily");
+					$location.path("/dailyAccountBalance");
+				} else if(sessionStorage.getItem("backFilterPaymentType") != null){
+					sessionStorage.removeItem("backFilterPaymentType");
+					$location.path("/paymentType");
 				} else {
 					return;
 				}

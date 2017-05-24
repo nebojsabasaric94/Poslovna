@@ -270,6 +270,16 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
 		findAll();
 	}
+	
+	$scope.next = function(){
+		if(!($scope.selectedEntity))
+			return;
+		sessionStorage.setItem("nextFilterLegalEntityAccount", $scope.selectedEntity.id);
+		sessionStorage.setItem("backFilterLegalEntityAccount", $scope.entities);
+		$location.path("/dailyAccountBalance");
+	
+		
+	}
 
 
 }])

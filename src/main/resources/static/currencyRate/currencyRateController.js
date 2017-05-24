@@ -16,19 +16,37 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 
 				var nextFilter = sessionStorage.getItem("nextFilter");
 				sessionStorage.removeItem("nextFilter");
+				var nextFilterBaseCurrency = sessionStorage.getItem("nextFilterBaseCurrency");
+				sessionStorage.removeItem("nextFilterBaseCurrency");
+				var nextFilterAccordingToCurrency = sessionStorage.getItem("nextAccordingToCurrency");
+				sessionStorage.removeItem("nextAccordingToCurrency");
 				
-				if(nextFilter == null){
-					service.findAll().then(
-						function(response) {
-							$scope.entities = response.data;
-						});
-				} else {
+				if(nextFilterBaseCurrency != null){
+					service.nextBaseCurrency(nextFilterBaseCurrency).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)					
+				} else if (nextFilterAccordingToCurrency != null){
+					service.nextAccordingToCurrency(nextFilterAccordingToCurrency).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)										
+				} else if(nextFilter != null){
 					service.next(nextFilter).then(
-						function(response){
-							$scope.entities = response.data;
-						}
-					)
+							function(response){
+								$scope.entities = response.data;
+							}
+						)
+				} else {
+					service.findAll().then(
+							function(response) {
+								$scope.entities = response.data;
+							});
+					
 				}
+				
 				
 			}
 			
@@ -190,6 +208,21 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 				$scope.searchEntity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
 						baseCurrency:null,currencyInList:{},accordingToCurrency:null};
 				findAll();
+			}
+			
+			$scope.back = function(){
+				if(sessionStorage.getItem("backAccordingToCurrency") != null){
+					sessionStorage.removeItem("backAccordingToCurrency");
+					$location.path("/currency");
+				} else if(sessionStorage.getItem("backFilterBaseCurrency") != null){
+					sessionStorage.removeItem("backFilterBaseCurrency");
+					$location.path("/currency");
+				} else if (sessionStorage.getItem("backFilter") != null){
+					sessionStorage.removeItem("backFilter");
+					$location.path("/exchageRateList");
+				} else {
+					return;
+				}
 			}
 }]);
 

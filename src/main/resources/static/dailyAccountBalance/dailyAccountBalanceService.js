@@ -11,7 +11,7 @@ services.service('dailyAccountBalanceService', [ '$http', function($http) {
 	}
 	
 	this.next = function(id) {
-		return $http.get("/nextPlaces/" + id);
+		return $http.get("/dailyAccountBalance/nextLegalEntityAccount/" + id);
 	}
 	
 	this.delete = function(dailyAccountBalance){
@@ -27,4 +27,5 @@ services.service('dailyAccountBalanceService', [ '$http', function($http) {
 	this.checkIfLegalEntity = function(id){
 		return $http.get('/legalEntity/'+id+"/");
 	}
+	
 }]);

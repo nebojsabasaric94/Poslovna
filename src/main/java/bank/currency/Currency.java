@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import bank.analyticsOfStatements.AnalyticsOfStatements;
 import bank.country.Country;
+import bank.currencyRate.CurrencyRate;
 import bank.legalEntityAccount.LegalEntityAccount;
 
 /**
@@ -53,7 +54,15 @@ public class Currency {
 	@JsonIgnore
 	@OneToMany(mappedBy = "paymentCurrency", cascade = CascadeType.ALL)
 	private List<AnalyticsOfStatements> analyticsOfStatements;
-
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "baseCurrency", cascade = CascadeType.ALL)
+	private List<CurrencyRate> baseCurrencyRate;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "accordingToCurrency", cascade = CascadeType.ALL)
+	private List<CurrencyRate> accordingToCurrencyRate;
+	
 	public Long getId() {
 		return id;
 	}
@@ -109,5 +118,23 @@ public class Currency {
 	public void setAnalyticsOfStatements(List<AnalyticsOfStatements> analyticsOfStatements) {
 		this.analyticsOfStatements = analyticsOfStatements;
 	}
+
+	public List<CurrencyRate> getBaseCurrencyRate() {
+		return baseCurrencyRate;
+	}
+
+	public void setBaseCurrencyRate(List<CurrencyRate> baseCurrencyRate) {
+		this.baseCurrencyRate = baseCurrencyRate;
+	}
+
+	public List<CurrencyRate> getAccordingToCurrencyRate() {
+		return accordingToCurrencyRate;
+	}
+
+	public void setAccordingToCurrencyRate(List<CurrencyRate> accordingToCurrencyRate) {
+		this.accordingToCurrencyRate = accordingToCurrencyRate;
+	}
+	
+	
 
 }

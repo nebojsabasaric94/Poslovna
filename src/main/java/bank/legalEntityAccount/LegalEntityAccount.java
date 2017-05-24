@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import bank.bank.Bank;
 import bank.client.Client;
 import bank.currency.Currency;
+import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.suspension.Suspension;
 
 @Entity
@@ -49,6 +50,10 @@ public class LegalEntityAccount {
 	@JsonIgnore
 	@OneToMany(mappedBy = "legalEntityAccount", cascade = CascadeType.ALL)
 	private List<Suspension> suspensions;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "legalEntityAccount", cascade = CascadeType.ALL)
+	private List<DailyAccountBalance> dailyAccountBalances;
 
 	public LegalEntityAccount() {
 		super();
@@ -131,5 +136,22 @@ public class LegalEntityAccount {
 	public void setSuspensions(List<Suspension> suspensions) {
 		this.suspensions = suspensions;
 	}
+
+
+	public List<DailyAccountBalance> getDailyAccountBalances() {
+		return dailyAccountBalances;
+	}
+
+
+	public void setDailyAccountBalances(List<DailyAccountBalance> dailyAccountBalances) {
+		this.dailyAccountBalances = dailyAccountBalances;
+	}
+
+
+	public void setDatumOtvaranja(Date datumOtvaranja) {
+		this.datumOtvaranja = datumOtvaranja;
+	}
+	
+	
 
 }

@@ -177,7 +177,7 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			$scope.next = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilter", $scope.entities);
 				$location.path('/currencyRate');
 			}

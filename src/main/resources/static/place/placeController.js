@@ -156,7 +156,7 @@ app.controller('placeController', ['$scope','placeService','$location',
 			$scope.nextClient = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilterPlace", $scope.entities);
 				$location.path('/client');
 			}
@@ -164,7 +164,7 @@ app.controller('placeController', ['$scope','placeService','$location',
 			$scope.nextAnalyticsOfStatements = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilterPlace", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilterPlace", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilterPlace", $scope.entities);
 				$location.path('/analyticsOfStatements');
 			}
