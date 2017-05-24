@@ -1,5 +1,6 @@
 package bank.interbankTransfer;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -36,5 +37,30 @@ public class InterbankTransferServiceImpl implements InterbankTransferService {
 	@Override
 	public void delete(Long id) {
 		repository.delete(id);
+	}
+
+	@Override
+	public List<InterbankTransfer> search(InterbankTransfer interbankTransfer) {
+		
+		String date = "";
+		if(interbankTransfer.getDate() != null)
+			date = new Date(interbankTransfer.getDate().getTime()).toString();
+		
+		String sum = "";
+		if(interbankTransfer.getSum() != null){
+			sum = ""+interbankTransfer.getSum();
+			String []splitted = sum.split("\\.");
+			if(splitted[1].equals("0"))
+				sum = splitted[0];
+		}
+		
+		String bank = "%";
+		if(interbankTransfer.getBank().getId() != null)
+			bank = "" + interbankTransfer.getBank().getId();
+		
+		String senderBank = "%";
+		if(interbankTransfer.getSenderBank().getId() != null)
+			senderBank = ""+interbankTransfer.getSenderBank().getId();
+		return repository.search(interbankTransfer.getTypeOfMessage(), date, sum, bank, senderBank);
 	}
 }

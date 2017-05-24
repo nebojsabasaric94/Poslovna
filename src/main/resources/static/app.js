@@ -32,7 +32,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'analyticsOfStatements/analyticsOfStatementsPartial.html',
 		controller : 'analyticsOfStatementsController'
 	})
-	
+	.state('analyticsOfStatements.search',{
+		url : '/search',
+		templateUrl : 'analyticsOfStatements/searchAnalyticsOfStatements.html'
+	})	
 	.state('bank',{
 		url : '/bank',
 		templateUrl : 'bank/bankPartial.html',
@@ -110,7 +113,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'interbankTransfer/interbankTransferPartial.html',
 		controller : 'interbankTransferController'
 	})
-	
+	.state('interbankTransfer.search',{
+		url : '/search',
+		templateUrl : 'interbankTransfer/searchInterbankTransfer.html'
+	})	
 	.state('itemTransfer',{
 		url : '/itemTransfer',
 		templateUrl : 'itemTransfer/itemTransferPartial.html',

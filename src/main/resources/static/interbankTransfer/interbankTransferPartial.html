@@ -1,6 +1,7 @@
  <div id = "options">
 	
 	<div class="toolbar">
+
 	<button class = "search"></button>
 	<button class = "refresh"></button>
 	<button class = "back"></button>
@@ -8,8 +9,8 @@
 	&nbsp&nbsp
 	<button class = "first" ng-click = "firstone()">
 	</button>
-	<button class = "previous" ng-click = "previous(entity.id)"></button>
-	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
+	<button class = "previous" ng-click = "previous(entity)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity)"></button>
 	<button class = "last"  ng-click = "lastone()"></button>
 	&nbsp&nbsp
 	<button ui-sref="interbankTransfer.add" class = "add"></button>
@@ -18,14 +19,14 @@
 	<button class = "nextForm"></button>
 </div>	
 <div>
-		<table class="table table-bordered">
+	<table class="table table-bordered">
 		<tr>
 			<th>idMessage</th>
 			<th>typeOfMessage</th>
 			<th>date</th>
 			<th>sum</th>
 		</tr>
-		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.idMessage}}</td>
 			<td>{{entity.typeOfMessage}}</td>
 			<td>{{entity.date}}</td>
@@ -34,6 +35,7 @@
 		</tr>
 	</table>
 </div>
+
 </div>
 
 <div>

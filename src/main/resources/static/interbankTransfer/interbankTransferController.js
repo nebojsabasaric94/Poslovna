@@ -2,16 +2,22 @@ var app = angular.module('interbankTransfer.controllers', []);
 
 app.controller('interbankTransferController', ['$scope','interbankTransferService','$location',
 		function($scope, service, $location) {
+		
+			$scope.searchEntity = {idMessage : null,typeOfMessage:"" ,date : "",sum:null,senderBank:{},bank:{}};
+
 			findAll();
 		
 			function findAll() {
 				service.findAll().then(function(response) {
+					for(i = 0; i < response.data.length;i++){
+						response.data[i].date = transformDate(new Date(response.data[i].date));
+					}
 					$scope.entities = response.data;
 				});
 			}
 			
 			$scope.idSelectedEntity = null;
-			
+			$scope.selectedEntity = null;
 			
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
@@ -19,28 +25,44 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 			
 			
 			$scope.firstone = function(){
-				$scope.setSelected(1);
+				$scope.setSelected($scope.entities[0]);
 			}
 			
 			$scope.previous = function(selectedEntity){
-				if($scope.selectedEntity != 1)
-					$scope.setSelected($scope.selectedEntity-1);
-				else
-					$scope.setSelected($scope.entities.length);
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+				if(index != 0)				
+					$scope.setSelected($scope.entities[index-1])
+				else	
+					$scope.setSelected($scope.entities[$scope.entities.length-1])
 					
 			}
 			
 			
 			$scope.nextNavigation = function(selectedEntity){
-				if($scope.selectedEntity != $scope.entities.length )
-					$scope.setSelected($scope.selectedEntity+1);
-				else
-					$scope.setSelected(1);
+				
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+					
+				if(index == $scope.entities.length-1)
+					$scope.setSelected($scope.entities[0])
+				else				
+					$scope.setSelected($scope.entities[index+1])
 			}
 			
 			$scope.lastone = function(){
-				$scope.setSelected($scope.entities.length);
+				$scope.setSelected($scope.entities[$scope.entities.length-1])
 			}
+			
+			
 			
 			
 			$scope.add = function(){
@@ -65,6 +87,72 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 					}
 				)
 			}
+			
+			function transformDate(dateObj){
+				var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
+				var day = ("0" + dateObj.getDate()).slice(-2);
+				var year = dateObj.getFullYear();
+
+				var newdate = year + "/" + month + "/" + day;
+				return newdate;
+			}			
+			$scope.search = function(){
+				service.search($scope.searchEntity)
+				.then(function(response){
+					for(i = 0; i < response.data.length;i++){
+						response.data[i].date = transformDate(new Date(response.data[i].date));
+					}
+					$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+				},
+				function(response){
+					
+				})
+			}
+			
+			$scope.showModalBankSender = function(){
+				var modal = document.getElementById('modalBankSender');
+				modal.style.display = "block";		
+			}
+			$scope.closeBankSenderModal = function(){
+				var modal = document.getElementById('modalBankSender');
+				modal.style.display  = "none";
+			}
+			$scope.showModalBank = function(){
+				var modal = document.getElementById('modalBank');
+				modal.style.display = "block";		
+			}
+			$scope.closeBankModal = function(){
+				var modal = document.getElementById('modalBank');
+				modal.style.display  = "none";
+			}
+			$scope.findAllBanks = function(){
+				service.findAllBanks()
+				.then(function(response){
+					$scope.banks = response.data;
+				},
+				function(response){
+					
+				})
+			}
+			$scope.setSelectedBankSenderSearch = function(senderBank){
+				$scope.searchEntity.senderBank = senderBank;
+			}
+			$scope.setSelectedBankSearch = function(bank){
+				$scope.searchEntity.bank = bank;
+			}			
+			$scope.deselect = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {idMessage : null,typeOfMessage:"" ,date : "",sum:null,senderBank:{},bank:{}};
+
+			}
+			$scope.refresh = function(){
+				$scope.selectedEntity = null;
+				$scope.searchEntity = {idMessage : null,typeOfMessage:"" ,date : "",sum:null,senderBank:{},bank:{}};
+
+				findAll();
+			}			
 }]);
 
 

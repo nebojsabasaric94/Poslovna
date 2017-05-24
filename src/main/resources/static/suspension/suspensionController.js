@@ -26,28 +26,43 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 			
 			
 			$scope.firstone = function(){
-				$scope.setSelected(1);
+				$scope.setSelected($scope.entities[0]);
 			}
 			
 			$scope.previous = function(selectedEntity){
-				if($scope.selectedEntity != 1)
-					$scope.setSelected($scope.selectedEntity-1);
-				else
-					$scope.setSelected($scope.entities.length);
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+				if(index != 0)				
+					$scope.setSelected($scope.entities[index-1])
+				else	
+					$scope.setSelected($scope.entities[$scope.entities.length-1])
 					
 			}
 			
 			
 			$scope.nextNavigation = function(selectedEntity){
-				if($scope.selectedEntity != $scope.entities.length )
-					$scope.setSelected($scope.selectedEntity+1);
-				else
-					$scope.setSelected(1);
+				
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+					
+				if(index == $scope.entities.length-1)
+					$scope.setSelected($scope.entities[0])
+				else				
+					$scope.setSelected($scope.entities[index+1])
 			}
 			
 			$scope.lastone = function(){
-				$scope.setSelected($scope.entities.length);
+				$scope.setSelected($scope.entities[$scope.entities.length-1])
 			}
+			
 			
 			
 			$scope.add = function(){
@@ -79,27 +94,12 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 						response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
 					}
 					$scope.accounts = response.data;
-					checkIfLegalEntity();
 				},
 				function(response){
 					
 				});
 			}
 			
-			function checkIfLegalEntity(){
-				for(i=0;i<$scope.accounts.length;i++){
-					if($scope.accounts[i].client.typeOfClient == "Pravno lice")
-					service.checkIfLegalEntity($scope.accounts[i].client.id)
-					.then(function(response){
-						if(i < $scope.accounts.length){
-							$scope.accounts[i].client = response.data;
-						}
-					},
-					function(response){
-							
-					})
-				}
-			}
 			function transformDate(dateObj){
 				var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
 				var day = ("0" + dateObj.getDate()).slice(-2);
@@ -115,7 +115,6 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 						response.data[i].date = transformDate(new Date(response.data[i].date));
 					}
 					$scope.entities = response.data; 
-					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
 				},
 				function(response){

@@ -45,6 +45,12 @@ public class AnalyticsOfStatementsController {
 		analyticsOfStatementsService.save(analyticsOfStatements);
 	}
 	
+	@PostMapping("/search")
+	public List<AnalyticsOfStatements> search(@RequestBody AnalyticsOfStatements analyticsOfStatements){
+		
+		return analyticsOfStatementsService.search(analyticsOfStatements);
+	}
+	
 	@GetMapping("/nextPlace/{placeId}")
 	public List<AnalyticsOfStatements> getNextPlace(@PathVariable Long placeId){
 		Place place = placeService.findOne(placeId);

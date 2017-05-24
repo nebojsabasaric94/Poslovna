@@ -45,5 +45,10 @@ public class InterbankTransferController {
 		return interbankTransferService.findAll();
 	}
 	
+	@PostMapping("/search")
+	public List<InterbankTransfer> search(@RequestBody InterbankTransfer interbankTransfer){
+		return interbankTransferService.search(interbankTransfer);
+	}
+	
 	
 }

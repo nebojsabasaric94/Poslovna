@@ -2,49 +2,46 @@
 	
 	
 	 <div class="toolbar">
-	<button class = "search"></button>
-	<button class = "refresh"></button>
-	<button class = "back" ng-click = "back()"></button>
-	<button class = "help"></button>
-	&nbsp&nbsp
-	<button class = "first" ng-click = "firstone()">
-	</button>
-	<button class = "previous" ng-click = "previous(entity.id)"></button>
-	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
-	<button class = "last"  ng-click = "lastone()"></button>
-	&nbsp&nbsp
-	<button ui-sref="analyticsOfStatements.add" class = "add"></button>
-	<button class = "delete"></button>
-	&nbsp&nbsp
-	<button class = "nextForm"></button>
-</div>	
+		<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
+		<button class = "refresh" ui-sref = "analyticsOfStatements" ng-click = "refresh()"></button>
+		<button class = "back"></button>
+		<button class = "help"></button>
+		&nbsp&nbsp
+		<button class = "first" ng-click = "firstone()">
+		</button>
+		<button class = "previous" ng-click = "previous(entity)"></button>
+		<button class = "next" ng-click = "nextNavigation(entity)"></button>
+		<button class = "last"  ng-click = "lastone()"></button>
+		&nbsp&nbsp
+		<button ui-sref="analyticsOfStatements.add" class = "add"></button>
+		<button class = "delete"></button>
+		&nbsp&nbsp
+		<button class = "nextForm"></button>
+	</div>	
 
 
-	<table>
 		<table class="table table-bordered">
 		<tr>
-			<th>Item number</th>
-			<th>debtor_originator</th>
-			<th>purposeOfPayment</th>
-			<th>creditor_recipient</th>
-			<th>dateOfReceipt</th>
-			<th>currencyDate</th>
-			<th>debtorAccount</th>
-			<th>modelAssigments</th>
-			<th>referenceNumberAssigments</th>
-			<th>accountCreditor</th>
+			<th>Debtor originator</th>
+			<th>Purpose of payment</th>
+			<th>Creditor recipient</th>
+			<th>Date of receipt</th>
+			<th>Currency date</th>
+			<th>Debtor account</th>
+			<th>Model assignments</th>
+			<th>Reference number assignments</th>
+			<th>Account creditor</th>
 			
-			<th>modelApproval</th>
-			<th>referenceNumberCreditor</th>
-			<th>emergency</th>
-			<th>sum</th>
+			<th>Model approval</th>
+			<th>Reference number creditor</th>
+			<th>Emergency</th>
+			<th>Sum</th>
 			
-			<th>typeOfMistake</th>
-			<th>status</th>
+			<th>type of mistake</th>
+			<th>Status</th>
 			
 		</tr>
-		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
-			<td>{{entity.itemNumber}}</td>
+		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.debtor_originator}}</td>
 			<td>{{entity.purposeOfPayment}}</td>
 			<td>{{entity.creditor_recipient}}</td>
