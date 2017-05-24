@@ -20,4 +20,9 @@ services.service('legalEntityService',['$http',function($http){
 	this.delete = function(id){
 		return $http.delete("/legalEntity/"+id+"/")
 	}
+	
+	this.nextFilterBussinesActivity = function(id){
+		return $http.get("/legalEntity/nextFilterBussinesActivity/" + id);
+	}
+	
 }])

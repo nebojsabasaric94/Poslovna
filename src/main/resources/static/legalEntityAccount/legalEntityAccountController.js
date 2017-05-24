@@ -5,27 +5,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
 		$scope.idSelectedEntity = null;
 		
-		/*findAll();
-		function findAll() {
-			service.findAll().then(function(response) {
-				for(i = 0; i < response.data.length;i++){
-					response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
-				}
-				$scope.entities = response.data;
-			},
-			function(response){
-				
-			});
-		}*/
-		
-		/*function checkIfLegalEntity(){
-			for(i=0;i<$scope.entities.length;i++){
-				if($scope.accounts[i].client.typeOfClient == "Pravno lice")
-					service.checkIfLegalEntity($scope.entities[i].client.id)
-					.then(function(response){
-						if(i < $scope.entities.length){
-							$scope.entities[i].client = response.data;
-							}*/
+
 			findAll();
 			function findAll() {
 	
@@ -33,6 +13,12 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 				sessionStorage.removeItem("nextFilterBank");
 				var nextFilterCurrency = sessionStorage.getItem("nextFilterCurrency");
 				sessionStorage.removeItem("nextFilterCurrency");
+				
+				var nextFilterClient = sessionStorage.getItem("nextFilterClient");
+				sessionStorage.removeItem("nextFilterClient");
+				
+				var nextFilterLegalEntity = sessionStorage.getItem("nextFilterLegalEntity");
+				sessionStorage.removeItem("nextFilterLegalEntity");
 				
 				if(nextFilterBank != null){
 					service.nextBank(nextFilterBank).then(
@@ -43,6 +29,18 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 				
 				} else if(nextFilterCurrency != null){
 					service.nextCurrency(nextFilterCurrency).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)
+				} else if (nextFilterClient != null){
+					service.nextFilterClient(nextFilterClient).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)
+				} else if( nextFilterLegalEntity != null) {
+					service.nextLegalEntity(nextFilterLegalEntity).then(
 							function(response){
 								$scope.entities = response.data;
 							}

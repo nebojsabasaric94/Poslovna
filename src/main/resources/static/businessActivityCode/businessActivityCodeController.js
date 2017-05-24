@@ -89,5 +89,13 @@ app.controller('businessActivityCodeController',['$scope','businessActivityCodeS
 		findAll();
 	}
 	
+	$scope.next = function(){
+		if(!($scope.selectedEntity))
+			return;
+		sessionStorage.setItem("nextFilterBussinesActivity", $scope.selectedEntity.id);
+		sessionStorage.setItem("backFilterBussinesActivity", $scope.entities);
+		$location.path('/legalEntity');
+	}
+	
 	
 }])

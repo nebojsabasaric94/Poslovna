@@ -259,6 +259,17 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 					return;
 				}
 			}
+			
+			$scope.next = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextAnalyticsOfStatements", $scope.selectedEntity.itemNumber);
+				sessionStorage.setItem("backAnalyticsOfStatements", $scope.entities);
+				$location.path('/itemTransfer');
+			
+			
+			
+			}
 
 }]);
 

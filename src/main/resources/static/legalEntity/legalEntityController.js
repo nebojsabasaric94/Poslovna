@@ -12,17 +12,25 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 	
 	findAll();
 	function findAll() {
-
-	//	countryService.findAll().then(function(response) {
-
-		service.findAll()
-		.then(function(response) {
-			$scope.entities = response.data;
-		},
-		function(response){
-			
-		});
-	}	
+		
+		var nextFilterBussinesActivity = sessionStorage.getItem("nextFilterBussinesActivity");
+		sessionStorage.removeItem("nextFilterBussinesActivity");
+		
+		
+		if(nextFilterBussinesActivity != null){
+			service.nextFilterBussinesActivity(nextFilterBussinesActivity).then(
+				function(response){
+					$scope.entities = response.data;
+				}
+			)
+		
+		}  else {
+			service.findAll().then(
+				function(response) {
+				   $scope.entities = response.data;
+			})
+		}
+}	
 
 	$scope.delete = function(){
 		service.delete($scope.selectedEntity)
@@ -145,4 +153,22 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null};
 		findAll();
 	}	
+	
+	$scope.back = function(){
+		if(sessionStorage.getItem("backFilterBussinesActivity") != null){
+			sessionStorage.removeItem("backFilterBussinesActivity");
+			$location.path("/businessActivityCode");
+		} else {
+			return;
+		}
+	}
+	
+	$scope.next = function(){
+		if(!($scope.selectedEntity))
+			return;
+		sessionStorage.setItem("nextFilterLegalEntity", $scope.selectedEntity.id);
+		sessionStorage.setItem("backFilterLegalEntity", $scope.entities);
+		$location.path("/legalEntityAccount");
+	}
+	
 }])

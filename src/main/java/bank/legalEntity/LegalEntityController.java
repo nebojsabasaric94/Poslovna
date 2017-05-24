@@ -3,11 +3,15 @@ package bank.legalEntity;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import bank.bussinessActivityCode.BusinessActivityCode;
+import bank.bussinessActivityCode.BusinessActivityCodeService;
 
 @RestController
 @RequestMapping("/legalEntity")
@@ -15,6 +19,9 @@ public class LegalEntityController {
 
 	@Autowired
 	private LegalEntityService service;
+	
+	@Autowired
+	private BusinessActivityCodeService businessActivityCodeService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<LegalEntity> findAll(){
@@ -33,5 +40,12 @@ public class LegalEntityController {
 	@RequestMapping(value = "/search",method = RequestMethod.POST)
 	public List<LegalEntity> search(@RequestBody LegalEntity legalEntity){
 		return service.search(legalEntity);
+	}
+	
+	@GetMapping("/nextFilterBussinesActivity/{bussinessId}")
+	public List<LegalEntity> nextFilterBussinesActivity(@PathVariable Long bussinessId){
+		BusinessActivityCode businessActivityCode = businessActivityCodeService.findOne(bussinessId);
+		
+		return businessActivityCode.getLegalEntities();
 	}
 }

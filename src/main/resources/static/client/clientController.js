@@ -114,13 +114,21 @@ app.controller('clientController',['$scope','clientService','$location',
 	
 	$scope.back = function(){
 		var backFilter = sessionStorage.getItem("backFilterPlace");
-		//sessionStorage.removeItem("backFilter");
+		sessionStorage.removeItem("backFilterPlace");
 		if(backFilter == null)
 			return;
-		
 		$location.path("/place");
 	
+	}
 	
+	$scope.next = function(){
+		if(!($scope.selectedEntity))
+			return;
+		sessionStorage.setItem("nextFilterClient", $scope.selectedEntity.id);
+		sessionStorage.setItem("backFilterClient", $scope.entities);
+		$location.path('/legalEntityAccount');
+	
+		
 	}
 	
 }])

@@ -12,6 +12,14 @@ services.service('legalEntityAccountService',['$http',function($http){
 		return $http.get("/legalEntityAccount/nextCurrency/" + id)
 	}
 	
+	this.nextFilterClient = function(id){
+		return $http.get("/legalEntityAccount/nextClient/" + id)
+	}
+	
+	this.nextLegalEntity = function(id){
+		return $http.get("/legalEntityAccount/nextLegalEntity/" + id)
+	}
+	
 	this.checkIfLegalEntity = function(id){
 		return $http.get('/legalEntity/'+id+"/");
 	}
@@ -32,5 +40,7 @@ services.service('legalEntityAccountService',['$http',function($http){
 	this.search = function(entity){
 		return $http.post('/legalEntityAccount/search',entity);
 	}
+	
+
 
 }])

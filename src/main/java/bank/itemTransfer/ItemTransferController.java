@@ -13,17 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bank.analyticsOfStatements.AnalyticsOfStatements;
+import bank.analyticsOfStatements.AnalyticsOfStatementsService;
+import bank.interbankTransfer.InterbankTransfer;
+import bank.interbankTransfer.InterbankTransferService;
+
 @RestController
 @RequestMapping("/itemTransfer")
 public class ItemTransferController {
 
 	private final ItemTransferService itemTransferService;
-	
-	
+	private final InterbankTransferService interbankTransferService;
+	private final AnalyticsOfStatementsService analyticsOfStatementsService;
 
 	@Autowired
-	public ItemTransferController(final ItemTransferService service) {
+	public ItemTransferController(final ItemTransferService service, final InterbankTransferService interbankTransferService, final AnalyticsOfStatementsService analyticsOfStatementsService) {
 		this.itemTransferService = service;
+		this.interbankTransferService = interbankTransferService;
+		this.analyticsOfStatementsService = analyticsOfStatementsService;
 	}
 
 	@GetMapping
@@ -48,5 +55,19 @@ public class ItemTransferController {
 	@PostMapping("/search")
 	public List<ItemTransfer> search(@RequestBody ItemTransfer itemTransfer){
 		return itemTransferService.search(itemTransfer);
+	}
+	
+	@GetMapping("/nextInterbankTransfer/{interbankTransferId}")
+	public List<ItemTransfer> nextInterbankTransfer(@PathVariable Long interbankTransferId){
+		InterbankTransfer interbankTransfer = interbankTransferService.findOne(interbankTransferId);
+		
+		return interbankTransfer.getItemTransfers();
+	}
+	
+	@GetMapping("/nextAnalyticsOfStatements/{analyticsOfStatementsId}")
+	public List<ItemTransfer> nextAnalyticsOfStatements(@PathVariable Long analyticsOfStatementsId){
+		AnalyticsOfStatements analyticsOfStatements = analyticsOfStatementsService.findOne(analyticsOfStatementsId);
+		
+		return analyticsOfStatements.getItemTransfer();
 	}
 }

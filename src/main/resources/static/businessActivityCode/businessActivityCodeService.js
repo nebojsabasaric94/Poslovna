@@ -9,4 +9,6 @@ services.service('businessActivityCodeService',['$http',function($http){
 		this.search = function(entity){
 			return $http.post('/businessActivityCode/search',entity);
 		}
+		
+		
 }]);

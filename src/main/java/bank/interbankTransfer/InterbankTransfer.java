@@ -107,6 +107,14 @@ public class InterbankTransfer {
 	public void setBank(Bank bank) {
 		this.bank = bank;
 	}
+
+	public List<ItemTransfer> getItemTransfers() {
+		return itemTransfers;
+	}
+
+	public void setItemTransfers(List<ItemTransfer> itemTransfers) {
+		this.itemTransfers = itemTransfers;
+	}
 	
 	
 

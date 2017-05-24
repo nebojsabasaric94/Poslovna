@@ -10,8 +10,12 @@ services.service('itemTransferService', [ '$http', function($http) {
 		return $http.post("/itemTransfer",itemTransfer);
 	}
 	
-	this.next = function(id) {
-		return $http.get("/nextPlaces/" + id);
+	this.nextInterbankTransfer = function(id) {
+		return $http.get("/itemTransfer/nextInterbankTransfer/" + id);
+	}
+	
+	this.nextAnalyticsOfStatements = function(id){
+		return $http.get("/itemTransfer/nextAnalyticsOfStatements/" + id);
 	}
 	
 	this.delete = function(itemTransfer){

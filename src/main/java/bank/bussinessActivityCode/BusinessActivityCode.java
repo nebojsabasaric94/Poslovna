@@ -1,12 +1,20 @@
 package bank.bussinessActivityCode;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import bank.legalEntity.LegalEntity;
 
 /**
  * sifrarnik delatnosti
@@ -26,6 +34,11 @@ public class BusinessActivityCode {
 	
 	@NotBlank
 	private String name;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "businessActivityCode", cascade = CascadeType.ALL)
+	private List<LegalEntity> legalEntities;
+	
 
 	public BusinessActivityCode() {
 		super();
@@ -61,5 +74,15 @@ public class BusinessActivityCode {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<LegalEntity> getLegalEntities() {
+		return legalEntities;
+	}
+
+	public void setLegalEntities(List<LegalEntity> legalEntities) {
+		this.legalEntities = legalEntities;
+	}
+	
+	
 	
 }

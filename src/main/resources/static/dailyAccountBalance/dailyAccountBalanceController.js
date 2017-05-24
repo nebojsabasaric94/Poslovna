@@ -31,16 +31,6 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 				
 			}
 		
-			/*function findAll() {
-				service.findAll().then(function(response) {
-					for(i = 0; i < response.data.length;i++){
-						response.data[i].trafficDate = transformDate(new Date(response.data[i].trafficDate));
-					}
-					$scope.entities = response.data;
-				});
-			}*/
-			
-
 			$scope.idSelectedEntity = null;
 			
 			

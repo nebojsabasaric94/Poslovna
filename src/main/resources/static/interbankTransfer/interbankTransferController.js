@@ -150,7 +150,17 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 				$scope.searchEntity = {idMessage : null,typeOfMessage:"" ,date : "",sum:null,senderBank:{},bank:{}};
 
 				findAll();
-			}			
+			}	
+			
+			$scope.next = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextInterbankTransfer", $scope.selectedEntity.idMessage);
+				sessionStorage.setItem("backInterbankTransfer", $scope.entities);
+				$location.path('/itemTransfer');
+			
+			
+			}
 }]);
 
 

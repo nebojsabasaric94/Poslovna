@@ -28,9 +28,6 @@ public class ItemTransfer {
 	@ManyToOne
 	private InterbankTransfer interbankTransfer;
 
-	
-	
-	
 	public ItemTransfer() {
 		super();
 	}
