@@ -143,7 +143,6 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 				response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
 			}
 			$scope.entities = response.data; 
-			//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
 		},
 		function(response){
