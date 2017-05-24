@@ -18,6 +18,12 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 				var nextFilterCurrency = sessionStorage.getItem("nextFilterCurrency");
 				sessionStorage.removeItem("nextFilterCurrency");
 				
+				var nextFilterDaily = sessionStorage.getItem("nextFilterDaily");
+				sessionStorage.removeItem("nextFilterDaily");
+				
+				var nextFilterPaymentType = sessionStorage.getItem("nextFilterPaymentType");
+				sessionStorage.removeItem("nextFilterPaymentType");
+				
 				if(nextFilterPlace != null){
 					service.nextPlace(nextFilterPlace).then(
 						function(response){
@@ -30,7 +36,22 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 								$scope.entities = response.data;
 							}
 						)
-				} else {
+				} else if(nextFilterDaily != null){
+					service.nextDaily(nextFilterDaily).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)
+				} else if(nextFilterPaymentType != null){
+					service.nextPaymentType(nextFilterPaymentType).then(
+							function(response){
+								$scope.entities = response.data;
+							}
+						)
+				}
+				
+				else {
+				
 					service.findAll().then(
 						function(response) {
 							$scope.entities = response.data;
@@ -48,28 +69,44 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 			
 			
 			$scope.firstone = function(){
-				$scope.setSelected(1);
+				$scope.setSelected($scope.entities[0]);
 			}
 			
 			$scope.previous = function(selectedEntity){
-				if($scope.selectedEntity != 1)
-					$scope.setSelected($scope.selectedEntity-1);
-				else
-					$scope.setSelected($scope.entities.length);
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+				if(index != 0)				
+					$scope.setSelected($scope.entities[index-1])
+				else	
+					$scope.setSelected($scope.entities[$scope.entities.length-1])
 					
 			}
 			
 			
 			$scope.nextNavigation = function(selectedEntity){
-				if($scope.selectedEntity != $scope.entities.length )
-					$scope.setSelected($scope.selectedEntity+1);
-				else
-					$scope.setSelected(1);
+				
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+					
+				if(index == $scope.entities.length-1)
+					$scope.setSelected($scope.entities[0])
+				else				
+					$scope.setSelected($scope.entities[index+1])
 			}
 			
 			$scope.lastone = function(){
-				$scope.setSelected($scope.entities.length);
+				$scope.setSelected($scope.entities[$scope.entities.length-1])
 			}
+			
+			
 						
 			$scope.add = function(){
 				service.save($scope.entity).then(function(response) {
@@ -212,6 +249,12 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 				} else if(sessionStorage.getItem("backFilterCurrency") != null){
 					sessionStorage.removeItem("backFilterCurrency");
 					$location.path("/currency");
+				} else if(sessionStorage.getItem("backFilterDaily") != null){
+					sessionStorage.removeItem("backFilterDaily");
+					$location.path("/dailyAccountBalance");
+				} else if(sessionStorage.getItem("backFilterPaymentType") != null){
+					sessionStorage.removeItem("backFilterPaymentType");
+					$location.path("/paymentType");
 				} else {
 					return;
 				}

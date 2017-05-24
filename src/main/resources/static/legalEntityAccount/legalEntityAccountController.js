@@ -5,19 +5,18 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
 		$scope.idSelectedEntity = null;
 		
-		findAll();
+		/*findAll();
 		function findAll() {
 			service.findAll().then(function(response) {
 				for(i = 0; i < response.data.length;i++){
 					response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
 				}
 				$scope.entities = response.data;
-				//checkIfLegalEntity();
 			},
 			function(response){
 				
 			});
-		}
+		}*/
 		
 		/*function checkIfLegalEntity(){
 			for(i=0;i<$scope.entities.length;i++){
@@ -26,6 +25,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 					.then(function(response){
 						if(i < $scope.entities.length){
 							$scope.entities[i].client = response.data;
+							}*/
 			findAll();
 			function findAll() {
 	
@@ -57,7 +57,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 						   //checkIfLegalEntity();
 					})
 			}
-		}*/
+		}
 
 
 
@@ -114,28 +114,44 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		
 		
 		$scope.firstone = function(){
-			$scope.setSelected(1);
+			$scope.setSelected($scope.entities[0]);
 		}
 		
 		$scope.previous = function(selectedEntity){
-			if($scope.selectedEntity != 1)
-				$scope.setSelected($scope.selectedEntity-1);
-			else
-				$scope.setSelected($scope.entities.length);
-	
+			var index = -1;
+			
+			for(i = 0 ; i  < $scope.entities.length;i++){
+				if($scope.entities[i].id == $scope.selectedEntity.id)
+					index = i;
 			}
+			if(index != 0)				
+				$scope.setSelected($scope.entities[index-1])
+			else	
+				$scope.setSelected($scope.entities[$scope.entities.length-1])
+				
+		}
 		
 		
 		$scope.nextNavigation = function(selectedEntity){
-			if($scope.selectedEntity != $scope.entities.length )
-				$scope.setSelected($scope.selectedEntity+1);
-			else
-				$scope.setSelected(1);
+			
+			var index = -1;
+			
+			for(i = 0 ; i  < $scope.entities.length;i++){
+				if($scope.entities[i].id == $scope.selectedEntity.id)
+					index = i;
+			}
+				
+			if(index == $scope.entities.length-1)
+				$scope.setSelected($scope.entities[0])
+			else				
+				$scope.setSelected($scope.entities[index+1])
 		}
 		
 		$scope.lastone = function(){
-			$scope.setSelected($scope.entities.length);
-		}	
+			$scope.setSelected($scope.entities[$scope.entities.length-1])
+		}
+		
+		
 		
 		$scope.search = function(){
 			service.search($scope.searchEntity)
@@ -185,14 +201,85 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 			$scope.searchEntity.currency = currency;
 		}
 	
-		$scope.deselect = function(){
-			$scope.selectedEntity = null;
-			$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
-		}
-		$scope.refresh = function(){
-			$scope.selectedEntity = null;
-			$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
-			findAll();
-		}
+
+	$scope.nextNavigation = function(selectedEntity){
+		if($scope.selectedEntity != $scope.entities.length )
+			$scope.setSelected($scope.selectedEntity+1);
+		else
+			$scope.setSelected(1);
+	}
+	
+	$scope.lastone = function(){
+		$scope.setSelected($scope.entities.length);
+	}	
+	
+	$scope.search = function(){
+		service.search($scope.searchEntity)
+		.then(function(response){
+			for(i = 0; i < response.data.length;i++){
+				response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
+			}
+			$scope.entities = response.data; 
+
+		},
+		function(response){
+			
+		})
+	}	
+	
+	$scope.showClientModalSearch = function(){
+		var modal = document.getElementById('clientModalSearch');
+		modal.style.display = "block";		
+	}
+	$scope.closeClientModalSearch = function(){
+		var modal = document.getElementById('clientModalSearch');
+		modal.style.display  = "none";
+	}
+	$scope.showBankModalSearch = function(){
+		var modal = document.getElementById('bankModalSearch');
+		modal.style.display = "block";		
+	}
+	$scope.closeBankModalSearch = function(){
+		var modal = document.getElementById('bankModalSearch');
+		modal.style.display  = "none";
+	}
+	$scope.showCurrencyModalSearch = function(){
+		var modal = document.getElementById('currencyModalSearch');
+		modal.style.display = "block";		
+	}
+	$scope.closeCurrencyModalSearch = function(){
+		var modal = document.getElementById('currencyModalSearch');
+		modal.style.display  = "none";
+	}	
+	$scope.setSelectedClientSearch = function(client){
+		$scope.searchEntity.client = client;
+	}
+	$scope.setSelectedBankSearch = function(bank){
+		$scope.searchEntity.bank = bank;
+	}
+	$scope.setSelectedCurrencySearch = function(currency){
+		$scope.searchEntity.currency = currency;
+	}
+
+	$scope.deselect = function(){
+		$scope.selectedEntity = null;
+		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
+	}
+	$scope.refresh = function(){
+		$scope.selectedEntity = null;
+		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
+		findAll();
+	}
+	
+	$scope.next = function(){
+		if(!($scope.selectedEntity))
+			return;
+		sessionStorage.setItem("nextFilterLegalEntityAccount", $scope.selectedEntity.id);
+		sessionStorage.setItem("backFilterLegalEntityAccount", $scope.entities);
+		$location.path("/dailyAccountBalance");
+	
+		
+	}
+
 
 }])

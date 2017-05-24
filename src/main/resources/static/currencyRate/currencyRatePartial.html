@@ -4,13 +4,13 @@
 <div class="toolbar">
 	<button class = "search" ui-sref = ".search" ng-click = "deselect()"></button>
 	<button class = "refresh" ui-sref = "currencyRate" ng-click = "refresh()"></button>
-	<button class = "back"></button>
+	<button class = "back" ng-click = "back()"></button>
 	<button class = "help"></button>
 	&nbsp&nbsp
 	<button class = "first" ng-click = "firstone()">
 	</button>
-	<button class = "previous" ng-click = "previous(entity.id)"></button>
-	<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
+	<button class = "previous" ng-click = "previous(entity)"></button>
+	<button class = "next" ng-click = "nextNavigation(entity)"></button>
 	<button class = "last"  ng-click = "lastone()"></button>	
 	&nbsp&nbsp
 	<button ui-sref="currencyRate.add" class = "add" ng-click = "deselect()"></button>
@@ -29,7 +29,7 @@
 			<th>Middle exchange rate</th>
 			<th>Selling exchange rate</th>
 		</tr>
-		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity.id)" ng-class = "{selected: entity.id === selectedEntity}">
+		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.currencyInList.numberOfExchangeRateList}}</td>
 			<td>{{entity.baseCurrency.official_code}}</td>
 			<td>{{entity.accordingToCurrency.official_code}}</td>

@@ -53,9 +53,8 @@ public class DailyAccountBalance {
 	@ManyToOne
 	private LegalEntityAccount legalEntityAccount;
 	
-	
 	@JsonIgnore
-	@OneToMany(mappedBy = "dailyAccountBalance", cascade =CascadeType.ALL)
+	@OneToMany(mappedBy = "dailyAccountBalance", cascade = CascadeType.ALL)
 	private List<AnalyticsOfStatements>analyticsOfStatements;
 
 	public DailyAccountBalance() {

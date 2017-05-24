@@ -7,15 +7,38 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 	
 	
 			findAll();
-		
+			
 			function findAll() {
+
+				var nextFilter = sessionStorage.getItem("nextFilterLegalEntityAccount");
+				sessionStorage.removeItem("nextFilterLegalEntityAccount");
+				
+				if(nextFilter == null){
+					service.findAll().then(
+						function(response) {
+							for(i = 0; i < response.data.length;i++){
+								response.data[i].trafficDate = transformDate(new Date(response.data[i].trafficDate));
+							}
+							$scope.entities = response.data;
+						});
+				} else {
+					service.next(nextFilter).then(
+						function(response){
+							$scope.entities = response.data;
+						}
+					)
+				}
+				
+			}
+		
+			/*function findAll() {
 				service.findAll().then(function(response) {
 					for(i = 0; i < response.data.length;i++){
 						response.data[i].trafficDate = transformDate(new Date(response.data[i].trafficDate));
 					}
 					$scope.entities = response.data;
 				});
-			}
+			}*/
 			
 
 			$scope.idSelectedEntity = null;
@@ -27,28 +50,43 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 			
 			
 			$scope.firstone = function(){
-				$scope.setSelected(1);
+				$scope.setSelected($scope.entities[0]);
 			}
 			
 			$scope.previous = function(selectedEntity){
-				if($scope.selectedEntity != 1)
-					$scope.setSelected($scope.selectedEntity-1);
-				else
-					$scope.setSelected($scope.entities.length);
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+				if(index != 0)				
+					$scope.setSelected($scope.entities[index-1])
+				else	
+					$scope.setSelected($scope.entities[$scope.entities.length-1])
 					
 			}
 			
 			
 			$scope.nextNavigation = function(selectedEntity){
-				if($scope.selectedEntity != $scope.entities.length )
-					$scope.setSelected($scope.selectedEntity+1);
-				else
-					$scope.setSelected(1);
+				
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+					
+				if(index == $scope.entities.length-1)
+					$scope.setSelected($scope.entities[0])
+				else				
+					$scope.setSelected($scope.entities[index+1])
 			}
 			
 			$scope.lastone = function(){
-				$scope.setSelected($scope.entities.length);
+				$scope.setSelected($scope.entities[$scope.entities.length-1])
 			}
+			
 			
 			
 			
@@ -153,6 +191,24 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 
 				findAll();
 			}			
+			
+			$scope.next = function(){
+				if(!($scope.selectedEntity))
+					return;
+				sessionStorage.setItem("nextFilterDaily", $scope.selectedEntity.id);
+				sessionStorage.setItem("backFilterDaily", $scope.entities);
+				$location.path('/analyticsOfStatements');
+			
+			}
+			
+			$scope.back = function(){
+				if(sessionStorage.getItem("backFilterLegalEntityAccount") != null){
+					sessionStorage.removeItem("backFilterLegalEntityAccount");
+					$location.path("/legalEntityAccount");
+				} else {
+					return;
+				}
+			}
 }]);
 
 

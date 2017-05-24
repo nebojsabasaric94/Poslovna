@@ -34,28 +34,43 @@ app.controller('bankController', ['$scope','bankService','$location',
 			
 			
 			$scope.firstone = function(){
-				$scope.setSelected(1);
+				$scope.setSelected($scope.entities[0]);
 			}
 			
 			$scope.previous = function(selectedEntity){
-				if($scope.selectedEntity != 1)
-					$scope.setSelected($scope.selectedEntity-1);
-				else
-					$scope.setSelected($scope.entities.length);
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+				if(index != 0)				
+					$scope.setSelected($scope.entities[index-1])
+				else	
+					$scope.setSelected($scope.entities[$scope.entities.length-1])
 					
 			}
 			
 			
 			$scope.nextNavigation = function(selectedEntity){
-				if($scope.selectedEntity != $scope.entities.length )
-					$scope.setSelected($scope.selectedEntity+1);
-				else
-					$scope.setSelected(1);
+				
+				var index = -1;
+				
+				for(i = 0 ; i  < $scope.entities.length;i++){
+					if($scope.entities[i].id == $scope.selectedEntity.id)
+						index = i;
+				}
+					
+				if(index == $scope.entities.length-1)
+					$scope.setSelected($scope.entities[0])
+				else				
+					$scope.setSelected($scope.entities[index+1])
 			}
 			
 			$scope.lastone = function(){
-				$scope.setSelected($scope.entities.length);
+				$scope.setSelected($scope.entities[$scope.entities.length-1])
 			}
+			
 			
 			
 			
@@ -99,7 +114,7 @@ app.controller('bankController', ['$scope','bankService','$location',
 			$scope.nextExchangeRateList = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilter", $scope.entities);
 				$location.path('/exchageRateList');
 			}
@@ -107,7 +122,7 @@ app.controller('bankController', ['$scope','bankService','$location',
 			$scope.nextLegalEntityAccount = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilterBank", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilterBank", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilterBank", $scope.entities);
 				$location.path("/legalEntityAccount");
 			}
@@ -115,7 +130,7 @@ app.controller('bankController', ['$scope','bankService','$location',
 			$scope.nextInterbankTransfers = function(){
 				if(!($scope.selectedEntity))
 					return;
-				sessionStorage.setItem("nextFilter", $scope.selectedEntity);
+				sessionStorage.setItem("nextFilter", $scope.selectedEntity.id);
 				sessionStorage.setItem("backFilter", $scope.entities);
 				$location.path("/interbankTransfer");
 			}

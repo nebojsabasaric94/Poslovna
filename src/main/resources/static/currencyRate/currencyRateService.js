@@ -27,4 +27,13 @@ services.service('currencyRateService', [ '$http', function($http) {
 	this.search = function(entity){
 		return $http.post('/currencyRate/search',entity);
 	}
+	
+
+	this.nextAccordingToCurrency = function(id){
+		return $http.get("/currencyRate/nextAccordingToCurrency/" + id);
+	}
+	
+	this.nextBaseCurrency = function(id){
+		return $http.get("/currencyRate/nextBaseCurrency/" + id);
+	}
 }]);

@@ -13,17 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bank.legalEntityAccount.LegalEntityAccount;
+import bank.legalEntityAccount.LegalEntityAccountService;
+
 @RestController
 @RequestMapping("/dailyAccountBalance")
 public class DailyAccountBalanceController {
 
 	private final DailyAccountBalanceService dailyAccountBalanceService;
-	
+	private final LegalEntityAccountService legalEntityAccountService;
 	
 
 	@Autowired
-	public DailyAccountBalanceController(final DailyAccountBalanceService service) {
+	public DailyAccountBalanceController(final DailyAccountBalanceService service, final LegalEntityAccountService legalEntityAccountService) {
 		this.dailyAccountBalanceService = service;
+		this.legalEntityAccountService = legalEntityAccountService;
 	}
 
 	@GetMapping
@@ -42,6 +46,13 @@ public class DailyAccountBalanceController {
 		dailyAccountBalanceService.delete(id);
 		
 		return dailyAccountBalanceService.findAll();
+	}
+	
+	@GetMapping("/nextLegalEntityAccount/{legalEntityAccountId}")
+	public List<DailyAccountBalance> nextLegalEntityAccount(@PathVariable Long legalEntityAccountId){
+		LegalEntityAccount legalEntityAccount = legalEntityAccountService.findOne(legalEntityAccountId);
+		
+		return legalEntityAccount.getDailyAccountBalances();
 	}
 	
 	@PostMapping("/search")

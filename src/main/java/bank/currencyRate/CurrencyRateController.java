@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bank.currency.Currency;
+import bank.currency.CurrencyService;
 import bank.exchageRateList.ExchangeRateList;
 import bank.exchageRateList.ExchangeRateListService;
 
@@ -22,11 +24,13 @@ public class CurrencyRateController {
 
 	private final CurrencyRateService currencyRateService;
 	private final ExchangeRateListService exchangeRateListService;
+	private final CurrencyService currencyService;
 	
 	@Autowired
-	public CurrencyRateController(final CurrencyRateService service, final ExchangeRateListService exchangeRateListService) {
+	public CurrencyRateController(final CurrencyRateService service, final ExchangeRateListService exchangeRateListService, final CurrencyService currencyService) {
 		this.currencyRateService = service;
 		this.exchangeRateListService = exchangeRateListService;
+		this.currencyService = currencyService;
 	}
 
 	@GetMapping
@@ -59,6 +63,19 @@ public class CurrencyRateController {
 		List<CurrencyRate> currencyList = exchangeRateList.getCurrencyRates();
 		
 		return currencyList;
+	}
+	
+	@GetMapping("/nextAccordingToCurrency/{accordingToCurrencyId}")
+	public List<CurrencyRate> nextAccordingToCurrency(@PathVariable Long accordingToCurrencyId){
+		Currency currency = currencyService.findOne(accordingToCurrencyId);
 		
+		return currency.getAccordingToCurrencyRate();
+	}
+	
+	@GetMapping("/nextBaseCurrency/{baseCurrencyId}")
+	public List<CurrencyRate> nextBaseCurrency(@PathVariable Long baseCurrencyId){
+		Currency currency = currencyService.findOne(baseCurrencyId);
+		
+		return currency.getBaseCurrencyRate();
 	}
 }

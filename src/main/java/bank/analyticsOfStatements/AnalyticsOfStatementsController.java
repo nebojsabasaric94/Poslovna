@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bank.currency.Currency;
 import bank.currency.CurrencyService;
+import bank.dailyAccountBalance.DailyAccountBalance;
+import bank.dailyAccountBalance.DailyAccountBalanceService;
+import bank.paymentType.PaymentType;
+import bank.paymentType.PaymentTypeService;
 import bank.place.Place;
 import bank.place.PlaceService;
 
@@ -25,12 +29,17 @@ public class AnalyticsOfStatementsController {
 	private final AnalyticsOfStatementsService analyticsOfStatementsService;
 	private final PlaceService placeService;
 	private final CurrencyService currencyService;
+	private final DailyAccountBalanceService dailyAccountBalanceService;
+	private final PaymentTypeService paymentTypeService;
 
 	@Autowired
-	public AnalyticsOfStatementsController(final AnalyticsOfStatementsService service, final PlaceService placeService, final CurrencyService currencyService) {
+	public AnalyticsOfStatementsController(final AnalyticsOfStatementsService service, final PlaceService placeService, final CurrencyService currencyService, 
+			final DailyAccountBalanceService dailyAccountBalanceService, final PaymentTypeService paymentTypeService) {
 		this.analyticsOfStatementsService = service;
 		this.placeService = placeService;
 		this.currencyService = currencyService;
+		this.dailyAccountBalanceService = dailyAccountBalanceService;
+		this.paymentTypeService = paymentTypeService;
 	}
 
 	@GetMapping
@@ -63,6 +72,20 @@ public class AnalyticsOfStatementsController {
 		Currency currency = currencyService.findOne(currencyId);
 		
 		return currency.getAnalyticsOfStatements();
+	}
+	
+	@GetMapping("/nextDailyAccountBalance/{dailyAccountBalanceId}")
+	public List<AnalyticsOfStatements> nextDailyAccountBalance(@PathVariable Long dailyAccountBalanceId){
+		DailyAccountBalance dailyAccountBalance = dailyAccountBalanceService.findOne(dailyAccountBalanceId);
+		
+		return dailyAccountBalance.getAnalyticsOfStatements();
+	}
+	
+	@GetMapping("/nextPaymentType/{paymentTypeId}")
+	public List<AnalyticsOfStatements> nextPaymentType(@PathVariable Long paymentTypeId){
+		PaymentType paymentType = paymentTypeService.findOne(paymentTypeId);
+		
+		return paymentType.getAnalyticsOfStatements();
 	}
 	
 }

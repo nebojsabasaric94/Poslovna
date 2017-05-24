@@ -47,8 +47,9 @@ public class LegalEntityAccountController {
 		Currency currency = currencyService.findOne(currencyId);
 		
 		return currency.getLegalEntityAccount();
-		
 	}
+	
+	
 	
 	@PostMapping("/search")
 	public List<LegalEntityAccount> search(@RequestBody LegalEntityAccount legalEntityAccount){
