@@ -45,5 +45,8 @@ public class ItemTransferController {
 		return itemTransferService.findAll();
 	}
 	
-	
+	@PostMapping("/search")
+	public List<ItemTransfer> search(@RequestBody ItemTransfer itemTransfer){
+		return itemTransferService.search(itemTransfer);
+	}
 }

@@ -37,4 +37,15 @@ public class ItemTransferServiceImpl implements ItemTransferService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
+
+	@Override
+	public List<ItemTransfer> search(ItemTransfer itemTransfer) {
+		String analyticsOfStatements = "%";
+		if(itemTransfer.getAnalyticsOfStatements().getItemNumber() != null)
+			analyticsOfStatements = ""+itemTransfer.getAnalyticsOfStatements().getItemNumber();
+		String interbankTransfer = "%";
+		if(itemTransfer.getInterbankTransfer().getIdMessage() != null)
+			interbankTransfer= "" + itemTransfer.getInterbankTransfer().getIdMessage();
+		return repository.search(analyticsOfStatements, interbankTransfer);
+	}
 }

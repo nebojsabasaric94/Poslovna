@@ -122,6 +122,10 @@ angular.module('routerApp', ['ui.router',
 		templateUrl : 'itemTransfer/itemTransferPartial.html',
 		controller : 'itemTransferController'
 	})
+	.state('itemTransfer.search',{
+		url : '/search',
+		templateUrl : 'itemTransfer/searchItemTransfer.html'
+	})
 	.state('legalEntity',{
 		url : '/legalEntity',
 		templateUrl : 'legalEntity/legalEntityPartial.html',

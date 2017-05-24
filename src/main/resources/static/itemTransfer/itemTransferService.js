@@ -18,4 +18,15 @@ services.service('itemTransferService', [ '$http', function($http) {
 		return $http.get('/itemTransfer/deleteItemTransfer/' + itemTransfer)
 	}
 
+	this.findAllAnalyticsOfStatements = function(){
+		return $http.get('/analyticsOfStatements');
+	}
+	
+	this.findAllInterbankTransfers  = function(){
+		return $http.get('/interbankTransfer');
+	}
+	
+	this.search = function(item){
+		return $http.post('/itemTransfer/search',item);
+	}
 }]);

@@ -1,0 +1,95 @@
+<br/><br/>
+<form class="form-horizontal" name= "form" ng-submit = "search()" method = "post">
+
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityAnalyticsOfStatements">Analytics of statements:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityAnalyticsOfStatements" id = "searchEntityAnalyticsOfStatements" ng-model = "searchEntity.analyticsOfStatements" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showModalAnalyticsOfStatements()" class = "btn btn-primary" >Select</button></span>
+	</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityInterbankTransfer">Interbank transfer:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityInterbankTransfer" id = "searchEntityInterbankTransfer" ng-model = "searchEntity.interbankTransfer" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showModalInterbankTransfers()" class = "btn btn-primary" >Select transfer</button></span>
+	</div>
+	
+	<div id="modalAnalyticsOfStatements" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Analytics of statements</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllAnalyticsOfStatements() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Debtor originator</th>
+					<th>Purpose of payment</th>
+					<th>Creditor recipient</th>
+					<th>Date of receipt</th>
+					<th>Currency date</th>
+					<th>Debtor account</th>
+					<th>Model assignments</th>
+					<th>Reference number assignments</th>
+					<th>Account creditor</th>
+					
+					<th>Model approval</th>
+					<th>Reference number creditor</th>
+					<th>Emergency</th>
+					<th>Sum</th>
+					
+					<th>type of mistake</th>
+					<th>Status</th>
+				</tr>
+				<tr class="state" ng-repeat="statement in analyticsOfStatements" ng-click = "setSelectedStatementSearch(statement)" ng-class = "{selected:statement.itemNumber === searchEntity.analyticsOfStatements.itemNumber}">
+					<td>{{statement.debtor_originator}}</td>
+					<td>{{statement.purposeOfPayment}}</td>
+					<td>{{statement.creditor_recipient}}</td>
+					<td>{{statement.dateOfReceipt}}</td>
+					<td>{{statement.currencyDate}}</td>
+					<td>{{statement.debtorAccount}}</td>
+					<td>{{statement.modelAssigments}}</td>
+					<td>{{statement.referenceNumberAssigments}}</td>
+					<td>{{statement.accountCreditor}}</td>
+					
+					<td>{{statement.modelApproval}}</td>
+					<td>{{statement.referenceNumberCreditor}}</td>
+					<td>{{statement.emergency}}</td>
+					<td>{{statement.sum}}</td>
+					<td>{{statement.typeOfMistake}}</td>
+					<td>{{statement.status}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalAnalyticsOfStatements() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+		<div id="modalInterbankTransfers" class="modal">
+		  	<div class="modal-content">
+		    	<h3>Countries</h3><hr/><br/>
+		    
+		    	<table ng-init = findAllInterbankTransfers() ng-table="stateTable" class="table table-bordered " border="1">
+					<tr>
+						<th>Type of message</th>
+						<th>Date</th>
+						<th>Sum</th>
+						<th>Bank sender</th>
+						<th>Bank</th>
+					</tr>
+					<tr class="state" ng-repeat="transfer in interbankTransfers" ng-click = "setSelectedInterbankTransferSearch(transfer)" ng-class = "{selected:transfer.idMessage === searchEntity.interbankTransfer.idMessage}">
+						<td>{{transfer.typeOfMessage}}</td>
+						<td>{{transfer.date}}</td>
+						<td>{{transfer.sum}}</td>
+						<td>{{transfer.senderBank.name}}</td>
+						<td>{{transfer.bank.name}}</td>
+					</tr>
+				</table>		
+				<center><button type = "button" ng-click=closeModalInterbankTransfers() class="btn btn-default navbar-btn">OK</button></center>
+		 		</div>
+			</div>	
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" ></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Search</button></span>
+		</div>
+	</div>
+</form>

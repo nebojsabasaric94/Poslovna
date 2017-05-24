@@ -10,4 +10,6 @@ public interface ItemTransferService {
 	ItemTransfer findOne(Long id);
 	
 	public void delete(Long id);
+	
+	public List<ItemTransfer> search(ItemTransfer itemTransfer);
 }
