@@ -3,6 +3,9 @@ var app = angular.module('country.controllers', []);
 app.controller('countryController', ['$scope','countryService','$location',
 		function($scope, service, $location) {
 
+	
+			$scope.showUpdateForm = false;
+			$scope.updatedEntity={};
 			findAll();
 			$scope.searchEntity = {id : null,name : "",country_code : ""};
 			function findAll() {
@@ -18,7 +21,36 @@ app.controller('countryController', ['$scope','countryService','$location',
 			
 			
 			$scope.setSelected = function(selectedEntity){
+				$scope.showUpdateForm = true;
 				$scope.selectedEntity = selectedEntity;
+				$scope.updatedEntity.id=$scope.selectedEntity.id;
+				$scope.updatedEntity.name=selectedEntity.name;
+				$scope.updatedEntity.country_code=selectedEntity.country_code;
+				$scope.showUpdateForm = true;
+			}
+			
+			//$scope.startChange = function(){
+				//$("[name=updatedId]").val($("#state_id").text());// da mu se i ID prosledi :D
+				//$("[name=updatedName]").val($("#state_name").text());
+				//$("[name=updatedCode]").val($("#state_code").text());
+			//}
+			
+			$scope.saveChanges = function(){
+				
+				service.update($scope.updatedEntity).then(function(response){
+					//function(response){
+						
+						//$window.location.reload();
+					//}
+							for(i = 0 ; i < $scope.entities.length;i++){
+								if($scope.entities[i].id == $scope.updatedEntity.id){
+									$scope.entities[i] = response.data;
+								}
+							}
+						},
+						function(response){
+							
+						})
 			}
 			
 			
@@ -90,6 +122,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 				);
 
 			}
+			
 
 			
 			$scope.delete = function(){

@@ -12,10 +12,14 @@ services.service('countryService', [ '$http', function($http) {
 	
 	this.next = function(id) {
 		return $http.get("/nextPlaces/" + id);
-	}
+	} 
 	
 	this.delete = function(country){
 		return $http.delete('/country/' + country+"/");
+	}
+	
+	this.update = function(country){
+		return $http.put("/country/update", country);
 	}
 	
 	this.search = function(entity){

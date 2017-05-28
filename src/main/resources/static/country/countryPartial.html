@@ -23,6 +23,7 @@
 				<li><button class="btn btn-primary" ng-click="nextCurrency()">Currency</button></li>
 				
 			</ul>
+			
 </div>	
 <div >
 	<table class="table table-bordered">
@@ -32,11 +33,41 @@
 			
 		</tr>
 		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
+		<!--  	<td>{{entity.id}}</td> -->
 			<td>{{entity.country_code}}</td>
 			<td>{{entity.name}}</td>
 		</tr>
 	</table>
-
+	
+	<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateCountryName">Name:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateCountryName" id = "updateCountryName" ng-model = "updatedEntity.name" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateCountryName">Code:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateCountryCode" id = "updateCountryCode" ng-model = "updatedEntity.country_code" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateStateId">ID:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateCountryId" id = "updateStateId" ng-model = "updatedEntity.id" class="form-control " readonly/>
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-4 control-label"></label>
+				<div class = "col-md-4">
+					<span><button type = "submit" class = "btn btn-success" >Update</button></span>
+				</div>
+			</div>
+		</form>
+	</div>
+	
 </div>
 </div>
 
