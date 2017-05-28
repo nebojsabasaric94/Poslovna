@@ -110,18 +110,160 @@
 			<div class = "col-md-2">
 				<input  class="form-control control input-sm" ng-model="$parent.entity.status" type="text"> 
 			</div>
-		</div>	
+		</div>			
 		
-		
-		
-		<div class = "form-group">
-				<label class = "col-md-2 control-label"></label>
-				<div class = "col-md-2">
-					<span><button type = "submit" class = "btn btn-success" >Add</button></span>
-				</div>
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityDailyAccountBalance">Daily account balance:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityDailyAccountBalance" id = "searchEntityDailyAccountBalance" ng-model = "selectedDailyAccountBalanceDate" class="form-control" readonly/>
 		</div>
+		<span><button type = "button" ng-click = "showDailyAccountBalanceModal()" class = "btn btn-primary" >Select daily account balance</button></span>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPaymentType">Payment type:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPaymentType" id = "searchEntityPaymentType" ng-model = "$parent.entity.paymentType.nameOfPaymentType" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showPaymentTypeModal()" class = "btn btn-primary" >Select payment type</button></span>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPaymentCurrency">Payment currency:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPaymentCurrency" id = "searchEntityPaymentCurrency" ng-model = "$parent.entity.paymentCurrency.name" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showPaymentCurrencyModal()" class = "btn btn-primary" >Select payment currency</button></span>
+	</div>
+	
+	<div class = "form-group">
+		<label class = "col-md-2 control-label" for = "searchEntityPlace">Place:</label>
+		<div class = "col-md-2">
+			<input type = "text" name = "searchEntityPlace" id = "searchEntityPlace" ng-model = "$parent.entity.place.name" class="form-control" readonly/>
+		</div>
+		<span><button type = "button" ng-click = "showPlaceModal()" class = "btn btn-primary" >Select place</button></span>
+	</div>
+		
+	
+		
+	<div class = "form-group">
+		<label class = "col-md-2 control-label"></label>
+		<div class = "col-md-2">
+			<span><button type = "submit" class = "btn btn-success" >Add</button></span>
+		</div>
+	</div>
+		
 		
 		
 		
 
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="dailyAccountBalanceModal" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllDailyAccountBalances() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Account number</th>
+					<th>Traffic date</th>
+					<th>Previous state</th>
+					<th>Traffic to benefit</th>
+					<th>Traffic to the burden</th>
+					<th>New state</th>
+				</tr>
+				<tr class="state" ng-repeat="dab in dailyAccountBalances" ng-click = "setSelectedDailyAccountBalanceSearch(dab)" ng-class = "{selected:dab.id === searchEntity.dailyAccountBalance.id}">
+					<td>{{dab.legalEntityAccount.brojRacuna}}</td>
+					<td>{{dab.trafficDate}}</td>
+					<td>{{dab.previousState}}</td>
+					<td>{{dab.trafficToBenefit}}</td>
+					<td>{{dab.trafficToTheBurden}}</td>
+					<td>{{dab.newState}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeDailyAccountBalanceModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="paymentTypeModal" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPaymentTypes() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>code</th>
+					<th>nameOfPaymentType</th>
+				</tr>
+				<tr class="state" ng-repeat="pt in paymentTypes" ng-click = "setSelectedPaymentTypeSearch(pt)" ng-class = "{selected:pt.id === searchEntity.paymentType.id}">
+					<td>{{pt.code}}</td>
+					<td>{{pt.nameOfPaymentType}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closePaymentTypeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="paymentCurrencyModal" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Payment currencies</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPaymentCurrencies() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Official code</th>
+					<th>Name</th>
+					<th>Domicilna?</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="pc in paymentCurrencies" ng-click = "setSelectedPaymentCurrencySearch(pc)" ng-class = "{selected:pc.id === searchEntity.paymentCurrency.id}">
+					<td>{{pc.official_code}}</td>
+					<td>{{pc.name}}</td>
+					<td>{{pc.domicilna}}</td>
+					<td>{{pc.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closePaymentCurrencyModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>
+		<div id="placeModal" class="modal">
+		  	<div class="modal-content">
+		    	<h3>Places</h3><hr/><br/>
+		    
+		    	<table ng-init = findAllPlaces() ng-table="stateTable" class="table table-bordered " border="1">
+					<tr>
+						<th>Ptt number</th>
+						<th>Name</th>
+						<th>Country</th>
+					</tr>
+					<tr class="state" ng-repeat="p in places" ng-click = "setSelectedPlaceSearch(p)" ng-class = "{selected:p.id === searchEntity.place.id}">
+						<td>{{p.pttNumber}}</td>
+						<td>{{p.name}}</td>
+						<td>{{p.country.name}}</td>
+					</tr>
+				</table>		
+				<center><button type = "button" ng-click=closePlaceModal() class="btn btn-default navbar-btn">OK</button></center>
+		 	</div>
+		</div>
