@@ -3,7 +3,7 @@ var app = angular.module('itemTransfer.controllers', []);
 app.controller('itemTransferController', ['$scope','itemTransferService','$location',
 		function($scope, service, $location) {
 			$scope.searchEntity = {id : null,interbankTransfer:{} ,analyticsOfStatements :{}};
-
+			$scope.entity = {id : null,interbankTransfer:{} ,analyticsOfStatements :{}};
 			findAll();
 		
 			function findAll() {
@@ -160,7 +160,15 @@ app.controller('itemTransferController', ['$scope','itemTransferService','$locat
 			}
 			$scope.setSelectedInterbankTransferSearch = function(transfer){
 				$scope.searchEntity.interbankTransfer = transfer;
-			}			
+			}		
+			$scope.setSelectedStatement = function(statement){
+				$scope.entity.analyticsOfStatements = statement;
+			}
+			$scope.setSelectedInterbankTransfer = function(transfer){
+				$scope.entity.interbankTransfer = transfer;
+			}	
+			
+			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {id : null,interbankTransfer:{} ,analyticsOfStatements :{}};

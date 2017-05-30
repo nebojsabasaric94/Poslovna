@@ -4,6 +4,7 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 		function($scope, service, $location) {
 
 			$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
+			$scope.entity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
 			$scope.idSelectedEntity = null;
 
 		    	
@@ -152,7 +153,10 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			}				
 			$scope.setSelectedBank = function(bank){
 					$scope.searchEntity.commercialBankRate = bank;
-			}			
+			}	
+			$scope.setSelectedBankAdd = function(bank){
+				$scope.entity.commercialBankRate = bank;
+		}	
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};

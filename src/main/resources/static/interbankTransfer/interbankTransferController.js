@@ -5,6 +5,8 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 		
 			$scope.searchEntity = {idMessage : null,typeOfMessage:"" ,date : "",sum:null,senderBank:{},bank:{}};
 			findAll();
+			$scope.entity = {idMessage : null,typeOfMessage:"" ,date : "",sum:null,senderBank:{},bank:{}};
+			findAll();
 		
 			function findAll() {
 				service.findAll().then(function(response) {
@@ -139,7 +141,13 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 			}
 			$scope.setSelectedBankSearch = function(bank){
 				$scope.searchEntity.bank = bank;
-			}			
+			}	
+			$scope.setSelectedBankSender = function(senderBank){
+				$scope.entity.senderBank = senderBank;
+			}
+			$scope.setSelectedBank = function(bank){
+				$scope.entity.bank = bank;
+			}
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {idMessage : null,typeOfMessage:"" ,date : "",sum:null,senderBank:{},bank:{}};

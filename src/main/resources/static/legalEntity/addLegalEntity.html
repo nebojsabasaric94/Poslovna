@@ -21,6 +21,14 @@
 			</div>
 		</div>
 		
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityBusinessActivityCode">Business activity code:</label>
+			<div class = "col-md-2">
+				<input type = "text" name = "entityBusinessActivityCode" id = "entityBusinessActivityCode" ng-model = "entity.businessActivityCode.code" class="form-control " readonly/>
+			</div>
+			<span><button type = "button" ng-click = "showMoodalBusinessActivitySearch()" class = "btn btn-primary" >Select business activity</button></span>
+		</div>
+		
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">MBR:</label>
 			<div class = "col-md-2">
@@ -79,6 +87,14 @@
 			</div>
 		</div>
 		
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityPlace">Place:</label>
+			<div class = "col-md-2">
+				<input type = "text" name = "entityPlace" id = "entityPlace" ng-model = "entity.residence.name" class="form-control " readonly/>
+			</div>
+			<span><button type = "button" ng-click = "showModalPlaceSearch()" class = "btn btn-primary" >Select place</button></span>
+		</div>	
+		
 			
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Email Statements:</label>
@@ -128,3 +144,52 @@
 		
 
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="modalPlaceSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPlaces() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Ptt number</th>
+					<th>Name</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="place in places" ng-click = "setSelectedPlace(place)" ng-class = "{selected:place === entity.residence}">
+					<td>{{place.pttNumber}}</td>
+					<td>{{place.name}}</td>
+					<td>{{place.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalPlaceSearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="modalBusinessActivitySearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllBusinessActivites() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Business activity code</th>
+					<th>Activity name</th>
+				</tr>
+				<tr class="state" ng-repeat="ba in businessActivities" ng-click = "setSelectedBusinessActivity(ba)" ng-class = "{selected:ba === entity.businessActivityCode}">
+					<td>{{ba.code}}</td>
+					<td>{{ba.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalBusinessActivitySearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>

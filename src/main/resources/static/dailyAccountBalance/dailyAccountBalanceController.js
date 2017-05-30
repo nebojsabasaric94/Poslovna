@@ -4,7 +4,7 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 		function($scope, service, $location) {
 
 			$scope.searchEntity = {id : null,trafficDate:"" ,previousState : null,trafficToBenefit:null,trafficToTheBurden:null,newState:null,legalEntityAccount:{}};
-	
+			$scope.entity = {id : null,trafficDate:"" ,previousState : null,trafficToBenefit:null,trafficToTheBurden:null,newState:null,legalEntityAccount:{}};
 	
 			findAll();
 			
@@ -167,15 +167,10 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 			$scope.setSelectedAccountSearch = function(account){
 				$scope.searchEntity.legalEntityAccount.id = account.id;
 				$scope.searchEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
-				
-				if($scope.entity){//za dodavanje
-					$scope.entity.legalEntityAccount = {
-							id : account.id,
-							brojRacuna : account.brojRacuna
-					}
-				}
-				else
-					$scope.entity = $scope.searchEntity;
+			}
+			$scope.setSelectedAccount = function(account){
+				$scope.entity.legalEntityAccount.id = account.id;
+				$scope.entity.legalEntityAccount.brojRacuna = account.brojRacuna;
 			}
 			
 			$scope.deselect = function(){

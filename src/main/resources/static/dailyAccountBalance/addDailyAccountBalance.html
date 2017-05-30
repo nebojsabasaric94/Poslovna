@@ -1,10 +1,11 @@
 <br/><br/>
 <form class="form-horizontal" ng-submit = "add()" method="post">
-		
+
+
 		<div class = "form-group">
-			<label class = "col-md-2 control-label" for = "searchEntityLegalEntityAccount">Account:</label>
+			<label class = "col-md-2 control-label" for = "entityLegalEntityAccount">Account:</label>
 			<div class = "col-md-2">
-				<input type = "text" name = "searchEntityLegalEntityAccount" id = "searchEntityLegalEntityAccount" ng-model = "searchEntity.legalEntityAccount.brojRacuna" class="form-control" readonly/>
+				<input type = "text" name = "entityLegalEntityAccount" id = "entityLegalEntityAccount" ng-model = "entity.legalEntityAccount.brojRacuna" class="form-control" readonly/>
 			</div>
 			<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Select account</button></span>
 		</div>
@@ -56,7 +57,6 @@
 
 
 
-
 <div id="myModalSearch" class="modal">
 	  	<div class="modal-content">
 	    	<h3>Accounts</h3><hr/><br/>
@@ -70,7 +70,7 @@
 					<th>Currency</th>
 					<th>Vazeci?</th>
 				</tr>
-				<tr class="state" ng-repeat="account in accounts"   ng-click = "setSelectedAccountSearch(account)" ng-class = "{selected:account.id === searchEntity.legalEntityAccount.id}">
+				<tr class="state" ng-repeat="account in accounts"   ng-click = "setSelectedAccount(account)" ng-class = "{selected:account.id === entity.legalEntityAccount.id}">
 					<td ng-show = "account.client.typeOfClient=='Fizicko lice'">{{account.client.firstName}} {{account.client.lastName}}</td>
 					<td ng-hide = "account.client.typeOfClient=='Fizicko lice'">{{account.client.naziv_klijenta}}</td>
 					<td>{{account.bank.name}}</td>

@@ -4,6 +4,7 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 		function($scope, service, $location) {
 
 			$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
+			$scope.entity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 			$scope.idSelectedEntity = null;
 	
 	
@@ -132,8 +133,10 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			}
 			$scope.setSelectedCountrySearch = function(country){
 				$scope.searchEntity.country = country;
+			}	
+			$scope.setSelectedCountry = function(country){
 				$scope.entity.country = country;
-			}			
+			}
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;

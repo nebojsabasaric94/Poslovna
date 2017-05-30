@@ -1,11 +1,21 @@
 <br/><br/>
 <form class="form-horizontal" ng-submit = "add()" method="post">
-		<div class = "form-group" >
-			<label class="col-md-2 control-label">Id:</label>
+		
+		
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityAnalyticsOfStatements">Analytics of statements:</label>
 			<div class = "col-md-2">
-				<input ng-min="3" ng-max="3"  class="form-control input-sm" ng-model="$parent.entity.id" type="number"> 
+				<input type = "text" name = "entityAnalyticsOfStatements" id = "entityAnalyticsOfStatements" ng-model = "entity.analyticsOfStatements" class="form-control" readonly/>
 			</div>
-		</div>	
+			<span><button type = "button" ng-click = "showModalAnalyticsOfStatements()" class = "btn btn-primary" >Select</button></span>
+		</div>
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityInterbankTransfer">Interbank transfer:</label>
+			<div class = "col-md-2">
+				<input type = "text" name = "entityInterbankTransfer" id = "entityInterbankTransfer" ng-model = "entity.interbankTransfer" class="form-control" readonly/>
+			</div>
+			<span><button type = "button" ng-click = "showModalInterbankTransfers()" class = "btn btn-primary" >Select transfer</button></span>
+		</div>
 		
 		
 		<div class = "form-group">
@@ -17,3 +27,86 @@
 		
 
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="modalAnalyticsOfStatements" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Analytics of statements</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllAnalyticsOfStatements() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Debtor originator</th>
+					<th>Purpose of payment</th>
+					<th>Creditor recipient</th>
+					<th>Date of receipt</th>
+					<th>Currency date</th>
+					<th>Debtor account</th>
+					<th>Model assignments</th>
+					<th>Reference number assignments</th>
+					<th>Account creditor</th>
+					
+					<th>Model approval</th>
+					<th>Reference number creditor</th>
+					<th>Emergency</th>
+					<th>Sum</th>
+					
+					<th>type of mistake</th>
+					<th>Status</th>
+				</tr>
+				<tr class="state" ng-repeat="statement in analyticsOfStatements" ng-click = "setSelectedStatement(statement)" ng-class = "{selected:statement.itemNumber === entity.analyticsOfStatements.itemNumber}">
+					<td>{{statement.debtor_originator}}</td>
+					<td>{{statement.purposeOfPayment}}</td>
+					<td>{{statement.creditor_recipient}}</td>
+					<td>{{statement.dateOfReceipt}}</td>
+					<td>{{statement.currencyDate}}</td>
+					<td>{{statement.debtorAccount}}</td>
+					<td>{{statement.modelAssigments}}</td>
+					<td>{{statement.referenceNumberAssigments}}</td>
+					<td>{{statement.accountCreditor}}</td>
+					
+					<td>{{statement.modelApproval}}</td>
+					<td>{{statement.referenceNumberCreditor}}</td>
+					<td>{{statement.emergency}}</td>
+					<td>{{statement.sum}}</td>
+					<td>{{statement.typeOfMistake}}</td>
+					<td>{{statement.status}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalAnalyticsOfStatements() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+		<div id="modalInterbankTransfers" class="modal">
+		  	<div class="modal-content">
+		    	<h3>Countries</h3><hr/><br/>
+		    
+		    	<table ng-init = findAllInterbankTransfers() ng-table="stateTable" class="table table-bordered " border="1">
+					<tr>
+						<th>Type of message</th>
+						<th>Date</th>
+						<th>Sum</th>
+						<th>Bank sender</th>
+						<th>Bank</th>
+					</tr>
+					<tr class="state" ng-repeat="transfer in interbankTransfers" ng-click = "setSelectedInterbankTransfer(transfer)" ng-class = "{selected:transfer.idMessage === entity.interbankTransfer.idMessage}">
+						<td>{{transfer.typeOfMessage}}</td>
+						<td>{{transfer.date}}</td>
+						<td>{{transfer.sum}}</td>
+						<td>{{transfer.senderBank.name}}</td>
+						<td>{{transfer.bank.name}}</td>
+					</tr>
+				</table>		
+				<center><button type = "button" ng-click=closeModalInterbankTransfers() class="btn btn-default navbar-btn">OK</button></center>
+		 		</div>
+			</div>

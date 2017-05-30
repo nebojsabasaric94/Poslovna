@@ -20,13 +20,13 @@
 <div>
 		<table class="table table-bordered">
 		<tr>
-			<th>Statement</th>
-			<th>Interbank transfer</th>
+			<th>Analytics Of Statements</th>
+			<th>Sender Bank</th>
 		</tr>
 
 		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
-			<td>{{entity.id}}</td>
-			
+			<td>{{entity.analyticsOfStatements.itemNumber}}</td>
+			<td>{{entity.interbankTransfer.senderBank.name}}</td>
 		</tr>
 	</table>
 </div>

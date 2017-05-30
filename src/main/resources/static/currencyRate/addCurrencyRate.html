@@ -23,25 +23,25 @@
 		</div>
 		
 	<div class = "form-group">
-		<label class = "col-md-2 control-label" for = "searchEntityBaseCurrency">Base currency:</label>
+		<label class = "col-md-2 control-label" for = "entityBaseCurrency">Base currency:</label>
 		<div class = "col-md-2">
-			<input type = "text" name = "searchEntityBaseCurrency" id = "searchEntityBaseCurrency" ng-model = "entity.baseCurrency.name" class="form-control " readonly/>
+			<input type = "text" name = "entityBaseCurrency" id = "entityBaseCurrency" ng-model = "entity.baseCurrency.name" class="form-control " readonly/>
 		</div>
 		<span><button type = "button" ng-click = "showModalSearch(true)" class = "btn btn-primary" >Select base currency</button></span>
 	</div>
 	
 	<div class = "form-group">
-		<label class = "col-md-2 control-label" for = "searchEntityAccordingToCurrency">According to currency:</label>
+		<label class = "col-md-2 control-label" for = "entityAccordingToCurrency">According to currency:</label>
 		<div class = "col-md-2">
-			<input type = "text" name = "searchEntityAccordingToCurrency" id = "searchEntityAccordingToCurrency" ng-model = "entity.accordingToCurrency.name" class="form-control " readonly/>
+			<input type = "text" name = "entityAccordingToCurrency" id = "entityAccordingToCurrency" ng-model = "entity.accordingToCurrency.name" class="form-control " readonly/>
 		</div>
 		<span><button type = "button" ng-click = "showModalSearch(false)" class = "btn btn-primary" >Select currency</button></span>
 	</div>
 		
 	<div class = "form-group">
-		<label class = "col-md-2 control-label" for = "searchEntityCurrencyInList">Currency in list:</label>
+		<label class = "col-md-2 control-label" for = "entityCurrencyInList">Currency in list:</label>
 		<div class = "col-md-2">
-			<input type = "text" name = "searchEntityCurrencyInList" id = "searchEntityCurrencyInList" ng-model = "entity.currencyInList.id" class="form-control " readonly/>
+			<input type = "text" name = "entityCurrencyInList" id = "entityCurrencyInList" ng-model = "entity.currencyInList.id" class="form-control " readonly/>
 		</div>
 		<span><button type = "button" ng-click = "showModalSearchExchangeRateLists()" class = "btn btn-primary" >Select currency in list</button></span>
 	</div>
@@ -75,7 +75,7 @@
 				<th>Domicilna?</th>
 				<th>Country</th>
 			</tr>
-			<tr class="state" ng-repeat="currency in currencies" ng-click = "setSelectedCurrencySearch(currency)" ng-class = "{selected:currency === searchEntity.baseCurrency || currency === searchEntity.accordingToCurrency}">
+			<tr class="state" ng-repeat="currency in currencies" ng-click = "setSelectedCurrency(currency)" ng-class = "{selected:currency === entity.baseCurrency || currency === entity.accordingToCurrency}">
 				<td>{{currency.official_code}}</td>
 				<td>{{currency.name}}</td>
 				<td>{{currency.domicilna}}</td>
@@ -95,7 +95,7 @@
 					<th>Code of exchange rate list</th>
 					<th>Applied by</th>
 				</tr>
-				<tr class="state" ng-repeat="exchangeRateList in exchangeRateLists" ng-click = "setSelectedExchangeRateList(exchangeRateList)" ng-class = "{selected:exchangeRateList.id === searchEntity.currencyInList.id}">
+				<tr class="state" ng-repeat="exchangeRateList in exchangeRateLists" ng-click = "setSelectedExchangeRateListAdd(exchangeRateList)" ng-class = "{selected:exchangeRateList.id === entity.currencyInList.id}">
 					<td>{{exchangeRateList.date}}</td>
 					<td>{{exchangeRateList.numberOfExchangeRateList}}</td>
 					<td>{{exchangeRateList.appliedBy}}</td>

@@ -5,7 +5,8 @@ app.controller('placeController', ['$scope','placeService','$location',
 
 			$scope.idSelectedEntity = null;
 			$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
-	
+			$scope.entity = {id : null,pttNumber:"" ,name : "",country:null};
+			
 			findAll();
 			
 			function findAll() {
@@ -130,6 +131,10 @@ app.controller('placeController', ['$scope','placeService','$location',
 			$scope.setSelectedCountrySearch = function(country){
 				$scope.searchEntity.country = country;
 			}
+			$scope.setSelectedCountry = function(country){
+				$scope.entity.country = country;
+			}
+			
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;

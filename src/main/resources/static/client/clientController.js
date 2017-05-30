@@ -5,7 +5,10 @@ app.controller('clientController',['$scope','clientService','$location',
 
 	$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
 			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
-
+	$scope.entity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
+			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
+	
+	
 	
 	findAll();
 	function findAll() {
@@ -111,6 +114,10 @@ app.controller('clientController',['$scope','clientService','$location',
 	$scope.setSelectedPlaceSearch = function(place){
 		$scope.searchEntity.residence = place;
 	}	
+	$scope.setSelectedPlace = function(place){
+		$scope.entity.residence = place;
+	}
+	
 	$scope.deselect = function(){
 		$scope.selectedEntity = null;
 		$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",

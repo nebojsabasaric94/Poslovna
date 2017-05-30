@@ -21,6 +21,14 @@
 			</div>
 		</div>	
 		
+		<div class = "form-group">
+			<label class = "col-md-2 control-label" for = "entityBank">Bank:</label>
+			<div class = "col-md-2">
+				<input type = "text" name = "entityBank" id = "entityBank" ng-model = "entity.commercialBankRate.name" class="form-control " readonly />
+			</div>
+			<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Select bank</button></span>
+		</div>
+		
 		
 		<div class = "form-group">
 				<label class = "col-md-2 control-label"></label>
@@ -31,3 +39,47 @@
 		
 
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="myModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllBanks() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Bank Code</th>
+					<th>PIB</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Email</th>
+					<th>Web</th>
+					<th>Phone</th>
+					<th>Fax</th>
+					<th>Bank?</th>
+				</tr>
+				<tr class="state" ng-repeat="bank in banks" ng-click = "setSelectedBankAdd(bank)" ng-class = "{selected:bank === entity.commercialBankRate}">
+					<td>{{bank.bankCode}}</td>
+					<td>{{bank.pib}}</td>
+					<td>{{bank.name}}</td>
+					<td>{{bank.address}}</td>
+					<td>{{bank.email}}</td>
+					<td>{{bank.web}}</td>
+					<td>{{bank.phone}}</td>
+					<td>{{bank.fax}}</td>
+					<td>{{bank.bank}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	

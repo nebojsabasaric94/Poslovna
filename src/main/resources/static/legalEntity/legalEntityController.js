@@ -8,6 +8,10 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 			nadlezni_poreski_organ_za_klijenta:"", naziv_organa:"",address:"" ,phone : "",email:"",addressForStatements:"",fax:"",
 			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null
 			};	
+	$scope.entity = {id : null,naziv_klijenta:"",skraceni_naziv_klijenta:"", maticni_broj:"", pib:"",businessActivityCode:null,
+			nadlezni_poreski_organ_za_klijenta:"", naziv_organa:"",address:"" ,phone : "",email:"",addressForStatements:"",fax:"",
+			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null
+			};	
 	
 	
 	findAll();
@@ -152,6 +156,14 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 	$scope.setSelectedBusinessActivitySearch = function(businessActivityCode){
 		$scope.searchEntity.businessActivityCode = businessActivityCode;
 	}	
+	$scope.setSelectedPlace = function(place){
+		$scope.entity.residence = place;
+	}
+	$scope.setSelectedBusinessActivity = function(businessActivityCode){
+		$scope.entity.businessActivityCode = businessActivityCode;
+	}
+	
+	
 	$scope.deselect = function(){
 		$scope.selectedEntity = null;
 		$scope.searchEntity = {id : null,naziv_klijenta:"",skraceni_naziv_klijenta:"",maticni_broj:"",pib:"",businessActivityCode:null,

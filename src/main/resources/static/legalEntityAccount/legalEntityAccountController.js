@@ -3,6 +3,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 	function($scope,service,$location){
 	
 		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
+		$scope.entity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
 		$scope.idSelectedEntity = null;
 		
 
@@ -208,6 +209,16 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		}
 		$scope.setSelectedCurrencySearch = function(currency){
 			$scope.searchEntity.currency = currency;
+		}
+		
+		$scope.setSelectedClient = function(client){
+			$scope.entity.client = client;
+		}
+		$scope.setSelectedBank = function(bank){
+			$scope.entity.bank = bank;
+		}
+		$scope.setSelectedCurrency = function(currency){
+			$scope.entity.currency = currency;
 		}
 	
 
