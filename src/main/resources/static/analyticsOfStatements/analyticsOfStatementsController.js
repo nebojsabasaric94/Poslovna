@@ -6,6 +6,11 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 					modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:false,
 					sum:null,typeOfMistake:null,status:"",dailyAccountBalance:{},paymentType:{},paymentCurrency:{},place:{}
 			};
+			$scope.entity = {debtor_originator:"",purposeOfPayment:"",creditor_recipient:"",dateOfReceipt:"",currencyDate:"",debtorAccount:"",
+					modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:false,
+					sum:null,typeOfMistake:null,status:"",dailyAccountBalance:{},paymentType:{},paymentCurrency:{},place:{}
+			};
+			
 
 			$scope.selectedDailyAccountBalanceDate = "";
 			findAll();
@@ -212,20 +217,30 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 			}
 			$scope.setSelectedDailyAccountBalanceSearch = function(dab){
 				$scope.searchEntity.dailyAccountBalance.id = dab.id;
-				$scope.entity.dailyAccountBalance.id = dab.id;
 				$scope.selectedDailyAccountBalanceDate = transformDate(new Date(dab.trafficDate));
 
 			}
 			$scope.setSelectedPaymentTypeSearch = function(pt){
 				$scope.searchEntity.paymentType = pt;
-				$scope.entity.paymentType = pt;
 			}	
 			$scope.setSelectedPaymentCurrencySearch = function(pc){
 				$scope.searchEntity.paymentCurrency = pc;
-				$scope.entity.paymentCurrency = pc;
 			}			
 			$scope.setSelectedPlaceSearch = function(place){
 				$scope.searchEntity.place = place;
+			}
+			$scope.setSelectedDailyAccountBalance = function(dab){
+				$scope.entity.dailyAccountBalance.id = dab.id;
+				$scope.selectedDailyAccountBalanceDate = transformDate(new Date(dab.trafficDate));
+
+			}
+			$scope.setSelectedPaymentType = function(pt){
+				$scope.entity.paymentType = pt;
+			}	
+			$scope.setSelectedPaymentCurrency = function(pc){
+				$scope.entity.paymentCurrency = pc;
+			}			
+			$scope.setSelectedPlace= function(place){
 				$scope.entity.place = place;
 			}
 			

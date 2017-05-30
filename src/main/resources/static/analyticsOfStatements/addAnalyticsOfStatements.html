@@ -113,33 +113,33 @@
 		</div>			
 		
 	<div class = "form-group">
-		<label class = "col-md-2 control-label" for = "searchEntityDailyAccountBalance">Daily account balance:</label>
+		<label class = "col-md-2 control-label" for = "entityDailyAccountBalance">Daily account balance:</label>
 		<div class = "col-md-2">
-			<input type = "text" name = "searchEntityDailyAccountBalance" id = "searchEntityDailyAccountBalance" ng-model = "selectedDailyAccountBalanceDate" class="form-control" readonly/>
+			<input type = "text" name = "entityDailyAccountBalance" id = "entityDailyAccountBalance" ng-model = "selectedDailyAccountBalanceDate" class="form-control" readonly/>
 		</div>
 		<span><button type = "button" ng-click = "showDailyAccountBalanceModal()" class = "btn btn-primary" >Select daily account balance</button></span>
 	</div>
 	
 	<div class = "form-group">
-		<label class = "col-md-2 control-label" for = "searchEntityPaymentType">Payment type:</label>
+		<label class = "col-md-2 control-label" for = "entityPaymentType">Payment type:</label>
 		<div class = "col-md-2">
-			<input type = "text" name = "searchEntityPaymentType" id = "searchEntityPaymentType" ng-model = "$parent.entity.paymentType.nameOfPaymentType" class="form-control" readonly/>
+			<input type = "text" name = "entityPaymentType" id = "entityPaymentType" ng-model = "$parent.entity.paymentType.nameOfPaymentType" class="form-control" readonly/>
 		</div>
 		<span><button type = "button" ng-click = "showPaymentTypeModal()" class = "btn btn-primary" >Select payment type</button></span>
 	</div>
 	
 	<div class = "form-group">
-		<label class = "col-md-2 control-label" for = "searchEntityPaymentCurrency">Payment currency:</label>
+		<label class = "col-md-2 control-label" for = "entityPaymentCurrency">Payment currency:</label>
 		<div class = "col-md-2">
-			<input type = "text" name = "searchEntityPaymentCurrency" id = "searchEntityPaymentCurrency" ng-model = "$parent.entity.paymentCurrency.name" class="form-control" readonly/>
+			<input type = "text" name = "entityPaymentCurrency" id = "entityPaymentCurrency" ng-model = "$parent.entity.paymentCurrency.name" class="form-control" readonly/>
 		</div>
 		<span><button type = "button" ng-click = "showPaymentCurrencyModal()" class = "btn btn-primary" >Select payment currency</button></span>
 	</div>
 	
 	<div class = "form-group">
-		<label class = "col-md-2 control-label" for = "searchEntityPlace">Place:</label>
+		<label class = "col-md-2 control-label" for = "entityPlace">Place:</label>
 		<div class = "col-md-2">
-			<input type = "text" name = "searchEntityPlace" id = "searchEntityPlace" ng-model = "$parent.entity.place.name" class="form-control" readonly/>
+			<input type = "text" name = "entityPlace" id = "entityPlace" ng-model = "$parent.entity.place.name" class="form-control" readonly/>
 		</div>
 		<span><button type = "button" ng-click = "showPlaceModal()" class = "btn btn-primary" >Select place</button></span>
 	</div>
@@ -198,7 +198,7 @@
 					<th>Traffic to the burden</th>
 					<th>New state</th>
 				</tr>
-				<tr class="state" ng-repeat="dab in dailyAccountBalances" ng-click = "setSelectedDailyAccountBalanceSearch(dab)" ng-class = "{selected:dab.id === searchEntity.dailyAccountBalance.id}">
+				<tr class="state" ng-repeat="dab in dailyAccountBalances" ng-click = "setSelectedDailyAccountBalance(dab)" ng-class = "{selected:dab.id === entity.dailyAccountBalance.id}">
 					<td>{{dab.legalEntityAccount.brojRacuna}}</td>
 					<td>{{dab.trafficDate}}</td>
 					<td>{{dab.previousState}}</td>
@@ -219,7 +219,7 @@
 					<th>code</th>
 					<th>nameOfPaymentType</th>
 				</tr>
-				<tr class="state" ng-repeat="pt in paymentTypes" ng-click = "setSelectedPaymentTypeSearch(pt)" ng-class = "{selected:pt.id === searchEntity.paymentType.id}">
+				<tr class="state" ng-repeat="pt in paymentTypes" ng-click = "setSelectedPaymentType(pt)" ng-class = "{selected:pt.id === entity.paymentType.id}">
 					<td>{{pt.code}}</td>
 					<td>{{pt.nameOfPaymentType}}</td>
 				</tr>
@@ -238,7 +238,7 @@
 					<th>Domicilna?</th>
 					<th>Country</th>
 				</tr>
-				<tr class="state" ng-repeat="pc in paymentCurrencies" ng-click = "setSelectedPaymentCurrencySearch(pc)" ng-class = "{selected:pc.id === searchEntity.paymentCurrency.id}">
+				<tr class="state" ng-repeat="pc in paymentCurrencies" ng-click = "setSelectedPaymentCurrency(pc)" ng-class = "{selected:pc.id === entity.paymentCurrency.id}">
 					<td>{{pc.official_code}}</td>
 					<td>{{pc.name}}</td>
 					<td>{{pc.domicilna}}</td>
@@ -258,7 +258,7 @@
 						<th>Name</th>
 						<th>Country</th>
 					</tr>
-					<tr class="state" ng-repeat="p in places" ng-click = "setSelectedPlaceSearch(p)" ng-class = "{selected:p.id === searchEntity.place.id}">
+					<tr class="state" ng-repeat="p in places" ng-click = "setSelectedPlace(p)" ng-class = "{selected:p.id === entity.place.id}">
 						<td>{{p.pttNumber}}</td>
 						<td>{{p.name}}</td>
 						<td>{{p.country.name}}</td>
