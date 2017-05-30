@@ -30,4 +30,9 @@ public class BusinessActivityCodeServiceImpl implements BusinessActivityCodeServ
 	public BusinessActivityCode findOne(Long id) {
 		return repository.findOne(id);
 	}
+
+	@Override
+	public BusinessActivityCode save(BusinessActivityCode businessActivityCode) {
+		return repository.save(businessActivityCode);
+	}
 }

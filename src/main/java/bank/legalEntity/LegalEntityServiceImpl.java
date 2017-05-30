@@ -46,4 +46,9 @@ public class LegalEntityServiceImpl implements LegalEntityService{
 		repository.delete(id);
 		
 	}
+
+	@Override
+	public LegalEntity save(LegalEntity legalEntity) {
+		return repository.save(legalEntity);
+	}
 }

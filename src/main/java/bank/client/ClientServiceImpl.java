@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bank.bank.Bank;
+
 @Service
 @Transactional
 public class ClientServiceImpl implements ClientService{
@@ -32,5 +34,10 @@ public class ClientServiceImpl implements ClientService{
 	@Override
 	public Client findOne(Long id) {
 		return repository.findOne(id);
+	}
+
+	@Override
+	public Client save(Client client) {
+		return repository.save(client);
 	}
 }
