@@ -41,6 +41,10 @@ services.service('legalEntityAccountService',['$http',function($http){
 		return $http.post('/legalEntityAccount/search',entity);
 	}
 	
+	this.save = function(legalEntityAccount) {
+		return $http.post("/legalEntityAccount",legalEntityAccount);
+	}
+	
 
 
 }])

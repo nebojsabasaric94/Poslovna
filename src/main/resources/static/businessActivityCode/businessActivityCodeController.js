@@ -40,6 +40,17 @@ app.controller('businessActivityCodeController',['$scope','businessActivityCodeS
 			
 	}
 	
+	$scope.add = function(){
+		service.save($scope.entity).then(function(response) {
+			findAll();
+			$location.path('businessActivityCode');
+		},
+		function(response){
+			alert("Dodavanje neuspesno");
+		}
+		);
+	}
+	
 	
 	$scope.nextNavigation = function(selectedEntity){
 		

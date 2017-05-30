@@ -48,6 +48,17 @@ app.controller('clientController',['$scope','clientService','$location',
 			
 	}
 	
+	$scope.add = function(){
+		service.save($scope.entity).then(function(response) {
+			findAll();
+			$location.path('client');
+		},
+		function(response){
+			alert("Dodavanje neuspesno");
+		}
+		);
+	}
+	
 	
 	$scope.nextNavigation = function(selectedEntity){
 		

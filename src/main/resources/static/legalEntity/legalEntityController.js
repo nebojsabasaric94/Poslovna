@@ -51,6 +51,18 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 		$scope.setSelected($scope.entities[0]);
 	}
 	
+	
+	$scope.add = function(){
+		service.save($scope.entity).then(function(response) {
+			findAll();
+			$location.path('legalEntity');
+		},
+		function(response){
+			alert("Dodavanje neuspesno");
+		}
+		);
+	}
+	
 	$scope.previous = function(selectedEntity){
 		var index = -1;
 		

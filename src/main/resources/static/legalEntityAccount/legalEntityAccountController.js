@@ -106,6 +106,17 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 			})
 		}
 		
+		$scope.add = function(){
+			service.save($scope.entity).then(function(response) {
+				findAll();
+				$location.path('legalEntityAccount');
+			},
+			function(response){
+				alert("Dodavanje neuspesno");
+			}
+			);
+		}
+		
 		$scope.setSelected = function(selectedEntity){
 			$scope.selectedEntity = selectedEntity;
 		}

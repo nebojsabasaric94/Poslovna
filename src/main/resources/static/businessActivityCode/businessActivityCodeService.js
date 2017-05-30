@@ -10,5 +10,9 @@ services.service('businessActivityCodeService',['$http',function($http){
 			return $http.post('/businessActivityCode/search',entity);
 		}
 		
+		this.save = function(businessActivityCode) {
+			return $http.post("/businessActivityCode",businessActivityCode);
+		}
+		
 		
 }]);

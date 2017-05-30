@@ -25,4 +25,8 @@ services.service('legalEntityService',['$http',function($http){
 		return $http.get("/legalEntity/nextFilterBussinesActivity/" + id);
 	}
 	
+	this.save = function(legalEntity) {
+		return $http.post("/legalEntity",legalEntity);
+	}
+	
 }])
