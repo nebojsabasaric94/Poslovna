@@ -247,4 +247,29 @@ angular.module('routerApp', ['ui.router',
 	
 	
 	
+	
+	
+	
+	.state('businessActivityCode.add', {
+		url : '/addBusinessActivityCode',
+		templateUrl : 'businessActivityCode/addBusinessActivityCode.html'
+	})
+	
+	.state('client.add', {
+		url : '/addClient',
+		templateUrl : 'client/addClient.html'
+	})
+	
+	.state('legalEntity.add', {
+		url : '/addLegalEntity',
+		templateUrl : 'legalEntity/addLegalEntity.html'
+	})
+	
+	.state('legalEntityAccount.add', {
+		url : '/addLegalEntityAccount',
+		templateUrl : 'legalEntityAccount/addLegalEntityAccount.html'
+	})
+	
+	
+	
 });
