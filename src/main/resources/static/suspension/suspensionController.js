@@ -4,7 +4,7 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 		function($scope, service, $location) {
 
 			$scope.searchEntity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
-	
+			$scope.entity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
 	
 			findAll();
 		
@@ -135,6 +135,13 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 				$scope.searchEntity.legalEntityAccount.id = account.id;
 				$scope.searchEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
 			}
+			
+			$scope.setSelectedAccount = function(account){
+					$scope.entity.legalEntityAccount.id = account.id;
+					$scope.entity.legalEntityAccount.brojRacuna = account.brojRacuna;
+			}
+			
+			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};

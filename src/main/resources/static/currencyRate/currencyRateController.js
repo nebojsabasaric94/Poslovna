@@ -188,10 +188,14 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			}				
 			
 			$scope.setSelectedCurrencySearch = function(currency){
-				if($scope.base)
+				if($scope.base){
+					$scope.entity.baseCurrency = currency;
 					$scope.searchEntity.baseCurrency = currency;
-				else
+				}
+				else{
+					$scope.entity.accordingToCurrency = currency;
 					$scope.searchEntity.accordingToCurrency = currency;
+				}
 			}			
 			
 			$scope.setSelectedExchangeRateList = function(exchangeRateList){

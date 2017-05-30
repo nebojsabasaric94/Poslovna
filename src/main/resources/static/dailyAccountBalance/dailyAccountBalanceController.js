@@ -167,7 +167,15 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 			$scope.setSelectedAccountSearch = function(account){
 				$scope.searchEntity.legalEntityAccount.id = account.id;
 				$scope.searchEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
-
+				
+				if($scope.entity){//za dodavanje
+					$scope.entity.legalEntityAccount = {
+							id : account.id,
+							brojRacuna : account.brojRacuna
+					}
+				}
+				else
+					$scope.entity = $scope.searchEntity;
 			}
 			
 			$scope.deselect = function(){
