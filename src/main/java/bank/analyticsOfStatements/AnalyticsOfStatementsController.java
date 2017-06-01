@@ -3,13 +3,10 @@ package bank.analyticsOfStatements;
 import java.io.File;
 import java.util.List;
 
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.xml.sax.SAXException;
 
 import bank.currency.Currency;
 import bank.currency.CurrencyService;
@@ -80,6 +76,9 @@ public class AnalyticsOfStatementsController {
 	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandler());
 		Statements list = (Statements) jaxbUnmarshaller.unmarshal(file);
+		for(int i = 0 ; i < list.getAnalyticsOfStatements().size();i++){
+			analyticsOfStatementsService.save(list.getAnalyticsOfStatements().get(i));
+		}
 		return list;
 	}
 	
@@ -87,7 +86,7 @@ public class AnalyticsOfStatementsController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public void save(@RequestBody AnalyticsOfStatements analyticsOfStatements) throws JAXBException {
 		analyticsOfStatements.setItemNumber(null);
-		AnalyticsOfStatements analyticsOfStatementsXML = analyticsOfStatementsService.save(analyticsOfStatements);
+		//AnalyticsOfStatements analyticsOfStatementsXML = analyticsOfStatementsService.save(analyticsOfStatements);
 		
 		//System.out.println(analyticsOfStatements);
 		Statements statements = getStatements(new File("analytic.xml"));

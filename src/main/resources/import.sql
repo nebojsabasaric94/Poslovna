@@ -1,8 +1,11 @@
 
 insert into national_bank (common_name, country, email, organization, organization_unit) values ('NBS','Srbija','nbs@nbs','org','orgU');
 
-insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('123', '0123456789', 'Erste', 'blababa', 'fafa@fa.com', 'afafa', '+415151567', '+415627', true);
-insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('124', '0163456789', 'Erste2', 'blabfaba', 'fafha@fa.com', 'afjafa', '+415251567', '+411627', true);
+insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('200', '0123456789', 'Erste bank', 'Bulevar Oslobodjenja 4', 'erste@fbank.com', 'www.erste.com', '021333444', '021333443', true);
+insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('300', '1921681234', 'Uni credit bank', 'Narodnog fronta 5', 'unicredit@bank.com', 'www.unicredit.com', '021123123', '021123122', true);
+insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('400', '1221221211', 'Komercijalna banka', 'Ulica Modene', 'komercijalna@banka.com', 'www.komercijalna.com', '021456789', '021456788', true);
+insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('402', '1921921788', 'Pro credit bank', 'Vuka Karadzica bb', 'procredit@bank.com', 'www.procredit.com', '011122111', '011122112', true);
+insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('205', '1631637894', 'Raiffeisen bank', 'Cara Dusana 5', 'raiffeisen@bank.com', 'ww.raiffeisen.', '011454444', '011454445', true);
 
 insert into country(country_code,name) values ('srb','Srbija');
 insert into country(country_code,name) values ('bih','Bosna');
@@ -59,20 +62,34 @@ insert into client(address,address_for_statements,email,email_statements,first_n
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Brace ribnikar 1','Vuka karadzica 10 ','bb@b.com',0,'Marko','Markovic','0000000000000','063333333','Fizicko lice','1')
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Strazilovksa','Vuka karadzica 10 ','dd@d.com',0,'Bogoljub','Gagic','1122334455667','064444444','Fizicko lice','1')
 
+
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Vuka Karadzica 53','Vuka karadzica 53 ','novi@most.com',0,'Danilo','Acimovic','0101119145452','062922222','Pravno lice','1')
 insert into legal_entity(business_activity_code_business_activity_code_id,naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('1','Novi Most DA','N.M.D.A','021456123','123456','Poreski organ','Naziv organa','192145321','5')
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Drinska 10','Drinska 10 ','lasta@prevoz.com',0,'Milos','Milosevic','1144778899445','062933333','Pravno lice','1')
 insert into legal_entity(business_activity_code_business_activity_code_id,naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('2','Lasta','Lasta','0123456','654321','Poreski organ','Naziv organa','221456123','6')
 insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Pozeska 2','Pozeska 2 ','sintelon@s.com',0,'Sima','Simic','0903996773631','064787898','Pravno lice','1')
 insert into legal_entity(business_activity_code_business_activity_code_id,naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('3','Sintelon','Sintelon','777888','655445','Poreski organ','Naziv organa','787844777','7')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Cara Dusana 12','Cara dusana 12','kostana@v.com',0,'Bosko','Boskovic','0102967773631','064787898','Pravno lice','1')
+insert into legal_entity(business_activity_code_business_activity_code_id,naziv_klijenta,skraceni_naziv_klijenta,fax,maticni_broj,nadlezni_poreski_organ_za_klijenta,naziv_organa,pib,client_id)values('3','Kostana','Kostana','777888','655445','Poreski organ','Naziv organa','192168778','8')
 
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103121231231231111','2016-01-21',0,'1','1','1');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103187878745784542','2016-02-28',0,'1','2','2');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('103454698745632122','2016-03-30',1,'1','3','3');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202454654789541254','2016-04-29',0,'2','4','1');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202745485455555555','2016-01-18',1,'2','5','2');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202145487447474747','2016-02-27',1,'2','6','3');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('202145745874545555','2016-03-01',1,'2','7','4');
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Bulevar Mihajla Pupina 12','Bulevar Mihajla Pupina 12 ','ozren@s.com',0,'Ozren','Soldatovic','0405945884541','064945457','Fizicko lice','1')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Bulevar Oslobodjenja 12','Bulevar Oslobodjenja 12','zivan@r.com',0,'Zivan','Radosavljevic','0402956121245','060456123','Fizicko lice','1')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Tolstojeva 2','olstojeva 2','gavrilo@g.com',0,'Gavrilo','Gavrilovic','1212940124477','063565478','Fizicko lice','1')
+insert into client(address,address_for_statements,email,email_statements,first_name,last_name,jmbg,phone,type_of_client,residence_id)values ('Topolska 18','Topolska 18','malina@v.com',0,'Malina','Vojvodic','1210959556612','064112211','Fizicko lice','1')
+
+
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200121231231231111','2016-01-21',0,'1','1','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200187878745784542','2016-02-28',0,'1','2','2');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200454698745632122','2016-03-30',1,'1','3','3');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300454654789541254','2016-04-29',0,'2','4','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300745485455555519','2016-01-18',1,'2','5','2');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300132487447474747','2016-02-27',1,'2','6','3');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('400198745874743524','2016-03-01',1,'3','7','4');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('400141445874949539','2016-03-01',1,'3','8','4');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402141245971545547','2016-03-01',1,'4','9','4');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402146545674541523','2016-03-01',1,'4','10','4');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402145745276542512','2016-03-01',1,'4','11','4');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('205145745874545418','2016-03-01',1,'5','12','4');
 
 
 insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-05-21','202145745874545555','1');
@@ -87,7 +104,6 @@ insert into daily_account_balance (new_state, previous_state, traffic_date, traf
 insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('4125.23','0','2017-02-28','4125.23','0','3');
 insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('7800','1850','2017-03-01','8950','4000','4');
 
-insert into analytics_of_statements (account_creditor, creditor_recipient, currency_date, date_of_receipt, debtor_account, debtor_originator, emergency, model_approval, model_assigments, purpose_of_payment, reference_number_assigments, reference_number_creditor, status, sum, daily_account_balance_id, payment_currency_currency_id, payment_type_id, place_id) values ('103121231231231111','JANKO JANKOVIC','2017-02-27','2017-02-27','103187878745784542','SCEPAN SCEKIC',0,'97','85','Racun za isporucenu robu','45123547','15478412','1','16250.32','1','1','2','1');
 
 insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-03-10','1225.8','MT105','1','2');
 insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-04-30','14514.2','MT105','2','1');
