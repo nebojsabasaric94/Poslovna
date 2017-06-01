@@ -1,6 +1,11 @@
 package bank.interbankTransfer;
 
+import java.io.File;
 import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,9 +38,18 @@ public class InterbankTransferController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void save(@RequestBody InterbankTransfer interbankTransfer) {
+	public void save(@RequestBody InterbankTransfer interbankTransfer) throws JAXBException {
 		interbankTransfer.setIdMessage(null);
-		interbankTransferService.save(interbankTransfer);
+		InterbankTransfer interbankTransferXML = interbankTransferService.save(interbankTransfer);
+		File file = new File("interbankTransfer.xml");
+		JAXBContext jaxbContext = JAXBContext.newInstance(InterbankTransfer.class);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(interbankTransferXML, file);
+		jaxbMarshaller.marshal(interbankTransferXML, System.out);
+		
+		
 	}
 	
 	@GetMapping("/deleteInterbankTransfer/{id}")

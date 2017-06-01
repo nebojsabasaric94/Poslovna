@@ -1,10 +1,18 @@
 package bank.analyticsOfStatements;
 
+import java.io.File;
 import java.util.List;
+
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.xml.sax.SAXException;
 
 import bank.currency.Currency;
 import bank.currency.CurrencyService;
@@ -43,15 +52,56 @@ public class AnalyticsOfStatementsController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<AnalyticsOfStatements>> findAll() {
-		return new ResponseEntity<>(analyticsOfStatementsService.findAll(), HttpStatus.OK);
+	public List<AnalyticsOfStatements> findAll() throws JAXBException {
+		//return new ResponseEntity<>(analyticsOfStatementsService.findAll(), HttpStatus.OK);
+		File file = new File("analytic.xml");
+		/*JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticsOfStatements.class);
+
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller(); //unmarshaller
+		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema schema = null;
+		try {
+			schema = schemaFactory.newSchema(new File("C:\\accountStatement.xsd"));
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jaxbUnmarshaller.setSchema(schema);*/
+		Statements list = getStatements(file);
+		
+		
+		//AnalyticsOfStatements mt102 = (AnalyticsOfStatements) jaxbUnmarshaller.unmarshal(file);
+		//System.out.println(mt102);
+		return list.getAnalyticsOfStatements();
+	}
+	
+	private Statements getStatements(File file) throws JAXBException{
+		JAXBContext jaxbContext = JAXBContext.newInstance(Statements.class);
+	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandler());
+		Statements list = (Statements) jaxbUnmarshaller.unmarshal(file);
+		return list;
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void save(@RequestBody AnalyticsOfStatements analyticsOfStatements) {
+	public void save(@RequestBody AnalyticsOfStatements analyticsOfStatements) throws JAXBException {
 		analyticsOfStatements.setItemNumber(null);
-		analyticsOfStatementsService.save(analyticsOfStatements);
+		AnalyticsOfStatements analyticsOfStatementsXML = analyticsOfStatementsService.save(analyticsOfStatements);
+		
+		//System.out.println(analyticsOfStatements);
+		Statements statements = getStatements(new File("analytic.xml"));
+		statements.getAnalyticsOfStatements().add(analyticsOfStatements);
+		File file = new File("analytic.xml");
+		JAXBContext jaxbContext = JAXBContext.newInstance(Statements.class);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(statements, file);
+		jaxbMarshaller.marshal(statements, System.out);
+		
+		
+		
 	}
 	
 	@PostMapping("/search")

@@ -1,6 +1,6 @@
 package bank.interbankTransfer;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,11 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import bank.analyticsOfStatements.AddaptDate;
 import bank.bank.Bank;
 import bank.itemTransfer.ItemTransfer;
 
@@ -25,34 +31,43 @@ import bank.itemTransfer.ItemTransfer;
  */
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class InterbankTransfer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
+	@XmlElement
 	private Long idMessage;
 
 	@Column(columnDefinition = "CHAR(5)")
 	@NotBlank
+	@XmlElement
 	private String typeOfMessage;
 
 	@Column
 	@NotNull
+	@XmlJavaTypeAdapter(AddaptDate.class)
+	@XmlElement
 	private Date date;
 
 	@Column
-	//@NotBlank
+	@XmlElement
 	private Float sum;
 	
 	@ManyToOne
+	@XmlElement
 	private Bank senderBank;
 
 	@ManyToOne
+	@XmlElement
 	private Bank bank;
 	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "interbankTransfer",cascade = CascadeType.ALL)
+	@XmlElement
 	private List<ItemTransfer> itemTransfers; 
 	
 	
