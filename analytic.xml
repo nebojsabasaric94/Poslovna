@@ -1,4 +1,537 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <statements>
- 
+    <analyticsOfStatements>
+        <debtor_originator>Nebojsa Basaric</debtor_originator>
+        <purposeOfPayment>Pozajmica</purposeOfPayment>
+        <creditor_recipient>Janko Jankovic</creditor_recipient>
+        <dateOfReceipt>2017-03-01</dateOfReceipt>
+        <currencyDate>2017-03-01</currencyDate>
+        <debtorAccount></debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>200121231231231111</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>123212</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>12014.0</sum>
+        <status></status>
+        <paymentType>
+            <code>002</code>
+            <id>2</id>
+            <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Danilo Dimitrijevic</debtor_originator>
+        <purposeOfPayment>Pomoc</purposeOfPayment>
+        <creditor_recipient>Scepan Scekic</creditor_recipient>
+        <dateOfReceipt>2017-03-01</dateOfReceipt>
+        <currencyDate>2017-03-01</currencyDate>
+        <debtorAccount></debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>200187878745784542</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>454784454</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>142564.0</sum>
+        <status></status>
+        <paymentType>
+            <code>002</code>
+            <id>2</id>
+            <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>1</id>
+            <name>Kragujevac</name>
+            <pttNumber>34000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Nikola Smiljanic</debtor_originator>
+        <purposeOfPayment>Pozajmica</purposeOfPayment>
+        <creditor_recipient>Scepan Scekic</creditor_recipient>
+        <dateOfReceipt>2017-03-01</dateOfReceipt>
+        <currencyDate>2017-03-01</currencyDate>
+        <debtorAccount></debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>200187878745784542</accountCreditor>
+        <modelApproval>27</modelApproval>
+        <referenceNumberCreditor>23321454</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>254220.0</sum>
+        <status></status>
+        <paymentType>
+            <code>002</code>
+            <id>2</id>
+            <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Milos Petrovic</debtor_originator>
+        <purposeOfPayment>Vracanje duga</purposeOfPayment>
+        <creditor_recipient>Janko Jankovic</creditor_recipient>
+        <dateOfReceipt>2017-03-15</dateOfReceipt>
+        <currencyDate>2017-03-15</currencyDate>
+        <debtorAccount></debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>200121231231231111</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>454784</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>142250.0</sum>
+        <status></status>
+        <paymentType>
+            <code>002</code>
+            <id>2</id>
+            <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>1</id>
+            <name>Kragujevac</name>
+            <pttNumber>34000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Nikola Smiljanic</debtor_originator>
+        <purposeOfPayment>Usluge hrane i pica</purposeOfPayment>
+        <creditor_recipient>Novi Most da</creditor_recipient>
+        <dateOfReceipt>2017-04-11</dateOfReceipt>
+        <currencyDate>2017-04-11</currencyDate>
+        <debtorAccount></debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>300745485455555519</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>6547488</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>22152.0</sum>
+        <status></status>
+        <paymentType>
+            <code>002</code>
+            <id>2</id>
+            <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>1</id>
+            <name>Kragujevac</name>
+            <pttNumber>34000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Mitar Petrovic</debtor_originator>
+        <purposeOfPayment>Usluge hrane i pica</purposeOfPayment>
+        <creditor_recipient>Novi Most da</creditor_recipient>
+        <dateOfReceipt>2017-04-11</dateOfReceipt>
+        <currencyDate>2017-04-11</currencyDate>
+        <debtorAccount></debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>300745485455555519</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>454898</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>25452.0</sum>
+        <status></status>
+        <paymentType>
+            <code>002</code>
+            <id>2</id>
+            <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Janko Jankovic</debtor_originator>
+        <purposeOfPayment>Isplata za usluge</purposeOfPayment>
+        <creditor_recipient>Kosta Kostic</creditor_recipient>
+        <dateOfReceipt>2017-04-20</dateOfReceipt>
+        <currencyDate>2017-04-20</currencyDate>
+        <debtorAccount>200121231231231111</debtorAccount>
+        <modelAssigments>97</modelAssigments>
+        <referenceNumberAssigments>454781</referenceNumberAssigments>
+        <accountCreditor></accountCreditor>
+        <referenceNumberCreditor></referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>6321.3</sum>
+        <status></status>
+        <paymentType>
+            <code>003</code>
+            <id>3</id>
+            <nameOfPaymentType>Nalog za isplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Novi Most da</debtor_originator>
+        <purposeOfPayment>Isplata za robu</purposeOfPayment>
+        <creditor_recipient>Toma Tomic</creditor_recipient>
+        <dateOfReceipt>2017-05-01</dateOfReceipt>
+        <currencyDate>2017-05-01</currencyDate>
+        <debtorAccount>300745485455555519</debtorAccount>
+        <modelAssigments>97</modelAssigments>
+        <referenceNumberAssigments>454796</referenceNumberAssigments>
+        <accountCreditor></accountCreditor>
+        <referenceNumberCreditor></referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>3125.3</sum>
+        <status></status>
+        <paymentType>
+            <code>003</code>
+            <id>3</id>
+            <nameOfPaymentType>Nalog za isplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Novi Most da</debtor_originator>
+        <purposeOfPayment>Isplata za robu</purposeOfPayment>
+        <creditor_recipient>Rasa Jokic</creditor_recipient>
+        <dateOfReceipt>2017-05-11</dateOfReceipt>
+        <currencyDate>2017-05-11</currencyDate>
+        <debtorAccount>300745485455555519</debtorAccount>
+        <modelAssigments>97</modelAssigments>
+        <referenceNumberAssigments>454787</referenceNumberAssigments>
+        <accountCreditor></accountCreditor>
+        <referenceNumberCreditor></referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>10247.0</sum>
+        <status></status>
+        <paymentType>
+            <code>003</code>
+            <id>3</id>
+            <nameOfPaymentType>Nalog za isplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Radovan Milosevic</debtor_originator>
+        <purposeOfPayment>Usluge</purposeOfPayment>
+        <creditor_recipient>Novi Most da</creditor_recipient>
+        <dateOfReceipt>2017-05-16</dateOfReceipt>
+        <currencyDate>2017-05-16</currencyDate>
+        <debtorAccount></debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>300745485455555519</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>6547487</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>14258.0</sum>
+        <status></status>
+        <paymentType>
+            <code>002</code>
+            <id>2</id>
+            <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Novi Most da</debtor_originator>
+        <purposeOfPayment>Isplata za robu</purposeOfPayment>
+        <creditor_recipient>Aleksandar Petrovic</creditor_recipient>
+        <dateOfReceipt>2017-05-20</dateOfReceipt>
+        <currencyDate>2017-05-20</currencyDate>
+        <debtorAccount>300745485455555519</debtorAccount>
+        <modelAssigments>97</modelAssigments>
+        <referenceNumberAssigments>454796</referenceNumberAssigments>
+        <accountCreditor></accountCreditor>
+        <referenceNumberCreditor></referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>5624.3</sum>
+        <status></status>
+        <paymentType>
+            <code>003</code>
+            <id>3</id>
+            <nameOfPaymentType>Nalog za isplatu</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>2</id>
+            <name>Novi Sad</name>
+            <pttNumber>21000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Sintelon</debtor_originator>
+        <purposeOfPayment>Uplata po racunu 1454/2017</purposeOfPayment>
+        <creditor_recipient>Novi Most da</creditor_recipient>
+        <dateOfReceipt>2017-05-31</dateOfReceipt>
+        <currencyDate>2017-05-31</currencyDate>
+        <debtorAccount>400198745874743524</debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>300745485455555519</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>451787</referenceNumberCreditor>
+        <emergency>false</emergency>
+        <sum>21187.0</sum>
+        <status></status>
+        <paymentType>
+            <code>001</code>
+            <id>1</id>
+            <nameOfPaymentType>Nalog za prenos</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>1</id>
+            <name>Kragujevac</name>
+            <pttNumber>34000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    <analyticsOfStatements>
+        <debtor_originator>Novi most da</debtor_originator>
+        <purposeOfPayment>Uplata po racunu 1454/2017</purposeOfPayment>
+        <creditor_recipient>Sintelon</creditor_recipient>
+        <dateOfReceipt>2017-06-01</dateOfReceipt>
+        <currencyDate>2017-06-01</currencyDate>
+        <debtorAccount>300745485455555519</debtorAccount>
+        <referenceNumberAssigments></referenceNumberAssigments>
+        <accountCreditor>400198745874743524</accountCreditor>
+        <modelApproval>97</modelApproval>
+        <referenceNumberCreditor>326987</referenceNumberCreditor>
+        <emergency>true</emergency>
+        <sum>45287.0</sum>
+        <status></status>
+        <paymentType>
+            <code>001</code>
+            <id>1</id>
+            <nameOfPaymentType>Nalog za prenos</nameOfPaymentType>
+        </paymentType>
+        <paymentCurrency>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <domicilna>true</domicilna>
+            <id>1</id>
+            <name>dinar</name>
+            <official_code>din</official_code>
+        </paymentCurrency>
+        <place>
+            <country>
+                <country_code>srb</country_code>
+                <id>1</id>
+                <name>Srbija</name>
+            </country>
+            <id>1</id>
+            <name>Kragujevac</name>
+            <pttNumber>34000</pttNumber>
+        </place>
+    </analyticsOfStatements>
+    
 </statements>

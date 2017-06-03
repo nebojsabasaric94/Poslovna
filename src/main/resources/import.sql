@@ -97,16 +97,3 @@ insert into suspension(date, transfer_to_account, legal_entity_account_id)values
 insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-03-10','202745485455555555','4');
 
 
-insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('0','1200','2017-02-27','0','1200','1');
-insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('1500','0','2017-02-28','1500','0','1');
-insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('3500','1500','2017-03-01','3000','1000','1');
-insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('0','3685.25','2017-02-27','0','3685.25','2');
-insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('4125.23','0','2017-02-28','4125.23','0','3');
-insert into daily_account_balance (new_state, previous_state, traffic_date, traffic_to_benefit, traffic_to_the_burden, legal_entity_account_id)values('7800','1850','2017-03-01','8950','4000','4');
-
-
-insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-03-10','1225.8','MT105','1','2');
-insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-04-30','14514.2','MT105','2','1');
-insert into interbank_transfer (date, sum, type_of_message, bank_id, sender_bank_id) values ('2017-05-21','8874.1','MT102','1','2');
-
-insert into item_transfer (analytics_of_statements_item_number, interbank_transfer_id_message) values (1,1);
