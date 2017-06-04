@@ -66,6 +66,7 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 			
 			
 			$scope.add = function(){
+				$scope.entity.date= new Date();
 				service.save($scope.entity).then(function(response) {
 					findAll();
 					$location.path('suspension');

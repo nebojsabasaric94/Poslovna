@@ -104,7 +104,7 @@ public class DailyAccountBalanceServiceImpl implements DailyAccountBalanceServic
 				result = new DailyAccountBalance();
 				result.setLegalEntityAccount(creditorAccount);
 				result.setPreviousState(max.getNewState());
-				result.setNewState(max.getPreviousState());
+				result.setNewState((float)0.0);
 				result.setTrafficToBenefit((float) 0.0);
 				result.setTrafficToTheBurden((float)0.0);
 				result.setTrafficDate(date);

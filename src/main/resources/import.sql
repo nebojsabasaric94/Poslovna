@@ -1,6 +1,3 @@
-
-insert into national_bank (common_name, country, email, organization, organization_unit) values ('NBS','Srbija','nbs@nbs','org','orgU');
-
 insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('200', '0123456789', 'Erste bank', 'Bulevar Oslobodjenja 4', 'erste@fbank.com', 'www.erste.com', '021333444', '021333443', true);
 insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('300', '1921681234', 'Uni credit bank', 'Narodnog fronta 5', 'unicredit@bank.com', 'www.unicredit.com', '021123123', '021123122', true);
 insert into bank (bank_code, pib, name, address, email, web, phone, fax, bank) values ('400', '1221221211', 'Komercijalna banka', 'Ulica Modene', 'komercijalna@banka.com', 'www.komercijalna.com', '021456789', '021456788', true);
@@ -79,21 +76,15 @@ insert into client(address,address_for_statements,email,email_statements,first_n
 
 
 insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200121231231231111','2016-01-21',0,'1','1','1');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200187878745784542','2016-02-28',0,'1','2','2');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200454698745632122','2016-03-30',1,'1','3','3');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200187878745784542','2016-02-28',0,'1','2','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('200454698745632122','2016-03-30',1,'1','3','1');
 insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300454654789541254','2016-04-29',0,'2','4','1');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300745485455555519','2016-01-18',1,'2','5','2');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300132487447474747','2016-02-27',1,'2','6','3');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('400198745874743524','2016-03-01',1,'3','7','4');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('400141445874949539','2016-03-01',1,'3','8','4');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402141245971545547','2016-03-01',1,'4','9','4');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402146545674541523','2016-03-01',1,'4','10','4');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402145745276542512','2016-03-01',1,'4','11','4');
-insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('205145745874545418','2016-03-01',1,'5','12','4');
-
-
-insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-05-21','202145745874545555','1');
-insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-04-30','103454698745632122','2');
-insert into suspension(date, transfer_to_account, legal_entity_account_id)values('2017-03-10','202745485455555555','4');
-
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300745485455555519','2016-01-18',1,'2','5','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('300132487447474747','2016-02-27',1,'2','6','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('400198745874743524','2016-03-01',1,'3','7','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('400141445874949539','2016-03-01',1,'3','8','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402141245971545547','2016-03-01',1,'4','9','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402146545674541523','2016-03-01',1,'4','10','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402145745276542512','2016-03-01',1,'4','11','1');
+insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('205145745874545418','2016-03-01',1,'5','12','1');
 
