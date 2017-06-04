@@ -6,8 +6,8 @@ services.service('interbankTransferService', [ '$http', function($http) {
 		return $http.get("/interbankTransfer");
 	}
 	
-	this.save = function(interbankTransfer) {
-		return $http.post("/interbankTransfer",interbankTransfer);
+	this.exportToXml = function() {
+		return $http.post("/interbankTransfer/xml");
 	}
 	
 	this.next = function(id) {

@@ -80,6 +80,7 @@ public class InterbankTransferServiceImpl implements InterbankTransferService {
 			newTransfer.setItemTransfers(new ArrayList<ItemTransfer>());
 			newTransfer.setTypeOfMessage("MT102");
 			newTransfer.setSum((float) 0.0);
+			newTransfer.setProcessed(false);
 			return newTransfer;
 		}
 		return transfer;

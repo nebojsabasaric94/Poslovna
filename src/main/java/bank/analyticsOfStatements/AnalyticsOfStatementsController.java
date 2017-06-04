@@ -11,13 +11,11 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import bank.currency.Currency;
@@ -26,6 +24,7 @@ import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.dailyAccountBalance.DailyAccountBalanceService;
 import bank.interbankTransfer.InterbankTransfer;
 import bank.interbankTransfer.InterbankTransferService;
+import bank.interbankTransfer.Transfers;
 import bank.itemTransfer.ItemTransfer;
 import bank.legalEntityAccount.LegalEntityAccount;
 import bank.legalEntityAccount.LegalEntityAccountService;
@@ -59,41 +58,38 @@ public class AnalyticsOfStatementsController {
 	}
 
 	@GetMapping
-	public List<AnalyticsOfStatements> findAll() throws JAXBException {
-		//return new ResponseEntity<>(analyticsOfStatementsService.findAll(), HttpStatus.OK);
-		File file = new File("analytic.xml");
-		/*JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticsOfStatements.class);
-
-		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller(); //unmarshaller
-		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		Schema schema = null;
-		try {
-			schema = schemaFactory.newSchema(new File("C:\\accountStatement.xsd"));
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		jaxbUnmarshaller.setSchema(schema);*/
-		Statements list = getStatements(file);
-		
-		
-		//AnalyticsOfStatements mt102 = (AnalyticsOfStatements) jaxbUnmarshaller.unmarshal(file);
-		//System.out.println(mt102);
-		return list.getAnalyticsOfStatements();
+	public List<AnalyticsOfStatements> findAll() {
+		return analyticsOfStatementsService.findAll();
 	}
 	
+	@GetMapping("/xml")
+	public void loadXML() throws JAXBException{
+		File file = new File("analytic.xml");
+		getStatements(file);
+	}
+	
+	private Transfers getTransfers(File file) throws JAXBException{
+		JAXBContext jaxbContext = JAXBContext.newInstance(Transfers.class);
+	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandler());
+		Transfers list = (Transfers) jaxbUnmarshaller.unmarshal(file);
+		
+		return list;
+	}
 	private Statements getStatements(File file) throws JAXBException{
 		JAXBContext jaxbContext = JAXBContext.newInstance(Statements.class);
 	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandler());
 		Statements list = (Statements) jaxbUnmarshaller.unmarshal(file);
+		
 		for(int i =0; i < list.getAnalyticsOfStatements().size()-1;i++){
 			for(int j= i+1;j<list.getAnalyticsOfStatements().size();j++){
 				if(list.getAnalyticsOfStatements().get(i).getCurrencyDate().after(list.getAnalyticsOfStatements().get(j).getCurrencyDate()))
 					Collections.swap(list.getAnalyticsOfStatements(), i, j);
 			}
 		}
-		for(int i = 0 ; i < list.getAnalyticsOfStatements().size();i++){
+		//analyticsOfStatementsService.findAll().size();
+		for(int i = analyticsOfStatementsService.findAll().size() ; i < list.getAnalyticsOfStatements().size();i++){
 			AnalyticsOfStatements a = analyticsOfStatementsService.save(list.getAnalyticsOfStatements().get(i));
 			
 			if(a.getPaymentType().getNameOfPaymentType().equals("Nalog za uplatu")){
@@ -167,7 +163,10 @@ public class AnalyticsOfStatementsController {
 						mt103.getItemTransfers().add(itemTransfer);
 						mt103.setSum(a.getSum());
 						mt103.setTypeOfMessage("MT103");
+						mt103.setProcessed(true);
+						saveTransfers(mt103);
 						interbankTransferService.save(mt103);
+						
 						
 					}
 					else{
@@ -193,22 +192,17 @@ public class AnalyticsOfStatementsController {
 		return list;
 	}
 	
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public void save(@RequestBody AnalyticsOfStatements analyticsOfStatements) throws JAXBException {
-		analyticsOfStatements.setItemNumber(null);
-		//AnalyticsOfStatements analyticsOfStatementsXML = analyticsOfStatementsService.save(analyticsOfStatements);
-		//analyticsOfStatements.setDailyAccountBalance(null);
-		//System.out.println(analyticsOfStatements);
-		Statements statements = getStatements(new File("analytic.xml"));
-		statements.getAnalyticsOfStatements().add(analyticsOfStatements);
-		File file = new File("analytic.xml");
-		JAXBContext jaxbContext = JAXBContext.newInstance(Statements.class);
+
+	private void saveTransfers(InterbankTransfer interbankTransfer) throws JAXBException {
+		Transfers transfers = getTransfers(new File("transfers.xml"));
+		transfers.getInterbankTransfers().add(interbankTransfer);
+		File file = new File("transfers.xml");
+		JAXBContext jaxbContext = JAXBContext.newInstance(Transfers.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		jaxbMarshaller.marshal(statements, file);
-		jaxbMarshaller.marshal(statements, System.out);
+		jaxbMarshaller.marshal(transfers, file);
+		jaxbMarshaller.marshal(transfers, System.out);
 	}
 	
 	@PostMapping("/search")

@@ -32,7 +32,7 @@ import bank.itemTransfer.ItemTransfer;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement
+@XmlRootElement(name = "interbankTransfer")
 public class InterbankTransfer {
 
 	@Id
@@ -64,6 +64,7 @@ public class InterbankTransfer {
 	@XmlElement
 	private Bank bank;
 	
+	private Boolean processed;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "interbankTransfer",cascade = CascadeType.ALL)
@@ -129,6 +130,14 @@ public class InterbankTransfer {
 
 	public void setItemTransfers(List<ItemTransfer> itemTransfers) {
 		this.itemTransfers = itemTransfers;
+	}
+
+	public Boolean getProcessed() {
+		return processed;
+	}
+
+	public void setProcessed(Boolean processed) {
+		this.processed = processed;
 	}
 	
 	

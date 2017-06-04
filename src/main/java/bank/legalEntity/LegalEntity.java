@@ -2,6 +2,10 @@ package bank.legalEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -12,30 +16,39 @@ import bank.client.Client;
  */
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "legalEntity")
 public class LegalEntity extends Client{
 
 	@NotBlank
+	@XmlElement
 	private String naziv_klijenta;
 	
 	@NotBlank
+	@XmlElement
 	private String skraceni_naziv_klijenta;
 	
-	
+	@XmlElement
 	private String fax;
 	
 	@NotBlank
+	@XmlElement
 	private String maticni_broj;
 	
 	@NotBlank
+	@XmlElement
 	private String pib;
 	
 	@NotBlank
+	@XmlElement
 	private String naziv_organa;
 	
 	@NotBlank
+	@XmlElement
 	private String nadlezni_poreski_organ_za_klijenta;
 
 	@ManyToOne
+	@XmlElement
 	private BusinessActivityCode businessActivityCode;
 	
 	public LegalEntity(String naziv_klijenta, String skraceni_naziv_klijenta, String fax, String maticni_broj,

@@ -12,6 +12,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -22,44 +27,58 @@ import bank.place.Place;
 
 @Entity
 @Inheritance(strategy  = InheritanceType.JOINED)
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "client")
 public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "client_id")	
+	@XmlElement
 	private Long id;
 	
 	@NotBlank
+	@XmlElement
 	private String address;
 	
 	@NotBlank
+	@XmlElement
 	private String phone;
 	
+	@XmlElement
 	private String email;
 	
+	@XmlElement
 	private String addressForStatements;
 	
+	@XmlElement
 	private boolean emailStatements;
 	
 	@NotBlank
+	@XmlElement
 	private String firstName;
 	
 	@NotBlank
+	@XmlElement
 	private String lastName;
 	
 	@Column(unique = true)
 	@NotBlank
+	@XmlElement
 	private String jmbg;
 	
 	@NotBlank
+	@XmlElement
 	private String typeOfClient;
 
 	//@NotBlank
 	@ManyToOne
+	@XmlElement
 	private Place residence;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<LegalEntityAccount> legalEntityAccount;
 	
 	public Client() {

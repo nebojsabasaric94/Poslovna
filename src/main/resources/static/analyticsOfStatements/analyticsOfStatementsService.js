@@ -6,8 +6,8 @@ services.service('analyticsOfStatementsService', [ '$http', function($http) {
 		return $http.get("/analyticsOfStatements");
 	}
 	
-	this.save = function(analyticsOfStatements) {
-		return $http.post("/analyticsOfStatements",analyticsOfStatements);
+	this.loadXML = function(analyticsOfStatements) {
+		return $http.get("/analyticsOfStatements/xml");
 	}
 	
 	this.nextPlace = function(id) {

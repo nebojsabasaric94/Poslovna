@@ -113,13 +113,13 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 			
 			
 						
-			$scope.add = function(){
-				service.save($scope.entity).then(function(response) {
+			$scope.loadXML = function(){
+				service.loadXML().then(function(response) {
 					findAll();
 					$location.path('analyticsOfStatements');
 				},
 				function(response){
-					alert("Dodavanje neuspesno");
+					alert("Ucitavanje neuspesno.");
 				}
 				);
 			}

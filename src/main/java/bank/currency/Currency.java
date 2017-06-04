@@ -8,10 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -26,23 +30,29 @@ import bank.legalEntityAccount.LegalEntityAccount;
  * valuta
  */
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "paymentCurrency")
 public class Currency {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "currency_id")
+	@XmlElement
 	private Long id;
 
 	@Column(columnDefinition = "CHAR(3)", unique = true)
 	@NotBlank(message = "Official code is mandatory")
+	@XmlElement
 	private String official_code;
 
 	@Column(unique = true, length = 30)
 	@NotBlank(message = "Name is mandatory")
+	@XmlElement
 	private String name;
 
 	@Column
 	@NotNull
+	@XmlElement
 	private boolean domicilna; // sta ovde treba da pise?
 
 	@ManyToOne
@@ -50,18 +60,22 @@ public class Currency {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "currency", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<LegalEntityAccount> legalEntityAccount;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "paymentCurrency", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<AnalyticsOfStatements> analyticsOfStatements;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "baseCurrency", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<CurrencyRate> baseCurrencyRate;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "accordingToCurrency", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<CurrencyRate> accordingToCurrencyRate;
 	
 	public Long getId() {
