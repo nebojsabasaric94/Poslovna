@@ -24,6 +24,9 @@ services.service('currencyService', [ '$http', function($http) {
 	this.search = function(entity){
 		return $http.post('/currency/search',entity);
 	}
+	this.update = function(currency){
+		return $http.put("/currency/update", currency);
+	}
 
 	
 }]);

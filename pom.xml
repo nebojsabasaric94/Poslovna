@@ -97,7 +97,6 @@
 		<dependency>
 	    	<groupId>commons-digester</groupId>
 	    	<artifactId>commons-digester</artifactId>
-	    	<version>${commons.digester.version}</version>
 	    	<type>jar</type>
 	    	<scope>compile</scope>
 	    </dependency>
@@ -107,7 +106,7 @@
 	    	<groupId>commons-collections</groupId>
 	    	<artifactId>commons-collections</artifactId>
 	    	<version>${commons.collections.version}</version>
-	    	<type>jar</type>
+	    	<type>jar</type><!--$NO-MVN-MAN-VER$-->
 	    	<scope>compile</scope>
 	    </dependency>
 		
