@@ -12,7 +12,7 @@
 		<button class = "next" ng-click = "nextNavigation(entity.id)"></button>
 		<button class = "last"  ng-click = "lastone()"></button>
 		&nbsp&nbsp
-		<button ui-sref="interbankTransfer.add" class = "add"></button>
+		<button ng-click = "exportToXml()" class = "add"></button>
 		<button class = "delete" ng-click = "delete()"></button>
 		&nbsp&nbsp
 		<button class = "nextForm" ng-click = "next()"></button>
@@ -25,6 +25,7 @@
 				<th>Sum</th>
 				<th>Bank sender</th>
 				<th>Bank</th>
+				<th>Processed</th>
 			</tr>
 			<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 				<td>{{entity.typeOfMessage}}</td>
@@ -32,6 +33,8 @@
 				<td>{{entity.sum}}</td>
 				<td>{{entity.senderBank.name}}</td>
 				<td>{{entity.bank.name}}</td>
+				<td ng-show = "entity.processed == true">YES</td>
+				<td ng-hide = "entity.processed == true">NO</td>
 			</tr>
 		</table>
 	</div>

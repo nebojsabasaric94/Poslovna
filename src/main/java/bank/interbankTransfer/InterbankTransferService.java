@@ -1,6 +1,9 @@
 package bank.interbankTransfer;
 
+import java.sql.Date;
 import java.util.List;
+
+import bank.bank.Bank;
 
 public interface InterbankTransferService {
 	public List<InterbankTransfer> findAll();
@@ -11,4 +14,6 @@ public interface InterbankTransferService {
 	
 	public void delete(Long id);
 	public List<InterbankTransfer> search(InterbankTransfer interbankTransfer);
+
+	public InterbankTransfer findByDateAndBanks(Date currencyDate, Bank debtorBank, Bank creditorBank);
 }

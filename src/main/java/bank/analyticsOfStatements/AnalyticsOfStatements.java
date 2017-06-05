@@ -1,6 +1,6 @@
 package bank.analyticsOfStatements;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,82 +31,107 @@ import bank.place.Place;
  */
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "analyticsOfStatements")
 public class AnalyticsOfStatements {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
+	@XmlElement
 	private Long itemNumber;
 	
 	@Column(length = 256)
+	@XmlElement
 	private String debtor_originator; //duznik-nalogodavac
 
 	@Column(length = 256)
+	@XmlElement
 	private String purposeOfPayment; //svrha placanja
 	
 	@Column(length = 256)
+	@XmlElement
 	private String creditor_recipient; //poverilac-primalac
 	
 	@Column
 	@NotNull
+	@XmlJavaTypeAdapter(AddaptDate.class)
+	@XmlElement
 	private Date dateOfReceipt; //datum prijema
 	
 	@Column
 	@NotNull
+	@XmlJavaTypeAdapter(AddaptDate.class)
+	@XmlElement
 	private Date currencyDate; //datum valute
 	
 	
 	@Column(length = 18)
+	@XmlElement
 	private String debtorAccount; //racun duznika
 	
 	@Column
-	@Max(value = 2)
+	@Max(value = 99)
+	@XmlElement
 	private Integer modelAssigments; //model zaduzenja
 	
 	@Column(length = 20)
+	@XmlElement
 	private String referenceNumberAssigments; //poziv na broj zaduzenja
 	
 	@Column(length = 18)
+	@XmlElement
 	private String accountCreditor; //racun poverioca
 	
 	@Column
-	@Max(value = 2)
+	@Max(value = 99)
+	@XmlElement
 	private Integer modelApproval; //model odobrenja
 	
 	@Column(length = 20)
+	@XmlElement
 	private String referenceNumberCreditor; //poziv na broj odobrenja
 	
 	@Column
 	@NotNull
+	@XmlElement
 	private Boolean emergency;
 	
 	@Column(length = 15, precision = 2)
+	@XmlElement
 	private Float sum;
 	
 	@Column
 	@Max(value = 1)
+	@XmlElement
 	private Integer typeOfMistake; 
 	
 	@Column(length = 1)
+	@XmlElement
 	private String status;
 	
 	@ManyToOne
+	@XmlElement
 	private DailyAccountBalance dailyAccountBalance;
 	
 	// Analitika izvoda banke
 	
 	@ManyToOne
+	@XmlElement
 	private PaymentType paymentType;	// tip placanja
 	
 	@ManyToOne
+	@XmlElement
 	private Currency paymentCurrency;	// valuta placanja
 	
 	@JsonIgnore
 	@OneToMany
+	@XmlElement
 	private List<ItemTransfer> itemTransfer;
 	
 
 	@ManyToOne
+	@XmlElement
 	private Place place;
 	
 	public AnalyticsOfStatements() {

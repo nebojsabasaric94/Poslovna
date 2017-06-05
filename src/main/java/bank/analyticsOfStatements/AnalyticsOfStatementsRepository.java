@@ -9,12 +9,15 @@ import org.springframework.data.repository.query.Param;
 
 public interface AnalyticsOfStatementsRepository extends PagingAndSortingRepository<AnalyticsOfStatements, Long> {
 
-	@Query("select a from  AnalyticsOfStatements a where a.debtor_originator like CONCAT(:debtor_originator,'%') and a.purposeOfPayment like CONCAT(:purposeOfPayment,'%') and a.creditor_recipient like CONCAT(:creditor_recipient,'%')"
-			+ " and a.dateOfReceipt like CONCAT(:dateOfReceipt,'%') and a.currencyDate like CONCAT(:currencyDate,'%') and a.debtorAccount like CONCAT(:debtorAccount,'%') "
-			+ " and CAST(a.modelAssigments AS string) like :modelAssigments and a.referenceNumberAssigments like CONCAT(:referenceNumberAssigments,'%') and a.accountCreditor like CONCAT(:accountCreditor,'%')"
-			+ " and CAST(a.modelApproval AS string) like :modelApproval and a.referenceNumberCreditor like CONCAT(:referenceNumberCreditor,'%') and a.emergency = :emergency "
-			+ " and CAST(a.sum AS string) like :sum and (CAST(a.typeOfMistake AS string) like :typeOfMistake or(a.typeOfMistake is null and :typeOfMistake = '%'))  and a.status like CONCAT(:status,'%') "
-			+ " and CAST(a.dailyAccountBalance.id AS string) like :dailyAccountBalance and CAST(a.paymentType.id AS string) like :paymentType and CAST(a.place.id AS string) like :place"
+	@Query("select a from  AnalyticsOfStatements a where (a.debtor_originator like CONCAT(:debtor_originator,'%')  or (a.debtor_originator is null and :debtor_originator = ''))"
+			+ " and (a.purposeOfPayment like CONCAT(:purposeOfPayment,'%') or (a.purposeOfPayment is null and :purposeOfPayment = ''))  and (a.creditor_recipient like CONCAT(:creditor_recipient,'%') or (a.creditor_recipient is null and :creditor_recipient = ''))"
+			+ " and a.dateOfReceipt like CONCAT(:dateOfReceipt,'%') and (a.currencyDate like CONCAT(:currencyDate,'%') or (a.currencyDate is null and :currencyDate = ''))"
+			+ "	and (a.debtorAccount like CONCAT(:debtorAccount,'%') or (a.debtorAccount is null and :debtorAccount = '')) and (CAST(a.modelAssigments AS string) like :modelAssigments or (a.modelAssigments is null and :modelAssigments = '%'))"
+			+ " and (a.referenceNumberAssigments like CONCAT(:referenceNumberAssigments,'%') or (a.referenceNumberAssigments is null and :referenceNumberAssigments = ''))"
+			+ " and (a.accountCreditor like CONCAT(:accountCreditor,'%') or (a.accountCreditor is null and :accountCreditor = ''))"
+			+ " and (CAST(a.modelApproval AS string) like :modelApproval or (a.modelApproval is null and :modelApproval = '%')) and (a.referenceNumberCreditor like CONCAT(:referenceNumberCreditor,'%') or (a.referenceNumberCreditor is null and :referenceNumberCreditor = '')) and a.emergency = :emergency"
+			+ " and CAST(a.sum AS string) like :sum and (CAST(a.typeOfMistake AS string) like :typeOfMistake or(a.typeOfMistake is null and :typeOfMistake = '%'))  and (a.status like CONCAT(:status,'%') or (a.status is null and :status = ''))"
+			+ " and (CAST(a.dailyAccountBalance.id AS string) like :dailyAccountBalance or (a.dailyAccountBalance.id is null and :dailyAccountBalance = '%')) and CAST(a.paymentType.id AS string) like :paymentType and CAST(a.place.id AS string) like :place"
 			+ " and CAST(a.paymentCurrency.id AS string) like :paymentCurrency")
 	public List<AnalyticsOfStatements> search(@Param("debtor_originator")String debtor_originator,@Param("purposeOfPayment")String purposeOfPayment,@Param("creditor_recipient")String creditor_recipient,
 			@Param("dateOfReceipt")String dateOfReceipt,@Param("currencyDate")String currencyDate,@Param("debtorAccount")String debtorAccount,

@@ -14,4 +14,6 @@ public interface LegalEntityAccountService {
 	
 	public List<LegalEntityAccount> search(LegalEntityAccount legalEntityAccount);
 
+	public LegalEntityAccount findByAccountNumber(String creditorAccountNumber);
+
 }

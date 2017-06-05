@@ -1,6 +1,7 @@
 package bank.dailyAccountBalance;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,10 @@ public interface DailyAccountBalanceRepository extends PagingAndSortingRepositor
 			+ " CAST(d.newState AS string) like CONCAT(:newState,'%') and CAST(d.legalEntityAccount.id AS string) like :legalEntityAccountId")
 	public List<DailyAccountBalance> search(@Param("trafficDate")String trafficDate,@Param("previousState")String previousState,@Param("trafficToBenefit")String trafficToBenefit,
 			@Param("trafficToTheBurden")String trafficToTheBurden,@Param("newState")String newState,@Param("legalEntityAccountId")String legalEntityAccountId);
+
+	@Query("select d from DailyAccountBalance d where d.legalEntityAccount.brojRacuna like :brojRacuna and d.trafficDate like CONCAT(:date,'%')")
+	public DailyAccountBalance findByAccountNumberAndDate(@Param("brojRacuna")String brojRacuna,@Param("date")String date);
+	
+	@Query("select d from DailyAccountBalance d where d.legalEntityAccount.brojRacuna like :brojRacuna")
+	public ArrayList<DailyAccountBalance> findByAccountNumber(@Param("brojRacuna")String brojRacuna);
 }

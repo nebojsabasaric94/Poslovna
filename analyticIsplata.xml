@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<analyticsOfStatements>
+    <itemNumber>2</itemNumber>
+    <debtor_originator>asdas</debtor_originator>
+    <purposeOfPayment>assss</purposeOfPayment>
+    <creditor_recipient>Milos</creditor_recipient>
+    <dateOfReceipt>2017-06-04</dateOfReceipt>
+    <currencyDate>2017-06-12</currencyDate>
+    <debtorAccount></debtorAccount>
+    <modelAssigments>22</modelAssigments>
+    <referenceNumberAssigments>123123</referenceNumberAssigments>
+    <accountCreditor></accountCreditor>
+    <referenceNumberCreditor></referenceNumberCreditor>
+    <emergency>false</emergency>
+    <sum>1423.0</sum>
+    <status></status>
+    <dailyAccountBalance>
+        <id>3</id>
+    </dailyAccountBalance>
+    <paymentType>
+        <code>003</code>
+        <id>3</id>
+        <nameOfPaymentType>Nalog za isplatu</nameOfPaymentType>
+    </paymentType>
+    <paymentCurrency>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <domicilna>true</domicilna>
+        <id>1</id>
+        <name>dinar</name>
+        <official_code>din</official_code>
+    </paymentCurrency>
+    <place>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <id>2</id>
+        <name>Novi Sad</name>
+        <pttNumber>21000</pttNumber>
+    </place>
+</analyticsOfStatements>

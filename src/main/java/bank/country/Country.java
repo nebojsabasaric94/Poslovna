@@ -9,6 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -18,27 +23,34 @@ import bank.currency.Currency;
 import bank.place.Place;
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "country")
 public class Country {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "country_id")
+	@XmlElement
 	private Long id;
 
 	@Column(unique = true, columnDefinition = "CHAR(3)")
 	@NotBlank(message = "Country code is mandatory")
+	@XmlElement
 	private String country_code;
 
 	@Column(length = 40, unique = true)
 	@NotBlank(message = "Name is mandatory")
+	@XmlElement
 	private String name;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<Place> places;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<Currency> currencies;
 
 	public Long getId() {

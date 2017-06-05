@@ -65,8 +65,8 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 			
 			
 			
-			$scope.add = function(){
-				service.save($scope.entity).then(function(response) {
+			$scope.exportToXml = function(){
+				service.exportToXml().then(function(response) {
 					findAll();
 					$location.path('interbankTransfer');
 				},

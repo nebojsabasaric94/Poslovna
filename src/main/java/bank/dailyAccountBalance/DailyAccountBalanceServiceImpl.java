@@ -1,12 +1,16 @@
 package bank.dailyAccountBalance;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import bank.analyticsOfStatements.AnalyticsOfStatements;
+import bank.legalEntityAccount.LegalEntityAccount;
 
 
 @Service
@@ -80,5 +84,46 @@ public class DailyAccountBalanceServiceImpl implements DailyAccountBalanceServic
 		}		
 		
 		return repository.search(date, previuousState, trafficToBenefit, trafficToBurden, newState, account_id);
+	}
+
+	@Override
+	public DailyAccountBalance findByAccountNumberAndDate(LegalEntityAccount creditorAccount,java.util.Date date) {
+		String date1 = new Date(date.getTime()).toString();
+		DailyAccountBalance result = repository.findByAccountNumberAndDate(creditorAccount.getBrojRacuna(),date1);
+		ArrayList<DailyAccountBalance> balances = null;
+		if(result == null){
+			balances = repository.findByAccountNumber(creditorAccount.getBrojRacuna());
+			//pronalazim najblizi jer nemam u bazi svaki dan 
+			
+			if(balances.size() > 0){//ako je lista prazna, nema dnevnih stanja, racun je na nuli
+				DailyAccountBalance max = balances.get(0);
+				for(DailyAccountBalance d : balances){//pronalazim najblizi datun 
+					if(d.getTrafficDate().after(max.getTrafficDate()) && d.getTrafficDate().before(date))
+						max = d;
+				}
+				result = new DailyAccountBalance();
+				result.setLegalEntityAccount(creditorAccount);
+				result.setPreviousState(max.getNewState());
+				result.setNewState((float)0.0);
+				result.setTrafficToBenefit((float) 0.0);
+				result.setTrafficToTheBurden((float)0.0);
+				result.setTrafficDate(date);
+				result.setAnalyticsOfStatements(new ArrayList<AnalyticsOfStatements>());
+				return repository.save(result);
+				
+			}
+			else{
+				result = new DailyAccountBalance();
+				result.setLegalEntityAccount(creditorAccount);
+				result.setNewState((float)0.0);
+				result.setPreviousState((float)0.0);
+				result.setTrafficToBenefit((float) 0.0);
+				result.setTrafficToTheBurden((float)0.0);				
+				result.setTrafficDate(date);
+				result.setAnalyticsOfStatements(new ArrayList<AnalyticsOfStatements>());
+				return repository.save(result);
+			}
+		}
+		return result;
 	}
 }

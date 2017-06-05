@@ -11,6 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -23,36 +28,46 @@ import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.suspension.Suspension;
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "legalEntityAccount")
 public class LegalEntityAccount {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@XmlElement
 	private Long id;
 
 	@Column(unique = true, columnDefinition = "CHAR(18)")
 	@NotBlank
+	@XmlElement
 	private String brojRacuna;
 
-	
+	@XmlElement
 	private Date datumOtvaranja;
 	
+	@XmlElement
 	private boolean vazeci;
 
 	@ManyToOne
+	@XmlElement
 	private Client client;
 
 	@ManyToOne
+	@XmlElement
 	private Bank bank;
 
 	@ManyToOne
+	@XmlElement
 	private Currency currency;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "legalEntityAccount", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<Suspension> suspensions;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "legalEntityAccount", cascade = CascadeType.ALL)
+	@XmlTransient
 	private List<DailyAccountBalance> dailyAccountBalances;
 
 	public LegalEntityAccount() {

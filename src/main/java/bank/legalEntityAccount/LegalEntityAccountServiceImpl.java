@@ -61,4 +61,11 @@ public class LegalEntityAccountServiceImpl implements LegalEntityAccountService 
 
 	}
 
+
+	@Override
+	public LegalEntityAccount findByAccountNumber(String creditorAccountNumber) {
+		// TODO Auto-generated method stub
+		return repository.findByAccountNumber(creditorAccountNumber);
+	}
+
 }

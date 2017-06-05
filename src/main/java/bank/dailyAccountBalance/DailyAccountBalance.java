@@ -57,9 +57,26 @@ public class DailyAccountBalance {
 	@OneToMany(mappedBy = "dailyAccountBalance", cascade = CascadeType.ALL)
 	private List<AnalyticsOfStatements>analyticsOfStatements;
 
+	
+
+	
+	
 	public DailyAccountBalance() {
 		super();
 	}
+	
+	public DailyAccountBalance(Date trafficDate, Float previousState, Float trafficToBenefit, Float trafficToTheBurden,
+			Float newState) {
+		super();
+		this.trafficDate = trafficDate;
+		this.previousState = previousState;
+		this.trafficToBenefit = trafficToBenefit;
+		this.trafficToTheBurden = trafficToTheBurden;
+		this.newState = newState;
+	}
+
+
+
 
 	public Long getId() {
 		return id;

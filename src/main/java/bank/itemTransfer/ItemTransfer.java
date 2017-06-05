@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import bank.analyticsOfStatements.AnalyticsOfStatements;
 import bank.interbankTransfer.InterbankTransfer;
@@ -15,17 +20,22 @@ import bank.interbankTransfer.InterbankTransfer;
  */
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "itemTransfer")
 public class ItemTransfer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
+	@XmlElement
 	private Long id;
 	
 	@ManyToOne
+	@XmlElement
 	private AnalyticsOfStatements analyticsOfStatements;
 	
 	@ManyToOne
+	@XmlTransient
 	private InterbankTransfer interbankTransfer;
 
 	public ItemTransfer() {
@@ -55,9 +65,5 @@ public class ItemTransfer {
 	public void setInterbankTransfer(InterbankTransfer interbankTransfer) {
 		this.interbankTransfer = interbankTransfer;
 	}
-	
-	
-	
-	
 	
 }

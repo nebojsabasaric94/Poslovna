@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<interbankTransfer>
+    <idMessage>4</idMessage>
+    <typeOfMessage>ffds</typeOfMessage>
+    <date>2017-06-01</date>
+    <sum>123.0</sum>
+    <senderBank>
+        <address>blababa</address>
+        <bank>true</bank>
+        <bankCode>123</bankCode>
+        <email>fafa@fa.com</email>
+        <fax>+415627</fax>
+        <id>1</id>
+        <name>Erste</name>
+        <phone>+415151567</phone>
+        <pib>0123456789</pib>
+        <web>afafa</web>
+    </senderBank>
+    <bank>
+        <address>blabfaba</address>
+        <bank>true</bank>
+        <bankCode>124</bankCode>
+        <email>fafha@fa.com</email>
+        <fax>+411627</fax>
+        <id>2</id>
+        <name>Erste2</name>
+        <phone>+415251567</phone>
+        <pib>0163456789</pib>
+        <web>afjafa</web>
+    </bank>
+</interbankTransfer>

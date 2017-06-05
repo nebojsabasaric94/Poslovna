@@ -26,6 +26,7 @@ public class SuspensionServiceImpl implements SuspensionService {
 
 	@Override
 	public Suspension save(Suspension suspension) {
+		
 		return repository.save(suspension);
 	}
 
