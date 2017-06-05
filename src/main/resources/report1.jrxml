@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="85b718d1-cd0f-460f-af31-d21f2cd6af5c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from bank.country]]>
+	</queryString>
+	<field name="country_id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="country_code" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="199" y="0" width="176" height="51" uuid="dd9c8a1c-05a3-426c-91a8-11ec9b406971"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Probni izvestaj]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="85" width="100" height="20" uuid="eb840254-1923-4946-b232-975d3662a88d"/>
+				<text><![CDATA[Bu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="85" width="100" height="20" uuid="cee8f0b8-4bc2-41b3-96e5-66bd3a4038a1"/>
+				<text><![CDATA[Bla]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="24" y="4" width="100" height="20" uuid="adc0fbbe-5744-419e-a559-f7b7c6234164"/>
+				<textFieldExpression><![CDATA[$F{country_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="4" width="100" height="20" uuid="d3140ce7-e90b-4269-b4a2-7bffc95a71fc"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
