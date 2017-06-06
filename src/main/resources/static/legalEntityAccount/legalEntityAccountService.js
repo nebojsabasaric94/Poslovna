@@ -45,6 +45,8 @@ services.service('legalEntityAccountService',['$http',function($http){
 		return $http.post("/legalEntityAccount",legalEntityAccount);
 	}
 	
-
+	this.exportStatementsToXml = function(selectedEntity,startDate,endDate){
+		return $http.post("/dailyAccountBalance/xml/"+startDate+"/"+endDate,selectedEntity)
+	}
 
 }])

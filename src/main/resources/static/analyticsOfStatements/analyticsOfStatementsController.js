@@ -113,17 +113,7 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 			
 			
 						
-			$scope.loadXML = function(){
-				service.loadXML().then(function(response) {
-					findAll();
-					$location.path('analyticsOfStatements');
-				},
-				function(response){
-					alert("Ucitavanje neuspesno.");
-				}
-				);
-			}
-			
+
 			function transformDate(dateObj){
 				var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
 				var day = ("0" + dateObj.getDate()).slice(-2);
@@ -142,6 +132,36 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 				function(response){
 					
 				})
+			}
+			
+			$scope.findXmlFiles = function(){
+				service.findXmlFiles()
+				.then(function(response){
+					$scope.xmlFiles = response.data;
+				},
+				function(response){
+					
+				})
+			} 
+			$scope.importFile = function(file){
+				service.importXml(file)
+				.then(function(response){
+					$scope.findXmlFiles();
+					findAll();
+					$location.path('analyticsOfStatements');
+				},
+				function(response){
+					
+				})
+			}			
+			
+			$scope.showXmlFilesModal = function(){
+				var modal = document.getElementById('xmlFilesModal');
+				modal.style.display = "block";		
+			}
+			$scope.closeXmlFilesModal = function(){
+				var modal = document.getElementById('xmlFilesModal');
+				modal.style.display  = "none";
 			}
 			
 			$scope.showPlaceModal = function(){

@@ -93,6 +93,8 @@ app.controller('clientController',['$scope','clientService','$location',
 			
 		})
 	}
+	
+	
 	$scope.showModalSearch = function(){
 		var modal = document.getElementById('myModalSearch');
 		modal.style.display = "block";		

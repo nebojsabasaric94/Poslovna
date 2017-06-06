@@ -6,8 +6,8 @@ services.service('analyticsOfStatementsService', [ '$http', function($http) {
 		return $http.get("/analyticsOfStatements");
 	}
 	
-	this.loadXML = function(analyticsOfStatements) {
-		return $http.get("/analyticsOfStatements/xml");
+	this.importXml = function(file) {
+		return $http.get("/analyticsOfStatements/xml/"+file);
 	}
 	
 	this.nextPlace = function(id) {
@@ -48,6 +48,10 @@ services.service('analyticsOfStatementsService', [ '$http', function($http) {
 	
 	this.search = function(entity){
 		return $http.post('/analyticsOfStatements/search',entity);
+	}
+	
+	this.findXmlFiles = function(){
+		return $http.get('/analyticsOfStatements/files');
 	}
 	
 }]);

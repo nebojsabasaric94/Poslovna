@@ -13,7 +13,7 @@
 		<button class = "next" ng-click = "nextNavigation(entity)"></button>
 		<button class = "last"  ng-click = "lastone()"></button>
 		&nbsp&nbsp
-		<button ng-click = "loadXML()" class = "add"></button>
+		<button ng-click = "showXmlFilesModal()" class = "add"></button>
 		<button class = "delete"></button>
 		&nbsp&nbsp
 		<button class = "nextForm" ng-click = "next()"></button>
@@ -63,7 +63,19 @@
 	</table>
 
 
-
+	<div id="xmlFilesModal" class="modal">
+	  	<div class="modal-content1">
+	    	<h3>Analytics of statements</h3><hr/><br/>
+	    
+	    	<table ng-init = findXmlFiles() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr class="state" ng-repeat="file in xmlFiles" >
+					<td align = "center" valign = "middle">{{file}}</td>
+					<td><span><button class = "btn btn-success btn-block" ng-click = "importFile(file)">Import</button></span></td>
+				</tr>
+			</table>
+			<center><button type = "button" ng-click=closeXmlFilesModal() class="btn btn-default navbar-btn">OK</button></center>		
+	 	</div>
+	</div>
 
 
 <div>

@@ -15,6 +15,8 @@ public interface DailyAccountBalanceService {
 	public void delete(Long id);
 	
 	public List<DailyAccountBalance> search(DailyAccountBalance accountBalance);
+	public List<DailyAccountBalance> findBalances(LegalEntityAccount account,Date start,Date end);
 
 	DailyAccountBalance findByAccountNumberAndDate(LegalEntityAccount creditorAccount,Date date);
+
 }

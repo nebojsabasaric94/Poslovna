@@ -2,6 +2,7 @@ package bank.dailyAccountBalance;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -21,4 +22,10 @@ public interface DailyAccountBalanceRepository extends PagingAndSortingRepositor
 	
 	@Query("select d from DailyAccountBalance d where d.legalEntityAccount.brojRacuna like :brojRacuna")
 	public ArrayList<DailyAccountBalance> findByAccountNumber(@Param("brojRacuna")String brojRacuna);
+	
+	@Query("select d from DailyAccountBalance d  where d.legalEntityAccount.brojRacuna like :brojRacuna and d.trafficDate between :start and :end ")
+	public ArrayList<DailyAccountBalance> findBalances(@Param("brojRacuna")String brojRacuna,@Param("start")Date start,@Param("end")Date end);
+
+	
+
 }

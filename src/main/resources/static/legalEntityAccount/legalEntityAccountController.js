@@ -176,7 +176,26 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 				
 			})
 		}	
-		
+		$scope.exportStatementsToXml = function(){
+			var l = {};
+			l.brojRacuna = $scope.selectedEntity.brojRacuna;
+			service.exportStatementsToXml(l,$scope.startDate,$scope.endDate)
+			.then(function(response){
+				$scope.startDate = null;
+				$scope.endDate = null;
+			},
+			function(response){
+				
+			})
+		}
+		$scope.showExportStatementsModal = function(){
+			var modal = document.getElementById('exportStatementsModal');
+			modal.style.display = "block";		
+		}
+		$scope.closeExportStatementsModal = function(){
+			var modal = document.getElementById('exportStatementsModal');
+			modal.style.display  = "none";
+		}		
 		$scope.showClientModalSearch = function(){
 			var modal = document.getElementById('clientModalSearch');
 			modal.style.display = "block";		

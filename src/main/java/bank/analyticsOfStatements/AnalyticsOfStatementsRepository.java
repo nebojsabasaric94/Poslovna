@@ -1,6 +1,8 @@
 package bank.analyticsOfStatements;
 
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -26,5 +28,8 @@ public interface AnalyticsOfStatementsRepository extends PagingAndSortingReposit
 			@Param("sum")String sum,@Param("typeOfMistake")String typeOfMistake,@Param("status")String status,
 			@Param("dailyAccountBalance")String dailyAccountBalance,@Param("paymentType")String paymentType,@Param("place")String place,
 			@Param("paymentCurrency")String paymentCurrency);
+
+	@Query("select a from AnalyticsOfStatements a where (a.debtorAccount like :brojRacuna or a.accountCreditor like :brojRacuna) and a.currencyDate = :date")
+	public ArrayList<AnalyticsOfStatements> findByDateAndAccount(@Param("brojRacuna")String brojRacuna,@Param("date") Date date);
 	
 }

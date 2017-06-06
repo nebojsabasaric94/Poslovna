@@ -41,12 +41,13 @@
 				<td>{{entity.phone}}</td>
 				<td>{{entity.email}}</td>
 				<td>{{entity.addressForStatements}}</td>
-				<td>{{entity.emailStatements}}</td>
-
+				<td ng-if = "entity.emailStatements == true">YES</td>
+				<td ng-if = "entity.emailStatements == false">NO</td>
 			</tr>
 		</table>
-	
+
 	</div>
+	
 </div>
 
 

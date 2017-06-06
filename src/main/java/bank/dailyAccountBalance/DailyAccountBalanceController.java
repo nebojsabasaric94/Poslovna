@@ -1,6 +1,13 @@
 package bank.dailyAccountBalance;
 
+import java.io.File;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bank.analyticsOfStatements.AnalyticsOfStatements;
+import bank.analyticsOfStatements.AnalyticsOfStatementsService;
 import bank.legalEntityAccount.LegalEntityAccount;
 import bank.legalEntityAccount.LegalEntityAccountService;
 
@@ -22,12 +31,14 @@ public class DailyAccountBalanceController {
 
 	private final DailyAccountBalanceService dailyAccountBalanceService;
 	private final LegalEntityAccountService legalEntityAccountService;
+	private final AnalyticsOfStatementsService analyticsOfStatementsService;
 	
 
 	@Autowired
-	public DailyAccountBalanceController(final DailyAccountBalanceService service, final LegalEntityAccountService legalEntityAccountService) {
+	public DailyAccountBalanceController(final DailyAccountBalanceService service, final LegalEntityAccountService legalEntityAccountService,final AnalyticsOfStatementsService analyticsOfStatementsService) {
 		this.dailyAccountBalanceService = service;
 		this.legalEntityAccountService = legalEntityAccountService;
+		this.analyticsOfStatementsService = analyticsOfStatementsService;
 	}
 
 	@GetMapping
@@ -58,5 +69,25 @@ public class DailyAccountBalanceController {
 	@PostMapping("/search")
 	public List<DailyAccountBalance> search(@RequestBody DailyAccountBalance dailyAccountBalance){
 		return dailyAccountBalanceService.search(dailyAccountBalance);
+	}
+	
+	@PostMapping("/xml/{startDate}/{endDate}")
+	public void exportToXml(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount legalEntityAccount) throws JAXBException{
+		ArrayList<DailyAccountBalance> dailyAccountBalances = (ArrayList<DailyAccountBalance>) dailyAccountBalanceService.findBalances(legalEntityAccount, startDate, endDate);
+		Balances balances = new Balances();
+		for(DailyAccountBalance d : dailyAccountBalances){
+			ArrayList<AnalyticsOfStatements> analyticsOfStatements = analyticsOfStatementsService.findByDateAndAccount(legalEntityAccount,d.getTrafficDate());
+			for(AnalyticsOfStatements a : analyticsOfStatements)
+				d.getAnalyticsOfStatements().add(a);
+			balances.getBalances().add(d);
+		}
+		
+		File file = new File("statements\\" +   startDate.toString()+legalEntityAccount.getBrojRacuna() + endDate.toString() + ".xml");
+		JAXBContext jaxbContext = JAXBContext.newInstance(Balances.class);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(balances, file);
+		jaxbMarshaller.marshal(balances, System.out);
 	}
 }

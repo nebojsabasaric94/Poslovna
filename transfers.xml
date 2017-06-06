@@ -444,4 +444,78 @@
             </analyticsOfStatements>
         </itemTransfers>
     </interbankTransfers>
+    <interbankTransfers>
+        <typeOfMessage>MT103</typeOfMessage>
+        <date>2017-06-01</date>
+        <sum>45287.0</sum>
+        <senderBank>
+            <id>2</id>
+            <bankCode>300</bankCode>
+            <pib>1921681234</pib>
+            <name>Uni credit bank</name>
+            <address>Narodnog fronta 5</address>
+            <email>unicredit@bank.com</email>
+            <web>www.unicredit.com</web>
+            <phone>021123123</phone>
+            <fax>021123122</fax>
+            <bank>true</bank>
+        </senderBank>
+        <bank>
+            <id>3</id>
+            <bankCode>400</bankCode>
+            <pib>1221221211</pib>
+            <name>Komercijalna banka</name>
+            <address>Ulica Modene</address>
+            <email>komercijalna@banka.com</email>
+            <web>www.komercijalna.com</web>
+            <phone>021456789</phone>
+            <fax>021456788</fax>
+            <bank>true</bank>
+        </bank>
+        <processed>true</processed>
+        <itemTransfers>
+            <analyticsOfStatements>
+                <itemNumber>13</itemNumber>
+                <debtor_originator>Novi most da</debtor_originator>
+                <purposeOfPayment>Uplata po racunu 1454/2017</purposeOfPayment>
+                <creditor_recipient>Sintelon</creditor_recipient>
+                <dateOfReceipt>2017-06-01</dateOfReceipt>
+                <currencyDate>2017-06-01</currencyDate>
+                <debtorAccount>300745485455555519</debtorAccount>
+                <referenceNumberAssigments></referenceNumberAssigments>
+                <accountCreditor>400198745874743524</accountCreditor>
+                <modelApproval>97</modelApproval>
+                <referenceNumberCreditor>326987</referenceNumberCreditor>
+                <emergency>true</emergency>
+                <sum>45287.0</sum>
+                <status></status>
+                <paymentType>
+                    <id>1</id>
+                    <code>001</code>
+                    <nameOfPaymentType>Nalog za prenos</nameOfPaymentType>
+                </paymentType>
+                <paymentCurrency>
+                    <id>1</id>
+                    <official_code>din</official_code>
+                    <name>dinar</name>
+                    <domicilna>true</domicilna>
+                    <country>
+                        <id>1</id>
+                        <country_code>srb</country_code>
+                        <name>Srbija</name>
+                    </country>
+                </paymentCurrency>
+                <place>
+                    <id>1</id>
+                    <pttNumber>34000</pttNumber>
+                    <name>Kragujevac</name>
+                    <country>
+                        <id>1</id>
+                        <country_code>srb</country_code>
+                        <name>Srbija</name>
+                    </country>
+                </place>
+            </analyticsOfStatements>
+        </itemTransfers>
+    </interbankTransfers>
 </transfers>

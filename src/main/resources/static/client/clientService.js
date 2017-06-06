@@ -19,5 +19,7 @@ services.service('clientService',['$http',function($http){
 	this.save = function(client) {
 		return $http.post("/client",client);
 	}
+
+	
 	
 }])

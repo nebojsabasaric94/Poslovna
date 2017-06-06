@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyticsOfStatements>
+    <debtor_originator>Nikola Smiljanic</debtor_originator>
+    <purposeOfPayment>Pozajmica</purposeOfPayment>
+    <creditor_recipient>Scepan Scekic</creditor_recipient>
+    <dateOfReceipt>2017-03-01</dateOfReceipt>
+    <currencyDate>2017-03-01</currencyDate>
+    <debtorAccount></debtorAccount>
+    <referenceNumberAssigments></referenceNumberAssigments>
+    <accountCreditor>200187878745784542</accountCreditor>
+    <modelApproval>27</modelApproval>
+    <referenceNumberCreditor>23321454</referenceNumberCreditor>
+    <emergency>false</emergency>
+    <sum>254220.0</sum>
+    <status></status>
+    <paymentType>
+        <code>002</code>
+        <id>2</id>
+        <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+    </paymentType>
+    <paymentCurrency>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <domicilna>true</domicilna>
+        <id>1</id>
+        <name>dinar</name>
+        <official_code>din</official_code>
+    </paymentCurrency>
+    <place>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <id>2</id>
+        <name>Novi Sad</name>
+        <pttNumber>21000</pttNumber>
+    </place>
+</analyticsOfStatements>

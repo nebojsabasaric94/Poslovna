@@ -6,12 +6,17 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,7 +27,10 @@ import bank.legalEntityAccount.LegalEntityAccount;
  * dnevno stanje racuna
  */
 
+
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "dailyAccountBalance")
 public class DailyAccountBalance {
 
 	@Id
@@ -32,29 +40,35 @@ public class DailyAccountBalance {
 	
 	@Column
 	@NotNull
+	@XmlElement
 	private Date trafficDate; //datum prometa
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
+	@XmlElement
 	private Float previousState;  // prethodno stanje
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
+	@XmlElement
 	private Float trafficToBenefit; //promet u korist
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
+	@XmlElement
 	private Float trafficToTheBurden; //promet na teret
 	
 	@Column(length = 15, precision = 2)
 	//@NotBlank
+	@XmlElement
 	private Float newState;
 	
 	@ManyToOne
 	private LegalEntityAccount legalEntityAccount;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "dailyAccountBalance", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "dailyAccountBalance", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@XmlElement
 	private List<AnalyticsOfStatements>analyticsOfStatements;
 
 	

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<analyticsOfStatements>
+    <debtor_originator>Malina Vojvodic</debtor_originator>
+    <purposeOfPayment>Uplata po racunu 145/2017</purposeOfPayment>
+    <creditor_recipient>Novi Most da</creditor_recipient>
+    <dateOfReceipt>2017-06-01</dateOfReceipt>
+    <currencyDate>2017-06-01</currencyDate>
+    <debtorAccount>205145745874545418</debtorAccount>
+    <referenceNumberAssigments></referenceNumberAssigments>
+    <accountCreditor>300745485455555519</accountCreditor>
+    <modelApproval>97</modelApproval>
+    <referenceNumberCreditor>4147854</referenceNumberCreditor>
+    <emergency>false</emergency>
+    <sum>11965.0</sum>
+    <status></status>
+    <paymentType>
+        <code>001</code>
+        <id>1</id>
+        <nameOfPaymentType>Nalog za prenos</nameOfPaymentType>
+    </paymentType>
+    <paymentCurrency>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <domicilna>true</domicilna>
+        <id>1</id>
+        <name>dinar</name>
+        <official_code>din</official_code>
+    </paymentCurrency>
+    <place>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <id>1</id>
+        <name>Kragujevac</name>
+        <pttNumber>34000</pttNumber>
+    </place>
+</analyticsOfStatements>

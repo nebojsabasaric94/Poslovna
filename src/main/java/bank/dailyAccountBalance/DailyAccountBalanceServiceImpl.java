@@ -126,4 +126,13 @@ public class DailyAccountBalanceServiceImpl implements DailyAccountBalanceServic
 		}
 		return result;
 	}
+
+	@Override
+	public List<DailyAccountBalance> findBalances(LegalEntityAccount account, java.util.Date start,
+			java.util.Date end) {
+		// TODO Auto-generated method stub
+		return repository.findBalances(account.getBrojRacuna(), start, end);
+	}
+
+
 }

@@ -18,4 +18,6 @@ public interface ClientRepository extends CrudRepository<Client, Long>{
 	@Override
 	@Query("select c from Client c where c.typeOfClient like 'Fizicko lice'")
 	public List<Client> findAll();
+	
+
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import bank.bank.Bank;
 import bank.place.Place;
 import bank.place.PlaceService;
 
@@ -49,4 +48,6 @@ public class ClientController {
 		client.setId(null);
 		service.save(client);
 	}
+	
+
 }

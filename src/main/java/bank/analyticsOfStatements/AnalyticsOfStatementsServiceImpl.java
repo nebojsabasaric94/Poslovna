@@ -1,12 +1,15 @@
 package bank.analyticsOfStatements;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import bank.legalEntityAccount.LegalEntityAccount;
 
 
 @Service
@@ -85,5 +88,12 @@ public class AnalyticsOfStatementsServiceImpl implements AnalyticsOfStatementsSe
 				modelAssigments, analyticsOfStatements.getReferenceNumberAssigments(), analyticsOfStatements.getAccountCreditor(),
 				modelApproval, analyticsOfStatements.getReferenceNumberCreditor(), analyticsOfStatements.isEmergency(),
 				sum, typeOfMistake, analyticsOfStatements.getStatus(), dailyAccountBalance, paymentType, place, paymentCurrency);
+	}
+
+	@Override
+	public ArrayList<AnalyticsOfStatements> findByDateAndAccount(LegalEntityAccount legalEntityAccount,
+			java.util.Date trafficDate) {
+		// TODO Auto-generated method stub
+		return repository.findByDateAndAccount(legalEntityAccount.getBrojRacuna(),new Date(trafficDate.getTime()));
 	}
 }

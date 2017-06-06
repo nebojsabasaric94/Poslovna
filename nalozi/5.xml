@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyticsOfStatements>
+    <debtor_originator>Nikola Smiljanic</debtor_originator>
+    <purposeOfPayment>Usluge hrane i pica</purposeOfPayment>
+    <creditor_recipient>Novi Most da</creditor_recipient>
+    <dateOfReceipt>2017-04-11</dateOfReceipt>
+    <currencyDate>2017-04-11</currencyDate>
+    <debtorAccount></debtorAccount>
+    <referenceNumberAssigments></referenceNumberAssigments>
+    <accountCreditor>300745485455555519</accountCreditor>
+    <modelApproval>97</modelApproval>
+    <referenceNumberCreditor>6547488</referenceNumberCreditor>
+    <emergency>false</emergency>
+    <sum>22152.0</sum>
+    <status></status>
+    <paymentType>
+        <code>002</code>
+        <id>2</id>
+        <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
+    </paymentType>
+    <paymentCurrency>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <domicilna>true</domicilna>
+        <id>1</id>
+        <name>dinar</name>
+        <official_code>din</official_code>
+    </paymentCurrency>
+    <place>
+        <country>
+            <country_code>srb</country_code>
+            <id>1</id>
+            <name>Srbija</name>
+        </country>
+        <id>1</id>
+        <name>Kragujevac</name>
+        <pttNumber>34000</pttNumber>
+    </place>
+</analyticsOfStatements>
