@@ -7,7 +7,7 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			$scope.entity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 			$scope.idSelectedEntity = null;
 	
-	
+			$scope.updatedEntity={};
 			findAll();
 		
 			function findAll() {
@@ -34,7 +34,13 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			
 			
 			$scope.setSelected = function(selectedEntity){
+				$scope.showUpdateForm = true;
 				$scope.selectedEntity = selectedEntity;
+				$scope.updatedEntity.id=$scope.selectedEntity.id;
+				$scope.updatedEntity.name=selectedEntity.name;
+				$scope.updatedEntity.official_code=selectedEntity.official_code;
+				$scope.updatedEntity.domicilna=selectedEntity.domicilna;
+				$scope.showUpdateForm = true;
 			}
 			
 			$scope.firstone = function(){
@@ -75,6 +81,23 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 				$scope.setSelected($scope.entities[$scope.entities.length-1])
 			}
 			
+			$scope.saveChanges = function(){
+				
+				service.update($scope.updatedEntity).then(function(response){
+					//function(response){
+						
+						//$window.location.reload();
+					//}
+							for(i = 0 ; i < $scope.entities.length;i++){
+								if($scope.entities[i].id == $scope.updatedEntity.id){
+									$scope.entities[i] = response.data;
+								}
+							}
+						},
+						function(response){
+							
+						})
+			}
 			
 			
 			
@@ -136,6 +159,9 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			}	
 			$scope.setSelectedCountry = function(country){
 				$scope.entity.country = country;
+			}
+			$scope.setSelectedCountryUpdate = function(country){
+				$scope.updatedEntity.country = country;
 			}
 			
 			$scope.deselect = function(){
