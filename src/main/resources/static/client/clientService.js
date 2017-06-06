@@ -20,6 +20,8 @@ services.service('clientService',['$http',function($http){
 		return $http.post("/client",client);
 	}
 
-	
+	this.update = function(client){
+		return $http.put("/client/update", client);
+	}
 	
 }])

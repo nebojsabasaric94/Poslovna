@@ -46,11 +46,116 @@
 			</tr>
 		</table>
 
+	<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+		
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateCountryFName">Fisrt Name:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateCountryFName" id = "updateCountryFName" ng-model = "updatedEntity.firstName" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateLN">Last Name:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateLN" id = "updateLN" ng-model = "updatedEntity.lastName" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateJmbg">JMBG:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateJmbg" id = "updateJmbg" ng-model = "updatedEntity.jmbg" class="form-control " />
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateAdr">Address:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateAdr" id = "updateAdr" ng-model = "updatedEntity.address" class="form-control " />
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateaddressForStatements">Address for Statements:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateaddressForStatements" id = "updateaddressForStatements" ng-model = "updatedEntity.addressForStatements" class="form-control " />
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updatePh">Phone:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updatePh" id = "updatePh" ng-model = "updatedEntity.phone" class="form-control " />
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateE">Email:</label>
+				<div class = "col-md-4">
+					<input type = "text" name = "updateE" id = "updateE" ng-model = "updatedEntity.email" class="form-control " />
+				</div>
+			</div>
+			
+			
+			<div class = "form-group">
+				<label class = "col-md-4 control-label" for = "updateES">Email Statements:</label>
+				<div class = "col-md-4">
+					<input type="checkbox" checked="checked" id = "updateES" ng-model = "updatedEntity.emailStatements" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group" >
+			<label class="col-md-4 control-label">Type Of Client:</label>
+			<div class = "col-md-4">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.typeOfClient" type="text"> 
+			</div>
+			</div>
+			
+			
+			<div class = "form-group">
+			<label class = "col-md-4 control-label" for = "entityPlace">Residence(place):</label>
+			<div class = "col-md-4">
+				<input type = "text" name = "entityPlace" id = "entityPlace" ng-model = "updatedEntity.residence.name" class="form-control " readonly/>
+			</div>
+			<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Select country</button></span>
+			
+		</div>
+		
+			<div class = "form-group">
+				<label class = "col-md-4 control-label"></label>
+				<div class = "col-md-4">
+					<span><button type = "submit" class = "btn btn-success" >Update</button></span>
+				</div>
+			</div>
+		</form>
+	</div>
 	</div>
 	
 </div>
 
 
+
+	<div id="myModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPlaces() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Ptt number</th>
+					<th>Name</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="place in places" ng-click = "setSelectedPlaceUpdate(place)" ng-class = "{selected:place === updatedEntity.residence}">
+					<td>{{place.pttNumber}}</td>
+					<td>{{place.name}}</td>
+					<td>{{place.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+
+
+	</div>
 
 
 <div>
