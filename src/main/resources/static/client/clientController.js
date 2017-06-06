@@ -108,6 +108,7 @@ app.controller('clientController',['$scope','clientService','$location',
 					$scope.entities[i] = response.data;
 				}
 			}
+			$scope.showUpdateForm = false;
 		},
 		function(response){
 					
@@ -156,6 +157,7 @@ app.controller('clientController',['$scope','clientService','$location',
 	
 	$scope.deselect = function(){
 		$scope.selectedEntity = null;
+		$scope.showUpdateForm = false;
 		$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
 				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 	}

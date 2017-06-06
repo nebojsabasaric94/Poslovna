@@ -93,6 +93,7 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 									$scope.entities[i] = response.data;
 								}
 							}
+							$scope.showUpdateForm = false;
 						},
 						function(response){
 							
@@ -166,6 +167,7 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 
 			}
