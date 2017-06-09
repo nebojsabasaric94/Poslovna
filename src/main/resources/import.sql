@@ -88,3 +88,5 @@ insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, 
 insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('402145745276542512','2016-03-01',1,'4','11','1');
 insert into legal_entity_account(broj_racuna, datum_otvaranja, vazeci, bank_id, client_client_id, currency_currency_id)values('205145745874545418','2016-03-01',1,'5','12','1');
 
+insert into user(username, password) values ('duca','$2a$10$UteruuYLEll8yHbjCM7Q8OhIvB0EIzT9ErS7Wqqltj1gk37qEHkpW');
+
