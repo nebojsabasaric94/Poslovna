@@ -47,6 +47,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 									$scope.entities[i] = response.data;
 								}
 							}
+							$scope.showUpdateForm = false;
 						},
 						function(response){
 							
@@ -150,6 +151,7 @@ app.controller('countryController', ['$scope','countryService','$location',
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {id : null,name : "",country_code : ""};
 			}
 			$scope.refresh = function(){

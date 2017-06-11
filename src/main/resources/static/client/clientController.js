@@ -7,7 +7,7 @@ app.controller('clientController',['$scope','clientService','$location',
 			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 	$scope.entity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
 			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
-	
+	$scope.updatedEntity={};
 	
 	
 	findAll();
@@ -31,7 +31,21 @@ app.controller('clientController',['$scope','clientService','$location',
 		
 	}	
 	$scope.setSelected = function(selectedEntity){
+		$scope.showUpdateForm = true;
 		$scope.selectedEntity = selectedEntity;
+		$scope.updatedEntity.id=$scope.selectedEntity.id;
+		$scope.updatedEntity.firstName=selectedEntity.firstName;
+		$scope.updatedEntity.lastName=selectedEntity.lastName;
+		$scope.updatedEntity.jmbg=selectedEntity.jmbg;
+		$scope.updatedEntity.address=selectedEntity.address;
+		$scope.updatedEntity.phone=selectedEntity.phone;
+		$scope.updatedEntity.email=selectedEntity.email;
+		$scope.updatedEntity.typeOfClient="Fizicko lice";
+		$scope.updatedEntity.addressForStatements=selectedEntity.addressForStatements;
+		
+		
+		//i ostali
+		$scope.showUpdateForm = true;
 	}	
 	$scope.firstone = function(){
 		$scope.setSelected($scope.entities[0]);
@@ -82,6 +96,24 @@ app.controller('clientController',['$scope','clientService','$location',
 		$scope.setSelected($scope.entities[$scope.entities.length-1])
 	}
 	
+	$scope.saveChanges = function(){
+		
+		service.update($scope.updatedEntity).then(function(response){
+			//function(response){
+				
+				//$window.location.reload();
+			//}
+			for(i = 0 ; i < $scope.entities.length;i++){
+				if($scope.entities[i].id == $scope.updatedEntity.id){
+					$scope.entities[i] = response.data;
+				}
+			}
+			$scope.showUpdateForm = false;
+		},
+		function(response){
+					
+		})
+	}
 	
 	$scope.search = function(){
 		service.search($scope.searchEntity)
@@ -119,9 +151,13 @@ app.controller('clientController',['$scope','clientService','$location',
 	$scope.setSelectedPlace = function(place){
 		$scope.entity.residence = place;
 	}
+	$scope.setSelectedPlaceUpdate = function(place){
+		$scope.updatedEntity.residence = place;
+	}
 	
 	$scope.deselect = function(){
 		$scope.selectedEntity = null;
+		$scope.showUpdateForm = false;
 		$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
 				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 	}
