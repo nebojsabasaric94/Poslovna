@@ -4,7 +4,7 @@ app.controller('bankController', ['$scope','bankService','$location',
 		function($scope, service, $location) {
 
 			$scope.idSelectedEntity = null;
-			$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:"false"}
+			$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:""}
 	
 			findAll();
 
@@ -143,12 +143,12 @@ app.controller('bankController', ['$scope','bankService','$location',
 
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:"false"}
+				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:""}
 
 			}
 			$scope.refresh = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:"false"}
+				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:""}
 
 				findAll();
 			}			

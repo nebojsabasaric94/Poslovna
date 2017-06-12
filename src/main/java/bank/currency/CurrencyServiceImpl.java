@@ -43,6 +43,6 @@ public class CurrencyServiceImpl implements CurrencyService {
 		String country_id = "%";
 		if(currency.getCountry() != null)
 			country_id = "" + currency.getCountry().getId() ;
-		return repository.search(currency.getName(), country_id, currency.getOfficial_code(), currency.isDomicilna());
+		return repository.search(currency.getName(), country_id, currency.getOfficial_code(), currency.getDomicilna());
 	}
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<statements>
+    <balances>
+        <id>1</id>
+        <trafficDate>2017-06-01T00:00:00+02:00</trafficDate>
+        <previousState>0.0</previousState>
+        <trafficToBenefit>0.0</trafficToBenefit>
+        <trafficToTheBurden>11965.0</trafficToTheBurden>
+        <newState>-11965.0</newState>
+        <legalEntityAccount>
+            <id>12</id>
+            <brojRacuna>205145745874545418</brojRacuna>
+            <datumOtvaranja>2016-03-01T00:00:00+01:00</datumOtvaranja>
+            <vazeci>true</vazeci>
+            <client>
+                <id>12</id>
+                <address>Topolska 18</address>
+                <phone>064112211</phone>
+                <email>malina@v.com</email>
+                <addressForStatements>Topolska 18</addressForStatements>
+                <emailStatements>false</emailStatements>
+                <firstName>Malina</firstName>
+                <lastName>Vojvodic</lastName>
+                <jmbg>1210959556612</jmbg>
+                <typeOfClient>Fizicko lice</typeOfClient>
+                <residence>
+                    <id>1</id>
+                    <pttNumber>34000</pttNumber>
+                    <name>Kragujevac</name>
+                    <country>
+                        <id>1</id>
+                        <country_code>srb</country_code>
+                        <name>Srbija</name>
+                    </country>
+                </residence>
+            </client>
+            <bank>
+                <id>5</id>
+                <bankCode>205</bankCode>
+                <pib>1631637894</pib>
+                <name>Raiffeisen bank</name>
+                <address>Cara Dusana 5</address>
+                <email>raiffeisen@bank.com</email>
+                <web>ww.raiffeisen.</web>
+                <phone>011454444</phone>
+                <fax>011454445</fax>
+                <bank>true</bank>
+            </bank>
+            <currency>
+                <id>1</id>
+                <official_code>din</official_code>
+                <name>dinar</name>
+                <domicilna>true</domicilna>
+                <country>
+                    <id>1</id>
+                    <country_code>srb</country_code>
+                    <name>Srbija</name>
+                </country>
+            </currency>
+        </legalEntityAccount>
+        <analyticsOfStatements>
+            <itemNumber>1</itemNumber>
+            <debtor_originator>Malina Vojvodic</debtor_originator>
+            <purposeOfPayment>Uplata po racunu 145/2017</purposeOfPayment>
+            <creditor_recipient>Novi Most da</creditor_recipient>
+            <dateOfReceipt>2017-06-01</dateOfReceipt>
+            <currencyDate>2017-06-01</currencyDate>
+            <debtorAccount>205145745874545418</debtorAccount>
+            <referenceNumberAssigments></referenceNumberAssigments>
+            <accountCreditor>300745485455555519</accountCreditor>
+            <modelApproval>97</modelApproval>
+            <referenceNumberCreditor>4147854</referenceNumberCreditor>
+            <emergency>false</emergency>
+            <sum>11965.0</sum>
+            <status></status>
+            <paymentType>
+                <id>1</id>
+                <code>001</code>
+                <nameOfPaymentType>Nalog za prenos</nameOfPaymentType>
+            </paymentType>
+            <paymentCurrency>
+                <id>1</id>
+                <official_code>din</official_code>
+                <name>dinar</name>
+                <domicilna>true</domicilna>
+                <country>
+                    <id>1</id>
+                    <country_code>srb</country_code>
+                    <name>Srbija</name>
+                </country>
+            </paymentCurrency>
+            <place>
+                <id>1</id>
+                <pttNumber>34000</pttNumber>
+                <name>Kragujevac</name>
+                <country>
+                    <id>1</id>
+                    <country_code>srb</country_code>
+                    <name>Srbija</name>
+                </country>
+            </place>
+        </analyticsOfStatements>
+    </balances>
+</statements>

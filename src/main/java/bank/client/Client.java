@@ -52,7 +52,7 @@ public class Client {
 	private String addressForStatements;
 	
 	@XmlElement
-	private boolean emailStatements;
+	private Boolean emailStatements;
 	
 	@NotBlank
 	@XmlElement
@@ -125,15 +125,14 @@ public class Client {
 		this.addressForStatements = addressForStatements;
 	}
 
-	public boolean isEmailStatements() {
+
+	public Boolean getEmailStatements() {
 		return emailStatements;
 	}
 
-	public void setEmailStatements(boolean emailStatements) {
+	public void setEmailStatements(Boolean emailStatements) {
 		this.emailStatements = emailStatements;
 	}
-
-
 
 	public String getFirstName() {
 		return firstName;

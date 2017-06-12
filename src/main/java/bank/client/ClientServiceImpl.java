@@ -28,7 +28,7 @@ public class ClientServiceImpl implements ClientService{
 		if(client.getResidence() != null)
 			place_id = ""+client.getResidence().getId();
 		// TODO Auto-generated method stub
-		return repository.search(client.getFirstName(), client.getLastName(), client.getAddress(),client.getEmail(), client.getPhone(), client.getAddressForStatements(), client.getJmbg(), place_id, client.getTypeOfClient(), client.isEmailStatements());
+		return repository.search(client.getFirstName(), client.getLastName(), client.getAddress(),client.getEmail(), client.getPhone(), client.getAddressForStatements(), client.getJmbg(), place_id, client.getTypeOfClient(), client.getEmailStatements());
 	}
 
 	@Override

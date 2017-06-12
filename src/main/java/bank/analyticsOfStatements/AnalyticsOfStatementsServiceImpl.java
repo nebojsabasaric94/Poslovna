@@ -83,6 +83,7 @@ public class AnalyticsOfStatementsServiceImpl implements AnalyticsOfStatementsSe
 		if(analyticsOfStatements.getPaymentCurrency().getId() != null)
 			paymentCurrency =""+ analyticsOfStatements.getPaymentCurrency().getId();
 		
+
 		return repository.search(analyticsOfStatements.getDebtor_originator(), analyticsOfStatements.getPurposeOfPayment(), analyticsOfStatements.getCreditor_recipient(),
 				dateOfReceipt, currencyDate, analyticsOfStatements.getDebtorAccount(),
 				modelAssigments, analyticsOfStatements.getReferenceNumberAssigments(), analyticsOfStatements.getAccountCreditor(),

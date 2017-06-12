@@ -126,11 +126,11 @@ public class AnalyticsOfStatementsController {
 				dailyAccountBalanceDebtor.getAnalyticsOfStatements().add(a);
 				dailyAccountBalanceService.save(dailyAccountBalanceDebtor);
 
-			/*	DailyAccountBalance dailyAccountBalanceCreditor = dailyAccountBalanceService.findByAccountNumberAndDate(creditorAccount, a.getCurrencyDate());
+				DailyAccountBalance dailyAccountBalanceCreditor = dailyAccountBalanceService.findByAccountNumberAndDate(creditorAccount, a.getCurrencyDate());
 				dailyAccountBalanceCreditor.setTrafficToBenefit(dailyAccountBalanceCreditor.getTrafficToBenefit() + a.getSum());
 				dailyAccountBalanceCreditor.setNewState(dailyAccountBalanceCreditor.getPreviousState()+ dailyAccountBalanceCreditor.getTrafficToBenefit()- dailyAccountBalanceCreditor.getTrafficToTheBurden());
 				dailyAccountBalanceCreditor.getAnalyticsOfStatements().add(a);
-				dailyAccountBalanceService.save(dailyAccountBalanceCreditor)*/;
+				dailyAccountBalanceService.save(dailyAccountBalanceCreditor);
 
 			} else {
 				// ako nisu iz iste banke,skini sa racuna uplatioca i napravi

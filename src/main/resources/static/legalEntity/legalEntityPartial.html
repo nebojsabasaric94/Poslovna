@@ -55,7 +55,8 @@
 				<td>{{entity.phone}}</td>
 				<td>{{entity.email}}</td>
 				<td>{{entity.addressForStatements}}</td>
-				<td>{{entity.emailStatements}}</td>
+				<td ng-show = "entity.emailStatements">YES</td>
+				<td ng-hide = "entity.emailStatements">NO</td>
 			</tr>
 		</table>
 	

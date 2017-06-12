@@ -57,7 +57,7 @@ public class LegalEntityAccountServiceImpl implements LegalEntityAccountService 
 		if(legalEntityAccount.getDatumOtvaranja() != null){
 			datum_otvaranja =new Date(legalEntityAccount.getDatumOtvaranja().getTime()).toString();
 		}
-		return repository.search(legalEntityAccount.getBrojRacuna(), datum_otvaranja, legalEntityAccount.isVazeci(), client_id, bank_id, currency_id);
+		return repository.search(legalEntityAccount.getBrojRacuna(), datum_otvaranja, legalEntityAccount.getVazeci(), client_id, bank_id, currency_id);
 
 	}
 

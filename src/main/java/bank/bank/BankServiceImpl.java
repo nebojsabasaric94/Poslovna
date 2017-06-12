@@ -44,6 +44,6 @@ public class BankServiceImpl implements BankService {
 		String id = "%";
 		if(bank.getId() != null)
 			id = "" + bank.getId();
-		return repository.search(id, bank.getBankCode(), bank.getPib(), bank.getName(), bank.getAddress(), bank.getEmail(), bank.getWeb(), bank.getPhone(), bank.getFax(), bank.isBank());
+		return repository.search(id, bank.getBankCode(), bank.getPib(), bank.getName(), bank.getAddress(), bank.getEmail(), bank.getWeb(), bank.getPhone(), bank.getFax(), bank.getBank());
 	}
 }

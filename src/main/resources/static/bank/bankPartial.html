@@ -51,7 +51,8 @@
 			<td>{{entity.web}}</td>
 			<td>{{entity.phone}}</td>
 			<td>{{entity.fax}}</td>
-			<td>{{entity.bank}}</td>
+			<td ng-show = "entity.bank">YES</td>
+			<td ng-hide = "entity.bank">NO</td>
 
 		</tr>
 	</table>

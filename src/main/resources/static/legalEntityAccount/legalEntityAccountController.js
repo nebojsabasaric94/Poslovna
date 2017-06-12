@@ -2,7 +2,7 @@ var app = angular.module('legalEntityAccount.controllers',[]);
 app.controller('legalEntityAccountController',['$scope','legalEntityAccountService','$location',
 	function($scope,service,$location){
 	
-		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
+		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"",client: null,bank:null,currency:null};
 		$scope.entity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
 		$scope.idSelectedEntity = null;
 		
@@ -181,8 +181,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 			l.brojRacuna = $scope.selectedEntity.brojRacuna;
 			service.exportStatementsToXml(l,$scope.startDate,$scope.endDate)
 			.then(function(response){
-				$scope.startDate = null;
-				$scope.endDate = null;
+				$scope.closeExportStatementsModal();
 			},
 			function(response){
 				
@@ -302,11 +301,11 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 
 	$scope.deselect = function(){
 		$scope.selectedEntity = null;
-		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
+		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"",client: null,bank:null,currency:null};
 	}
 	$scope.refresh = function(){
 		$scope.selectedEntity = null;
-		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
+		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"",client: null,bank:null,currency:null};
 		findAll();
 	}
 	

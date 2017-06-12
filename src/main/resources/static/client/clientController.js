@@ -4,7 +4,7 @@ app.controller('clientController',['$scope','clientService','$location',
 	function($scope,service,$location){
 
 	$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
-			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
+			emailStatements:"",firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 	$scope.entity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
 			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 	$scope.updatedEntity={};
@@ -159,12 +159,12 @@ app.controller('clientController',['$scope','clientService','$location',
 		$scope.selectedEntity = null;
 		$scope.showUpdateForm = false;
 		$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
-				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
+				emailStatements:"",firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 	}
 	$scope.refresh = function(){
 		$scope.selectedEntity = null;
 		$scope.searchEntity = {id : null,address:"" ,phone : "",email:"",addressForStatements:"",
-				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
+				emailStatements:"",firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 		findAll();
 	}
 	

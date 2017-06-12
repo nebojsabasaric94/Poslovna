@@ -3,7 +3,7 @@ var app = angular.module('currency.controllers', []);
 app.controller('currencyController', ['$scope','currencyService','$location',
 		function($scope, service, $location) {
 
-			$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
+			$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"",country:null};
 			$scope.entity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
 			$scope.idSelectedEntity = null;
 	
@@ -168,12 +168,12 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.showUpdateForm = false;
-				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"",country:null};
 
 			}
 			$scope.refresh = function(){
 				$scope.selectedEntity = null;
-				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"false",country:null};
+				$scope.searchEntity = {id : null,official_code:"" ,name : "",domicilna:"",country:null};
 
 				findAll();
 			}

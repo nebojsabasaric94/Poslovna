@@ -6,7 +6,7 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 	
 	$scope.searchEntity = {id : null,naziv_klijenta:"",skraceni_naziv_klijenta:"", maticni_broj:"", pib:"",businessActivityCode:null,
 			nadlezni_poreski_organ_za_klijenta:"", naziv_organa:"",address:"" ,phone : "",email:"",addressForStatements:"",fax:"",
-			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null
+			emailStatements:"",firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null
 			};	
 	$scope.entity = {id : null,naziv_klijenta:"",skraceni_naziv_klijenta:"", maticni_broj:"", pib:"",businessActivityCode:null,
 			nadlezni_poreski_organ_za_klijenta:"", naziv_organa:"",address:"" ,phone : "",email:"",addressForStatements:"",fax:"",
@@ -168,13 +168,13 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 		$scope.selectedEntity = null;
 		$scope.searchEntity = {id : null,naziv_klijenta:"",skraceni_naziv_klijenta:"",maticni_broj:"",pib:"",businessActivityCode:null,
 				nadlezni_poreski_organ_za_klijenta:"",naziv_organa:"",address:"" ,phone : "",email:"",addressForStatements:"",fax:"",
-				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null};
+				emailStatements:"",firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null};
 	}
 	$scope.refresh = function(){
 		$scope.selectedEntity = null;
 		$scope.searchEntity = {id : null,naziv_klijenta:"",skraceni_naziv_klijenta:"",maticni_broj:"",pib:"",businessActivityCode:null,
 				nadlezni_poreski_organ_za_klijenta:"",naziv_organa:"",address:"" ,phone : "",email:"",addressForStatements:"",fax:"",
-				emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null};
+				emailStatements:"",firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null};
 		findAll();
 	}	
 	

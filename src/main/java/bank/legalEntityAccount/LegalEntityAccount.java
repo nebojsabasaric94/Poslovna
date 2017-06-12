@@ -46,7 +46,7 @@ public class LegalEntityAccount {
 	private Date datumOtvaranja;
 	
 	@XmlElement
-	private boolean vazeci;
+	private Boolean vazeci;
 
 	@ManyToOne
 	@XmlElement
@@ -112,13 +112,17 @@ public class LegalEntityAccount {
 		this.datumOtvaranja = datumOtvaranja;
 	}
 
-	public boolean isVazeci() {
+
+
+	public Boolean getVazeci() {
 		return vazeci;
 	}
 
-	public void setVazeci(boolean vazeci) {
+
+	public void setVazeci(Boolean vazeci) {
 		this.vazeci = vazeci;
 	}
+
 
 	public Client getClient() {
 		return client;

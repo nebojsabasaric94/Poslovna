@@ -53,7 +53,7 @@ public class Currency {
 	@Column
 	@NotNull
 	@XmlElement
-	private boolean domicilna; // sta ovde treba da pise?
+	private Boolean domicilna; // sta ovde treba da pise?
 
 	@ManyToOne
 	private Country country;
@@ -102,11 +102,13 @@ public class Currency {
 		this.name = name;
 	}
 
-	public boolean isDomicilna() {
+
+
+	public Boolean getDomicilna() {
 		return domicilna;
 	}
 
-	public void setDomicilna(boolean domicilna) {
+	public void setDomicilna(Boolean domicilna) {
 		this.domicilna = domicilna;
 	}
 

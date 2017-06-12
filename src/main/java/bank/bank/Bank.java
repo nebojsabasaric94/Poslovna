@@ -76,7 +76,7 @@ public class Bank {
 	@Column
 	@NotNull
 	@XmlElement
-	private boolean bank;
+	private Boolean bank;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "commercialBankRate", cascade = CascadeType.ALL)
@@ -166,13 +166,6 @@ public class Bank {
 		this.fax = fax;
 	}
 
-	public boolean isBank() {
-		return bank;
-	}
-
-	public void setBank(boolean bank) {
-		this.bank = bank;
-	}
 
 	public List<ExchangeRateList> getExchangeRateLists() {
 		return exchangeRateLists;
@@ -196,6 +189,14 @@ public class Bank {
 
 	public void setInterbankTransfers(List<InterbankTransfer> interbankTransfers) {
 		this.interbankTransfers = interbankTransfers;
+	}
+
+	public Boolean getBank() {
+		return bank;
+	}
+
+	public void setBank(Boolean bank) {
+		this.bank = bank;
 	}
 	
 	

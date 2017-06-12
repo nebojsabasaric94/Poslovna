@@ -17,7 +17,7 @@ public interface AnalyticsOfStatementsRepository extends PagingAndSortingReposit
 			+ "	and (a.debtorAccount like CONCAT(:debtorAccount,'%') or (a.debtorAccount is null and :debtorAccount = '')) and (CAST(a.modelAssigments AS string) like :modelAssigments or (a.modelAssigments is null and :modelAssigments = '%'))"
 			+ " and (a.referenceNumberAssigments like CONCAT(:referenceNumberAssigments,'%') or (a.referenceNumberAssigments is null and :referenceNumberAssigments = ''))"
 			+ " and (a.accountCreditor like CONCAT(:accountCreditor,'%') or (a.accountCreditor is null and :accountCreditor = ''))"
-			+ " and (CAST(a.modelApproval AS string) like :modelApproval or (a.modelApproval is null and :modelApproval = '%')) and (a.referenceNumberCreditor like CONCAT(:referenceNumberCreditor,'%') or (a.referenceNumberCreditor is null and :referenceNumberCreditor = '')) and a.emergency = :emergency"
+			+ " and (CAST(a.modelApproval AS string) like :modelApproval or (a.modelApproval is null and :modelApproval = '%')) and (a.referenceNumberCreditor like CONCAT(:referenceNumberCreditor,'%') or (a.referenceNumberCreditor is null and :referenceNumberCreditor = '')) and (a.emergency = :emergency or :emergency is null)"
 			+ " and CAST(a.sum AS string) like :sum and (CAST(a.typeOfMistake AS string) like :typeOfMistake or(a.typeOfMistake is null and :typeOfMistake = '%'))  and (a.status like CONCAT(:status,'%') or (a.status is null and :status = ''))"
 			+ " and (CAST(a.dailyAccountBalance.id AS string) like :dailyAccountBalance or (a.dailyAccountBalance.id is null and :dailyAccountBalance = '%')) and CAST(a.paymentType.id AS string) like :paymentType and CAST(a.place.id AS string) like :place"
 			+ " and CAST(a.paymentCurrency.id AS string) like :paymentCurrency")

@@ -36,7 +36,8 @@
 		<tr ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.official_code}}</td>
 			<td>{{entity.name}}</td>
-			<td>{{entity.domicilna}}</td>
+			<td ng-show = "entity.domicilna">YES</td>
+			<td ng-hide = "entity.domicilna">NO</td>
 			<td>{{entity.country.name}}</td>
 		</tr>
 	</table>

@@ -54,7 +54,8 @@
 			
 			<td>{{entity.modelApproval}}</td>
 			<td>{{entity.referenceNumberCreditor}}</td>
-			<td>{{entity.emergency}}</td>
+			<td ng-show = "entity.emergency">YES</td>
+			<td ng-hide = "entity.emergency">NO</td>
 			<td>{{entity.sum}}</td>
 			<td>{{entity.typeOfMistake}}</td>
 			<td>{{entity.status}}</td>

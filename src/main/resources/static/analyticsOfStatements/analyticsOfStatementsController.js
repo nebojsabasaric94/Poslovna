@@ -3,7 +3,7 @@ var app = angular.module('analyticsOfStatements.controllers', []);
 app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatementsService','$location',
 		function($scope, service, $location) {
 			$scope.searchEntity = {debtor_originator:"",purposeOfPayment:"",creditor_recipient:"",dateOfReceipt:"",currencyDate:"",debtorAccount:"",
-					modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:false,
+					modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:"",
 					sum:null,typeOfMistake:null,status:"",dailyAccountBalance:{},paymentType:{},paymentCurrency:{},place:{}
 			};
 			$scope.entity = {debtor_originator:"",purposeOfPayment:"",creditor_recipient:"",dateOfReceipt:"",currencyDate:"",debtorAccount:"",
@@ -267,7 +267,7 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {debtor_originator:"",purposeOfPayment:"",creditor_recipient:"",dateOfReceipt:"",currencyDate:"",debtorAccount:"",
-						modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:false,
+						modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:"",
 						sum:null,typeOfMistake:null,status:"",dailyAccountBalance:{},paymentType:{},paymentCurrency:{},place:{}
 				};
 
@@ -275,7 +275,7 @@ app.controller('analyticsOfStatementsController', ['$scope','analyticsOfStatemen
 			$scope.refresh = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {debtor_originator:"",purposeOfPayment:"",creditor_recipient:"",dateOfReceipt:"",currencyDate:"",debtorAccount:"",
-						modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:false,
+						modelAssigments:null,referenceNumberAssigments:"",accountCreditor:"",modelApproval:null,referenceNumberCreditor:"",emergency:"",
 						sum:null,typeOfMistake:null,status:"",dailyAccountBalance:{},paymentType:{},paymentCurrency:{},place:{}
 				};
 				findAll();
