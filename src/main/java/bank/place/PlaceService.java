@@ -12,4 +12,6 @@ public interface PlaceService {
 	public void delete(Long id);
 	
 	public List<Place> search(Place place);
+
+	public Place findByName(String place);
 }

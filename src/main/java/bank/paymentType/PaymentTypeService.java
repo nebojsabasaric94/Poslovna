@@ -12,4 +12,6 @@ public interface PaymentTypeService {
 	public void delete(Long id);
 	
 	public List<PaymentType> search(PaymentType paymentType);
+
+	PaymentType findByName(String paymentType);
 }

@@ -2,22 +2,22 @@
 <interbankTransfer>
     <typeOfMessage>MT102</typeOfMessage>
     <date>2017-06-01</date>
-    <sum>21187.0</sum>
-    <senderBankCode>400</senderBankCode>
+    <sum>11965.0</sum>
+    <senderBankCode>205</senderBankCode>
     <recieverBankCode>300</recieverBankCode>
     <statements>
-        <debtor_originator>Sintelon</debtor_originator>
-        <purposeOfPayment>Uplata po racunu 1454/2017</purposeOfPayment>
-        <creditor_recipient>Novi Most da</creditor_recipient>
+        <debtor_originator>Janko Jankovic</debtor_originator>
+        <purposeOfPayment>Uplata po racunu 145/2017</purposeOfPayment>
+        <creditor_recipient>Firma A</creditor_recipient>
         <dateOfReceipt>2017-06-01</dateOfReceipt>
         <currencyDate>2017-06-01</currencyDate>
-        <debtorAccount>400198745874743524</debtorAccount>
+        <debtorAccount>205145745874545418</debtorAccount>
         <referenceNumberAssigments></referenceNumberAssigments>
         <accountCreditor>300745485455555519</accountCreditor>
         <modelApproval>97</modelApproval>
-        <referenceNumberCreditor>451787</referenceNumberCreditor>
+        <referenceNumberCreditor>4147854</referenceNumberCreditor>
         <emergency>false</emergency>
-        <sum>21187.0</sum>
+        <sum>11965.0</sum>
         <status></status>
         <paymentType>Nalog za prenos</paymentType>
         <paymentCurrency>din</paymentCurrency>

@@ -45,4 +45,10 @@ public class CurrencyServiceImpl implements CurrencyService {
 			country_id = "" + currency.getCountry().getId() ;
 		return repository.search(currency.getName(), country_id, currency.getOfficial_code(), currency.getDomicilna());
 	}
+
+	@Override
+	public Currency findByCode(String code) {
+		// TODO Auto-generated method stub
+		return repository.findByCode(code);
+	}
 }

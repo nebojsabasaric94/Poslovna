@@ -31,5 +31,14 @@ public interface AnalyticsOfStatementsRepository extends PagingAndSortingReposit
 
 	@Query("select a from AnalyticsOfStatements a where (a.debtorAccount like :brojRacuna or a.accountCreditor like :brojRacuna) and a.currencyDate = :date")
 	public ArrayList<AnalyticsOfStatements> findByDateAndAccount(@Param("brojRacuna")String brojRacuna,@Param("date") Date date);
+
+	@Query("select a from AnalyticsOfStatements a where a.accountCreditor like :brojRacuna and a.currencyDate BETWEEN  :startDate AND :endDate")
+	public ArrayList<AnalyticsOfStatements> findIncomeForPeriod(@Param("startDate")Date startDate,@Param("endDate") Date endDate,@Param("brojRacuna")String brojRacuna);
+	
+	@Query("select a from AnalyticsOfStatements a where a.debtorAccount like :brojRacuna and a.currencyDate BETWEEN  :startDate AND :endDate")
+	public ArrayList<AnalyticsOfStatements> findExpenseForPeriod(@Param("startDate")Date startDate,@Param("endDate")Date endDate,@Param("brojRacuna") String brojRacuna);
+
+	@Query("select a from AnalyticsOfStatements a where (a.debtorAccount like :brojRacuna or a.accountCreditor like :brojRacuna) and a.currencyDate BETWEEN  :startDate AND :endDate")	
+	public ArrayList<AnalyticsOfStatements> findAllForPeriod(@Param("startDate")Date startDate,@Param("endDate")Date endDate,@Param("brojRacuna") String brojRacuna);
 	
 }

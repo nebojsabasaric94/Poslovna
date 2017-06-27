@@ -3,8 +3,8 @@
     <debtor_originator>Danilo Dimitrijevic</debtor_originator>
     <purposeOfPayment>Pomoc</purposeOfPayment>
     <creditor_recipient>Scepan Scekic</creditor_recipient>
-    <dateOfReceipt>2017-03-01</dateOfReceipt>
-    <currencyDate>2017-03-01</currencyDate>
+    <dateOfReceipt>2017-06-01</dateOfReceipt>
+    <currencyDate>2017-06-01</currencyDate>
     <debtorAccount></debtorAccount>
     <referenceNumberAssigments></referenceNumberAssigments>
     <accountCreditor>200187878745784542</accountCreditor>
@@ -13,30 +13,7 @@
     <emergency>false</emergency>
     <sum>142564.0</sum>
     <status></status>
-    <paymentType>
-        <code>002</code>
-        <id>2</id>
-        <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
-    </paymentType>
-    <paymentCurrency>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <domicilna>true</domicilna>
-        <id>1</id>
-        <name>dinar</name>
-        <official_code>din</official_code>
-    </paymentCurrency>
-    <place>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <id>1</id>
-        <name>Kragujevac</name>
-        <pttNumber>34000</pttNumber>
-    </place>
+    <paymentType>Nalog za uplatu</paymentType>
+    <paymentCurrency>din</paymentCurrency>
+    <place>Kragujevac</place>
 </analyticsOfStatements>

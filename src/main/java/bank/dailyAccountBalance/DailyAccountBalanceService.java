@@ -19,4 +19,6 @@ public interface DailyAccountBalanceService {
 
 	DailyAccountBalance findByAccountNumberAndDate(LegalEntityAccount creditorAccount,Date date);
 
+	DailyAccountBalance findAccountStateAt(LegalEntityAccount creditorAccount, Date date);
+
 }

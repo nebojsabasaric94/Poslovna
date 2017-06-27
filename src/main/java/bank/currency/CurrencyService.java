@@ -12,4 +12,6 @@ public interface CurrencyService {
 	public void delete(Long id);
 	
 	public List<Currency> search(Currency currency);
+	
+	public Currency findByCode(String code);
 }

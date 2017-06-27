@@ -14,30 +14,7 @@
     <emergency>true</emergency>
     <sum>45287.0</sum>
     <status></status>
-    <paymentType>
-        <code>001</code>
-        <id>1</id>
-        <nameOfPaymentType>Nalog za prenos</nameOfPaymentType>
-    </paymentType>
-    <paymentCurrency>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <domicilna>true</domicilna>
-        <id>1</id>
-        <name>dinar</name>
-        <official_code>din</official_code>
-    </paymentCurrency>
-    <place>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <id>1</id>
-        <name>Kragujevac</name>
-        <pttNumber>34000</pttNumber>
-    </place>
+    <paymentType>Nalog za prenos</paymentType>
+    <paymentCurrency>din</paymentCurrency>
+    <place>Kragujevac</place>
 </analyticsOfStatements>

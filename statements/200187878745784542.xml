@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<accountStatement>
+    <fromDate>2017-05-31T00:00:00+02:00</fromDate>
+    <toDate>2017-06-14T00:00:00+02:00</toDate>
+    <accountNumber>200187878745784542</accountNumber>
+    <startAccountState>0.0</startAccountState>
+    <trafficToBenefit>0.0</trafficToBenefit>
+    <trafficToTheBurden>0.0</trafficToTheBurden>
+    <stateAtTheEndOfPeriod>0.0</stateAtTheEndOfPeriod>
+</accountStatement>

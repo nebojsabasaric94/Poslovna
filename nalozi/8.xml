@@ -3,8 +3,8 @@
     <debtor_originator>Novi Most da</debtor_originator>
     <purposeOfPayment>Isplata za robu</purposeOfPayment>
     <creditor_recipient>Toma Tomic</creditor_recipient>
-    <dateOfReceipt>2017-05-01</dateOfReceipt>
-    <currencyDate>2017-05-01</currencyDate>
+    <dateOfReceipt>2017-06-01</dateOfReceipt>
+    <currencyDate>2017-06-01</currencyDate>
     <debtorAccount>300745485455555519</debtorAccount>
     <modelAssigments>97</modelAssigments>
     <referenceNumberAssigments>454796</referenceNumberAssigments>
@@ -13,30 +13,7 @@
     <emergency>false</emergency>
     <sum>3125.3</sum>
     <status></status>
-    <paymentType>
-        <code>003</code>
-        <id>3</id>
-        <nameOfPaymentType>Nalog za isplatu</nameOfPaymentType>
-    </paymentType>
-    <paymentCurrency>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <domicilna>true</domicilna>
-        <id>1</id>
-        <name>dinar</name>
-        <official_code>din</official_code>
-    </paymentCurrency>
-    <place>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <id>2</id>
-        <name>Novi Sad</name>
-        <pttNumber>21000</pttNumber>
-    </place>
+    <paymentType>Nalog za isplatu</paymentType>
+    <paymentCurrency>din</paymentCurrency>
+    <place>Novi Sad</place>
 </analyticsOfStatements>

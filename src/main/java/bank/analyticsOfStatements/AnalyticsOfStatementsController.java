@@ -24,7 +24,7 @@ import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.dailyAccountBalance.DailyAccountBalanceService;
 import bank.interbankTransfer.InterbankTransfer;
 import bank.interbankTransfer.InterbankTransferService;
-import bank.interbankTransfer.Transfers;
+import bank.interbankTransfer.InterbankTransferXml;
 import bank.itemTransfer.ItemTransfer;
 import bank.legalEntityAccount.LegalEntityAccount;
 import bank.legalEntityAccount.LegalEntityAccountService;
@@ -87,10 +87,11 @@ public class AnalyticsOfStatementsController {
 	}
 
 	private void getAnalyticsOfStatements(File file) throws JAXBException {
-		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticsOfStatements.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(AnalyticsOfStatementsXml.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		jaxbUnmarshaller.setEventHandler(new MyValidationEventHandler());
-		AnalyticsOfStatements a = (AnalyticsOfStatements) jaxbUnmarshaller.unmarshal(file);
+		AnalyticsOfStatementsXml xml = (AnalyticsOfStatementsXml) jaxbUnmarshaller.unmarshal(file);
+		AnalyticsOfStatements a = generateAnalyticsOfStatement(xml);
 		analyticsOfStatementsService.save(a);
 		
 		if (a.getPaymentType().getNameOfPaymentType().equals("Nalog za uplatu")) {
@@ -174,8 +175,7 @@ public class AnalyticsOfStatementsController {
 					mt103.setProcessed(true);
 					interbankTransferService.save(mt103);
 
-					saveTransfers(mt103);
-
+					saveTransfersToXml(mt103);
 				} else {
 					DailyAccountBalance dailyAccountBalance = dailyAccountBalanceService
 							.findByAccountNumberAndDate(debtorAccount, a.getCurrencyDate());
@@ -199,16 +199,77 @@ public class AnalyticsOfStatementsController {
 		}
 	}
 
-	private void saveTransfers(InterbankTransfer interbankTransfer) throws JAXBException {
-
-		File file = new File("transfers\\" + interbankTransfer.getIdMessage() + ".xml");
-		JAXBContext jaxbContext = JAXBContext.newInstance(Transfers.class);
-		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		jaxbMarshaller.marshal(interbankTransfer, file);
-		jaxbMarshaller.marshal(interbankTransfer, System.out);
+	private AnalyticsOfStatements generateAnalyticsOfStatement(AnalyticsOfStatementsXml xml) {
+		AnalyticsOfStatements a = new AnalyticsOfStatements();
+		a.setAccountCreditor(xml.getAccountCreditor());
+		a.setCreditor_recipient(xml.getCreditor_recipient());
+		a.setCurrencyDate(xml.getCurrencyDate());
+		a.setDateOfReceipt(xml.getDateOfReceipt());
+		a.setDebtorAccount(xml.getDebtorAccount());
+		a.setDebtor_originator(xml.getDebtor_originator());
+		a.setEmergency(xml.isEmergency());
+		a.setModelApproval(xml.getModelApproval());
+		a.setModelAssigments(xml.getModelAssigments());
+		a.setPaymentType(paymentTypeService.findByName(xml.getPaymentType()));
+		a.setPaymentCurrency(currencyService.findByCode(xml.getPaymentCurrency()));
+		a.setPlace(placeService.findByName(xml.getPlace()));
+		a.setPurposeOfPayment(xml.getPurposeOfPayment());
+		a.setReferenceNumberAssigments(xml.getReferenceNumberAssigments());
+		a.setReferenceNumberCreditor(xml.getReferenceNumberCreditor());
+		a.setStatus(xml.getStatus());
+		a.setSum(xml.getSum());
+		a.setTypeOfMistake(xml.getTypeOfMistake());
+		return a;
 	}
+	private void saveTransfersToXml(InterbankTransfer interbankTransfer) throws JAXBException {
+		InterbankTransferXml xml = generateInterBankTransferXml(interbankTransfer);
+		
+		File file = new File("transfers\\"+interbankTransfer.getIdMessage()+".xml");
+		JAXBContext jaxbContext = JAXBContext.newInstance(InterbankTransferXml.class);
+		
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+		
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(xml, file);
+		jaxbMarshaller.marshal(xml, System.out);
+	}
+
+	private InterbankTransferXml generateInterBankTransferXml(InterbankTransfer interbankTransfer) {
+		InterbankTransferXml xml = new InterbankTransferXml();
+		xml.setDate(interbankTransfer.getDate());
+		xml.setRecieverBankCode(interbankTransfer.getBank().getBankCode());
+		xml.setSenderBankCode(interbankTransfer.getSenderBank().getBankCode());
+		xml.setSum(interbankTransfer.getSum());
+		xml.setTypeOfMessage(interbankTransfer.getTypeOfMessage());
+		xml.setStatements(new ArrayList<>());
+		for(int i = 0; i < interbankTransfer.getItemTransfers().size();i++){
+			AnalyticsOfStatements a = interbankTransfer.getItemTransfers().get(i).getAnalyticsOfStatements();
+			AnalyticsOfStatementsXml statementsXml = new AnalyticsOfStatementsXml();
+			statementsXml.setAccountCreditor(a.getAccountCreditor());
+			statementsXml.setCreditor_recipient(a.getCreditor_recipient());
+			statementsXml.setCurrencyDate(a.getCurrencyDate());
+			statementsXml.setDateOfReceipt(a.getDateOfReceipt());
+			statementsXml.setDebtor_originator(a.getDebtor_originator());
+			statementsXml.setDebtorAccount(a.getDebtorAccount());
+			statementsXml.setEmergency(a.isEmergency());
+			statementsXml.setModelApproval(a.getModelApproval());
+			statementsXml.setModelAssigments(a.getModelAssigments());
+			statementsXml.setPaymentCurrency(a.getPaymentCurrency().getOfficial_code());
+			statementsXml.setPaymentType(a.getPaymentType().getNameOfPaymentType());
+			statementsXml.setPlace(a.getPlace().getName());
+			statementsXml.setPurposeOfPayment(a.getPurposeOfPayment());
+			statementsXml.setReferenceNumberAssigments(a.getReferenceNumberAssigments());
+			statementsXml.setReferenceNumberCreditor(a.getReferenceNumberCreditor());
+			statementsXml.setStatus(a.getStatus());
+			statementsXml.setSum(a.getSum());
+			statementsXml.setTypeOfMistake(a.getTypeOfMistake());
+			
+			xml.getStatements().add(statementsXml);
+		}
+		return xml;
+	}	
+
+
 
 	@PostMapping("/search")
 	public List<AnalyticsOfStatements> search(@RequestBody AnalyticsOfStatements analyticsOfStatements) {

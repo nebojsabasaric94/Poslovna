@@ -43,4 +43,10 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
 
 		return repository.search(paymentType.getCode(), paymentType.getNameOfPaymentType());
 	}
+
+	@Override
+	public PaymentType findByName(String paymentType) {
+		// TODO Auto-generated method stub
+		return repository.findByName(paymentType);
+	}
 }

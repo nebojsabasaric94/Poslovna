@@ -4,8 +4,8 @@
     <debtor_originator>Mitar Petrovic</debtor_originator>
     <purposeOfPayment>Usluge hrane i pica</purposeOfPayment>
     <creditor_recipient>Novi Most da</creditor_recipient>
-    <dateOfReceipt>2017-04-11</dateOfReceipt>
-    <currencyDate>2017-04-11</currencyDate>
+    <dateOfReceipt>2017-06-01</dateOfReceipt>
+    <currencyDate>2017-06-01</currencyDate>
     <debtorAccount></debtorAccount>
     <referenceNumberAssigments></referenceNumberAssigments>
     <accountCreditor>300745485455555519</accountCreditor>
@@ -14,30 +14,7 @@
     <emergency>false</emergency>
     <sum>25452.0</sum>
     <status></status>
-    <paymentType>
-        <code>002</code>
-        <id>2</id>
-        <nameOfPaymentType>Nalog za uplatu</nameOfPaymentType>
-    </paymentType>
-    <paymentCurrency>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <domicilna>true</domicilna>
-        <id>1</id>
-        <name>dinar</name>
-        <official_code>din</official_code>
-    </paymentCurrency>
-    <place>
-        <country>
-            <country_code>srb</country_code>
-            <id>1</id>
-            <name>Srbija</name>
-        </country>
-        <id>2</id>
-        <name>Novi Sad</name>
-        <pttNumber>21000</pttNumber>
-    </place>
+    <paymentType>Nalog za uplatu</paymentType>
+    <paymentCurrency>din</paymentCurrency>
+    <place>Novi Sad</place>
 </analyticsOfStatements>

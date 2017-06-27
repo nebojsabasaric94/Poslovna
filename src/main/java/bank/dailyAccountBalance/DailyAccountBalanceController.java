@@ -71,7 +71,7 @@ public class DailyAccountBalanceController {
 		return dailyAccountBalanceService.search(dailyAccountBalance);
 	}
 	
-	@PostMapping("/xml/{startDate}/{endDate}")
+/*	@PostMapping("/xml/{startDate}/{endDate}")
 	public void exportToXml(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount legalEntityAccount) throws JAXBException{
 		ArrayList<DailyAccountBalance> dailyAccountBalances = (ArrayList<DailyAccountBalance>) dailyAccountBalanceService.findBalances(legalEntityAccount, startDate, endDate);
 		Balances balances = new Balances();
@@ -89,5 +89,5 @@ public class DailyAccountBalanceController {
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		jaxbMarshaller.marshal(balances, file);
 		jaxbMarshaller.marshal(balances, System.out);
-	}
+	}*/
 }

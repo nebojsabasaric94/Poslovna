@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <analyticsOfStatements>
-    <debtor_originator>Nikola Smiljanic</debtor_originator>
-    <purposeOfPayment>Usluge hrane i pica</purposeOfPayment>
-    <creditor_recipient>Novi Most da</creditor_recipient>
+    <debtor_originator>Milos Petrovic</debtor_originator>
+    <purposeOfPayment>Vracanje duga</purposeOfPayment>
+    <creditor_recipient>Janko Jankovic</creditor_recipient>
     <dateOfReceipt>2017-06-01</dateOfReceipt>
     <currencyDate>2017-06-01</currencyDate>
     <debtorAccount></debtorAccount>
     <referenceNumberAssigments></referenceNumberAssigments>
-    <accountCreditor>300745485455555519</accountCreditor>
+    <accountCreditor>200121231231231111</accountCreditor>
     <modelApproval>97</modelApproval>
-    <referenceNumberCreditor>6547488</referenceNumberCreditor>
+    <referenceNumberCreditor>454784</referenceNumberCreditor>
     <emergency>false</emergency>
-    <sum>22152.0</sum>
+    <sum>142250.0</sum>
     <status></status>
     <paymentType>Nalog za uplatu</paymentType>
     <paymentCurrency>din</paymentCurrency>

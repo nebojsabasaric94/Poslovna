@@ -47,4 +47,10 @@ public class PlaceServiceImpl implements PlaceService {
 			country_id = ""+place.getCountry().getId();
 		return repository.search(place.getName(), place.getPttNumber(), country_id);
 	}
+
+	@Override
+	public Place findByName(String place) {
+		// TODO Auto-generated method stub
+		return repository.findByName(place);
+	}
 }
