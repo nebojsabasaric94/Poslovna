@@ -1,8 +1,13 @@
 package bank.accountStatement;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -23,6 +28,12 @@ import bank.dailyAccountBalance.DailyAccountBalanceService;
 import bank.legalEntity.LegalEntity;
 import bank.legalEntityAccount.LegalEntityAccount;
 import bank.legalEntityAccount.LegalEntityAccountService;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @RestController
 @RequestMapping("/accountStatement")
@@ -112,7 +123,7 @@ public class AccountStatementController {
 	}
 	
 	@PostMapping("/pdf/{startDate}/{endDate}")
-	public void exportToPdf(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount account) throws JAXBException{
+	public void exportToPdf(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount account) throws JAXBException, JRException, FileNotFoundException{
 		LegalEntityAccount legalEntityAccount = legalEntityAccountService.findByAccountNumber(account.getBrojRacuna());
 		String clientName = "";
 		if(legalEntityAccount.getClient().getTypeOfClient().equals("Fizicko lice")){
@@ -186,7 +197,29 @@ public class AccountStatementController {
 			statementsXml.setSum(a.getSum());
 			statementsXml.setTypeOfMistake(a.getTypeOfMistake());
 			lista.add(statementsXml);
-		}		
+		}	
+		
+		JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(lista);
+
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		
+		parameters.put("ItemDataSource", itemsJRBean);
+		parameters.put("banka", legalEntityAccount.getBank().getName());
+		parameters.put("klijent", clientName);
+		parameters.put("Ukupan prihod", incomeSum);
+		parameters.put("Ukupan rashod", expenseSum);
+		parameters.put("Stanje na pocetku", setStartAccountState);
+		parameters.put("Stanje na kraju", setStateAtTheEndOfPeriod);
+		parameters.put("od", startDate);
+		parameters.put("do", endDate);
+		
+		
+		
+		JasperPrint jasperPrint = JasperFillManager.fillReport("excerpt.jasper", parameters, new JREmptyDataSource());
+	    File file = new File("D://"+clientName+".pdf");
+	    OutputStream outputStream = new FileOutputStream(file);
+	    JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
 		
 	}
 
