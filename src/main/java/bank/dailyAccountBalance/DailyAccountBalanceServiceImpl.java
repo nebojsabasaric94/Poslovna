@@ -102,6 +102,17 @@ public class DailyAccountBalanceServiceImpl implements DailyAccountBalanceServic
 					if (d.getTrafficDate().after(max.getTrafficDate()) && d.getTrafficDate().before(date))
 						max = d;
 				}
+				if(! max.getTrafficDate().before(date)){//zbog prvog elementa 
+					result = new DailyAccountBalance();
+					result.setLegalEntityAccount(creditorAccount);
+					result.setNewState((float) 0.0);
+					result.setPreviousState((float) 0.0);
+					result.setTrafficToBenefit((float) 0.0);
+					result.setTrafficToTheBurden((float) 0.0);
+					result.setTrafficDate(date);
+					result.setAnalyticsOfStatements(new ArrayList<AnalyticsOfStatements>());
+					return result;					
+				}				
 				result = new DailyAccountBalance();
 				result.setLegalEntityAccount(creditorAccount);
 				result.setPreviousState(max.getNewState());

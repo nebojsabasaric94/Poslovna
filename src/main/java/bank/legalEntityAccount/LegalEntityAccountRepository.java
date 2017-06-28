@@ -1,6 +1,7 @@
 package bank.legalEntityAccount;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,8 @@ public interface LegalEntityAccountRepository extends CrudRepository<LegalEntity
 
 	@Query("select a from LegalEntityAccount a where a.brojRacuna like :brojRacuna")
 	public LegalEntityAccount findByAccountNumber(@Param("brojRacuna")String brojRacuna);
+
+	@Query("select a from LegalEntityAccount a where a.bank.id = :id")
+	public ArrayList<LegalEntityAccount> findByBank(@Param("id")Long id);
 
 }

@@ -1,5 +1,6 @@
 package bank.legalEntityAccount;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface LegalEntityAccountService {
@@ -15,5 +16,7 @@ public interface LegalEntityAccountService {
 	public List<LegalEntityAccount> search(LegalEntityAccount legalEntityAccount);
 
 	public LegalEntityAccount findByAccountNumber(String creditorAccountNumber);
+
+	public ArrayList<LegalEntityAccount> findByBank(Long id);
 
 }

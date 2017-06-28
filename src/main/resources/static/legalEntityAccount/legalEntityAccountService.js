@@ -48,5 +48,7 @@ services.service('legalEntityAccountService',['$http',function($http){
 	this.exportStatementsToXml = function(selectedEntity,startDate,endDate){
 		return $http.post("/accountStatement/xml/"+startDate+"/"+endDate,selectedEntity)
 	}
-
+	this.exportToPdf = function(selectedEntity,startDate,endDate){
+		return $http.post("/accountStatement/pdf/"+startDate+"/"+endDate,selectedEntity)
+	}
 }])

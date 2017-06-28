@@ -187,6 +187,17 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 				
 			})
 		}
+		$scope.exportToPdf = function(){
+			var l = {};
+			l.brojRacuna = $scope.selectedEntity.brojRacuna;
+			service.exportToPdf(l,$scope.startDatePdf,$scope.endDatePdf)
+			.then(function(response){
+				$scope.closeExportPdfModal();
+			},
+			function(response){
+				
+			})
+		}		
 		$scope.showExportStatementsModal = function(){
 			var modal = document.getElementById('exportStatementsModal');
 			modal.style.display = "block";		
@@ -194,7 +205,16 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		$scope.closeExportStatementsModal = function(){
 			var modal = document.getElementById('exportStatementsModal');
 			modal.style.display  = "none";
-		}		
+		}
+		$scope.showExportPdfModal = function(){
+			var modal = document.getElementById('exportPdfModal');
+			modal.style.display = "block";		
+		}
+		$scope.closeExportPdfModal = function(){
+			var modal = document.getElementById('exportPdfModal');
+			modal.style.display  = "none";
+		}			
+		
 		$scope.showClientModalSearch = function(){
 			var modal = document.getElementById('clientModalSearch');
 			modal.style.display = "block";		

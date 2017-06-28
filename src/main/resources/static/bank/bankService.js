@@ -20,6 +20,11 @@ services.service('bankService', [ '$http', function($http) {
 	
 	this.search = function(entity){
 		return $http.post('/bank/search',entity);
-	}	
+	}
+	
+	this.exportAccounts = function(id){
+		return $http.get('/legalEntityAccount/pdf/'+id);
+		
+	}
 
 }]);

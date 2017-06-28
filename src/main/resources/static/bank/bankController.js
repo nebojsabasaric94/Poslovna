@@ -109,7 +109,17 @@ app.controller('bankController', ['$scope','bankService','$location',
 					
 				})
 			}
-			
+			$scope.exportAccounts = function(bank){
+				service.exportAccounts(bank.id)
+				.then(function(response){
+					//$scope.entities = response.data; 
+					//$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
+
+				},
+				function(response){
+					
+				})
+			}			
 
 			$scope.nextExchangeRateList = function(){
 				if(!($scope.selectedEntity))

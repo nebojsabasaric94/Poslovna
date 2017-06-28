@@ -53,6 +53,7 @@
 			<td>{{entity.fax}}</td>
 			<td ng-show = "entity.bank">YES</td>
 			<td ng-hide = "entity.bank">NO</td>
+			<td><button ng-click = "exportAccounts(entity)" class = "btn btn-success btn-block">Export pdf</button></td>
 
 		</tr>
 	</table>

@@ -38,7 +38,9 @@
 				<td>{{entity.currency.name}}</td>
 				<td ng-if = "entity.vazeci == true">YES</td>
 				<td ng-if = "entity.vazeci == false">NO</td>
-				<td><button ng-click = "showExportStatementsModal()" class = "btn btn-success btn-block">Export statements</button></td>
+				<td><button ng-click = "showExportStatementsModal()" class = "btn btn-success btn-block">Export xml</button></td>
+				<td><button ng-click = "showExportPdfModal()" class = "btn btn-success btn-block">Export pdf</button></td>
+
 			</tr>
 		</table>
 	
@@ -69,6 +71,31 @@
 					    				
 	 	</div>
 	</div>
+	<div id="exportPdfModal" class="modal">
+	  	<div class="modal-content2">
+	        <div class="modal-header">
+	          <button type="button" class="close" ng-click = "closeExportPdfModal()">&times;</button>
+	        </div>
+	    	<h3>Select period</h3><hr/><br/>
+				<form class="form-inline" ng-submit = "exportToPdf()" method="post">
+
+					<div class = "form-group" >
+						<label >Between:</label>
+						<input  class="form-control " ng-model="$parent.startDatePdf" type="date" required> 
+					</div>	
+
+					<div class = "form-group" >
+						<label >and</label>
+						<input  class="form-control " ng-model="$parent.endDatePdf" type="date" required> 
+					</div>
+					<div class = "form-group" >
+						<button type = "submit" class = "btn btn-success" >OK</button>
+					</div>
+				</form>
+						
+					    				
+	 	</div>
+	</div>	
 </div>
 
 

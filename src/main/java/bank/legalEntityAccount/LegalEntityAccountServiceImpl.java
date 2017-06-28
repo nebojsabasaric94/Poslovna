@@ -1,6 +1,7 @@
 package bank.legalEntityAccount;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -66,6 +67,13 @@ public class LegalEntityAccountServiceImpl implements LegalEntityAccountService 
 	public LegalEntityAccount findByAccountNumber(String creditorAccountNumber) {
 		// TODO Auto-generated method stub
 		return repository.findByAccountNumber(creditorAccountNumber);
+	}
+
+
+	@Override
+	public ArrayList<LegalEntityAccount> findByBank(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findByBank(id);
 	}
 
 }
