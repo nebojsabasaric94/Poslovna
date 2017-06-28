@@ -20,6 +20,7 @@ import bank.analyticsOfStatements.AnalyticsOfStatementsService;
 import bank.analyticsOfStatements.AnalyticsOfStatementsXml;
 import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.dailyAccountBalance.DailyAccountBalanceService;
+import bank.legalEntity.LegalEntity;
 import bank.legalEntityAccount.LegalEntityAccount;
 import bank.legalEntityAccount.LegalEntityAccountService;
 
@@ -113,6 +114,14 @@ public class AccountStatementController {
 	@PostMapping("/pdf/{startDate}/{endDate}")
 	public void exportToPdf(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount account) throws JAXBException{
 		LegalEntityAccount legalEntityAccount = legalEntityAccountService.findByAccountNumber(account.getBrojRacuna());
+		String clientName = "";
+		if(legalEntityAccount.getClient().getTypeOfClient().equals("Fizicko lice")){
+			clientName = legalEntityAccount.getClient().getFirstName() + " " + legalEntityAccount.getClient().getLastName();
+		}
+		else{
+			clientName = ((LegalEntity) legalEntityAccount.getClient()).getNaziv_klijenta();
+		}	
+		
 		ArrayList<AnalyticsOfStatements> income = analyticsOfStatementsService.findIncomeForPeriod(startDate,endDate,legalEntityAccount);
 		for(int i = 0; i < income.size();i++){//brisem ako je primalac i ako je nalog za prenos
 			if(income.get(i).getPaymentType().getNameOfPaymentType().equals("Nalog za prenos"))//ako je nalog za prenos i ako nisu iz iste banke primaocu ne lezu pare, ne treba da ukljucim taj nalog
@@ -145,19 +154,16 @@ public class AccountStatementController {
 		for(int i=0;i < expense.size();i++){
 			expenseSum += expense.get(i).getSum();
 		}
-		
-		AccountStatementXml accountStatement = new AccountStatementXml();
-		accountStatement.setTrafficToBenefit(incomeSum);
-		accountStatement.setTrafficToTheBurden(expenseSum);
-		accountStatement.setFromDate(startDate);
-		accountStatement.setToDate(endDate);
-		accountStatement.setStartAccountState(startDailyAccountBalance.getPreviousState());
+		Float setStateAtTheEndOfPeriod = (float) 0.0;
+		Float setStartAccountState = (float) 0.0;
+
+		setStartAccountState = startDailyAccountBalance.getPreviousState();
 		if(endDailyAccountBalance.getTrafficToBenefit() == 0 && endDailyAccountBalance.getTrafficToTheBurden() == 0)
-			accountStatement.setStateAtTheEndOfPeriod(endDailyAccountBalance.getPreviousState());
+			setStateAtTheEndOfPeriod = endDailyAccountBalance.getPreviousState();
 		else
-			accountStatement.setStateAtTheEndOfPeriod(endDailyAccountBalance.getNewState());
-		accountStatement.setAccountNumber(legalEntityAccount.getBrojRacuna());
-		accountStatement.setStatements(new ArrayList<AnalyticsOfStatementsXml>());
+			setStateAtTheEndOfPeriod = endDailyAccountBalance.getNewState();
+		
+		ArrayList<AnalyticsOfStatementsXml> lista = new ArrayList<>();
 		for(int i = 0; i < all.size();i++){
 			AnalyticsOfStatements a = all.get(i);
 			AnalyticsOfStatementsXml statementsXml = new AnalyticsOfStatementsXml();
@@ -179,7 +185,7 @@ public class AccountStatementController {
 			statementsXml.setStatus(a.getStatus());
 			statementsXml.setSum(a.getSum());
 			statementsXml.setTypeOfMistake(a.getTypeOfMistake());
-			accountStatement.getStatements().add(statementsXml);
+			lista.add(statementsXml);
 		}		
 		
 	}
