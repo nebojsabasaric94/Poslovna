@@ -14,6 +14,6 @@
     <sum>5624.3</sum>
     <status></status>
     <paymentType>Nalog za isplatu</paymentType>
-    <paymentCurrency>>din</paymentCurrency>
+    <paymentCurrency>din</paymentCurrency>
     <place>Novi Sad</place>
 </analyticsOfStatements>

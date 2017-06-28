@@ -1,13 +1,6 @@
 package bank.dailyAccountBalance;
 
-import java.io.File;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import bank.analyticsOfStatements.AnalyticsOfStatements;
-import bank.analyticsOfStatements.AnalyticsOfStatementsService;
 import bank.legalEntityAccount.LegalEntityAccount;
 import bank.legalEntityAccount.LegalEntityAccountService;
 
@@ -31,14 +22,12 @@ public class DailyAccountBalanceController {
 
 	private final DailyAccountBalanceService dailyAccountBalanceService;
 	private final LegalEntityAccountService legalEntityAccountService;
-	private final AnalyticsOfStatementsService analyticsOfStatementsService;
 	
 
 	@Autowired
-	public DailyAccountBalanceController(final DailyAccountBalanceService service, final LegalEntityAccountService legalEntityAccountService,final AnalyticsOfStatementsService analyticsOfStatementsService) {
+	public DailyAccountBalanceController(final DailyAccountBalanceService service, final LegalEntityAccountService legalEntityAccountService) {
 		this.dailyAccountBalanceService = service;
 		this.legalEntityAccountService = legalEntityAccountService;
-		this.analyticsOfStatementsService = analyticsOfStatementsService;
 	}
 
 	@GetMapping

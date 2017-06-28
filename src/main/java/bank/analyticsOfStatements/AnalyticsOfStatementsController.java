@@ -149,7 +149,7 @@ public class AnalyticsOfStatementsController {
 					dailyAccountBalanceDebtor.getAnalyticsOfStatements().add(a);
 					dailyAccountBalanceService.save(dailyAccountBalanceDebtor);
 
-					DailyAccountBalance dailyAccountBalanceCreditor = dailyAccountBalanceService
+					/*DailyAccountBalance dailyAccountBalanceCreditor = dailyAccountBalanceService
 							.findByAccountNumberAndDate(creditorAccount, a.getCurrencyDate());
 					dailyAccountBalanceCreditor
 							.setTrafficToBenefit(dailyAccountBalanceCreditor.getTrafficToBenefit() + a.getSum());
@@ -157,7 +157,7 @@ public class AnalyticsOfStatementsController {
 							+ dailyAccountBalanceCreditor.getTrafficToBenefit()
 							- dailyAccountBalanceCreditor.getTrafficToTheBurden());
 					dailyAccountBalanceCreditor.getAnalyticsOfStatements().add(a);
-					dailyAccountBalanceService.save(dailyAccountBalanceCreditor);
+					dailyAccountBalanceService.save(dailyAccountBalanceCreditor);*/
 
 					InterbankTransfer mt103 = new InterbankTransfer();
 					mt103.setBank(creditorAccount.getBank());
