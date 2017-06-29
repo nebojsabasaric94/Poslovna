@@ -20,4 +20,7 @@ services.service('paymentTypeService', [ '$http', function($http) {
 	this.search = function(entity){
 		return $http.post('/paymentType/search',entity);
 	}
+	this.update = function(paymentType){
+		return $http.put("/paymentType/update", paymentType);
+	}
 }]);

@@ -5,6 +5,14 @@ app.controller('paymentTypeController', ['$scope','paymentTypeService','$locatio
 			
 			$scope.searchEntity = {code : "",nameOfPaymentType :""};
 
+			$scope.idSelectedEntity = null;
+			
+			$scope.entity ={code : "",nameOfPaymentType :""};
+			
+		
+			$scope.updatedEntity={};
+			
+			
 			findAll();
 			$scope.idSelectedEntity = null;
 		
@@ -16,7 +24,12 @@ app.controller('paymentTypeController', ['$scope','paymentTypeService','$locatio
 			
 
 			$scope.setSelected = function(selectedEntity){
+				
+				$scope.showUpdateForm = true;
 				$scope.selectedEntity = selectedEntity;
+				$scope.updatedEntity.id=$scope.selectedEntity.id;
+				$scope.updatedEntity.code=selectedEntity.code;
+				$scope.updatedEntity.nameOfPaymentType=selectedEntity.nameOfPaymentType;
 			}
 			
 			
@@ -37,6 +50,21 @@ app.controller('paymentTypeController', ['$scope','paymentTypeService','$locatio
 					$scope.setSelected($scope.entities[$scope.entities.length-1])
 					
 			}
+			$scope.saveChanges = function(){
+				
+				service.update($scope.updatedEntity).then(function(response){
+					for(i = 0 ; i < $scope.entities.length;i++){
+						if($scope.entities[i].id == $scope.updatedEntity.id){
+							$scope.entities[i] = response.data;
+						}
+					}
+					$scope.showUpdateForm = false;
+				},
+				function(response){
+							
+				})
+			}
+			
 			
 			
 			$scope.nextNavigation = function(selectedEntity){

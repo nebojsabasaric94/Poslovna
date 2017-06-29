@@ -24,5 +24,7 @@ services.service('placeService', [ '$http', function($http) {
 		return $http.post('/place/search',entity);
 	}
 	
-
+	this.update = function(place){
+		return $http.put("/place/update", place);
+	}
 }]);

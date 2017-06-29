@@ -52,47 +52,47 @@
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateCountryFName">Fisrt Name:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateCountryFName" id = "updateCountryFName" ng-model = "updatedEntity.firstName" class="form-control " />
+					<input ng-min="3" ng-max="3"  class="form-control input-sm" type = "text" name = "updateCountryFName" id = "updateCountryFName" ng-model = "updatedEntity.firstName" class="form-control " />
 				</div>
 			</div>
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateLN">Last Name:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateLN" id = "updateLN" ng-model = "updatedEntity.lastName" class="form-control " />
+					<input class="form-control input-sm" type = "text" name = "updateLN" id = "updateLN" ng-model = "updatedEntity.lastName" class="form-control " />
 				</div>
 			</div>
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateJmbg">JMBG:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateJmbg" id = "updateJmbg" ng-model = "updatedEntity.jmbg" class="form-control " />
+					<input class="form-control input-sm" type = "text" name = "updateJmbg" id = "updateJmbg" ng-model = "updatedEntity.jmbg" class="form-control " />
 				</div>
 			</div>
 			
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateAdr">Address:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateAdr" id = "updateAdr" ng-model = "updatedEntity.address" class="form-control " />
+					<input class="form-control input-sm" type = "text" name = "updateAdr" id = "updateAdr" ng-model = "updatedEntity.address" class="form-control " />
 				</div>
 			</div>
 			
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateaddressForStatements">Address for Statements:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateaddressForStatements" id = "updateaddressForStatements" ng-model = "updatedEntity.addressForStatements" class="form-control " />
+					<input class="form-control input-sm" type = "text" name = "updateaddressForStatements" id = "updateaddressForStatements" ng-model = "updatedEntity.addressForStatements" class="form-control " />
 				</div>
 			</div>
 			
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updatePh">Phone:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updatePh" id = "updatePh" ng-model = "updatedEntity.phone" class="form-control " />
+					<input class="form-control input-sm" type = "text" name = "updatePh" id = "updatePh" ng-model = "updatedEntity.phone" class="form-control " />
 				</div>
 			</div>
 			
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateE">Email:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateE" id = "updateE" ng-model = "updatedEntity.email" class="form-control " />
+					<input class="form-control input-sm" type = "text" name = "updateE" id = "updateE" ng-model = "updatedEntity.email" class="form-control " />
 				</div>
 			</div>
 			
@@ -100,7 +100,7 @@
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateES">Email Statements:</label>
 				<div class = "col-md-2">
-					<input type="checkbox" checked="checked" id = "updateES" ng-model = "updatedEntity.emailStatements" class="form-control " />
+					<input type="checkbox" style="zoom:0.37" checked="checked" id = "updateES" ng-model = "updatedEntity.emailStatements" class="form-control " />
 				</div>
 			</div>
 			<div class = "form-group" >
@@ -114,7 +114,7 @@
 			<div class = "form-group">
 			<label class = "col-md-2 control-label" for = "entityPlace">Residence(place):</label>
 			<div class = "col-md-2">
-				<input type = "text" name = "entityPlace" id = "entityPlace" ng-model = "updatedEntity.residence.name" class="form-control " readonly/>
+				<input class="form-control input-sm" type = "text" name = "entityPlace" id = "entityPlace" ng-model = "updatedEntity.residence.name" class="form-control " readonly/>
 			</div>
 			<span><button type = "button" ng-click = "showModalSearch()" class = "btn btn-primary" >Select country</button></span>
 			

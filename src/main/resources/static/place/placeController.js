@@ -7,6 +7,8 @@ app.controller('placeController', ['$scope','placeService','$location',
 			$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 			$scope.entity = {id : null,pttNumber:"" ,name : "",country:null};
 			
+		
+			$scope.updatedEntity={};
 			findAll();
 			
 			function findAll() {
@@ -31,9 +33,33 @@ app.controller('placeController', ['$scope','placeService','$location',
 			
 			
 			$scope.setSelected = function(selectedEntity){
+				$scope.showUpdateForm = true;
 				$scope.selectedEntity = selectedEntity;
+				$scope.updatedEntity.id=$scope.selectedEntity.id;
+				$scope.updatedEntity.name=selectedEntity.name;
+				$scope.updatedEntity.pttNumber=selectedEntity.pttNumber;
+				
 			}
 			
+			$scope.setSelectedCountryUpdate = function(country){
+		     	$scope.updatedEntity.country = country;
+			}
+			
+			
+			$scope.saveChanges = function(){
+				
+				service.update($scope.updatedEntity).then(function(response){
+					for(i = 0 ; i < $scope.entities.length;i++){
+						if($scope.entities[i].id == $scope.updatedEntity.id){
+							$scope.entities[i] = response.data;
+						}
+					}
+					$scope.showUpdateForm = false;
+				},
+				function(response){
+							
+				})
+			}
 			
 			$scope.firstone = function(){
 				$scope.setSelected($scope.entities[0]);

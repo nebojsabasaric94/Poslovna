@@ -20,8 +20,8 @@
 <div>
 		<table class="table table-bordered">
 		<tr>
-			<th>code</th>
-			<th>nameOfPaymentType</th>
+			<th>Code</th>
+			<th>Name Of Payment Type</th>
 		</tr>
 		<tr data-ng-repeat="entity in entities| orderBy:'id'" ng-click = "setSelected(entity)" ng-class = "{selected: entity === selectedEntity}">
 			<td>{{entity.code}}</td>
@@ -29,6 +29,29 @@
 			
 		</tr>
 	</table>
+	<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+		
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "updatepttNumber">Code:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" type = "text" name = "updateptC" id = "updateptC" ng-model = "updatedEntity.code" class="form-control " />
+				</div>
+			</div>
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "updateLN"> Name of payment type:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" type = "text" name = "updateLN" id = "updateLN" ng-model = "updatedEntity.nameOfPaymentType" class="form-control " />
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Update</button></span>
+				</div>
+			</div>
+		</form>
 </div>
 </div>
 
