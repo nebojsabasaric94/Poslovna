@@ -51,4 +51,8 @@ services.service('legalEntityAccountService',['$http',function($http){
 	this.exportToPdf = function(selectedEntity,startDate,endDate){
 		return $http.post("/accountStatement/pdf/"+startDate+"/"+endDate,selectedEntity)
 	}
+	
+	this.update = function(legalEntityAccount){
+		return $http.put("/legalEntityAccount/update", legalEntityAccount);
+	}
 }])

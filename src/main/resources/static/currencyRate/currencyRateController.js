@@ -9,8 +9,10 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 					baseCurrency:null,currencyInList:{},accordingToCurrency:null};
 			$scope.entity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
 					baseCurrency:null,currencyInList:{},accordingToCurrency:null};
-
-	
+			
+			$scope.updatedEntity={id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
+				baseCurrency:null,currencyInList:{},accordingToCurrency:null};
+			
 			findAll();
 		
 			function findAll() {
@@ -63,6 +65,14 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			
 			$scope.setSelected = function(selectedEntity){
 				$scope.selectedEntity = selectedEntity;
+				$scope.showUpdateForm = true;
+				$scope.selectedEntity = selectedEntity;
+				$scope.updatedEntity.id=$scope.selectedEntity.id;
+				$scope.updatedEntity.buyingExchangeRate=selectedEntity.buyingExchangeRate;
+				$scope.updatedEntity.middleExchangeRate=selectedEntity.middleExchangeRate;
+				$scope.updatedEntity.sellingExchangeRate=selectedEntity.sellingExchangeRate;
+				
+				$scope.showUpdateForm = true;
 			}
 			
 			
@@ -105,6 +115,21 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			}
 			
 			
+			$scope.saveChanges = function(){
+				
+				service.update($scope.updatedEntity).then(function(response){
+					
+							for(i = 0 ; i < $scope.entities.length;i++){
+								if($scope.entities[i].id == $scope.updatedEntity.id){
+									$scope.entities[i] = response.data;
+								}
+							}
+							$scope.showUpdateForm = false;
+						},
+						function(response){
+							
+						})
+			}
 			
 			
 			$scope.add = function(){
@@ -193,7 +218,14 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 					$scope.searchEntity.baseCurrency = currency;
 				else
 					$scope.searchEntity.accordingToCurrency = currency;
-			}			
+			}	
+			
+			$scope.setSelectedCurrencyUpdated = function(currency){
+				if($scope.base)
+					$scope.updatedEntity.baseCurrency = currency;
+				else
+					$scope.updatedEntity.accordingToCurrency = currency;
+			}	
 			
 			$scope.setSelectedExchangeRateList = function(exchangeRateList){
 				$scope.searchEntity.currencyInList.id = exchangeRateList.id;
@@ -210,7 +242,9 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			$scope.setSelectedExchangeRateListAdd = function(exchangeRateList){
 				$scope.entity.currencyInList.id = exchangeRateList.id;
 			}	
-			
+			$scope.setSelectedExchangeRateListUpdated = function(exchangeRateList){
+				$scope.updatedEntity.currencyInList.id = exchangeRateList.id;
+			}	
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;

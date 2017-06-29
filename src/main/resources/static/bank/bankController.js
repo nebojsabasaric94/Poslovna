@@ -5,7 +5,9 @@ app.controller('bankController', ['$scope','bankService','$location',
 
 			$scope.idSelectedEntity = null;
 			$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:""}
-	
+			$scope.idSelectedEntity = null;
+			
+			$scope.updatedEntity={};
 			findAll();
 
 			function findAll() {
@@ -29,7 +31,21 @@ app.controller('bankController', ['$scope','bankService','$location',
 			}
 			
 			$scope.setSelected = function(selectedEntity){
-				$scope.selectedEntity = selectedEntity;
+				
+					$scope.showUpdateForm = true;
+					$scope.selectedEntity = selectedEntity;
+					$scope.updatedEntity.id=$scope.selectedEntity.id;
+					$scope.updatedEntity.name=selectedEntity.name;
+					$scope.updatedEntity.pib=selectedEntity.pib;
+					$scope.updatedEntity.bankCode=selectedEntity.bankCode;
+					$scope.updatedEntity.email=selectedEntity.email;
+					$scope.updatedEntity.web=selectedEntity.web;
+					$scope.updatedEntity.address=selectedEntity.address;
+					$scope.updatedEntity.phone=selectedEntity.phone;
+					$scope.updatedEntity.fax=selectedEntity.fax;
+					$scope.updatedEntity.bank=selectedEntity.bank;
+					$scope.showUpdateForm = true;			
+					
 			}
 			
 			
@@ -49,6 +65,26 @@ app.controller('bankController', ['$scope','bankService','$location',
 				else	
 					$scope.setSelected($scope.entities[$scope.entities.length-1])
 					
+			}
+			
+			
+			$scope.saveChanges = function(){
+				
+				service.update($scope.updatedEntity).then(function(response){
+					//function(response){
+						
+						//$window.location.reload();
+					//}
+							for(i = 0 ; i < $scope.entities.length;i++){
+								if($scope.entities[i].id == $scope.updatedEntity.id){
+									$scope.entities[i] = response.data;
+								}
+							}
+							$scope.showUpdateForm = false;
+						},
+						function(response){
+							
+						})
 			}
 			
 			

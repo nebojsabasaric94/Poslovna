@@ -29,4 +29,7 @@ services.service('suspensionService', [ '$http', function($http) {
 		return $http.post('/suspension/search',suspension);
 	}
 
+	this.update = function(suspension){
+		return $http.put("/suspension/update", suspension);
+	}
 }]);

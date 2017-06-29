@@ -6,6 +6,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		$scope.entity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
 		$scope.idSelectedEntity = null;
 		
+		$scope.updatedEntity={id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"true",client: null,bank:null,currency:null};
 
 			findAll();
 			function findAll() {
@@ -119,9 +120,33 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		}
 		
 		$scope.setSelected = function(selectedEntity){
+			$scope.showUpdateForm = true;
 			$scope.selectedEntity = selectedEntity;
+			$scope.updatedEntity.id=$scope.selectedEntity.id;
+			$scope.updatedEntity.brojRacuna=selectedEntity.brojRacuna;
+			$scope.updatedEntity.datumOtvaranja=selectedEntity.datumOtvaranja;
+			
+			
+			$scope.showUpdateForm = true;
 		}
 		
+		$scope.saveChanges = function(){
+			
+			service.update($scope.updatedEntity).then(function(response){
+				for(i = 0 ; i < $scope.entities.length;i++){ 
+							if($scope.entities[i].id == $scope.updatedEntity.id){
+								//response.data[i].datumOtvaranja = transformDate(new Date(response.data[i].datumOtvaranja));
+								$scope.entities[i] = response.data;
+										
+							
+							}
+						}
+						$scope.showUpdateForm = false;
+					},
+					function(response){
+						
+					})
+		}
 		
 		$scope.firstone = function(){
 			$scope.setSelected($scope.entities[0]);
@@ -242,12 +267,22 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		$scope.setSelectedClientSearch = function(client){
 			$scope.searchEntity.client = client;
 		}
+		$scope.setSelectedClientUpdated = function(client){
+			$scope.updatedEntity.client = client;
+		}
 		$scope.setSelectedBankSearch = function(bank){
 			$scope.searchEntity.bank = bank;
+		}
+		$scope.setSelectedBankUpdated = function(bank){
+			$scope.updatedEntity.bank = bank;
 		}
 		$scope.setSelectedCurrencySearch = function(currency){
 			$scope.searchEntity.currency = currency;
 		}
+		$scope.setSelectedCurrencyUpdated = function(currency){
+			$scope.updatedEntity.currency = currency;
+		}
+		
 		
 		$scope.setSelectedClient = function(client){
 			$scope.entity.client = client;

@@ -6,13 +6,25 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
 			$scope.entity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
 			$scope.idSelectedEntity = null;
+			$scope.showUpdateForm = false;
+
+			
+			$scope.updatedEntity={};
 
 		    	
 			findAll();
 			
 			$scope.setSelected = function(selectedEntity){
+				$scope.showUpdateForm = true;
 				$scope.selectedEntity = selectedEntity;
-			}
+				$scope.updatedEntity.id=$scope.selectedEntity.id;
+				$scope.updatedEntity.date=selectedEntity.date;
+				$scope.updatedEntity.numberOfExchangeRateList=selectedEntity.numberOfExchangeRateList;
+				$scope.updatedEntity.appliedBy=selectedEntity.appliedBy;
+				
+				
+				$scope.showUpdateForm = true;		
+				}
 			
 			
 			$scope.firstone = function(){
@@ -51,6 +63,22 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			
 			$scope.lastone = function(){
 				$scope.setSelected($scope.entities[$scope.entities.length-1])
+			}
+			
+			$scope.saveChanges = function(){
+				
+				service.update($scope.updatedEntity).then(function(response){
+				
+							for(i = 0 ; i < $scope.entities.length;i++){
+								if($scope.entities[i].id == $scope.updatedEntity.id){
+									$scope.entities[i] = response.data;
+								}
+							}
+							$scope.showUpdateForm = false;
+						},
+						function(response){
+							
+						})
 			}
 			
 			
@@ -92,8 +120,6 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 				return newdate;
 			}
 
-			//$scope.idSelectedEntity = null;
-			
 		
 			
 			
@@ -154,9 +180,13 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			$scope.setSelectedBank = function(bank){
 					$scope.searchEntity.commercialBankRate = bank;
 			}	
+			$scope.setSelectedBankUpdated = function(bank){
+				$scope.updatedEntity.commercialBankRate = bank;
+			}	
+		
 			$scope.setSelectedBankAdd = function(bank){
 				$scope.entity.commercialBankRate = bank;
-		}	
+			}	
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
 				$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};

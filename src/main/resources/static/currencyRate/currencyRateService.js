@@ -36,4 +36,8 @@ services.service('currencyRateService', [ '$http', function($http) {
 	this.nextBaseCurrency = function(id){
 		return $http.get("/currencyRate/nextBaseCurrency/" + id);
 	}
+	
+	this.update = function(currencyRate){
+		return $http.put("/currencyRate/update", currencyRate);
+	}
 }]);

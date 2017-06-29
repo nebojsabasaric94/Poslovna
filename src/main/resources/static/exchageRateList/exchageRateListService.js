@@ -10,7 +10,7 @@ services.service('exchageRateListService', [ '$http', function($http) {
 	}
 	
 	this.save = function(exchageRateList) {
-		return $http.post("/exchangeRateList",exchageRateList);
+		return $http.post("/exchangeRateList",exchangeRateList);
 	}
 	
 	this.next = function(id) {
@@ -22,6 +22,9 @@ services.service('exchageRateListService', [ '$http', function($http) {
 	}
 	this.search = function(entity){
 		return $http.post('/exchangeRateList/search',entity);
+	}
+	this.update = function(exchangeRateList){
+		return $http.put("/exchangeRateList/update", exchangeRateList);
 	}
 
 }]);

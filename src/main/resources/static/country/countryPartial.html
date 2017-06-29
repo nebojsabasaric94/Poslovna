@@ -46,19 +46,19 @@
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateCountryName">Name:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateCountryName" id = "updateCountryName" ng-model = "updatedEntity.name" class="form-control " />
+					<input ng-min="3" ng-max="3"  class="form-control input-sm" type = "text" name = "updateCountryName" id = "updateCountryName" ng-model = "updatedEntity.name" class="form-control " />
 				</div>
 			</div>
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateCountryName">Code:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateCountryCode" id = "updateCountryCode" ng-model = "updatedEntity.country_code" class="form-control " />
+					<input  class="form-control input-sm" type = "text" name = "updateCountryCode" id = "updateCountryCode" ng-model = "updatedEntity.country_code" class="form-control " />
 				</div>
 			</div>
 			<div class = "form-group">
 				<label class = "col-md-2 control-label" for = "updateStateId">ID:</label>
 				<div class = "col-md-2">
-					<input type = "text" name = "updateCountryId" id = "updateStateId" ng-model = "updatedEntity.id" class="form-control " readonly/>
+					<input  class="form-control input-sm" type = "text" name = "updateCountryId" id = "updateStateId" ng-model = "updatedEntity.id" class="form-control " readonly/>
 				</div>
 			</div>
 			<div class = "form-group">

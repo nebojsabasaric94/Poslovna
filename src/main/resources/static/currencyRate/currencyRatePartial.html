@@ -39,8 +39,105 @@
 			
 		</tr>
 	</table>
+	
+	<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+			<div class = "form-group" >
+			<label class="col-md-2 control-label">Buying Exchange Rate:</label>
+			<div class = "col-md-2">
+				<input  class="form-control control input-sm" ng-model="updatedEntity.buyingExchangeRate" type="number"> 
+			</div>
+			</div>	
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Middle Exchange Rate:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.middleExchangeRate" type="number"> 
+				</div>
+			</div>	
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Selling Exchange Rate:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.sellingExchangeRate" type="number"> 
+				</div>
+			</div>
+		
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "entityBaseCurrency">Base currency:</label>
+				<div class = "col-md-2">
+					<input type = "text" name = "entityBaseCurrency" id = "entityBaseCurrency" ng-model = "updatedEntity.baseCurrency.name" class="form-control " readonly/>
+				</div>
+				<span><button type = "button" ng-click = "showModalSearch(true)" class = "btn btn-primary" >Select base currency</button></span>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "entityAccordingToCurrency">According to currency:</label>
+				<div class = "col-md-2">
+					<input type = "text" name = "entityAccordingToCurrency" id = "entityAccordingToCurrency" ng-model = "updatedEntity.accordingToCurrency.name" class="form-control " readonly/>
+				</div>
+				<span><button type = "button" ng-click = "showModalSearch(false)" class = "btn btn-primary" >Select currency</button></span>
+			</div>
+				
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "entityCurrencyInList">Currency in list:</label>
+				<div class = "col-md-2">
+					<input type = "text" name = "entityCurrencyInList" id = "entityCurrencyInList" ng-model = "updatedEntity.currencyInList.id" class="form-control " readonly/>
+				</div>
+				<span><button type = "button" ng-click = "showModalSearchExchangeRateLists()" class = "btn btn-primary" >Select currency in list</button></span>
+			</div>
+				
+			<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Update</button></span>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 </div>
 <div>
     <div ui-view></div>
 </div>
+
+<div id="myModalSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Currencies</h3><hr/><br/>
+	    
+	    <table ng-init = findAllCurrencies() ng-table="stateTable" class="table table-bordered " border="1">
+			<tr>
+				<th>Official code</th>
+				<th>Name</th>
+				<th>Domicilna?</th>
+				<th>Country</th>
+			</tr>
+			<tr class="state" ng-repeat="currency in currencies" ng-click = "setSelectedCurrencyUpdated(currency)" ng-class = "{selected:currency === updatedEntity.baseCurrency || currency === updatedEntity.accordingToCurrency}">
+				<td>{{currency.official_code}}</td>
+				<td>{{currency.name}}</td>
+				<td>{{currency.domicilna}}</td>
+				<td>{{currency.country.name}}</td>
+			</tr>
+		</table>		
+		<center><button type = "button" ng-click=closeModal() class="btn btn-default navbar-btn">OK</button></center>
+	 	</div>
+	</div>		
+	<div id="myModalSearchExchangeRateLists" class="modal">
+		  <div class="modal-content">
+		    <h3>Exchange rate lists</h3><hr/><br/>
+		   
+		    <table ng-init = findAllExchangeRateLists() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Date</th>
+					<th>Code of exchange rate list</th>
+					<th>Applied by</th>
+				</tr>
+				<tr class="state" ng-repeat="exchangeRateList in exchangeRateLists" ng-click = "setSelectedExchangeRateListUpdated(exchangeRateList)" ng-class = "{selected:exchangeRateList.id === updatedEntity.currencyInList.id}">
+					<td>{{exchangeRateList.date}}</td>
+					<td>{{exchangeRateList.numberOfExchangeRateList}}</td>
+					<td>{{exchangeRateList.appliedBy}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalSearchExchangeRateLists() class="btn btn-default navbar-btn">OK</button></center>
+		 	</div>
+		</div>

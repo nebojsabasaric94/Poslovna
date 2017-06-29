@@ -26,5 +26,9 @@ services.service('bankService', [ '$http', function($http) {
 		return $http.get('/legalEntityAccount/pdf/'+id);
 		
 	}
+	this.update = function(bank){
+		return $http.put("/bank/update", bank);
+	}
+
 
 }]);

@@ -5,7 +5,10 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 
 			$scope.searchEntity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
 			$scope.entity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
-	
+			$scope.idSelectedEntity = null;
+			$scope.showUpdateForm = false;
+
+			$scope.updatedEntity={};
 			findAll();
 		
 			function findAll() {
@@ -21,7 +24,13 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 			
 			
 			$scope.setSelected = function(selectedEntity){
+				$scope.showUpdateForm = true;
 				$scope.selectedEntity = selectedEntity;
+				$scope.updatedEntity.id=$scope.selectedEntity.id;
+				$scope.updatedEntity.transferToAccount=selectedEntity.transferToAccount;
+				
+				$scope.showUpdateForm = true;
+				
 			}
 			
 			
@@ -135,6 +144,10 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 			$scope.setSelectedAccountSearch = function(account){
 				$scope.searchEntity.legalEntityAccount.id = account.id;
 				$scope.searchEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
+			}
+			$scope.setSelectedAccountUpdated = function(account){
+				$scope.updatedEntity.legalEntityAccount.id = account.id;
+				$scope.updatedEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
 			}
 			
 			$scope.setSelectedAccount = function(account){
