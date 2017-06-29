@@ -9,7 +9,7 @@ app.controller('clientController',['$scope','clientService','$location',
 			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Fizicko lice",residence:null};
 	$scope.updatedEntity={};
 	
-	
+	//$scope.updatedEntity=new Object;
 	findAll();
 	function findAll() {
 
@@ -42,7 +42,7 @@ app.controller('clientController',['$scope','clientService','$location',
 		$scope.updatedEntity.email=selectedEntity.email;
 		$scope.updatedEntity.typeOfClient="Fizicko lice";
 		$scope.updatedEntity.addressForStatements=selectedEntity.addressForStatements;
-		
+		$scope.updatedEntity.residence=selectedEntity.residence;
 		
 		//i ostali
 		$scope.showUpdateForm = true;

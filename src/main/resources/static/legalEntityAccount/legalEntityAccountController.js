@@ -125,7 +125,10 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 			$scope.updatedEntity.id=$scope.selectedEntity.id;
 			$scope.updatedEntity.brojRacuna=selectedEntity.brojRacuna;
 			$scope.updatedEntity.datumOtvaranja=selectedEntity.datumOtvaranja;
-			
+			$scope.updatedEntity.bank = selectedEntity.bank;
+			$scope.updatedEntity.client =selectedEntity.client;
+			$scope.updatedEntity.currency=selectedEntity.currency;
+			$scope.updatedEntity.vazeci=selectedEntity.vazeci;
 			
 			$scope.showUpdateForm = true;
 		}
@@ -275,6 +278,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		}
 		$scope.setSelectedBankUpdated = function(bank){
 			$scope.updatedEntity.bank = bank;
+	
 		}
 		$scope.setSelectedCurrencySearch = function(currency){
 			$scope.searchEntity.currency = currency;

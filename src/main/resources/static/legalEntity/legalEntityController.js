@@ -70,6 +70,8 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 		$scope.updatedEntity.email=selectedEntity.email;
 		$scope.updatedEntity.typeOfClient="Fizicko lice";
 		$scope.updatedEntity.addressForStatements=selectedEntity.addressForStatements;
+		$scope.updatedEntity.businessActivityCode = selectedEntity.businessActivityCode;
+		$scope.updatedEntity.residence = selectedEntity.residence;
 
 	}
 	

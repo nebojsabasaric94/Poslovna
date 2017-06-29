@@ -21,7 +21,7 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 				$scope.updatedEntity.date=selectedEntity.date;
 				$scope.updatedEntity.numberOfExchangeRateList=selectedEntity.numberOfExchangeRateList;
 				$scope.updatedEntity.appliedBy=selectedEntity.appliedBy;
-				
+				$scope.updatedEntity.commercialBankRate =selectedEntity.commercialBankRate;
 				
 				$scope.showUpdateForm = true;		
 				}

@@ -8,6 +8,8 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			$scope.idSelectedEntity = null;
 	
 			$scope.updatedEntity={};
+			
+			//$scope.updatedEntity=new Object;
 			findAll();
 		
 			function findAll() {
@@ -40,6 +42,9 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 				$scope.updatedEntity.name=selectedEntity.name;
 				$scope.updatedEntity.official_code=selectedEntity.official_code;
 				$scope.updatedEntity.domicilna=selectedEntity.domicilna;
+				
+				$scope.updatedEntity.country = selectedEntity.country;
+			
 				$scope.showUpdateForm = true;
 			}
 			

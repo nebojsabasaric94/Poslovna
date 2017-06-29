@@ -38,6 +38,8 @@ app.controller('placeController', ['$scope','placeService','$location',
 				$scope.updatedEntity.id=$scope.selectedEntity.id;
 				$scope.updatedEntity.name=selectedEntity.name;
 				$scope.updatedEntity.pttNumber=selectedEntity.pttNumber;
+				$scope.updatedEntity.country=selectedEntity.country;
+				
 				
 			}
 			

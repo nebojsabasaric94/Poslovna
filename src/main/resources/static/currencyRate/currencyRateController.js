@@ -10,9 +10,9 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			$scope.entity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
 					baseCurrency:null,currencyInList:{},accordingToCurrency:null};
 			
-			$scope.updatedEntity={id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
-				baseCurrency:null,currencyInList:{},accordingToCurrency:null};
-			
+		//	$scope.updatedEntity={id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
+			//	baseCurrency:null,currencyInList:{},accordingToCurrency:null};
+			$scope.updatedEntity=new Object;
 			findAll();
 		
 			function findAll() {
@@ -67,11 +67,11 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 				$scope.selectedEntity = selectedEntity;
 				$scope.showUpdateForm = true;
 				$scope.selectedEntity = selectedEntity;
-				$scope.updatedEntity.id=$scope.selectedEntity.id;
-				$scope.updatedEntity.buyingExchangeRate=selectedEntity.buyingExchangeRate;
-				$scope.updatedEntity.middleExchangeRate=selectedEntity.middleExchangeRate;
-				$scope.updatedEntity.sellingExchangeRate=selectedEntity.sellingExchangeRate;
-				
+			//	$scope.updatedEntity.id=$scope.selectedEntity.id;
+				//$scope.updatedEntity.buyingExchangeRate=selectedEntity.buyingExchangeRate;
+			//	$scope.updatedEntity.middleExchangeRate=selectedEntity.middleExchangeRate;
+		//		$scope.updatedEntity.sellingExchangeRate=selectedEntity.sellingExchangeRate;
+				$scope.updatedEntity=selectedEntity;
 				$scope.showUpdateForm = true;
 			}
 			
