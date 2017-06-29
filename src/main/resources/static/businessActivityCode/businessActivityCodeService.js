@@ -14,5 +14,8 @@ services.service('businessActivityCodeService',['$http',function($http){
 			return $http.post("/businessActivityCode",businessActivityCode);
 		}
 		
+		this.update = function(businessActivityCode){
+			return $http.put("/businessActivityCode/update", businessActivityCode);
+		}
 		
 }]);

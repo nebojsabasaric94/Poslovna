@@ -3,6 +3,8 @@ var app = angular.module('businessActivityCode.controllers',[]);
 app.controller('businessActivityCodeController',['$scope','businessActivityCodeService','$location',
 	function($scope,service,$location){
 
+	$scope.showUpdateForm = false;
+	$scope.updatedEntity={};
 	$scope.searchEntity = {id:null,code : "",name:""};
 	
 	
@@ -18,7 +20,28 @@ app.controller('businessActivityCodeController',['$scope','businessActivityCodeS
 	
 	
 	$scope.setSelected = function(selectedEntity){
+		$scope.showUpdateForm = true;
 		$scope.selectedEntity = selectedEntity;
+		$scope.updatedEntity.id=$scope.selectedEntity.id;
+		$scope.updatedEntity.name=selectedEntity.name;
+		$scope.updatedEntity.code=selectedEntity.code;
+		$scope.showUpdateForm = true;
+	}
+	
+	$scope.saveChanges = function(){
+		
+		service.update($scope.updatedEntity).then(function(response){
+			
+					for(i = 0 ; i < $scope.entities.length;i++){
+						if($scope.entities[i].id == $scope.updatedEntity.id){
+							$scope.entities[i] = response.data;
+						}
+					}
+					$scope.showUpdateForm = false;
+				},
+				function(response){
+					
+				})
 	}
 	
 	
