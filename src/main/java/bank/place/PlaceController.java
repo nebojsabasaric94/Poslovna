@@ -8,11 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bank.bank.Bank;
 import bank.country.Country;
 import bank.country.CountryService;
 
@@ -62,6 +64,12 @@ public class PlaceController {
 	@PostMapping("/search")
 	public List<Place> search(@RequestBody Place place){
 		return placeService.search(place);
+	}
+	
+	
+	@PutMapping("/update")
+	public  Place update(@RequestBody Place place) {
+		return placeService.save(place);
 	}
 	
 }

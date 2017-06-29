@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import bank.analyticsOfStatements.AnalyticsOfStatements;
 import bank.analyticsOfStatements.AnalyticsOfStatementsService;
 import bank.analyticsOfStatements.MyValidationEventHandler;
+import bank.bank.Bank;
 import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.dailyAccountBalance.DailyAccountBalanceService;
 import bank.interbankTransfer.InterbankTransfer;
@@ -207,6 +209,12 @@ public class SuspensionController {
 		a.setReferenceNumberCreditor("4547121");
 		a.setSum(sum);
 		return a;
+	}
+	
+	
+	@PutMapping("/update")
+	public  Suspension update(@RequestBody Suspension s) {
+		return suspensionService.save(s);
 	}
 	
 }
