@@ -28,5 +28,8 @@ services.service('legalEntityService',['$http',function($http){
 	this.save = function(legalEntity) {
 		return $http.post("/legalEntity",legalEntity);
 	}
+	this.update = function(legalEntity){
+		return $http.put("/legalEntity/update", legalEntity);
+	}
 	
 }])

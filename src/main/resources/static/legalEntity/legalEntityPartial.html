@@ -35,6 +35,7 @@
 				<th>Residence</th>
 				<th>Address</th>
 				<th>Phone</th>
+				<th>Fax</th>
 				<th>Email</th>
 				<th>Address for statements</th>
 				<th>Email statements?</th>				
@@ -53,13 +54,160 @@
 				<td>{{entity.residence.name}}</td>
 				<td>{{entity.address}}</td>
 				<td>{{entity.phone}}</td>
+				<td>{{entity.fax}}</td>
 				<td>{{entity.email}}</td>
 				<td>{{entity.addressForStatements}}</td>
 				<td ng-show = "entity.emailStatements">YES</td>
 				<td ng-hide = "entity.emailStatements">NO</td>
 			</tr>
 		</table>
+		
+		<div class = "row" ng-show = "showUpdateForm">
+		<form class="form-horizontal" name= "form" ng-submit = "saveChanges()" method = "post">
+		
+		
+			<div class = "form-group" >
+			<label class="col-md-2 control-label">Client name:</label>
+			<div class = "col-md-2">
+				<input class="form-control input-sm" ng-model="updatedEntity.naziv_klijenta" type="text"> 
+			</div>
+			</div>	
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Client nickname:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.skraceni_naziv_klijenta" type="text"> 
+				</div>
+			</div>	
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Fax:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.fax" type="text"> 
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "entityBusinessActivityCode">Business activity code:</label>
+				<div class = "col-md-2">
+					<input type = "text" name = "entityBusinessActivityCode" id = "entityBusinessActivityCode" ng-model = "updatedEntity.businessActivityCode.code" class="form-control " readonly/>
+				</div>
+				<span><button type = "button" ng-click = "showMoodalBusinessActivitySearch()" class = "btn btn-primary" >Select business activity</button></span>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">MBR:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.maticni_broj" type="text"> 
+				</div>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">PIB:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.pib" type="text"> 
+				</div>
+			</div>
+			
+			
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Authority name:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.naziv_organa" type="text"> 
+				</div>
+			</div>
+				
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Competent tax authority for the client:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.nadlezni_poreski_organ_za_klijenta"  type="text"> 
+				</div>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Address:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.address" type="text"> 
+				</div>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Phone:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.phone"type="text"> 
+				</div>
+			</div>	
+				
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Email:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.email"  type="mail"> 
+				</div>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Address For Statements:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.addressForStatements" type="text"> 
+				</div>
+			</div>
+			
+			<div class = "form-group">
+				<label class = "col-md-2 control-label" for = "entityPlace">Place:</label>
+				<div class = "col-md-2">
+					<input type = "text" name = "entityPlace" id = "entityPlace" ng-model = "updatedEntity.residence.name" class="form-control " readonly/>
+				</div>
+				<span><button type = "button" ng-click = "showModalPlaceSearch()" class = "btn btn-primary" >Select place</button></span>
+			</div>	
+			
+				
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Email Statements:</label>
+				<div class = "col-md-2">
+					<input type="checkbox" style="zoom:0.37" checked="checked" ng-model="updatedEntity.emailStatements"/>
+				</div>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">First Name:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.firstName" type="text"> 
+				</div>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Last Name:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.lastName" type="text"> 
+				</div>
+			</div>
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">JMBG:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.jmbg" type="text"> 
+				</div>
+			</div>
+			
+			
+			<div class = "form-group" >
+				<label class="col-md-2 control-label">Type Of Client:</label>
+				<div class = "col-md-2">
+					<input  class="form-control control input-sm" ng-model="updatedEntity.typeOfClient" type="text"> 
+				</div>
+			</div>
+			
+			
+		
 	
+			<div class = "form-group">
+				<label class = "col-md-2 control-label"></label>
+				<div class = "col-md-2">
+					<span><button type = "submit" class = "btn btn-success" >Update</button></span>
+				</div>
+			</div>
+		</form>
 	</div>
 </div>
 
@@ -69,3 +217,42 @@
 <div>
     <div ui-view></div>
 </div>
+
+
+
+<div id="modalPlaceSearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllPlaces() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Ptt number</th>
+					<th>Name</th>
+					<th>Country</th>
+				</tr>
+				<tr class="state" ng-repeat="place in places" ng-click = "setSelectedPlaceUpdated(place)" ng-class = "{selected:place === updatedEntity.residence}">
+					<td>{{place.pttNumber}}</td>
+					<td>{{place.name}}</td>
+					<td>{{place.country.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalPlaceSearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>	
+	<div id="modalBusinessActivitySearch" class="modal">
+	  	<div class="modal-content">
+	    	<h3>Countries</h3><hr/><br/>
+	    
+	    	<table ng-init = findAllBusinessActivites() ng-table="stateTable" class="table table-bordered " border="1">
+				<tr>
+					<th>Business activity code</th>
+					<th>Activity name</th>
+				</tr>
+				<tr class="state" ng-repeat="ba in businessActivities" ng-click = "setSelectedBusinessActivityUpdated(ba)" ng-class = "{selected:ba === updatedEntity.businessActivityCode}">
+					<td>{{ba.code}}</td>
+					<td>{{ba.name}}</td>
+				</tr>
+			</table>		
+			<center><button type = "button" ng-click=closeModalBusinessActivitySearch() class="btn btn-default navbar-btn">OK</button></center>
+	 		</div>
+		</div>

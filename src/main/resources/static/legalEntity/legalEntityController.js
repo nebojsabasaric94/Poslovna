@@ -12,6 +12,9 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 			nadlezni_poreski_organ_za_klijenta:"", naziv_organa:"",address:"" ,phone : "",email:"",addressForStatements:"",fax:"",
 			emailStatements:false,firstName:"",lastName:"",jmbg:"",typeOfClient:"Pravno lice",residence:null
 			};	
+	$scope.updatedEntity={};
+	$scope.showUpdateForm = false;
+
 	
 	
 	findAll();
@@ -47,7 +50,43 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 	
 	
 	$scope.setSelected = function(selectedEntity){
+		$scope.showUpdateForm = true;
+	
 		$scope.selectedEntity = selectedEntity;
+		$scope.updatedEntity.id=$scope.selectedEntity.id;
+		$scope.updatedEntity.naziv_klijenta=selectedEntity.naziv_klijenta;
+		$scope.updatedEntity.fax=selectedEntity.fax;
+		$scope.updatedEntity.skraceni_naziv_klijenta=selectedEntity.skraceni_naziv_klijenta;
+		$scope.updatedEntity.maticni_broj=selectedEntity.maticni_broj;
+		$scope.updatedEntity.pib=selectedEntity.pib;
+		$scope.updatedEntity.naziv_organa=selectedEntity.naziv_organa;
+		$scope.updatedEntity.nadlezni_poreski_organ_za_klijenta=selectedEntity.nadlezni_poreski_organ_za_klijenta;
+		$scope.updatedEntity.firstName=selectedEntity.firstName;
+		$scope.updatedEntity.lastName=selectedEntity.lastName;
+		$scope.updatedEntity.jmbg=selectedEntity.jmbg;
+		$scope.updatedEntity.address=selectedEntity.address;
+		$scope.updatedEntity.emailStatements=selectedEntity.emailStatements;
+		$scope.updatedEntity.phone=selectedEntity.phone;
+		$scope.updatedEntity.email=selectedEntity.email;
+		$scope.updatedEntity.typeOfClient="Fizicko lice";
+		$scope.updatedEntity.addressForStatements=selectedEntity.addressForStatements;
+
+	}
+	
+	$scope.saveChanges = function(){
+		
+		service.update($scope.updatedEntity).then(function(response){
+			
+			for(i = 0 ; i < $scope.entities.length;i++){
+				if($scope.entities[i].id == $scope.updatedEntity.id){
+					$scope.entities[i] = response.data;
+				}
+			}
+			$scope.showUpdateForm = false;
+		},
+		function(response){
+					
+		})
 	}
 	
 	
@@ -161,6 +200,12 @@ app.controller('legalEntityController',['$scope','legalEntityService','$location
 	}
 	$scope.setSelectedBusinessActivity = function(businessActivityCode){
 		$scope.entity.businessActivityCode = businessActivityCode;
+	}
+	$scope.setSelectedPlaceUpdated = function(place){
+		$scope.updatedEntity.residence = place;
+	}
+	$scope.setSelectedBusinessActivityUpdated = function(businessActivityCode){
+		$scope.updatedEntity.businessActivityCode = businessActivityCode;
 	}
 	
 	
