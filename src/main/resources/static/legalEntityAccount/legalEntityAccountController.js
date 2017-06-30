@@ -376,7 +376,22 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		sessionStorage.setItem("backFilterLegalEntityAccount", $scope.entities);
 		$location.path("/dailyAccountBalance");
 	
-		
+	}
+	
+	$scope.back = function(){
+		if(sessionStorage.getItem("backFilterBank") != null){
+			sessionStorage.removeItem("backFilterBank");
+			$location.path("/bank");
+		} else if(sessionStorage.getItem("backFilterClient") != null){
+			sessionStorage.removeItem("backFilterClient");
+			$location.path("/client");
+		} else if (sessionStorage.getItem("backFilterCurrency") != null){
+			sessionStorage.removeItem("backFilterCurrency");
+			$location.path("/currency");
+		} else {
+			return;
+		}
+	
 	}
 
 
