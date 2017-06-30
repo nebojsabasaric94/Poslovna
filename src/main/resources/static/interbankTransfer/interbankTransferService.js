@@ -23,4 +23,9 @@ services.service('interbankTransferService', [ '$http', function($http) {
 	this.search = function(entity){
 		return $http.post('/interbankTransfer/search',entity);
 	}
+	
+	this.nextInterbankTransfer = function(id){
+		return $http.get("/interbankTransfer/next/" + id)
+		
+	}
 }]);
