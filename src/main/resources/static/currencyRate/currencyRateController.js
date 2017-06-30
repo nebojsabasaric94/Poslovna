@@ -248,6 +248,7 @@ app.controller('currencyRateController', ['$scope','currencyRateService','$locat
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {id : null,buyingExchangeRate:null ,middleExchangeRate:null,sellingExchangeRate:null,
 						baseCurrency:null,currencyInList:{},accordingToCurrency:null};
 			}
