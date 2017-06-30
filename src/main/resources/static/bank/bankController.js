@@ -1,15 +1,16 @@
 var app = angular.module('bank.controllers', []);
 
 app.controller('bankController', ['$scope','bankService','$location',
+       
 		function($scope, service, $location) {
-
 			$scope.idSelectedEntity = null;
 			$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:""}
 			$scope.idSelectedEntity = null;
-			
 			$scope.updatedEntity={};
 			findAll();
 
+			
+			
 			function findAll() {
 
 				var nextFilter = sessionStorage.getItem("nextFilter");

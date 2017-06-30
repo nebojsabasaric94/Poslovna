@@ -2,8 +2,6 @@ package bank.country;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,16 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 
 @RestController
 @RequestMapping("/country")
@@ -74,7 +67,7 @@ public class CountryController {
 		return countryService.save(country);
 	}
 	
-	@RequestMapping(value = "/pdf", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/pdf", method = RequestMethod.GET)
 	@ResponseBody 
 	public void getFile(HttpServletResponse response) {
 		 try {           
@@ -101,7 +94,7 @@ public class CountryController {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public static void sendPdfResponse(HttpServletResponse response, JasperPrint jasperPrint, String fileName){
 
