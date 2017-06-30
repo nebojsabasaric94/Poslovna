@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<accountStatement>
-    <fromDate>2017-05-28T00:00:00+02:00</fromDate>
-    <toDate>2017-06-30T00:00:00+02:00</toDate>
-    <accountNumber>205145745874545418</accountNumber>
-    <startAccountState>0.0</startAccountState>
-    <trafficToBenefit>0.0</trafficToBenefit>
-    <trafficToTheBurden>22965.0</trafficToTheBurden>
-    <stateAtTheEndOfPeriod>-22965.0</stateAtTheEndOfPeriod>
+<interbankTransfer>
+    <typeOfMessage>MT102</typeOfMessage>
+    <date>2017-06-01</date>
+    <sum>22965.0</sum>
+    <senderBankCode>205</senderBankCode>
+    <recieverBankCode>300</recieverBankCode>
     <statements>
         <debtor_originator>Malina Vojvodic</debtor_originator>
         <purposeOfPayment>Uplata po racunu 145/2017</purposeOfPayment>
@@ -43,4 +41,4 @@
         <paymentCurrency>din</paymentCurrency>
         <place>Kragujevac</place>
     </statements>
-</accountStatement>
+</interbankTransfer>

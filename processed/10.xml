@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <analyticsOfStatements>
-    <debtor_originator>Radovan Milosevic</debtor_originator>
-    <purposeOfPayment>Usluge</purposeOfPayment>
+    <debtor_originator>Malina Vojvodic</debtor_originator>
+    <purposeOfPayment>Uplata po racunu 145/2017</purposeOfPayment>
     <creditor_recipient>Novi Most da</creditor_recipient>
     <dateOfReceipt>2017-06-01</dateOfReceipt>
     <currencyDate>2017-06-01</currencyDate>
-    <debtorAccount></debtorAccount>
+    <debtorAccount>205145745874545418</debtorAccount>
     <referenceNumberAssigments></referenceNumberAssigments>
     <accountCreditor>300745485455555519</accountCreditor>
     <modelApproval>97</modelApproval>
-    <referenceNumberCreditor>6547487</referenceNumberCreditor>
+    <referenceNumberCreditor>4147854</referenceNumberCreditor>
     <emergency>false</emergency>
-    <sum>14258.0</sum>
+    <sum>11000.0</sum>
     <status></status>
-    <paymentType>Nalog za uplatu</paymentType>
+    <paymentType>Nalog za prenos</paymentType>
     <paymentCurrency>din</paymentCurrency>
-    <place>Novi Sad</place>
+    <place>Kragujevac</place>
 </analyticsOfStatements>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyticsOfStatements>
+    <debtor_originator>Sintelon</debtor_originator>
+    <purposeOfPayment>Uplata po racunu 1454/2017</purposeOfPayment>
+    <creditor_recipient>Kostana</creditor_recipient>
+    <dateOfReceipt>2017-06-01</dateOfReceipt>
+    <currencyDate>2017-06-01</currencyDate>
+    <debtorAccount>400198745874743524</debtorAccount>
+    <referenceNumberAssigments></referenceNumberAssigments>
+    <accountCreditor>400141445874949539</accountCreditor>
+    <modelApproval>97</modelApproval>
+    <referenceNumberCreditor>451787</referenceNumberCreditor>
+    <emergency>false</emergency>
+    <sum>20000.0</sum>
+    <status></status>
+    <paymentType>Nalog za prenos</paymentType>
+    <paymentCurrency>din</paymentCurrency>
+    <place>Kragujevac</place>
+</analyticsOfStatements>
