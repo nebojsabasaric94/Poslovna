@@ -40,6 +40,20 @@ public class InterbankTransferController {
 		return new ResponseEntity<>(interbankTransferService.findAll(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/next/{id}")
+	public List<InterbankTransfer> findNext(@PathVariable Long id) {
+		
+		List<InterbankTransfer> list = new ArrayList<InterbankTransfer>();
+		for(int i = 0 ; i < interbankTransferService.findAll().size(); i++){
+			if(interbankTransferService.findAll().get(i).getBank().getId() == id){
+				list.add(interbankTransferService.findAll().get(i));
+			}
+		}
+		return list;
+	}
+	
+	
+	
 	@PostMapping("/xml")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void save() throws JAXBException {

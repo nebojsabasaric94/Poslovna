@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <accountStatement>
-    <fromDate>2017-05-31T00:00:00+02:00</fromDate>
-    <toDate>2017-06-14T00:00:00+02:00</toDate>
+    <fromDate>2017-05-28T00:00:00+02:00</fromDate>
+    <toDate>2017-06-30T00:00:00+02:00</toDate>
     <accountNumber>200121231231231111</accountNumber>
     <startAccountState>0.0</startAccountState>
-    <trafficToBenefit>142250.0</trafficToBenefit>
+    <trafficToBenefit>12014.0</trafficToBenefit>
     <trafficToTheBurden>0.0</trafficToTheBurden>
-    <stateAtTheEndOfPeriod>142250.0</stateAtTheEndOfPeriod>
+    <stateAtTheEndOfPeriod>12014.0</stateAtTheEndOfPeriod>
     <statements>
-        <debtor_originator>Milos Petrovic</debtor_originator>
-        <purposeOfPayment>Vracanje duga</purposeOfPayment>
+        <debtor_originator>Nebojsa Basaric</debtor_originator>
+        <purposeOfPayment>Pozajmica</purposeOfPayment>
         <creditor_recipient>Janko Jankovic</creditor_recipient>
         <dateOfReceipt>2017-06-01</dateOfReceipt>
         <currencyDate>2017-06-01</currencyDate>
@@ -17,12 +17,12 @@
         <referenceNumberAssigments></referenceNumberAssigments>
         <accountCreditor>200121231231231111</accountCreditor>
         <modelApproval>97</modelApproval>
-        <referenceNumberCreditor>454784</referenceNumberCreditor>
+        <referenceNumberCreditor>123212</referenceNumberCreditor>
         <emergency>false</emergency>
-        <sum>142250.0</sum>
+        <sum>12014.0</sum>
         <status></status>
         <paymentType>Nalog za uplatu</paymentType>
         <paymentCurrency>din</paymentCurrency>
-        <place>Kragujevac</place>
+        <place>Novi Sad</place>
     </statements>
 </accountStatement>

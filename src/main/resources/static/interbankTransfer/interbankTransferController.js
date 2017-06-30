@@ -9,13 +9,36 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 			findAll();
 		
 			function findAll() {
-				service.findAll().then(function(response) {
+				
+				var nextFilter = sessionStorage.getItem("nextFilter");
+				sessionStorage.removeItem("nextFilter");
+				
+				if(nextFilter == null){
+					service.findAll().then(
+						function(response) {
+							for(i = 0; i < response.data.length;i++){
+								response.data[i].date = transformDate(new Date(response.data[i].date));
+							}
+							$scope.entities = response.data;
+						});
+				} else {
+					service.nextInterbankTransfer(nextFilter).then(
+						function(response){
+							for(i = 0; i < response.data.length;i++){
+								response.data[i].date = transformDate(new Date(response.data[i].date));
+							}
+							$scope.entities = response.data;
+						}
+					)
+				}
+			}
+				/*service.findAll().then(function(response) {
 					for(i = 0; i < response.data.length;i++){
 						response.data[i].date = transformDate(new Date(response.data[i].date));
 					}
 					$scope.entities = response.data;
 				});
-			}
+			}*/
 			
 			$scope.selectedEntity = null;
 			
@@ -167,6 +190,16 @@ app.controller('interbankTransferController', ['$scope','interbankTransferServic
 				sessionStorage.setItem("backInterbankTransfer", $scope.entities);
 				$location.path('/itemTransfer');
 			
+			
+			}
+			
+			$scope.back = function(){
+				var backFilter = sessionStorage.getItem("backFilter");
+				sessionStorage.removeItem("backFilter");
+				if(backFilter == null)
+					return;
+				
+				$location.path("/bank");
 			
 			}
 }]);
