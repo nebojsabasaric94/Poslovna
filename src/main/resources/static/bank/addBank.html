@@ -3,56 +3,57 @@
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Bank Code:</label>
 			<div class = "col-md-2">
-				<input ng-min="3" ng-max="3"  class="form-control input-sm" ng-model="$parent.entity.bankCode" type="text"> 
+				<input ng-min="3" ng-max="3"  class="form-control input-sm" ng-model="$parent.entity.bankCode" type="text" ng-minlength = 3 ng-maxlength = 3 required> 
 			</div>
 		</div>	
 		
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">PIB:</label>
 			<div class = "col-md-2">
-				<input  class="form-control control input-sm" ng-model="$parent.entity.pib" type="text"> 
+				<input  class="form-control control input-sm" ng-model="$parent.entity.pib" type="text" ng-minlength = 10 ng-maxlength = 10 required> 
 			</div>
 		</div>	
 		
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Name:</label>
 			<div class = "col-md-2">
-				<input  class="form-control control input-sm" ng-model="$parent.entity.name" type="text"> 
+				<input  class="form-control control input-sm" ng-model="$parent.entity.name" type="text" required> 
 			</div>
 		</div>	
 		
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Address:</label>
 			<div class = "col-md-2">
-				<input  class="form-control control input-sm" ng-model="$parent.entity.address" type="text"> 
+				<input  class="form-control control input-sm" ng-model="$parent.entity.address" type="text" required> 
 			</div>
 		</div>
 			
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Email:</label>
 			<div class = "col-md-2">
-				<input  class="form-control control input-sm" ng-model="$parent.entity.email"  type="mail"> 
+				<input  class="form-control control input-sm" ng-model="$parent.entity.email"  type="email" required> 
 			</div>
 		</div>
 		
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Web:</label>
 			<div class = "col-md-2">
-				<input  class="form-control control input-sm" ng-model="$parent.entity.web" type="text"> 
+				<input  class="form-control control input-sm" ng-model="$parent.entity.web" type="text" ng-minlength = 3 required > 
 			</div>
 		</div>	
 		
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Phone:</label>
 			<div class = "col-md-2">
-				<input  class="form-control control input-sm" ng-model="$parent.entity.phone"type="number"> 
+				<input  class="form-control control input-sm" ng-model="$parent.entity.phone"type="number" ng-minlength = 5 required> 
 			</div>
 		</div>	
 		
 		<div class = "form-group" >
 			<label class="col-md-2 control-label">Fax:</label>
 			<div class = "col-md-2">
-				<input  class="form-control control input-sm" ng-model="$parent.entity.fax" type="text"> 
+				<input name="fa"  class="form-control control input-sm" ng-model="$parent.entity.fax" type="text" ng-minlength = 3 required> 
+				<labal show="fda.$invalid"> Must contain number</labal>
 			</div>
 		</div>
 			

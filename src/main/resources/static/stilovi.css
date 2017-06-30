@@ -127,3 +127,14 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+input.ng-dirty.ng-valid:focus {
+	background-color: #bbffbb;
+}
+
+input.ng-dirty.ng-invalid:focus  {
+    background-color: pink;
+}
+
+
+
