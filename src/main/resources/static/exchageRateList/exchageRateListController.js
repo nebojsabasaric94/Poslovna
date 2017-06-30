@@ -189,6 +189,7 @@ app.controller('exchageRateListController', ['$scope','exchageRateListService','
 			}	
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {id : null,date:null ,numberOfExchangeRateList : "",appliedBy:null};
 
 			}

@@ -113,6 +113,7 @@ app.controller('businessActivityCodeController',['$scope','businessActivityCodeS
 	
 	$scope.deselect = function(){
 		$scope.selectedEntity = null;
+		$scope.showUpdateForm = false;
 		$scope.searchEntity = {id:null,code : "",name:""};
 
 	}

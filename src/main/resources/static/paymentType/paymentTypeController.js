@@ -126,6 +126,7 @@ app.controller('paymentTypeController', ['$scope','paymentTypeService','$locatio
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {code : "",nameOfPaymentType :""};
 
 			}

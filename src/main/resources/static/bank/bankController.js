@@ -189,6 +189,7 @@ app.controller('bankController', ['$scope','bankService','$location',
 
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {id:null,bankCode:"",pib:"",name:"",address:"",email:"",web:"",phone:"",fax:"",bank:""}
 
 			}

@@ -175,6 +175,7 @@ app.controller('dailyAccountBalanceController', ['$scope','dailyAccountBalanceSe
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				
 				$scope.searchEntity = {id : null,trafficDate:"" ,previousState : null,trafficToBenefit:null,trafficToTheBurden:null,newState:null,legalEntityAccount:{}};
 
 			}

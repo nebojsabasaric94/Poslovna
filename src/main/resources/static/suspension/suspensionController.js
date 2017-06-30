@@ -158,6 +158,7 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {id : null,date:"" ,transferToAccount : "",legalEntityAccount:{}};
 
 			}

@@ -166,6 +166,7 @@ app.controller('placeController', ['$scope','placeService','$location',
 			
 			$scope.deselect = function(){
 				$scope.selectedEntity = null;
+				$scope.showUpdateForm = false;
 				$scope.searchEntity = {id : null,pttNumber:"" ,name : "",country:null};
 
 			}

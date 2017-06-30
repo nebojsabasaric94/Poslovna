@@ -360,6 +360,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 
 	$scope.deselect = function(){
 		$scope.selectedEntity = null;
+		$scope.showUpdateForm = false;
 		$scope.searchEntity = {id:null,brojRacuna:"",datumOtvaranja : "",vazeci:"",client: null,bank:null,currency:null};
 	}
 	$scope.refresh = function(){
