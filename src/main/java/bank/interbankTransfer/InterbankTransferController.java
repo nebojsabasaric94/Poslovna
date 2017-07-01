@@ -27,8 +27,6 @@ import bank.analyticsOfStatements.AnalyticsOfStatementsXml;
 public class InterbankTransferController {
 
 	private final InterbankTransferService interbankTransferService;
-	
-	
 
 	@Autowired
 	public InterbankTransferController(final InterbankTransferService service) {
@@ -39,55 +37,54 @@ public class InterbankTransferController {
 	public ResponseEntity<List<InterbankTransfer>> findAll() {
 		return new ResponseEntity<>(interbankTransferService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/next/{id}")
 	public List<InterbankTransfer> findNext(@PathVariable Long id) {
-		
+
 		List<InterbankTransfer> list = new ArrayList<InterbankTransfer>();
-		for(int i = 0 ; i < interbankTransferService.findAll().size(); i++){
-			if(interbankTransferService.findAll().get(i).getBank().getId() == id){
+		for (int i = 0; i < interbankTransferService.findAll().size(); i++) {
+			if (interbankTransferService.findAll().get(i).getBank().getId() == id) {
 				list.add(interbankTransferService.findAll().get(i));
 			}
 		}
 		return list;
 	}
-	
-	
-	
+
 	@PostMapping("/xml")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void save() throws JAXBException {
-		ArrayList<InterbankTransfer> interbankTransfers = (ArrayList<InterbankTransfer>) interbankTransferService.findAll();
+		ArrayList<InterbankTransfer> interbankTransfers = (ArrayList<InterbankTransfer>) interbankTransferService
+				.findAll();
 
-		for(InterbankTransfer t : interbankTransfers){
-			if(!t.getProcessed()){
+		for (InterbankTransfer t : interbankTransfers) {
+			if (!t.getProcessed()) {
 				t.setProcessed(true);
 				interbankTransferService.save(t);
 				saveTransfersToXml(t);
 			}
 		}
 	}
-	
+
 	@GetMapping("/deleteInterbankTransfer/{id}")
-	public List<InterbankTransfer> deleteBank(@PathVariable Long id){
+	public List<InterbankTransfer> deleteBank(@PathVariable Long id) {
 		interbankTransferService.delete(id);
-		
+
 		return interbankTransferService.findAll();
 	}
-	
+
 	@PostMapping("/search")
-	public List<InterbankTransfer> search(@RequestBody InterbankTransfer interbankTransfer){
+	public List<InterbankTransfer> search(@RequestBody InterbankTransfer interbankTransfer) {
 		return interbankTransferService.search(interbankTransfer);
 	}
 
 	private void saveTransfersToXml(InterbankTransfer interbankTransfer) throws JAXBException {
 		InterbankTransferXml xml = generateInterBankTransferXml(interbankTransfer);
-		
-		File file = new File("transfers\\"+interbankTransfer.getIdMessage()+".xml");
+
+		File file = new File("transfers\\" + interbankTransfer.getIdMessage() + ".xml");
 		JAXBContext jaxbContext = JAXBContext.newInstance(InterbankTransferXml.class);
-		
+
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-		
+
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		jaxbMarshaller.marshal(xml, file);
 		jaxbMarshaller.marshal(xml, System.out);
@@ -101,7 +98,7 @@ public class InterbankTransferController {
 		xml.setSum(interbankTransfer.getSum());
 		xml.setTypeOfMessage(interbankTransfer.getTypeOfMessage());
 		xml.setStatements(new ArrayList<>());
-		for(int i = 0; i < interbankTransfer.getItemTransfers().size();i++){
+		for (int i = 0; i < interbankTransfer.getItemTransfers().size(); i++) {
 			AnalyticsOfStatements a = interbankTransfer.getItemTransfers().get(i).getAnalyticsOfStatements();
 			AnalyticsOfStatementsXml statementsXml = new AnalyticsOfStatementsXml();
 			statementsXml.setAccountCreditor(a.getAccountCreditor());
@@ -122,9 +119,9 @@ public class InterbankTransferController {
 			statementsXml.setStatus(a.getStatus());
 			statementsXml.setSum(a.getSum());
 			statementsXml.setTypeOfMistake(a.getTypeOfMistake());
-			
+
 			xml.getStatements().add(statementsXml);
 		}
 		return xml;
-	}	
+	}
 }

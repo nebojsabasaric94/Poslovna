@@ -52,12 +52,16 @@ public class AccountStatementController {
 	public void exportToXml(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount account) throws JAXBException{
 		LegalEntityAccount legalEntityAccount = legalEntityAccountService.findByAccountNumber(account.getBrojRacuna());
 		ArrayList<AnalyticsOfStatements> income = analyticsOfStatementsService.findIncomeForPeriod(startDate,endDate,legalEntityAccount);
+		ArrayList<AnalyticsOfStatements> incomeList = new ArrayList<AnalyticsOfStatements>();
+		
 		for(int i = 0; i < income.size();i++){
 			if(income.get(i).getPaymentType().getNameOfPaymentType().equals("Nalog za prenos"))//ako je nalog za prenos i ako nisu iz iste banke primaocu ne lezu pare, ne treba da ukljucim taj nalog
 			{
 				String debBank = income.get(i).getDebtorAccount().substring(0, 3);
-				if(!debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako nisu iz iste banke 
-					income.remove(i);
+				if(debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako nisu iz iste banke 
+					incomeList.add(income.get(i));
+			} else {
+				incomeList.add(income.get(i));
 			}
 		}
 
@@ -65,19 +69,25 @@ public class AccountStatementController {
 		DailyAccountBalance startDailyAccountBalance = dailyAccountBalanceService.findAccountStateAt(legalEntityAccount, startDate);
 		DailyAccountBalance endDailyAccountBalance = dailyAccountBalanceService. findAccountStateAt(legalEntityAccount, endDate);
 		ArrayList<AnalyticsOfStatements> all = analyticsOfStatementsService.findAllForPeriod(startDate, endDate, legalEntityAccount);
+		ArrayList<AnalyticsOfStatements> allList = new ArrayList<AnalyticsOfStatements>();
+		
 		for(int i = 0; i < all.size();i++){
 			if(all.get(i).getPaymentType().getNameOfPaymentType().equals("Nalog za prenos"))//ako je nalog za prenos i ako nisu iz iste banke primaocu ne lezu pare, ne treba da ukljucim taj nalog
 			{
 				if(all.get(i).getAccountCreditor().equals(legalEntityAccount.getBrojRacuna())){
 					String debBank = all.get(i).getDebtorAccount().substring(0, 3);
-					if(!debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako nisu iz iste banke 
-						all.remove(i);
+					if(debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako su iz iste banke 
+						allList.add(all.get(i));
+				} else {
+					allList.add(all.get(i));
 				}
+			} else {
+				allList.add(all.get(i));
 			}
 		}		
 		Float incomeSum = (float) 0.0;
-		for(int i=0;i < income.size();i++){
-			incomeSum += income.get(i).getSum();
+		for(int i=0;i < incomeList.size();i++){
+			incomeSum += incomeList.get(i).getSum();
 		}
 		Float expenseSum = (float)0.0;
 		for(int i=0;i < expense.size();i++){
@@ -96,8 +106,8 @@ public class AccountStatementController {
 			accountStatement.setStateAtTheEndOfPeriod(endDailyAccountBalance.getNewState());
 		accountStatement.setAccountNumber(legalEntityAccount.getBrojRacuna());
 		accountStatement.setStatements(new ArrayList<AnalyticsOfStatementsXml>());
-		for(int i = 0; i < all.size();i++){
-			AnalyticsOfStatements a = all.get(i);
+		for(int i = 0; i < allList.size();i++){
+			AnalyticsOfStatements a = allList.get(i);
 			AnalyticsOfStatementsXml statementsXml = new AnalyticsOfStatementsXml();
 			statementsXml.setAccountCreditor(a.getAccountCreditor());
 			statementsXml.setCreditor_recipient(a.getCreditor_recipient());
@@ -134,12 +144,15 @@ public class AccountStatementController {
 		}	
 		
 		ArrayList<AnalyticsOfStatements> income = analyticsOfStatementsService.findIncomeForPeriod(startDate,endDate,legalEntityAccount);
+		ArrayList<AnalyticsOfStatements> incomeList = new ArrayList<AnalyticsOfStatements>();
 		for(int i = 0; i < income.size();i++){//brisem ako je primalac i ako je nalog za prenos
 			if(income.get(i).getPaymentType().getNameOfPaymentType().equals("Nalog za prenos"))//ako je nalog za prenos i ako nisu iz iste banke primaocu ne lezu pare, ne treba da ukljucim taj nalog
 			{
 				String debBank = income.get(i).getDebtorAccount().substring(0, 3);
-				if(!debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako nisu iz iste banke 
-					income.remove(i);
+				if(debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako nisu iz iste banke 
+					incomeList.add(income.get(i));
+			} else {
+				incomeList.add(income.get(i));
 			}
 		}
 
@@ -147,19 +160,24 @@ public class AccountStatementController {
 		DailyAccountBalance startDailyAccountBalance = dailyAccountBalanceService.findAccountStateAt(legalEntityAccount, startDate);
 		DailyAccountBalance endDailyAccountBalance = dailyAccountBalanceService. findAccountStateAt(legalEntityAccount, endDate);
 		ArrayList<AnalyticsOfStatements> all = analyticsOfStatementsService.findAllForPeriod(startDate, endDate, legalEntityAccount);
+		ArrayList<AnalyticsOfStatements> allList = new ArrayList<AnalyticsOfStatements>();
 		for(int i = 0; i < all.size();i++){
 			if(all.get(i).getPaymentType().getNameOfPaymentType().equals("Nalog za prenos"))//ako je nalog za prenos i ako nisu iz iste banke primaocu ne lezu pare, ne treba da ukljucim taj nalog
 			{
 				if(all.get(i).getAccountCreditor().equals(legalEntityAccount.getBrojRacuna())){
 					String debBank = all.get(i).getDebtorAccount().substring(0, 3);
-					if(!debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako nisu iz iste banke 
-						all.remove(i);
+					if(debBank.equals(legalEntityAccount.getBrojRacuna().substring(0,3)))//ako su iz iste banke 
+						allList.add(all.get(i));
+				} else {
+					allList.add(all.get(i));
 				}
+			} else {
+				allList.add(all.get(i));
 			}
 		}		
 		Float incomeSum = (float) 0.0;
-		for(int i=0;i < income.size();i++){
-			incomeSum += income.get(i).getSum();
+		for(int i=0;i < incomeList.size();i++){
+			incomeSum += incomeList.get(i).getSum();
 		}
 		Float expenseSum = (float)0.0;
 		for(int i=0;i < expense.size();i++){
@@ -175,8 +193,8 @@ public class AccountStatementController {
 			setStateAtTheEndOfPeriod = endDailyAccountBalance.getNewState();
 		
 		ArrayList<AnalyticsOfStatementsXml> lista = new ArrayList<>();
-		for(int i = 0; i < all.size();i++){
-			AnalyticsOfStatements a = all.get(i);
+		for(int i = 0; i < allList.size();i++){
+			AnalyticsOfStatements a = allList.get(i);
 			AnalyticsOfStatementsXml statementsXml = new AnalyticsOfStatementsXml();
 			statementsXml.setAccountCreditor(a.getAccountCreditor());
 			statementsXml.setCreditor_recipient(a.getCreditor_recipient());
