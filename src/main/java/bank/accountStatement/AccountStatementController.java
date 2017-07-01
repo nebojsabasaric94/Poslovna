@@ -1,5 +1,6 @@
 package bank.accountStatement;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,11 +10,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,6 +50,7 @@ public class AccountStatementController {
 	
 	@Autowired
 	private LegalEntityAccountService legalEntityAccountService;
+	
 	
 	@PostMapping("/xml/{startDate}/{endDate}")
 	public void exportToXml(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount account) throws JAXBException{
@@ -132,8 +136,13 @@ public class AccountStatementController {
 		saveTransfersToXml(accountStatement);
 	}
 	
+	JasperPrint jasperPrint = new JasperPrint();
+	
+	
+	
+	
 	@PostMapping("/pdf/{startDate}/{endDate}")
-	public void exportToPdf(@PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount account) throws JAXBException, JRException, FileNotFoundException{
+	public void exportToPdf(HttpServletResponse response, @PathVariable("startDate")Date startDate,@PathVariable("endDate")Date endDate,@RequestBody LegalEntityAccount account) throws JAXBException, JRException, FileNotFoundException{
 		LegalEntityAccount legalEntityAccount = legalEntityAccountService.findByAccountNumber(account.getBrojRacuna());
 		String clientName = "";
 		if(legalEntityAccount.getClient().getTypeOfClient().equals("Fizicko lice")){
@@ -234,11 +243,64 @@ public class AccountStatementController {
 		
 		
 		
-		JasperPrint jasperPrint = JasperFillManager.fillReport("excerpt.jasper", parameters, new JREmptyDataSource());
+		jasperPrint = JasperFillManager.fillReport("excerpt.jasper", parameters, new JREmptyDataSource());
 	    File file = new File("D://"+clientName+".pdf");
 	    OutputStream outputStream = new FileOutputStream(file);
 	    JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+	    
+	    
+	    
+	    try {           
+			
+		     //JasperExportManager.exportReportToPdfFile(jasperPrint, "D://Test.pdf");
+			 ByteArrayOutputStream out = new ByteArrayOutputStream();
+			    try {
+			        JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+			    } catch (JRException e1) {
+			        e1.printStackTrace();
+			    }
+			    byte[] data = out.toByteArray();
+			    response.setContentType("application/pdf");
+			    response.setContentLength(data.length);
+			    response.getOutputStream().write(data);
+		        response.getOutputStream().flush();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	    
+	    
+	    
 		
+	}
+	
+	@GetMapping("/getpdf")
+	private void getPdff(HttpServletResponse response){
+		
+	    
+	    
+	    
+	    try {       
+	    	File file = new File("D://dadada.pdf");
+			OutputStream outputStream = new FileOutputStream(file);
+		    JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+			
+		     //JasperExportManager.exportReportToPdfFile(jasperPrint, "D://Test.pdf");
+			 ByteArrayOutputStream out = new ByteArrayOutputStream();
+			    try {
+			        JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+			    } catch (JRException e1) {
+			        e1.printStackTrace();
+			    }
+			    byte[] data = out.toByteArray();
+			    response.setContentType("application/pdf");
+			    response.setContentLength(data.length);
+			    response.getOutputStream().write(data);
+		        response.getOutputStream().flush();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void saveTransfersToXml(AccountStatementXml xml) throws JAXBException {

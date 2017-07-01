@@ -221,6 +221,7 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 			service.exportToPdf(l,$scope.startDatePdf,$scope.endDatePdf)
 			.then(function(response){
 				$scope.closeExportPdfModal();
+				window.location = "/accountStatement/getpdf/";
 			},
 			function(response){
 				
