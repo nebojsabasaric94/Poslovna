@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 import bank.analyticsOfStatements.AnalyticsOfStatements;
 import bank.analyticsOfStatements.AnalyticsOfStatementsService;
 import bank.analyticsOfStatements.MyValidationEventHandler;
-import bank.bank.Bank;
 import bank.dailyAccountBalance.DailyAccountBalance;
 import bank.dailyAccountBalance.DailyAccountBalanceService;
 import bank.interbankTransfer.InterbankTransfer;
@@ -74,7 +73,9 @@ public class SuspensionController {
 		
 		AnalyticsOfStatements a = generateAnalitycsOfStatemnt(suspension, creditorAccount, dailyAccountBalanceDebtor.getPreviousState());
 		analyticsOfStatementsService.save(a);
-		if(debtorAccount.getBank().equals(creditorAccount.getBank())){
+		String debtorCode = debtorAccount.getBrojRacuna().substring(0,3);
+		String creditorCode = creditorAccount.getBrojRacuna().substring(0,3);		
+		if(creditorCode.equals(debtorCode)){
 			//ako su iz iste banke skini sa racuna uplatioca i stavi na racun primaoca, sacuvaj stanje za taj dan
 			dailyAccountBalanceDebtor.setTrafficToTheBurden(dailyAccountBalanceDebtor.getTrafficToTheBurden() + a.getSum());
 			dailyAccountBalanceDebtor.setNewState(dailyAccountBalanceDebtor.getPreviousState()+dailyAccountBalanceDebtor.getTrafficToBenefit()-dailyAccountBalanceDebtor.getTrafficToTheBurden());
