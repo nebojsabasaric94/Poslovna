@@ -153,6 +153,8 @@ app.controller('clientController',['$scope','clientService','$location',
 	}
 	$scope.setSelectedPlaceUpdate = function(place){
 		$scope.updatedEntity.residence = place;
+		$scope.searchEntity.residence = place;
+		$scope.entity.residence = place;
 	}
 	
 	$scope.deselect = function(){

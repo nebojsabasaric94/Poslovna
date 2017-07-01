@@ -43,9 +43,7 @@ app.controller('placeController', ['$scope','placeService','$location',
 				
 			}
 			
-			$scope.setSelectedCountryUpdate = function(country){
-		     	$scope.updatedEntity.country = country;
-			}
+			
 			
 			
 			$scope.saveChanges = function(){
@@ -161,6 +159,13 @@ app.controller('placeController', ['$scope','placeService','$location',
 			}
 			$scope.setSelectedCountry = function(country){
 				$scope.entity.country = country;
+			}
+			$scope.setSelectedCountryUpdate = function(country){
+		     	$scope.updatedEntity.country = country;
+				$scope.searchEntity.country = country;
+				$scope.entity.country = country;
+
+
 			}
 			
 			

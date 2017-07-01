@@ -168,6 +168,8 @@ app.controller('currencyController', ['$scope','currencyService','$location',
 			}
 			$scope.setSelectedCountryUpdate = function(country){
 				$scope.updatedEntity.country = country;
+				$scope.entity.country = country;
+				$scope.searchEntity.country = country;
 			}
 			
 			$scope.deselect = function(){

@@ -148,6 +148,10 @@ app.controller('suspensionController', ['$scope','suspensionService','$location'
 			$scope.setSelectedAccountUpdated = function(account){
 				$scope.updatedEntity.legalEntityAccount.id = account.id;
 				$scope.updatedEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
+				$scope.entity.legalEntityAccount.id = account.id;
+				$scope.entity.legalEntityAccount.brojRacuna = account.brojRacuna;
+				$scope.searchEntity.legalEntityAccount.id = account.id;
+				$scope.searchEntity.legalEntityAccount.brojRacuna = account.brojRacuna;
 			}
 			
 			$scope.setSelectedAccount = function(account){

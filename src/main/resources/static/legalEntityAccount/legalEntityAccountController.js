@@ -272,12 +272,16 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		}
 		$scope.setSelectedClientUpdated = function(client){
 			$scope.updatedEntity.client = client;
+			$scope.searchEntity.client = client;
+			$scope.entity.client = client;
 		}
 		$scope.setSelectedBankSearch = function(bank){
 			$scope.searchEntity.bank = bank;
 		}
 		$scope.setSelectedBankUpdated = function(bank){
 			$scope.updatedEntity.bank = bank;
+			$scope.searchEntity.bank = bank;
+			$scope.entity.bank = bank;
 	
 		}
 		$scope.setSelectedCurrencySearch = function(currency){
@@ -285,6 +289,8 @@ app.controller('legalEntityAccountController',['$scope','legalEntityAccountServi
 		}
 		$scope.setSelectedCurrencyUpdated = function(currency){
 			$scope.updatedEntity.currency = currency;
+			$scope.searchEntity.currency = currency;
+			$scope.entity.currency = currency;
 		}
 		
 		
